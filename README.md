@@ -53,12 +53,14 @@ This clock runs on a **Cypress PSoC 5LP** (CY8CKIT-059) with the following compo
 
 ## Educational Context
 
-This project was created for a Master's-level embedded systems course. Its purpose was to demonstrate:
+This project was developed as part of a Master's-level embedded systems course. It was designed to demonstrate key concepts such as:
 
-- Practical application of **active object patterns**  
-- Use of **state machine composition** for embedded control  
-- Modular separation between input, logic, and display layers  
-- Real-time interaction on a resource-constrained platform
+- The use of an **AUTOSAR RTE-inspired architecture** to structure signal and event communication between software components  
+- The design and implementation of a **complex state machine** using hierarchical states for both container and widget logic  
+- The application of the **look-up table pattern for state machines** to create scalable and maintainable control flow  
+- The practical use of **active objects** to encapsulate behavior, manage internal state, and process events autonomously  
+- The integration of a **TFT display** for visualizing real-time clock output and user interactions
+
 
 ---
 
