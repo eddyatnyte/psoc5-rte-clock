@@ -1,4 +1,4 @@
-# ⏰ PSoC 5 Digital Clock — Event-Driven Architecture with Active Objects
+# PSoC 5 Digital Clock — Event-Driven Architecture with Active Objects
 
 This project implements a modular digital clock system on a **PSoC 5 microcontroller** using an **event-driven architecture** inspired by **RTE (Runtime Environment)** principles. It was developed as part of a **Master's course** on embedded systems architecture.
 
@@ -12,11 +12,11 @@ The system uses **hierarchical state machines** and **active objects** to separa
 
 ---
 
-## 🧭 Architecture Overview
+## Architecture Overview
 
 The clock logic is structured using two layers:
 
-### 🧱 1. Container & Widget Hierarchical States
+### 1. Container & Widget Hierarchical States
 
 ![Exercise_6 3 1](https://github.com/user-attachments/assets/6b65b2a9-a25f-40f5-8eff-b4644814bc82)
 
@@ -26,7 +26,7 @@ The clock logic is structured using two layers:
 
 ---
 
-### ⚙️ 2. Software Component (SWC) View
+###  2. Software Component (SWC) View
 
 ![Exercise_6 3 2](https://github.com/user-attachments/assets/8c4c9aa3-6a83-413b-a393-66b3fd4788f8)
 
@@ -38,7 +38,7 @@ The application is split into three periodic runnables:
 
 ---
 
-## 🔧 Hardware Platform
+## Hardware Platform
 
 This clock runs on a **Cypress PSoC 5LP** (CY8CKIT-059) with the following components:
 
@@ -51,7 +51,7 @@ This clock runs on a **Cypress PSoC 5LP** (CY8CKIT-059) with the following compo
 
 ---
 
-## 📚 Educational Context
+## Educational Context
 
 This project was created for a Master's-level embedded systems course. Its purpose was to demonstrate:
 
@@ -62,7 +62,7 @@ This project was created for a Master's-level embedded systems course. Its purpo
 
 ---
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 - C (bare-metal, no RTOS)
 - PSoC Creator IDE
