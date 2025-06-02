@@ -1,0 +1,2474 @@
+Archive member included to satisfy reference by file (symbol)
+
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_activate.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (EE_oo_ActivateTask)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_alsetrel.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (EE_oo_SetRelAlarm)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_altick.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_alsetrel.o) (EE_oo_counter_object_insert)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evclear.o)
+                              .\CortexM3\ARM_GCC_541\Debug\tsk_control.o (EE_oo_ClearEvent)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evget.o)
+                              .\CortexM3\ARM_GCC_541\Debug\tsk_control.o (EE_oo_GetEvent)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evset.o)
+                              .\CortexM3\ARM_GCC_541\Debug\swc_clock.o (EE_oo_SetEvent)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evwait.o)
+                              .\CortexM3\ARM_GCC_541\Debug\tsk_control.o (EE_oo_WaitEvent)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_irqendin.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (EE_IRQ_end_post_stub)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_lookup.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_irqendin.o) (EE_oo_IRQ_disable_count)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_exchg.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_activate.o) (EE_rq2stk_exchange)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_first.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_activate.o) (EE_rq_queryfirst)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_inser.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_activate.o) (EE_rq_insert)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_startos.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (EE_oo_StartOS)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_terminat.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (EE_oo_TerminateTask)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_utils.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (EE_system_init)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_common_ee_hal_structs.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_irqendin.o) (EE_std_endcycle_next_tid)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_eecfg.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_startos.o) (EE_oo_autostart_task_data)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o (CyHalt)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o) (CyPmReadStatus)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+                              .\CortexM3\ARM_GCC_541\Debug\logging.o (UART_LOG_Start)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG_IntClock.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o) (UART_LOG_IntClock_Start)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_3.o)
+                              .\CortexM3\ARM_GCC_541\Debug\sc_event_type.o (Button_3_Read)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_4.o)
+                              .\CortexM3\ARM_GCC_541\Debug\sc_event_type.o (Button_4_Read)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_DC.o)
+                              .\CortexM3\ARM_GCC_541\Debug\tft.o (TFT_DC_Write)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_RES.o)
+                              .\CortexM3\ARM_GCC_541\Debug\tft.o (TFT_RES_Write)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+                              .\CortexM3\ARM_GCC_541\Debug\tft.o (TFT_SPI_WriteTxData)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI_IntClock.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o) (TFT_SPI_IntClock_Start)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+                              .\CortexM3\ARM_GCC_541\Debug\tft.o (TFT_BackLight_WriteCompare)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_change_context_isr.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (EE_switch_context)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_irq_stack.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (EE_cortex_mx_change_IRQ_stack)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_multi_context.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_activate.o) (EE_cortex_mx_change_context)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_oo.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_terminat.o) (EE_hal_terminate_task)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyBootAsmGnu.o)
+                              .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o (CyDelayCycles)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tnterm.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_oo.o) (EE_thread_not_terminated)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tstub.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_eecfg.o) (EE_oo_thread_stub)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_context.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_multi_context.o) (EE_std_run_task_code)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o) (CyFlash_SetWaitCycles)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o) (CySpcStart)
+.\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_thendin.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_context.o) (EE_thread_end_instance)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o (__errno)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+                              c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o (exit)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                              c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o) (_global_impure_ptr)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+                              c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o (__libc_init_array)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+                              .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o (memcpy)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+                              c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o (memset)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sprintf.o)
+                              .\CortexM3\ARM_GCC_541\Debug\swc_clock.o (sprintf)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                              c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sprintf.o) (_svfprintf_r)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                              c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o) (_printf_i)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memchr-stub.o)
+                              c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o) (memchr)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memmove.o)
+                              c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o) (memmove)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-freer.o)
+                              c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o) (_free_r)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
+                              c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o) (_malloc_r)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-reallocr.o)
+                              c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o) (_realloc_r)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sbrkr.o)
+                              c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o) (_sbrk_r)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mlock.o)
+                              c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-freer.o) (__malloc_lock)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
+                              c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-reallocr.o) (_malloc_usable_size_r)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-reent.o)
+                              c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sbrkr.o) (errno)
+
+Allocating common symbols
+Common symbol       size              file
+
+EE_oo_IRQ_disable_count
+                    0x4               .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_lookup.o)
+errno               0x4               c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-reent.o)
+EE_rq_pairs_tid     0x10              .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_eecfg.o)
+EE_terminate_data   0x10              .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_eecfg.o)
+EE_oo_counter_object_RAM
+                    0x10              .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_eecfg.o)
+EE_oo_started       0x4               .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_startos.o)
+TFT_SPI_swStatusTx  0x1               .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+EE_IRQ_nesting_level
+                    0x4               .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_common_ee_hal_structs.o)
+EE_ApplicationMode  0x4               .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_eecfg.o)
+TFT_SPI_swStatusRx  0x1               .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+EE_cortex_mx_stack_4
+                    0x3e8             .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_eecfg.o)
+EE_std_endcycle_next_tid
+                    0x4               .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_common_ee_hal_structs.o)
+dieTemperature      0x2               .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+EE_oo_IRQ_suspend_status
+                    0x4               .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_lookup.o)
+EE_cortex_mx_stack_9
+                    0x200             .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_eecfg.o)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+ .data          0x00000000        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .text          0x00000000       0x74 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .ARM.extab     0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .ARM.exidx     0x00000000        0x8 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.TFT_setBacklight
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.TFT_getBacklight
+                0x00000000        0x8 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.TFT_setTextColor
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.TFT_setcolor
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.TFT_getFGcolor
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.TFT_getBGcolor
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.TFT_clearScreen
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.TFT_drawCircleHelper
+                0x00000000      0x13c .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.TFT_fillCircleHelper
+                0x00000000      0x108 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.TFT_fastHLine
+                0x00000000       0x64 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.TFT_writeLine
+                0x00000000       0xc0 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.TFT_invertDisplay
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.TFT_drawCircle
+                0x00000000      0x138 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.TFT_fillCircle
+                0x00000000       0x34 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.TFT_drawTriangle
+                0x00000000       0x44 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.TFT_fillTriangle
+                0x00000000      0x178 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.TFT_drawRoundRect
+                0x00000000       0xdc .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.TFT_fillRoundRect
+                0x00000000       0x84 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.TFT_drawRect
+                0x00000000       0x48 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.TFT_println
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.TFT_width
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.TFT_height
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.TFT_getRotation
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.TFT_getCursorX
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.TFT_getCursorY
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .text.LOG_Init
+                0x00000000       0x2c .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .rodata        0x00000000       0x30 .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .text.unhandledException
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\swc_clock.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\tsk_control.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\tsk_control.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\tsk_control.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\tsk_io.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\tsk_io.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\clock_container.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\clock_container.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\clock_container.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\clock_widget.o
+ .text.CLOCK__incrementHours
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\clock_widget.o
+ .text.CLOCK__incrementMinutes
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\clock_widget.o
+ .text.CLOCK__updateDisplay
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\clock_widget.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\rte.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\rte.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\rte.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\sc_displaydata.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\sc_displaydata.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\sc_displaydata.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\sc_event.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\sc_event.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\sc_event.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\sp_common.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\sp_common.o
+ .text.RTE_timertick_sp_common_tick
+                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\sp_common.o
+ .text.RTE_reset_sp_common
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\sp_common.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\sc_displaydata_type.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\sc_displaydata_type.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\sc_displaydata_type.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\sc_event_type.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\sc_event_type.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text.SetAnalogRoutingPumps
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .text._exit    0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_activate.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_activate.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_activate.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_alsetrel.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_alsetrel.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_alsetrel.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_altick.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_altick.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_altick.o)
+ .text.EE_oo_IncrementCounterHardware
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_altick.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evclear.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evclear.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evclear.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evget.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evget.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evget.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evset.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evset.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evset.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evwait.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evwait.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evwait.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_irqendin.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_irqendin.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_irqendin.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_lookup.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_lookup.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_lookup.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_exchg.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_exchg.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_exchg.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_first.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_first.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_first.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_inser.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_inser.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_inser.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_startos.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_startos.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_startos.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_terminat.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_terminat.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_terminat.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_utils.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_utils.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_utils.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_common_ee_hal_structs.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_common_ee_hal_structs.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_common_ee_hal_structs.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_eecfg.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .bss           0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyUSB_PowerOnCheck
+                0x00000000       0x48 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyBusClk_Internal_SetDivider
+                0x00000000       0x48 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyPLL_OUT_Stop
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyIMO_Stop
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyIMO_EnableDoubler
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyIMO_DisableDoubler
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyMasterClk_SetSource
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyMasterClk_SetDivider
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyBusClk_SetDivider
+                0x00000000       0x70 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyUsbClk_SetSource
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyILO_Start1K
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyILO_Stop1K
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyILO_Start100K
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyILO_Stop100K
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyPLL_OUT_Start
+                0x00000000       0x78 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyIMO_Start
+                0x00000000       0x60 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyILO_Enable33K
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyILO_Disable33K
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyILO_SetSource
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyILO_SetPowerMode
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyXTAL_32KHZ_Stop
+                0x00000000       0x30 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyXTAL_32KHZ_ReadStatus
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyXTAL_Start
+                0x00000000       0xac .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyXTAL_Stop
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyXTAL_EnableErrStatus
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyXTAL_DisableErrStatus
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyXTAL_ReadStatus
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyXTAL_EnableFaultRecovery
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyXTAL_DisableFaultRecovery
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyXTAL_SetStartup
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyXTAL_SetFbVoltage
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyXTAL_SetWdVoltage
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyHalt   0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyPLL_OUT_SetPQ
+                0x00000000       0x60 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyPLL_OUT_SetSource
+                0x00000000       0x34 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyIMO_SetTrimValue
+                0x00000000       0xcc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyIMO_SetFreq
+                0x00000000       0xf4 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyIMO_SetSource
+                0x00000000       0x58 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CySoftwareReset
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyDelayUs
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyXTAL_32KHZ_SetPowerMode
+                0x00000000       0x84 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyXTAL_32KHZ_Start
+                0x00000000       0x74 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyDelayFreq
+                0x00000000       0x4c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyWdtStart
+                0x00000000       0x40 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyWdtClear
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyVdStickyStatus
+                0x00000000       0x2c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyVdLvDigitEnable
+                0x00000000       0x84 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyVdLvAnalogEnable
+                0x00000000       0x80 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyVdLvDigitDisable
+                0x00000000       0x30 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyVdLvAnalogDisable
+                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyVdHvAnalogEnable
+                0x00000000       0x54 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyVdHvAnalogDisable
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyVdRealTimeStatus
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyDisableInts
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyEnableInts
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyFlushCache
+                0x00000000       0x44 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyIntSetSysVector
+                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyIntGetSysVector
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyIntSetVector
+                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyIntGetVector
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyIntSetPriority
+                0x00000000       0x30 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyIntGetPriority
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyIntGetState
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CySysTickStop
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CySysTickEnableInterrupt
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CySysTickEnable
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CySysTickDisableInterrupt
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CySysTickSetReload
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CySysTickGetReload
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CySysTickGetValue
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CySysTickSetClockSource
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CySysTickGetClockSource
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CySysTickGetCountFlag
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CySysTickServiceCallbacks
+                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CySysTickClear
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CySysTickInit
+                0x00000000       0x58 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CySysTickStart
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CySysTickSetCallback
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CySysTickGetCallback
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text.CyGetUniqueId
+                0x00000000       0x70 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .bss           0x00000000       0x43 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .text.CyPmHibSlpSaveSet
+                0x00000000      0x1dc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .text.CyPmHibSlpRestore
+                0x00000000       0xd8 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .text.CyPmHviLviSaveDisable
+                0x00000000       0xa0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .text.CyPmHibSaveSet
+                0x00000000       0x98 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .text.CyPmHviLviRestore
+                0x00000000       0x48 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .text.CyPmHibRestore
+                0x00000000       0x60 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .text.CyPmSaveClocks
+                0x00000000      0x218 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .text.CyPmRestoreClocks
+                0x00000000      0x24c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .text.CyPmAltAct
+                0x00000000       0x6c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .text.CyPmSleep
+                0x00000000       0xf4 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .text.CyPmHibernateEx
+                0x00000000       0xf4 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .text.CyPmHibernate
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .text.CyPmReadStatus
+                0x00000000       0x30 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .text.CyPmCtwSetInterval
+                0x00000000       0x5c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .text.CyPmOppsSet
+                0x00000000       0x2c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .text.CyPmFtwSetInterval
+                0x00000000       0x5c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .rodata        0x00000000        0xf .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .text.UART_LOG_Init
+                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .text.UART_LOG_Enable
+                0x00000000       0x38 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .text.UART_LOG_Start
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .text.UART_LOG_Stop
+                0x00000000       0x3c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .text.UART_LOG_ReadControlRegister
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .text.UART_LOG_WriteControlRegister
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .text.UART_LOG_SetRxInterruptMode
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .text.UART_LOG_ReadRxData
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .text.UART_LOG_ReadRxStatus
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .text.UART_LOG_GetChar
+                0x00000000       0x2c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .text.UART_LOG_GetByte
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .text.UART_LOG_GetRxBufferSize
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .text.UART_LOG_ClearRxBuffer
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .text.UART_LOG_SetRxAddressMode
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .text.UART_LOG_SetRxAddress1
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .text.UART_LOG_SetRxAddress2
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .text.UART_LOG_SetTxInterruptMode
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .text.UART_LOG_WriteTxData
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .text.UART_LOG_ReadTxStatus
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .text.UART_LOG_PutArray
+                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .text.UART_LOG_PutCRLF
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .text.UART_LOG_GetTxBufferSize
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .text.UART_LOG_ClearTxBuffer
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .text.UART_LOG_SendBreak
+                0x00000000       0x5c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .text.UART_LOG_SetTxAddressMode
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG_IntClock.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG_IntClock.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_Start
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_Stop
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_StopBlock
+                0x00000000       0x6c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_StandbyPower
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_GetDividerRegister
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_SetModeRegister
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_ClearModeRegister
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_GetModeRegister
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_GetSourceRegister
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_SetDividerRegister
+                0x00000000       0xdc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_SetSourceRegister
+                0x00000000       0x5c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG_IntClock.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_3.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_3.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_3.o)
+ .text.Button_3_Write
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_3.o)
+ .text.Button_3_SetDriveMode
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_3.o)
+ .text.Button_3_ReadDataReg
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_3.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_4.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_4.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_4.o)
+ .text.Button_4_Write
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_4.o)
+ .text.Button_4_SetDriveMode
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_4.o)
+ .text.Button_4_ReadDataReg
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_4.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_DC.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_DC.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_DC.o)
+ .text.TFT_DC_SetDriveMode
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_DC.o)
+ .text.TFT_DC_Read
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_DC.o)
+ .text.TFT_DC_ReadDataReg
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_DC.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_RES.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_RES.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_RES.o)
+ .text.TFT_RES_SetDriveMode
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_RES.o)
+ .text.TFT_RES_Read
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_RES.o)
+ .text.TFT_RES_ReadDataReg
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_RES.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .text.TFT_SPI_Stop
+                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .text.TFT_SPI_EnableTxInt
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .text.TFT_SPI_EnableRxInt
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .text.TFT_SPI_DisableTxInt
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .text.TFT_SPI_DisableRxInt
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .text.TFT_SPI_SetTxInterruptMode
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .text.TFT_SPI_SetRxInterruptMode
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .text.TFT_SPI_ReadRxData
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .text.TFT_SPI_GetRxBufferSize
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .text.TFT_SPI_GetTxBufferSize
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .text.TFT_SPI_ClearRxBuffer
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .text.TFT_SPI_ClearTxBuffer
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .text.TFT_SPI_PutArray
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .text.TFT_SPI_EnableInt
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .text.TFT_SPI_DisableInt
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .text.TFT_SPI_SetInterruptMode
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .text.TFT_SPI_ReadStatus
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ COMMON         0x00000000        0x2 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI_IntClock.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI_IntClock.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI_IntClock.o)
+ .text.TFT_SPI_IntClock_Stop
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI_IntClock.o)
+ .text.TFT_SPI_IntClock_StopBlock
+                0x00000000       0x6c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI_IntClock.o)
+ .text.TFT_SPI_IntClock_StandbyPower
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI_IntClock.o)
+ .text.TFT_SPI_IntClock_GetDividerRegister
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI_IntClock.o)
+ .text.TFT_SPI_IntClock_SetModeRegister
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI_IntClock.o)
+ .text.TFT_SPI_IntClock_ClearModeRegister
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI_IntClock.o)
+ .text.TFT_SPI_IntClock_GetModeRegister
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI_IntClock.o)
+ .text.TFT_SPI_IntClock_GetSourceRegister
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI_IntClock.o)
+ .text.TFT_SPI_IntClock_SetDividerRegister
+                0x00000000       0xd8 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI_IntClock.o)
+ .text.TFT_SPI_IntClock_SetSourceRegister
+                0x00000000       0x5c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI_IntClock.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+ .text.TFT_BackLight_Stop
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+ .text.TFT_BackLight_ReadCounter
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+ .text.TFT_BackLight_ReadControlRegister
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+ .text.TFT_BackLight_WriteControlRegister
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+ .text.TFT_BackLight_ReadCompare
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+ .text.TFT_BackLight_ReadPeriod
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_change_context_isr.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_change_context_isr.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_irq_stack.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_multi_context.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_multi_context.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_oo.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_oo.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyBootAsmGnu.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyBootAsmGnu.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tnterm.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tnterm.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tnterm.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tstub.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tstub.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tstub.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_context.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_context.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_context.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ .text.CySetTempInt
+                0x00000000       0x60 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ .text.CyFlash_Start
+                0x00000000       0x54 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ .text.CyFlash_Stop
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ .text.CyFlash_EraseRow
+                0x00000000       0x78 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ .text.CyFlashGetSpcAlgorithm
+                0x00000000       0x4c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ .text.CySetTemp
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ .text.CySetFlashEEBuffer
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ .text.CyWriteRowFull
+                0x00000000       0xf8 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ .text.CyWriteRowData
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ .text.CyFlash_SetWaitCycles
+                0x00000000       0x7c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ .text.CyEEPROM_Start
+                0x00000000       0x54 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ .text.CyEEPROM_Stop
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ .text.CyEEPROM_ReadReserve
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ .text.CyEEPROM_ReadRelease
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ COMMON         0x00000000        0x2 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+ .bss           0x00000000        0x8 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+ .text.CySpcStart
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+ .text.CySpcStop
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+ .text.CySpcReadData
+                0x00000000       0x34 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+ .text.CySpcLoadMultiByte
+                0x00000000       0x78 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+ .text.CySpcLoadRow
+                0x00000000       0x50 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+ .text.CySpcLoadRowFull
+                0x00000000       0x80 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+ .text.CySpcWriteRow
+                0x00000000       0x4c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+ .text.CySpcEraseSector
+                0x00000000       0x3c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+ .text.CySpcEraseRow
+                0x00000000       0x4c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+ .text.CySpcGetTemp
+                0x00000000       0x3c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+ .text.CySpcLock
+                0x00000000       0x4c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+ .text.CySpcUnlock
+                0x00000000       0x38 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+ .text.CySpcGetAlgorithm
+                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_thendin.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_thendin.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_thendin.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+ .text.exit     0x00000000       0x28 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+ .rodata._global_impure_ptr
+                0x00000000        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sprintf.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sprintf.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sprintf.o)
+ .text._sprintf_r
+                0x00000000       0x40 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sprintf.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+ .text.__ssprint_r
+                0x00000000       0xfe c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memchr-stub.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memchr-stub.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memchr-stub.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memmove.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memmove.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memmove.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-freer.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-freer.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-freer.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-reallocr.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-reallocr.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-reallocr.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sbrkr.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sbrkr.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sbrkr.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mlock.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mlock.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mlock.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-reent.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-reent.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-reent.o)
+ .text.cleanup_glue
+                0x00000000       0x1a c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-reent.o)
+ .text._reclaim_reent
+                0x00000000       0xb4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-reent.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+rom              0x00000000         0x00040000         xr
+ram              0x1fff8000         0x00010000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+LOAD c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+LOAD c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+START GROUP
+LOAD .\CortexM3\ARM_GCC_541\Debug\tft.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\logging.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\main.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\swc_clock.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\tsk_control.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\tsk_io.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\clock_container.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\clock_widget.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\rte.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\sc_displaydata.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\sc_event.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\sp_common.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\sc_displaydata_type.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\sc_event_type.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a
+LOAD C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_541\Debug\CyComponentLibrary.a
+END GROUP
+START GROUP
+LOAD c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a
+LOAD c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a
+LOAD c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc_nano.a
+END GROUP
+START GROUP
+LOAD c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a
+LOAD c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc_nano.a
+END GROUP
+LOAD c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+LOAD c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+START GROUP
+LOAD c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a
+LOAD c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a
+LOAD c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libnosys.a
+END GROUP
+                0x00000000                CY_APPL_ORIGIN = 0x0
+                0x00000100                CY_FLASH_ROW_SIZE = 0x100
+                0x00000020                CY_ECC_ROW_SIZE = 0x20
+                0x00000000                CY_EE_IN_BTLDR = 0x0
+                0x00000000                CY_APPL_LOADABLE = 0x0
+                0x00000800                CY_EE_SIZE = 0x800
+                0x00000001                CY_APPL_NUM = 0x1
+                0x00000001                CY_APPL_MAX = 0x1
+                0x00000040                CY_METADATA_SIZE = 0x40
+                0x00000000                CY_APPL_LOADABLE = 0x0
+                0x00000000                CY_CHECKSUM_EXCLUDE_SIZE = ALIGN (0x0, CY_FLASH_ROW_SIZE)
+                [!provide]                PROVIDE (__cy_heap_start, _end)
+                0x00000001                PROVIDE (__cy_region_num, ((__cy_regions_end - __cy_regions) / 0x10))
+                0x20008000                PROVIDE (__cy_stack, (ORIGIN (ram) + LENGTH (ram)))
+                [!provide]                PROVIDE (__cy_heap_end, (__cy_stack - 0x800))
+
+.cybootloader   0x00000000        0x0
+ *(.cybootloader)
+                0x00000000                appl1_start = CY_APPL_ORIGIN?CY_APPL_ORIGIN:ALIGN (CY_FLASH_ROW_SIZE)
+                0x0001ff00                appl2_start = (appl1_start + ALIGN ((((LENGTH (rom) - appl1_start) - (0x2 * CY_FLASH_ROW_SIZE)) / 0x2), CY_FLASH_ROW_SIZE))
+                0x00000000                appl_start = (CY_APPL_NUM == 0x1)?appl1_start:appl2_start
+                0x00000000                ecc_offset = ((appl_start / CY_FLASH_ROW_SIZE) * CY_ECC_ROW_SIZE)
+                0x00000000                ee_offset = (CY_APPL_LOADABLE && ! (CY_EE_IN_BTLDR))?((CY_EE_SIZE / CY_APPL_MAX) * (CY_APPL_NUM - 0x1)):0x0
+                0x00000800                ee_size = (CY_APPL_LOADABLE && ! (CY_EE_IN_BTLDR))?(CY_EE_SIZE / CY_APPL_MAX):CY_EE_SIZE
+                [!provide]                PROVIDE (CY_ECC_OFFSET, ecc_offset)
+
+.text           0x00000000     0x2f58
+ CREATE_OBJECT_SYMBOLS
+                0x00000000                PROVIDE (__cy_interrupt_vector, RomVectors)
+ *(.romvectors)
+ .romvectors    0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00000000                RomVectors
+                0x00000001                ASSERT ((. != __cy_interrupt_vector), No interrupt vector)
+                0x00000001                ASSERT (CY_APPL_ORIGIN?(SIZEOF (.cybootloader) <= CY_APPL_ORIGIN):0x1, Wrong image location)
+                0x00000010                PROVIDE (__cy_reset, Reset)
+ *(.text.Reset)
+ .text.Reset    0x00000010       0x18 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00000010                Reset
+                0x00000001                ASSERT ((. != __cy_reset), No reset code)
+ *(.dma_init)
+                0x00000001                ASSERT ((((appl_start + .) <= 0x10000) || 0x1), DMA Init must be within the first 64k of flash)
+ *(.text .text.* .gnu.linkonce.t.*)
+ .text          0x00000028       0x5c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .text.charBounds
+                0x00000084      0x1bc .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.__TFT_SPI_TX_ISR
+                0x00000240       0x58 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x00000240                __TFT_SPI_TX_ISR
+ .text.TFT_send
+                0x00000298       0x84 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.setAddrWindow
+                0x0000031c       0x88 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .text.TFT_setRotation
+                0x000003a4       0xc0 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x000003a4                TFT_setRotation
+ .text.TFT_setCursor
+                0x00000464       0x10 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x00000464                TFT_setCursor
+ .text.TFT_setColors
+                0x00000474       0x10 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x00000474                TFT_setColors
+ .text.TFT_setTextWrap
+                0x00000484        0xc .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x00000484                TFT_setTextWrap
+ .text.TFT_setTextSize
+                0x00000490       0x10 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x00000490                TFT_setTextSize
+ .text.TFT_setFont
+                0x000004a0       0x34 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x000004a0                TFT_setFont
+ .text.TFT_getTextBounds
+                0x000004d4       0xa8 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x000004d4                TFT_getTextBounds
+ .text.TFT_fillRect
+                0x0000057c       0x8c .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x0000057c                TFT_fillRect
+ .text.TFT_fillScreen
+                0x00000608       0x24 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x00000608                TFT_fillScreen
+ .text.TFT_init
+                0x0000062c       0xe4 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x0000062c                TFT_init
+ .text.TFT_drawPixel
+                0x00000710       0x50 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x00000710                TFT_drawPixel
+ .text.TFT_fastVLine
+                0x00000760       0x64 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x00000760                TFT_fastVLine
+ .text.TFT_drawChar
+                0x000007c4      0x21c .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x000007c4                TFT_drawChar
+ .text.TFT_write
+                0x000009e0      0x144 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x000009e0                TFT_write
+ .text.TFT_print
+                0x00000b24       0x14 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                0x00000b24                TFT_print
+ .text.LOG_send
+                0x00000b38       0x2c .\CortexM3\ARM_GCC_541\Debug\logging.o
+                0x00000b38                LOG_send
+ .text.ISR2_systick_handler
+                0x00000b64        0xc .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x00000b64                ISR2_systick_handler
+ .text.systick_handler
+                0x00000b70       0x98 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x00000b70                systick_handler
+ .text.main     0x00000c08       0x28 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x00000c08                main
+ .text.Functsk_init
+                0x00000c30       0x34 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x00000c30                Functsk_init
+ .text.Functsk_background
+                0x00000c64        0x4 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x00000c64                Functsk_background
+ .text.CLOCK_input_run
+                0x00000c68       0x8c .\CortexM3\ARM_GCC_541\Debug\swc_clock.o
+                0x00000c68                CLOCK_input_run
+ .text.CLOCK_contol_run
+                0x00000cf4       0x18 .\CortexM3\ARM_GCC_541\Debug\swc_clock.o
+                0x00000cf4                CLOCK_contol_run
+ .text.CLOCK_display_run
+                0x00000d0c      0x1d8 .\CortexM3\ARM_GCC_541\Debug\swc_clock.o
+                0x00000d0c                CLOCK_display_run
+ .text.Functsk_control
+                0x00000ee4       0x2c .\CortexM3\ARM_GCC_541\Debug\tsk_control.o
+                0x00000ee4                Functsk_control
+ .text.Functsk_io
+                0x00000f10       0x2c .\CortexM3\ARM_GCC_541\Debug\tsk_io.o
+                0x00000f10                Functsk_io
+ .text.CLOCK__increment1Minute
+                0x00000f3c       0x30 .\CortexM3\ARM_GCC_541\Debug\clock_container.o
+                0x00000f3c                CLOCK__increment1Minute
+ .text.CLOCK__dispatch_KL_Hours
+                0x00000f6c       0x10 .\CortexM3\ARM_GCC_541\Debug\clock_container.o
+                0x00000f6c                CLOCK__dispatch_KL_Hours
+ .text.CLOCK__dispatch_KL_HoursMin
+                0x00000f7c       0x1c .\CortexM3\ARM_GCC_541\Debug\clock_container.o
+                0x00000f7c                CLOCK__dispatch_KL_HoursMin
+ .text.CLOCK__dispatch_KR_Hours
+                0x00000f98       0x10 .\CortexM3\ARM_GCC_541\Debug\clock_container.o
+                0x00000f98                CLOCK__dispatch_KR_Hours
+ .text.CLOCK__dispatch_KRLP_Hours
+                0x00000fa8       0x10 .\CortexM3\ARM_GCC_541\Debug\clock_container.o
+                0x00000fa8                CLOCK__dispatch_KRLP_Hours
+ .text.CLOCK__dispatch_250MS_Hours
+                0x00000fb8       0x10 .\CortexM3\ARM_GCC_541\Debug\clock_container.o
+                0x00000fb8                CLOCK__dispatch_250MS_Hours
+ .text.CLOCK__dispatch_KL_Min
+                0x00000fc8       0x10 .\CortexM3\ARM_GCC_541\Debug\clock_container.o
+                0x00000fc8                CLOCK__dispatch_KL_Min
+ .text.CLOCK__dispatch_KR_Min
+                0x00000fd8       0x10 .\CortexM3\ARM_GCC_541\Debug\clock_container.o
+                0x00000fd8                CLOCK__dispatch_KR_Min
+ .text.CLOCK__dispatch_KRLP_Min
+                0x00000fe8       0x10 .\CortexM3\ARM_GCC_541\Debug\clock_container.o
+                0x00000fe8                CLOCK__dispatch_KRLP_Min
+ .text.CLOCK__dispatch_250MS_Min
+                0x00000ff8       0x10 .\CortexM3\ARM_GCC_541\Debug\clock_container.o
+                0x00000ff8                CLOCK__dispatch_250MS_Min
+ .text.CONTAINER_processEvent
+                0x00001008       0x6c .\CortexM3\ARM_GCC_541\Debug\clock_container.o
+                0x00001008                CONTAINER_processEvent
+ .text.CLOCK__incrementWidget
+                0x00001074       0x24 .\CortexM3\ARM_GCC_541\Debug\clock_widget.o
+                0x00001074                CLOCK__incrementWidget
+ .text.CLOCK__updateTime
+                0x00001098        0x4 .\CortexM3\ARM_GCC_541\Debug\clock_widget.o
+                0x00001098                CLOCK__updateTime
+ .text.CLOCK__setDisplayFonts
+                0x0000109c       0x94 .\CortexM3\ARM_GCC_541\Debug\clock_widget.o
+                0x0000109c                CLOCK__setDisplayFonts
+ .text.WIDGET__processEvent
+                0x00001130       0x7c .\CortexM3\ARM_GCC_541\Debug\clock_widget.o
+                0x00001130                WIDGET__processEvent
+ .text.RTE_ProcessCyclicTable
+                0x000011ac       0x30 .\CortexM3\ARM_GCC_541\Debug\rte.o
+                0x000011ac                RTE_ProcessCyclicTable
+ .text.RTE_ProcessEventTable
+                0x000011dc       0x28 .\CortexM3\ARM_GCC_541\Debug\rte.o
+                0x000011dc                RTE_ProcessEventTable
+ .text.SC_DISPLAYDATA_driverIn
+                0x00001204        0x4 .\CortexM3\ARM_GCC_541\Debug\sc_displaydata_type.o
+                0x00001204                SC_DISPLAYDATA_driverIn
+ .text.SC_DISPLAYDATA_driverOut
+                0x00001208        0x4 .\CortexM3\ARM_GCC_541\Debug\sc_displaydata_type.o
+                0x00001208                SC_DISPLAYDATA_driverOut
+ .text.SC_EVENT_driverIn
+                0x0000120c       0x84 .\CortexM3\ARM_GCC_541\Debug\sc_event_type.o
+                0x0000120c                SC_EVENT_driverIn
+ .text.SC_EVENT_driverOut
+                0x00001290        0x4 .\CortexM3\ARM_GCC_541\Debug\sc_event_type.o
+                0x00001290                SC_EVENT_driverOut
+ .text.CyClockStartupError
+                0x00001294        0x4 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text.cfg_write_bytes32
+                0x00001298       0x34 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text.AnalogSetDefault
+                0x000012cc       0x28 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text.CYMEMZERO
+                0x000012f4        0xc .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text.ClockSetup
+                0x00001300       0xd0 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text.CYCONFIGCPY
+                0x000013d0        0x8 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text.cyfitter_cfg
+                0x000013d8      0x134 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x000013d8                cyfitter_cfg
+ .text.IntDefaultHandler
+                0x0000150c       0x10 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x0000150c                IntDefaultHandler
+ .text._sbrk    0x0000151c       0x30 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x0000151c                _sbrk
+ .text.Start_c  0x0000154c       0x4c .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x0000154c                Start_c
+ .text.initialize_psoc
+                0x00001598       0x68 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00001598                initialize_psoc
+ .text.EE_oo_ActivateTask
+                0x00001600       0xe8 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_activate.o)
+                0x00001600                EE_oo_ActivateTask
+ .text.EE_oo_SetRelAlarm
+                0x000016e8       0x80 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_alsetrel.o)
+                0x000016e8                EE_oo_SetRelAlarm
+ .text.EE_oo_handle_action_callback
+                0x00001768        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_altick.o)
+ .text.EE_oo_handle_action_task
+                0x00001774       0x4c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_altick.o)
+ .text.EE_oo_handle_action_event
+                0x000017c0       0x60 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_altick.o)
+ .text.EE_oo_handle_action
+                0x00001820       0x28 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_altick.o)
+ .text.EE_oo_counter_object_insert
+                0x00001848       0x9c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_altick.o)
+                0x00001848                EE_oo_counter_object_insert
+ .text.EE_oo_IncrementCounterImplementation
+                0x000018e4      0x100 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_altick.o)
+                0x000018e4                EE_oo_IncrementCounterImplementation
+ .text.EE_oo_IncrementCounter
+                0x000019e4       0xb0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_altick.o)
+                0x000019e4                EE_oo_IncrementCounter
+ .text.EE_oo_ClearEvent
+                0x00001a94       0x5c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evclear.o)
+                0x00001a94                EE_oo_ClearEvent
+ .text.EE_oo_GetEvent
+                0x00001af0       0x40 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evget.o)
+                0x00001af0                EE_oo_GetEvent
+ .text.EE_oo_SetEvent
+                0x00001b30      0x100 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evset.o)
+                0x00001b30                EE_oo_SetEvent
+ .text.EE_oo_WaitEvent
+                0x00001c30      0x110 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evwait.o)
+                0x00001c30                EE_oo_WaitEvent
+ .text.EE_IRQ_run_next_task
+                0x00001d40       0x30 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_irqendin.o)
+ .text.EE_IRQ_end_instance
+                0x00001d70       0x68 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_irqendin.o)
+                0x00001d70                EE_IRQ_end_instance
+ .text.EE_IRQ_end_post_stub
+                0x00001dd8       0x14 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_irqendin.o)
+                0x00001dd8                EE_IRQ_end_post_stub
+ .text.EE_rq2stk_exchange
+                0x00001dec       0x88 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_exchg.o)
+                0x00001dec                EE_rq2stk_exchange
+ .text.EE_rq_queryfirst
+                0x00001e74       0x44 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_first.o)
+                0x00001e74                EE_rq_queryfirst
+ .text.EE_rq_insert
+                0x00001eb8       0x74 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_inser.o)
+                0x00001eb8                EE_rq_insert
+ .text.compute_task_tid
+                0x00001f2c       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_startos.o)
+ .text.EE_oo_start_os
+                0x00001f3c        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_startos.o)
+ .text.EE_oo_autostart_tasks
+                0x00001f48       0x60 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_startos.o)
+ .text.EE_oo_autostart_os
+                0x00001fa8        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_startos.o)
+ .text.EE_oo_StartOS
+                0x00001fb4       0x8c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_startos.o)
+                0x00001fb4                EE_oo_StartOS
+ .text.EE_oo_TerminateTask
+                0x00002040       0x3c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_terminat.o)
+                0x00002040                EE_oo_TerminateTask
+ .text.EE_system_init
+                0x0000207c       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_utils.o)
+                0x0000207c                EE_system_init
+ .text.CyDelay  0x0000209c       0x2c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+                0x0000209c                CyDelay
+ .text.UART_LOG_PutChar
+                0x000020c8       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+                0x000020c8                UART_LOG_PutChar
+ .text.UART_LOG_PutString
+                0x000020e0       0x24 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+                0x000020e0                UART_LOG_PutString
+ .text.Button_3_Read
+                0x00002104       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_3.o)
+                0x00002104                Button_3_Read
+ .text.Button_4_Read
+                0x00002114       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_4.o)
+                0x00002114                Button_4_Read
+ .text.TFT_DC_Write
+                0x00002124       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_DC.o)
+                0x00002124                TFT_DC_Write
+ .text.TFT_RES_Write
+                0x0000213c       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_RES.o)
+                0x0000213c                TFT_RES_Write
+ .text.TFT_SPI_Enable
+                0x00002154       0x34 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+                0x00002154                TFT_SPI_Enable
+ .text.TFT_SPI_ReadTxStatus
+                0x00002188        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+                0x00002188                TFT_SPI_ReadTxStatus
+ .text.TFT_SPI_ReadRxStatus
+                0x00002194        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+                0x00002194                TFT_SPI_ReadRxStatus
+ .text.TFT_SPI_WriteTxData
+                0x000021a0       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+                0x000021a0                TFT_SPI_WriteTxData
+ .text.TFT_SPI_ClearFIFO
+                0x000021b8       0x3c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+                0x000021b8                TFT_SPI_ClearFIFO
+ .text.TFT_SPI_Init
+                0x000021f4       0x28 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+                0x000021f4                TFT_SPI_Init
+ .text.TFT_SPI_Start
+                0x0000221c       0x1c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+                0x0000221c                TFT_SPI_Start
+ .text.TFT_SPI_IntClock_Start
+                0x00002238       0x1c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI_IntClock.o)
+                0x00002238                TFT_SPI_IntClock_Start
+ .text.TFT_BackLight_Enable
+                0x00002254       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+                0x00002254                TFT_BackLight_Enable
+ .text.TFT_BackLight_WriteCounter
+                0x00002264        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+                0x00002264                TFT_BackLight_WriteCounter
+ .text.TFT_BackLight_WritePeriod
+                0x00002270        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+                0x00002270                TFT_BackLight_WritePeriod
+ .text.TFT_BackLight_WriteCompare
+                0x0000227c        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+                0x0000227c                TFT_BackLight_WriteCompare
+ .text.TFT_BackLight_SetInterruptMode
+                0x00002288        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+                0x00002288                TFT_BackLight_SetInterruptMode
+ .text.TFT_BackLight_ReadStatusRegister
+                0x00002294        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+                0x00002294                TFT_BackLight_ReadStatusRegister
+ .text.TFT_BackLight_ReadCapture
+                0x000022a0        0xc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+                0x000022a0                TFT_BackLight_ReadCapture
+ .text.TFT_BackLight_ClearFIFO
+                0x000022ac       0x14 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+                0x000022ac                TFT_BackLight_ClearFIFO
+ .text.TFT_BackLight_Init
+                0x000022c0       0x54 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+                0x000022c0                TFT_BackLight_Init
+ .text.TFT_BackLight_Start
+                0x00002314       0x1c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+                0x00002314                TFT_BackLight_Start
+ .text          0x00002330       0x7c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_change_context_isr.o)
+                0x00002330                EE_set_switch_context_pri
+                0x0000234a                EE_switch_context
+                0x00002354                EE_cortex_mx_pendsv_ISR
+                0x00002390                EE_cortex_mx_svc_ISR
+ .text          0x000023ac       0x24 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_irq_stack.o)
+                0x000023ac                EE_cortex_mx_change_IRQ_stack
+                0x000023be                EE_cortex_mx_change_IRQ_stack_back
+ .text          0x000023d0       0x68 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_multi_context.o)
+                0x000023d0                EE_cortex_mx_change_context
+ .text          0x00002438       0x80 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_oo.o)
+                0x00002438                EE_hal_terminate_savestk
+                0x00002482                EE_hal_terminate_task
+ .text          0x000024b8       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyBootAsmGnu.o)
+                0x000024b8                CyDelayCycles
+                0x000024c8                CyEnterCriticalSection
+                0x000024d0                CyExitCriticalSection
+ .text.EE_thread_not_terminated
+                0x000024d8       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tnterm.o)
+                0x000024d8                EE_thread_not_terminated
+ .text.EE_oo_thread_stub
+                0x000024e8       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tstub.o)
+                0x000024e8                EE_oo_thread_stub
+ .text.EE_std_run_task_code
+                0x000024f8       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_context.o)
+                0x000024f8                EE_std_run_task_code
+ .text.EE_std_need_context_change
+                0x00002510       0x28 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_context.o)
+                0x00002510                EE_std_need_context_change
+ .text.EE_thread_rnact_max
+                0x00002538       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_thendin.o)
+ .text.EE_thread_endcycle_next
+                0x00002558       0x30 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_thendin.o)
+ .text.EE_thread_end_instance
+                0x00002588      0x108 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_thendin.o)
+                0x00002588                EE_thread_end_instance
+ .text.__errno  0x00002690        0xc c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+                0x00002690                __errno
+ .text.__libc_init_array
+                0x0000269c       0x4c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+                0x0000269c                __libc_init_array
+ .text.memcpy   0x000026e8       0x16 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+                0x000026e8                memcpy
+ .text.memset   0x000026fe       0x10 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+                0x000026fe                memset
+ *fill*         0x0000270e        0x2 
+ .text.sprintf  0x00002710       0x48 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sprintf.o)
+                0x00002710                siprintf
+                0x00002710                sprintf
+ .text.__ssputs_r
+                0x00002758       0xb2 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x00002758                __ssputs_r
+ *fill*         0x0000280a        0x2 
+ .text._svfprintf_r
+                0x0000280c      0x1e8 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x0000280c                _svfiprintf_r
+                0x0000280c                _svfprintf_r
+ .text._printf_common
+                0x000029f4       0xec c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x000029f4                _printf_common
+ .text._printf_i
+                0x00002ae0      0x24c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x00002ae0                _printf_i
+ .text.memchr   0x00002d2c       0x1c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memchr-stub.o)
+                0x00002d2c                memchr
+ .text.memmove  0x00002d48       0x36 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memmove.o)
+                0x00002d48                memmove
+ *fill*         0x00002d7e        0x2 
+ .text._free_r  0x00002d80       0x98 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-freer.o)
+                0x00002d80                _free_r
+ .text._malloc_r
+                0x00002e18       0xbc c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x00002e18                _malloc_r
+ .text._realloc_r
+                0x00002ed4       0x4c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-reallocr.o)
+                0x00002ed4                _realloc_r
+ .text._sbrk_r  0x00002f20       0x20 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sbrkr.o)
+                0x00002f20                _sbrk_r
+ .text.__malloc_lock
+                0x00002f40        0x2 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mlock.o)
+                0x00002f40                __malloc_lock
+ .text.__malloc_unlock
+                0x00002f42        0x2 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mlock.o)
+                0x00002f42                __malloc_unlock
+ .text._malloc_usable_size_r
+                0x00002f44       0x14 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
+                0x00002f44                _malloc_usable_size_r
+ *(.plt)
+ *(.gnu.warning)
+ *(.glue_7t)
+ .glue_7t       0x00002f58        0x0 linker stubs
+ *(.glue_7)
+ .glue_7        0x00002f58        0x0 linker stubs
+ *(.vfp11_veneer)
+ .vfp11_veneer  0x00002f58        0x0 linker stubs
+ *(.bootloader)
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+ *(.gcc_except_table)
+
+.v4_bx          0x00002f58        0x0
+ .v4_bx         0x00002f58        0x0 linker stubs
+
+.iplt           0x00002f58        0x0
+ .iplt          0x00002f58        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+
+.eh_frame       0x00002f58        0x4
+ *(.eh_frame)
+ .eh_frame      0x00002f58        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .eh_frame      0x00002f58        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+                [!provide]                PROVIDE (__exidx_start, .)
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x00002f5c                __exidx_end = .
+
+.rodata         0x00002f5c      0xa04
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata        0x00002f5c      0x558 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .rodata.str1.4
+                0x000034b4       0x14 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .rodata.str1.4
+                0x000034c8       0x18 .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .rodata.str1.4
+                0x000034e0       0x13 .\CortexM3\ARM_GCC_541\Debug\swc_clock.o
+ *fill*         0x000034f3        0x1 
+ .rodata        0x000034f4        0xa .\CortexM3\ARM_GCC_541\Debug\tsk_control.o
+                0x000034f4                RTE_eventActivationTable_tsk_control
+                0x000034fc                RTE_eventActivation_tsk_control_size
+ *fill*         0x000034fe        0x2 
+ .rodata        0x00003500       0x12 .\CortexM3\ARM_GCC_541\Debug\tsk_io.o
+                0x00003500                RTE_cyclicActivationTable_tsk_io
+                0x00003510                RTE_cyclicActivation_tsk_io_size
+ *fill*         0x00003512        0x2 
+ .rodata        0x00003514       0xc8 .\CortexM3\ARM_GCC_541\Debug\clock_container.o
+                0x00003514                CLOCK_Container_Transitions
+                0x00003538                CLOCK_Container_Transitions_Size
+                0x0000353c                STATE_CLOCK_C_ISEDITINGMINUTES_Transitions
+                0x0000357c                STATE_CLOCK_C_ISEDITINGHOURS_Transitions
+                0x000035bc                STATE_CLOCK_C_ISDISPLAYING_Transitions
+ .rodata        0x000035dc       0x8c .\CortexM3\ARM_GCC_541\Debug\clock_widget.o
+                0x000035dc                CLOCK_Widget_Transitions
+                0x000035f4                CLOCK_Widget_Transitions_Size
+                0x000035f8                STATE_CLOCK_W_ISAUTOINCREMENT_Transitions
+                0x00003628                STATE_CLOCK_W_ISFOCUS_Transitions
+                0x00003658                STATE_CLOCK_W_ISDISPLAYING_Transitions
+ .rodata        0x00003668       0x54 .\CortexM3\ARM_GCC_541\Debug\sp_common.o
+                0x000036b8                so_event_updTasks
+ .rodata        0x000036bc       0x36 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ *fill*         0x000036f2        0x2 
+ .rodata        0x000036f4      0x100 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_lookup.o)
+                0x000036f4                EE_rq_lookup
+ .rodata        0x000037f4       0xb8 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_eecfg.o)
+                0x000037f4                EE_oo_autostart_task_data
+                0x00003800                EE_oo_action_ROM
+                0x00003814                EE_oo_counter_object_ROM
+                0x00003820                EE_ALARM_ID
+                0x00003824                EE_alarm_ROM
+                0x00003828                EE_counter_ROM
+                0x00003834                EE_th_is_extended
+                0x00003844                EE_th_rnact_max
+                0x00003854                EE_th_dispatch_prio
+                0x00003864                EE_EVENT_ID
+                0x00003868                EE_th_ready_prio
+                0x00003878                EE_terminate_real_th_body
+                0x00003888                EE_hal_thread_body
+                0x00003898                EE_std_thread_tos
+ .rodata.str1.4
+                0x000038ac       0x48 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_eecfg.o)
+ .rodata.str1.1
+                0x000038f4        0x2 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+ .rodata.str1.1
+                0x000038f6       0x11 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+ .rodata.str1.1
+                0x00003907       0x22 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x0000392c                . = ALIGN (0x4)
+ *fill*         0x00003929        0x3 
+ *(.init)
+ .init          0x0000392c        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+                0x0000392c                _init
+ .init          0x00003930        0x8 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+                0x00003938                . = ALIGN (0x4)
+                0x00003938                __preinit_array_start = .
+ *(.preinit_array)
+                0x00003938                __preinit_array_end = .
+                0x00003938                . = ALIGN (0x4)
+                0x00003938                __init_array_start = .
+ *(SORT(.init_array.*))
+ *(.init_array)
+ .init_array    0x00003938        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .init_array    0x0000393c        0x4 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00003940                __init_array_end = .
+                0x00003940                . = ALIGN (0x4)
+ *(.fini)
+ .fini          0x00003940        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+                0x00003940                _fini
+ .fini          0x00003944        0x8 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+                0x0000394c                . = ALIGN (0x4)
+                0x0000394c                __fini_array_start = .
+ *(.fini_array)
+ .fini_array    0x0000394c        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ *(SORT(.fini_array.*))
+                0x00003950                __fini_array_end = .
+                0x00003950                . = ALIGN (0x4)
+ *crtbegin.o(.ctors)
+ *(EXCLUDE_FILE(*crtend.o) .ctors)
+ *(SORT(.ctors.*))
+ *crtend.o(.ctors)
+                0x00003950                . = ALIGN (0x4)
+ *crtbegin.o(.dtors)
+ *(EXCLUDE_FILE(*crtend.o) .dtors)
+ *(SORT(.dtors.*))
+ *crtend.o(.dtors)
+                0x00003950                . = ALIGN (0x4)
+                0x00003950                __cy_regions = .
+                0x00003950        0x4 LONG 0x3960 __cy_region_init_ram
+                0x00003954        0x4 LONG 0x1fff80c8 __cy_region_start_data
+                0x00003958        0x4 LONG 0x1c8 __cy_region_init_size_ram
+                0x0000395c        0x4 LONG 0x7b0 __cy_region_zero_size_ram
+                0x00003960                __cy_regions_end = .
+                0x00003960                . = ALIGN (0x8)
+                0x00003960                _etext = .
+
+.cy_checksum_exclude
+                0x00003960        0x0
+ *(.cy_checksum_exclude)
+
+.ramvectors     0x1fff8000       0xc0
+                0x1fff8000                __cy_region_start_ram = .
+ *(.ramvectors)
+ .ramvectors    0x1fff8000       0xc0 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x1fff8000                CyRamVectors
+
+.noinit         0x1fff80c0        0x1
+ *(.noinit)
+ .noinit        0x1fff80c0        0x1 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+                0x1fff80c0                CyResetStatus
+
+.data           0x1fff80c8      0x1c8 load address 0x00003960
+                0x1fff80c8                __cy_region_start_data = .
+ *(.jcr)
+ .jcr           0x1fff80c8        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .jcr           0x1fff80c8        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+ *(.got.plt)
+ *(.got)
+ *(.shdata)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x1fff80cc        0x3 .\CortexM3\ARM_GCC_541\Debug\swc_clock.o
+ *fill*         0x1fff80cf        0x1 
+ .data          0x1fff80d0       0x18 .\CortexM3\ARM_GCC_541\Debug\clock_widget.o
+                0x1fff80d0                CLOCK_minutes
+                0x1fff80dc                CLOCK_hours
+ .data          0x1fff80e8       0x18 .\CortexM3\ARM_GCC_541\Debug\sp_common.o
+                0x1fff80e8                SO_EVENT_signal
+                0x1fff80f4                SO_DISPLAYDATA_signal
+ .data          0x1fff8100        0x4 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .data          0x1fff8104      0x110 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_eecfg.o)
+                0x1fff8104                EE_ALARM_NAME
+                0x1fff8108                EE_counter_RAM
+                0x1fff8110                EE_th_terminate_nextask
+                0x1fff8120                EE_rq_pairs_next
+                0x1fff8130                EE_rq_link
+                0x1fff8140                EE_th_rnact
+                0x1fff8150                EE_rq_queues_tail
+                0x1fff8190                EE_rq_queues_head
+                0x1fff81d0                EE_stkfirst
+                0x1fff81d4                EE_th_next
+                0x1fff81e4                EE_th_status
+                0x1fff81f4                EE_EVENT_NAME
+                0x1fff81f8                EE_TASK_NAME
+                0x1fff8208                EE_cortex_mx_IRQ_tos
+                0x1fff820c                EE_cortex_mx_system_tos
+ .data          0x1fff8214       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+                0x1fff8214                cydelay_32k_ms
+                0x1fff8218                cydelay_freq_khz
+                0x1fff821c                cydelay_freq_mhz
+                0x1fff8220                cydelay_freq_hz
+ .data          0x1fff8224        0x4 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_irq_stack.o)
+ .data.impure_data
+                0x1fff8228       0x60 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+ .data._impure_ptr
+                0x1fff8288        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x1fff8288                _impure_ptr
+                0x1fff8290                . = ALIGN (0x8)
+ *fill*         0x1fff828c        0x4 
+ *(.ram)
+                0x1fff8290                _edata = .
+
+.igot.plt       0x1fff8290        0x0 load address 0x00003b28
+ .igot.plt      0x1fff8290        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+
+.bss            0x1fff8290      0x7b0 load address 0x00003b28
+                0x1fff8290                PROVIDE (__bss_start__, .)
+ *(.shbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x1fff8290       0x1c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .bss           0x1fff82ac       0xe6 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .bss           0x1fff8392       0x12 .\CortexM3\ARM_GCC_541\Debug\swc_clock.o
+                0x1fff8393                g_hours
+                0x1fff8394                g_minutes
+ .bss           0x1fff83a4        0x4 .\CortexM3\ARM_GCC_541\Debug\tsk_io.o
+ .bss           0x1fff83a8        0x5 .\CortexM3\ARM_GCC_541\Debug\clock_widget.o
+ *fill*         0x1fff83ad        0x3 
+ .bss           0x1fff83b0        0xc .\CortexM3\ARM_GCC_541\Debug\sc_event_type.o
+ .bss           0x1fff83bc       0x40 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_eecfg.o)
+                0x1fff83bc                EE_th_waswaiting
+                0x1fff83cc                EE_th_event_waitmask
+                0x1fff83dc                EE_th_event_active
+                0x1fff83ec                EE_rq_free
+                0x1fff83f0                EE_rq_bitmask
+                0x1fff83f4                EE_sys_ceiling
+                0x1fff83f8                EE_cortex_mx_active_tos
+ .bss           0x1fff83fc        0x2 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+                0x1fff83fc                UART_LOG_initVar
+ .bss           0x1fff83fe        0x1 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+                0x1fff83fe                TFT_SPI_initVar
+ .bss           0x1fff83ff        0x1 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+                0x1fff83ff                TFT_BackLight_initVar
+ .bss.__malloc_sbrk_start
+                0x1fff8400        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x1fff8400                __malloc_sbrk_start
+ .bss.__malloc_free_list
+                0x1fff8404        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x1fff8404                __malloc_free_list
+ *(COMMON)
+ COMMON         0x1fff8408        0x8 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_lookup.o)
+                0x1fff8408                EE_oo_IRQ_disable_count
+                0x1fff840c                EE_oo_IRQ_suspend_status
+ COMMON         0x1fff8410        0x4 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_startos.o)
+                0x1fff8410                EE_oo_started
+ COMMON         0x1fff8414        0x8 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_common_ee_hal_structs.o)
+                0x1fff8414                EE_IRQ_nesting_level
+                0x1fff8418                EE_std_endcycle_next_tid
+ COMMON         0x1fff841c      0x61c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_eecfg.o)
+                0x1fff841c                EE_rq_pairs_tid
+                0x1fff842c                EE_terminate_data
+                0x1fff843c                EE_oo_counter_object_RAM
+                0x1fff844c                EE_ApplicationMode
+                0x1fff8450                EE_cortex_mx_stack_4
+                0x1fff8838                EE_cortex_mx_stack_9
+ COMMON         0x1fff8a38        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-reent.o)
+                0x1fff8a38                errno
+                0x1fff8a40                . = ALIGN (0x8)
+ *fill*         0x1fff8a3c        0x4 
+ *(.ram.b)
+                0x1fff8a40                _end = .
+                0x1fff8a40                __end = .
+                0x1fff8a40                PROVIDE (end, .)
+                0x1fff8a40                PROVIDE (__bss_end__, .)
+                0x00003960                __cy_region_init_ram = LOADADDR (.data)
+                0x000001c8                __cy_region_init_size_ram = (_edata - ADDR (.data))
+                0x000007b0                __cy_region_zero_size_ram = (_end - _edata)
+
+.heap           0x1fff8a40       0x80 load address 0x00003b28
+                0x1fff8a40                . = _end
+                0x1fff8ac0                . = (. + 0x80)
+ *fill*         0x1fff8a40       0x80 
+                0x1fff8ac0                __cy_heap_limit = .
+
+.stack          0x20007800      0x800
+                0x20007800                __cy_stack_limit = .
+                0x20008000                . = (. + 0x800)
+ *fill*         0x20007800      0x800 
+                0x00000001                ASSERT ((__cy_stack_limit >= __cy_heap_limit), region RAM overflowed with stack)
+                0x00000000                cy_checksum_exclude_size = (CY_APPL_LOADABLE == 0x1)?SIZEOF (.cy_checksum_exclude):0x0
+                0x00000001                ASSERT ((cy_checksum_exclude_size <= CY_CHECKSUM_EXCLUDE_SIZE), CY_BOOT: Section .cy_checksum_exclude size exceedes specified limit.)
+
+.cyloadermeta
+ *(.cyloadermeta)
+
+.cyloadablemeta
+ *(.cyloadablemeta)
+
+.cyconfigecc    0x80000000      0x6ac
+ *(.cyconfigecc)
+ .cyconfigecc   0x80000000      0x6ac .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                0x80000000                cy_meta_configecc
+
+.cycustnvl      0x90000000        0x4
+ *(.cycustnvl)
+ .cycustnvl     0x90000000        0x4 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                0x90000000                cy_meta_custnvl
+
+.cywolatch      0x90100000        0x4
+ *(.cywolatch)
+ .cywolatch     0x90100000        0x4 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                0x90100000                cy_meta_wonvl
+
+.cyeeprom       0x90200000        0x0
+ *(.cyeeprom)
+                0x00000001                ASSERT ((. <= ((0x90200000 + ee_offset) + ee_size)), .cyeeprom data will not fit in EEPROM)
+
+.cyflashprotect
+                0x90400000      0x100
+ *(.cyflashprotect)
+ .cyflashprotect
+                0x90400000      0x100 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                0x90400000                cy_meta_flashprotect
+
+.cymeta         0x90500000        0xc
+ *(.cymeta)
+ .cymeta        0x90500000        0xc .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                0x90500000                cy_metadata
+
+.rel.dyn        0x00003b28        0x0 load address 0x9050000c
+ .rel.iplt      0x00003b28        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000     0x1078
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000      0x178 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .debug_aranges
+                0x00000178       0x28 .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .debug_aranges
+                0x000001a0       0x48 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_aranges
+                0x000001e8       0x30 .\CortexM3\ARM_GCC_541\Debug\swc_clock.o
+ .debug_aranges
+                0x00000218       0x20 .\CortexM3\ARM_GCC_541\Debug\tsk_control.o
+ .debug_aranges
+                0x00000238       0x20 .\CortexM3\ARM_GCC_541\Debug\tsk_io.o
+ .debug_aranges
+                0x00000258       0x70 .\CortexM3\ARM_GCC_541\Debug\clock_container.o
+ .debug_aranges
+                0x000002c8       0x50 .\CortexM3\ARM_GCC_541\Debug\clock_widget.o
+ .debug_aranges
+                0x00000318       0x28 .\CortexM3\ARM_GCC_541\Debug\rte.o
+ .debug_aranges
+                0x00000340       0x28 .\CortexM3\ARM_GCC_541\Debug\sp_common.o
+ .debug_aranges
+                0x00000368       0x28 .\CortexM3\ARM_GCC_541\Debug\sc_displaydata_type.o
+ .debug_aranges
+                0x00000390       0x28 .\CortexM3\ARM_GCC_541\Debug\sc_event_type.o
+ .debug_aranges
+                0x000003b8       0x58 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_aranges
+                0x00000410       0x18 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_aranges
+                0x00000428       0x48 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_aranges
+                0x00000470       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_activate.o)
+ .debug_aranges
+                0x00000490       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_alsetrel.o)
+ .debug_aranges
+                0x000004b0       0x58 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_altick.o)
+ .debug_aranges
+                0x00000508       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evclear.o)
+ .debug_aranges
+                0x00000528       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evget.o)
+ .debug_aranges
+                0x00000548       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evset.o)
+ .debug_aranges
+                0x00000568       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evwait.o)
+ .debug_aranges
+                0x00000588       0x30 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_irqendin.o)
+ .debug_aranges
+                0x000005b8       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_lookup.o)
+ .debug_aranges
+                0x000005d0       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_exchg.o)
+ .debug_aranges
+                0x000005f0       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_first.o)
+ .debug_aranges
+                0x00000610       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_inser.o)
+ .debug_aranges
+                0x00000630       0x40 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_startos.o)
+ .debug_aranges
+                0x00000670       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_terminat.o)
+ .debug_aranges
+                0x00000690       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_utils.o)
+ .debug_aranges
+                0x000006b0       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_common_ee_hal_structs.o)
+ .debug_aranges
+                0x000006c8       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_eecfg.o)
+ .debug_aranges
+                0x000006e0      0x2a0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .debug_aranges
+                0x00000980       0x98 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .debug_aranges
+                0x00000a18       0xf0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .debug_aranges
+                0x00000b08       0x70 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG_IntClock.o)
+ .debug_aranges
+                0x00000b78       0x38 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_3.o)
+ .debug_aranges
+                0x00000bb0       0x38 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_4.o)
+ .debug_aranges
+                0x00000be8       0x38 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_DC.o)
+ .debug_aranges
+                0x00000c20       0x38 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_RES.o)
+ .debug_aranges
+                0x00000c58       0xd8 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .debug_aranges
+                0x00000d30       0x70 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI_IntClock.o)
+ .debug_aranges
+                0x00000da0       0x98 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+ .debug_aranges
+                0x00000e38       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_change_context_isr.o)
+ .debug_aranges
+                0x00000e58       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_irq_stack.o)
+ .debug_aranges
+                0x00000e78       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_multi_context.o)
+ .debug_aranges
+                0x00000e98       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_oo.o)
+ .debug_aranges
+                0x00000eb8       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyBootAsmGnu.o)
+ .debug_aranges
+                0x00000ed8       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tnterm.o)
+ .debug_aranges
+                0x00000ef8       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tstub.o)
+ .debug_aranges
+                0x00000f18       0x28 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_context.o)
+ .debug_aranges
+                0x00000f40       0x88 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ .debug_aranges
+                0x00000fc8       0x80 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+ .debug_aranges
+                0x00001048       0x30 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_thendin.o)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000    0x14871
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000     0x2733 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .debug_info    0x00002733      0x3b5 .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .debug_info    0x00002ae8      0x4fd .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_info    0x00002fe5      0xe8c .\CortexM3\ARM_GCC_541\Debug\swc_clock.o
+ .debug_info    0x00003e71      0x279 .\CortexM3\ARM_GCC_541\Debug\tsk_control.o
+ .debug_info    0x000040ea      0x252 .\CortexM3\ARM_GCC_541\Debug\tsk_io.o
+ .debug_info    0x0000433c      0x5cd .\CortexM3\ARM_GCC_541\Debug\clock_container.o
+ .debug_info    0x00004909      0x8c4 .\CortexM3\ARM_GCC_541\Debug\clock_widget.o
+ .debug_info    0x000051cd      0x375 .\CortexM3\ARM_GCC_541\Debug\rte.o
+ .debug_info    0x00005542      0x7a0 .\CortexM3\ARM_GCC_541\Debug\sp_common.o
+ .debug_info    0x00005ce2      0x27c .\CortexM3\ARM_GCC_541\Debug\sc_displaydata_type.o
+ .debug_info    0x00005f5e      0x373 .\CortexM3\ARM_GCC_541\Debug\sc_event_type.o
+ .debug_info    0x000062d1      0x5de .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_info    0x000068af      0x139 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_info    0x000069e8      0x3bb .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_info    0x00006da3      0x80d .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_activate.o)
+ .debug_info    0x000075b0      0x5e5 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_alsetrel.o)
+ .debug_info    0x00007b95      0xc3b .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_altick.o)
+ .debug_info    0x000087d0      0x5a7 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evclear.o)
+ .debug_info    0x00008d77      0x4ca .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evget.o)
+ .debug_info    0x00009241      0x7c3 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evset.o)
+ .debug_info    0x00009a04      0x84e .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evwait.o)
+ .debug_info    0x0000a252      0x5cb .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_irqendin.o)
+ .debug_info    0x0000a81d      0x3d0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_lookup.o)
+ .debug_info    0x0000abed      0x46f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_exchg.o)
+ .debug_info    0x0000b05c      0x421 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_first.o)
+ .debug_info    0x0000b47d      0x475 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_inser.o)
+ .debug_info    0x0000b8f2     0x2040 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_startos.o)
+ .debug_info    0x0000d932      0x589 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_terminat.o)
+ .debug_info    0x0000debb      0x4cc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_utils.o)
+ .debug_info    0x0000e387      0x3cb .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_common_ee_hal_structs.o)
+ .debug_info    0x0000e752      0x896 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_eecfg.o)
+ .debug_info    0x0000efe8     0x1374 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .debug_info    0x0001035c      0xa2a .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .debug_info    0x00010d86      0x60c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .debug_info    0x00011392      0x283 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG_IntClock.o)
+ .debug_info    0x00011615      0x11f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_3.o)
+ .debug_info    0x00011734      0x11f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_4.o)
+ .debug_info    0x00011853      0x11f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_DC.o)
+ .debug_info    0x00011972      0x11f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_RES.o)
+ .debug_info    0x00011a91      0x4bb .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .debug_info    0x00011f4c      0x283 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI_IntClock.o)
+ .debug_info    0x000121cf      0x334 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+ .debug_info    0x00012503       0xa8 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_change_context_isr.o)
+ .debug_info    0x000125ab       0x9f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_irq_stack.o)
+ .debug_info    0x0001264a       0xa3 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_multi_context.o)
+ .debug_info    0x000126ed       0x98 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_oo.o)
+ .debug_info    0x00012785       0x91 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyBootAsmGnu.o)
+ .debug_info    0x00012816      0x43d .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tnterm.o)
+ .debug_info    0x00012c53      0x487 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tstub.o)
+ .debug_info    0x000130da      0x501 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_context.o)
+ .debug_info    0x000135db      0x64d .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ .debug_info    0x00013c28      0x550 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+ .debug_info    0x00014178      0x6f9 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_thendin.o)
+
+.debug_abbrev   0x00000000     0x4ec7
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x2bf .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .debug_abbrev  0x000002bf      0x14a .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .debug_abbrev  0x00000409      0x1fc .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_abbrev  0x00000605      0x2b2 .\CortexM3\ARM_GCC_541\Debug\swc_clock.o
+ .debug_abbrev  0x000008b7      0x158 .\CortexM3\ARM_GCC_541\Debug\tsk_control.o
+ .debug_abbrev  0x00000a0f      0x139 .\CortexM3\ARM_GCC_541\Debug\tsk_io.o
+ .debug_abbrev  0x00000b48      0x18e .\CortexM3\ARM_GCC_541\Debug\clock_container.o
+ .debug_abbrev  0x00000cd6      0x24e .\CortexM3\ARM_GCC_541\Debug\clock_widget.o
+ .debug_abbrev  0x00000f24      0x16b .\CortexM3\ARM_GCC_541\Debug\rte.o
+ .debug_abbrev  0x0000108f      0x1df .\CortexM3\ARM_GCC_541\Debug\sp_common.o
+ .debug_abbrev  0x0000126e       0xd8 .\CortexM3\ARM_GCC_541\Debug\sc_displaydata_type.o
+ .debug_abbrev  0x00001346      0x112 .\CortexM3\ARM_GCC_541\Debug\sc_event_type.o
+ .debug_abbrev  0x00001458      0x20d .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_abbrev  0x00001665       0x77 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_abbrev  0x000016dc      0x1e8 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_abbrev  0x000018c4      0x284 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_activate.o)
+ .debug_abbrev  0x00001b48      0x1f7 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_alsetrel.o)
+ .debug_abbrev  0x00001d3f      0x362 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_altick.o)
+ .debug_abbrev  0x000020a1      0x1e0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evclear.o)
+ .debug_abbrev  0x00002281      0x150 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evget.o)
+ .debug_abbrev  0x000023d1      0x27f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evset.o)
+ .debug_abbrev  0x00002650      0x25d .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evwait.o)
+ .debug_abbrev  0x000028ad      0x1da .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_irqendin.o)
+ .debug_abbrev  0x00002a87       0xcf .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_lookup.o)
+ .debug_abbrev  0x00002b56       0xfc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_exchg.o)
+ .debug_abbrev  0x00002c52       0xed .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_first.o)
+ .debug_abbrev  0x00002d3f      0x109 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_inser.o)
+ .debug_abbrev  0x00002e48      0x4a7 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_startos.o)
+ .debug_abbrev  0x000032ef      0x1de .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_terminat.o)
+ .debug_abbrev  0x000034cd      0x1ad .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_utils.o)
+ .debug_abbrev  0x0000367a       0xcf .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_common_ee_hal_structs.o)
+ .debug_abbrev  0x00003749      0x127 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_eecfg.o)
+ .debug_abbrev  0x00003870      0x254 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .debug_abbrev  0x00003ac4      0x1ab .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .debug_abbrev  0x00003c6f      0x175 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .debug_abbrev  0x00003de4      0x139 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG_IntClock.o)
+ .debug_abbrev  0x00003f1d       0x90 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_3.o)
+ .debug_abbrev  0x00003fad       0x90 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_4.o)
+ .debug_abbrev  0x0000403d       0x90 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_DC.o)
+ .debug_abbrev  0x000040cd       0x90 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_RES.o)
+ .debug_abbrev  0x0000415d      0x146 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .debug_abbrev  0x000042a3      0x139 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI_IntClock.o)
+ .debug_abbrev  0x000043dc      0x133 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+ .debug_abbrev  0x0000450f       0x14 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_change_context_isr.o)
+ .debug_abbrev  0x00004523       0x14 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_irq_stack.o)
+ .debug_abbrev  0x00004537       0x14 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_multi_context.o)
+ .debug_abbrev  0x0000454b       0x14 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_oo.o)
+ .debug_abbrev  0x0000455f       0x14 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyBootAsmGnu.o)
+ .debug_abbrev  0x00004573      0x157 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tnterm.o)
+ .debug_abbrev  0x000046ca      0x143 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tstub.o)
+ .debug_abbrev  0x0000480d      0x156 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_context.o)
+ .debug_abbrev  0x00004963      0x1a7 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ .debug_abbrev  0x00004b0a      0x194 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+ .debug_abbrev  0x00004c9e      0x229 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_thendin.o)
+
+.debug_line     0x00000000     0x744a
+ *(.debug_line)
+ .debug_line    0x00000000      0x8c7 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .debug_line    0x000008c7      0x26b .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .debug_line    0x00000b32      0x3fe .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_line    0x00000f30      0x4c4 .\CortexM3\ARM_GCC_541\Debug\swc_clock.o
+ .debug_line    0x000013f4      0x291 .\CortexM3\ARM_GCC_541\Debug\tsk_control.o
+ .debug_line    0x00001685      0x282 .\CortexM3\ARM_GCC_541\Debug\tsk_io.o
+ .debug_line    0x00001907      0x37a .\CortexM3\ARM_GCC_541\Debug\clock_container.o
+ .debug_line    0x00001c81      0x46b .\CortexM3\ARM_GCC_541\Debug\clock_widget.o
+ .debug_line    0x000020ec      0x293 .\CortexM3\ARM_GCC_541\Debug\rte.o
+ .debug_line    0x0000237f        0x0 .\CortexM3\ARM_GCC_541\Debug\sc_displaydata.o
+ .debug_line    0x0000237f        0x0 .\CortexM3\ARM_GCC_541\Debug\sc_event.o
+ .debug_line    0x0000237f      0x35d .\CortexM3\ARM_GCC_541\Debug\sp_common.o
+ .debug_line    0x000026dc      0x265 .\CortexM3\ARM_GCC_541\Debug\sc_displaydata_type.o
+ .debug_line    0x00002941      0x292 .\CortexM3\ARM_GCC_541\Debug\sc_event_type.o
+ .debug_line    0x00002bd3      0x1f8 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_line    0x00002dcb      0x141 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_line    0x00002f0c      0x234 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_line    0x00003140      0x1fa .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_activate.o)
+ .debug_line    0x0000333a      0x1d1 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_alsetrel.o)
+ .debug_line    0x0000350b      0x305 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_altick.o)
+ .debug_line    0x00003810      0x1d5 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evclear.o)
+ .debug_line    0x000039e5      0x15b .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evget.o)
+ .debug_line    0x00003b40      0x1f7 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evset.o)
+ .debug_line    0x00003d37      0x203 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evwait.o)
+ .debug_line    0x00003f3a      0x1a0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_irqendin.o)
+ .debug_line    0x000040da      0x119 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_lookup.o)
+ .debug_line    0x000041f3      0x15b .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_exchg.o)
+ .debug_line    0x0000434e      0x152 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_first.o)
+ .debug_line    0x000044a0      0x156 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_inser.o)
+ .debug_line    0x000045f6      0x3fa .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_startos.o)
+ .debug_line    0x000049f0      0x1c0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_terminat.o)
+ .debug_line    0x00004bb0      0x166 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_utils.o)
+ .debug_line    0x00004d16       0xf9 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_common_ee_hal_structs.o)
+ .debug_line    0x00004e0f      0x13c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_eecfg.o)
+ .debug_line    0x00004f4b      0x816 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .debug_line    0x00005761      0x367 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .debug_line    0x00005ac8      0x2c4 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .debug_line    0x00005d8c      0x180 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG_IntClock.o)
+ .debug_line    0x00005f0c       0x95 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_3.o)
+ .debug_line    0x00005fa1       0x95 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_4.o)
+ .debug_line    0x00006036       0x93 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_DC.o)
+ .debug_line    0x000060c9       0x94 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_RES.o)
+ .debug_line    0x0000615d      0x249 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .debug_line    0x000063a6      0x17f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI_IntClock.o)
+ .debug_line    0x00006525      0x18d .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+ .debug_line    0x000066b2       0xae .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_change_context_isr.o)
+ .debug_line    0x00006760       0x74 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_irq_stack.o)
+ .debug_line    0x000067d4       0x9d .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_multi_context.o)
+ .debug_line    0x00006871       0x99 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_oo.o)
+ .debug_line    0x0000690a       0x66 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyBootAsmGnu.o)
+ .debug_line    0x00006970      0x17b .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tnterm.o)
+ .debug_line    0x00006aeb      0x172 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tstub.o)
+ .debug_line    0x00006c5d      0x1ac .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_context.o)
+ .debug_line    0x00006e09      0x21a .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ .debug_line    0x00007023      0x260 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+ .debug_line    0x00007283      0x1c7 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_thendin.o)
+
+.debug_frame    0x00000000     0x29a4
+ *(.debug_frame)
+ .debug_frame   0x00000000      0x5bc .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .debug_frame   0x000005bc       0x48 .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .debug_frame   0x00000604       0xb4 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_frame   0x000006b8       0x84 .\CortexM3\ARM_GCC_541\Debug\swc_clock.o
+ .debug_frame   0x0000073c       0x2c .\CortexM3\ARM_GCC_541\Debug\tsk_control.o
+ .debug_frame   0x00000768       0x2c .\CortexM3\ARM_GCC_541\Debug\tsk_io.o
+ .debug_frame   0x00000794      0x148 .\CortexM3\ARM_GCC_541\Debug\clock_container.o
+ .debug_frame   0x000008dc       0xb0 .\CortexM3\ARM_GCC_541\Debug\clock_widget.o
+ .debug_frame   0x0000098c       0x60 .\CortexM3\ARM_GCC_541\Debug\rte.o
+ .debug_frame   0x000009ec       0x30 .\CortexM3\ARM_GCC_541\Debug\sp_common.o
+ .debug_frame   0x00000a1c       0x30 .\CortexM3\ARM_GCC_541\Debug\sc_displaydata_type.o
+ .debug_frame   0x00000a4c       0x40 .\CortexM3\ARM_GCC_541\Debug\sc_event_type.o
+ .debug_frame   0x00000a8c       0xe4 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_frame   0x00000b70       0xb8 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_frame   0x00000c28       0x30 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_activate.o)
+ .debug_frame   0x00000c58       0x38 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_alsetrel.o)
+ .debug_frame   0x00000c90      0x10c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_altick.o)
+ .debug_frame   0x00000d9c       0x38 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evclear.o)
+ .debug_frame   0x00000dd4       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evget.o)
+ .debug_frame   0x00000df4       0x30 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evset.o)
+ .debug_frame   0x00000e24       0x30 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evwait.o)
+ .debug_frame   0x00000e54       0x58 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_irqendin.o)
+ .debug_frame   0x00000eac       0x3c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_exchg.o)
+ .debug_frame   0x00000ee8       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_first.o)
+ .debug_frame   0x00000f08       0x30 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_inser.o)
+ .debug_frame   0x00000f38       0x90 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_startos.o)
+ .debug_frame   0x00000fc8       0x2c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_terminat.o)
+ .debug_frame   0x00000ff4       0x2c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_utils.o)
+ .debug_frame   0x00001020      0x738 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .debug_frame   0x00001758      0x1f8 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .debug_frame   0x00001950      0x250 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .debug_frame   0x00001ba0       0xe0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG_IntClock.o)
+ .debug_frame   0x00001c80       0x50 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_3.o)
+ .debug_frame   0x00001cd0       0x50 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_4.o)
+ .debug_frame   0x00001d20       0x50 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_DC.o)
+ .debug_frame   0x00001d70       0x50 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_RES.o)
+ .debug_frame   0x00001dc0      0x1e8 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .debug_frame   0x00001fa8       0xe0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI_IntClock.o)
+ .debug_frame   0x00002088      0x134 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+ .debug_frame   0x000021bc       0x2c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tnterm.o)
+ .debug_frame   0x000021e8       0x2c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tstub.o)
+ .debug_frame   0x00002214       0x3c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_context.o)
+ .debug_frame   0x00002250      0x194 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ .debug_frame   0x000023e4      0x180 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+ .debug_frame   0x00002564       0x5c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_thendin.o)
+ .debug_frame   0x000025c0       0x20 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+ .debug_frame   0x000025e0       0x28 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+ .debug_frame   0x00002608       0x2c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+ .debug_frame   0x00002634       0x28 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x0000265c       0x20 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+ .debug_frame   0x0000267c       0x70 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sprintf.o)
+ .debug_frame   0x000026ec       0x90 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+ .debug_frame   0x0000277c       0x60 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+ .debug_frame   0x000027dc       0x28 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memchr-stub.o)
+ .debug_frame   0x00002804       0x28 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memmove.o)
+ .debug_frame   0x0000282c       0x38 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-freer.o)
+ .debug_frame   0x00002864       0x2c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
+ .debug_frame   0x00002890       0x3c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-reallocr.o)
+ .debug_frame   0x000028cc       0x2c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sbrkr.o)
+ .debug_frame   0x000028f8       0x30 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mlock.o)
+ .debug_frame   0x00002928       0x20 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
+ .debug_frame   0x00002948       0x5c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-reent.o)
+
+.debug_str      0x00000000     0x5037
+ *(.debug_str)
+ .debug_str     0x00000000      0xc45 .\CortexM3\ARM_GCC_541\Debug\tft.o
+                                0xd19 (size before relaxing)
+ .debug_str     0x00000c45       0x56 .\CortexM3\ARM_GCC_541\Debug\logging.o
+                                0x4e0 (size before relaxing)
+ .debug_str     0x00000c9b      0x2a6 .\CortexM3\ARM_GCC_541\Debug\main.o
+                                0x502 (size before relaxing)
+ .debug_str     0x00000f41      0x4fa .\CortexM3\ARM_GCC_541\Debug\swc_clock.o
+                                0xa61 (size before relaxing)
+ .debug_str     0x0000143b       0xd8 .\CortexM3\ARM_GCC_541\Debug\tsk_control.o
+                                0x341 (size before relaxing)
+ .debug_str     0x00001513       0x9d .\CortexM3\ARM_GCC_541\Debug\tsk_io.o
+                                0x336 (size before relaxing)
+ .debug_str     0x000015b0      0x306 .\CortexM3\ARM_GCC_541\Debug\clock_container.o
+                                0x664 (size before relaxing)
+ .debug_str     0x000018b6      0x17f .\CortexM3\ARM_GCC_541\Debug\clock_widget.o
+                                0x9dd (size before relaxing)
+ .debug_str     0x00001a35       0x11 .\CortexM3\ARM_GCC_541\Debug\rte.o
+                                0x4c3 (size before relaxing)
+ .debug_str     0x00001a46       0x1c .\CortexM3\ARM_GCC_541\Debug\sc_displaydata.o
+                                 0xed (size before relaxing)
+ .debug_str     0x00001a62       0x16 .\CortexM3\ARM_GCC_541\Debug\sc_event.o
+                                 0xe7 (size before relaxing)
+ .debug_str     0x00001a78       0xdc .\CortexM3\ARM_GCC_541\Debug\sp_common.o
+                                0x7e5 (size before relaxing)
+ .debug_str     0x00001b54       0x52 .\CortexM3\ARM_GCC_541\Debug\sc_displaydata_type.o
+                                0x490 (size before relaxing)
+ .debug_str     0x00001ba6       0xdc .\CortexM3\ARM_GCC_541\Debug\sc_event_type.o
+                                0x57f (size before relaxing)
+ .debug_str     0x00001c82      0x1a2 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                                0x345 (size before relaxing)
+ .debug_str     0x00001e24       0x75 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                                0x1e5 (size before relaxing)
+ .debug_str     0x00001e99      0x13f .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                                0x30b (size before relaxing)
+ .debug_str     0x00001fd8      0x5b9 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_activate.o)
+                                0x808 (size before relaxing)
+ .debug_str     0x00002591       0x99 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_alsetrel.o)
+                                0x600 (size before relaxing)
+ .debug_str     0x0000262a      0x232 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_altick.o)
+                                0xa63 (size before relaxing)
+ .debug_str     0x0000285c       0x2e .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evclear.o)
+                                0x5e0 (size before relaxing)
+ .debug_str     0x0000288a       0x5d .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evget.o)
+                                0x550 (size before relaxing)
+ .debug_str     0x000028e7       0x2c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evset.o)
+                                0x7e0 (size before relaxing)
+ .debug_str     0x00002913       0x8f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evwait.o)
+                                0x824 (size before relaxing)
+ .debug_str     0x000029a2       0xca .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_irqendin.o)
+                                0x6bd (size before relaxing)
+ .debug_str     0x00002a6c       0x2d .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_lookup.o)
+                                0x48c (size before relaxing)
+ .debug_str     0x00002a99       0x8c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_exchg.o)
+                                0x4fe (size before relaxing)
+ .debug_str     0x00002b25       0x2f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_first.o)
+                                0x4c9 (size before relaxing)
+ .debug_str     0x00002b54       0x3a .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_inser.o)
+                                0x503 (size before relaxing)
+ .debug_str     0x00002b8e      0xef4 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_startos.o)
+                               0x172f (size before relaxing)
+ .debug_str     0x00003a82       0x5d .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_terminat.o)
+                                0x5ed (size before relaxing)
+ .debug_str     0x00003adf       0x73 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_utils.o)
+                                0x52e (size before relaxing)
+ .debug_str     0x00003b52       0x39 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_common_ee_hal_structs.o)
+                                0x498 (size before relaxing)
+ .debug_str     0x00003b8b      0x18a .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_eecfg.o)
+                                0x7d1 (size before relaxing)
+ .debug_str     0x00003d15      0x252 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+                                0xa48 (size before relaxing)
+ .debug_str     0x00003f67      0x2dc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+                                0x734 (size before relaxing)
+ .debug_str     0x00004243      0x2f9 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+                                0x4f2 (size before relaxing)
+ .debug_str     0x0000453c      0x1ab .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG_IntClock.o)
+                                0x367 (size before relaxing)
+ .debug_str     0x000046e7       0x67 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_3.o)
+                                0x1f2 (size before relaxing)
+ .debug_str     0x0000474e       0x5c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_4.o)
+                                0x1f2 (size before relaxing)
+ .debug_str     0x000047aa       0x53 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_DC.o)
+                                0x1e8 (size before relaxing)
+ .debug_str     0x000047fd       0x57 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_RES.o)
+                                0x1ed (size before relaxing)
+ .debug_str     0x00004854      0x249 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+                                0x467 (size before relaxing)
+ .debug_str     0x00004a9d      0x156 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI_IntClock.o)
+                                0x35b (size before relaxing)
+ .debug_str     0x00004bf3      0x1d7 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+                                0x3ea (size before relaxing)
+ .debug_str     0x00004dca       0x58 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tnterm.o)
+                                0x4ff (size before relaxing)
+ .debug_str     0x00004e22       0x57 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tstub.o)
+                                0x5d6 (size before relaxing)
+ .debug_str     0x00004e79       0x8c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_context.o)
+                                0x58d (size before relaxing)
+ .debug_str     0x00004f05       0x65 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+                                0x3c1 (size before relaxing)
+ .debug_str     0x00004f6a       0x64 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+                                0x339 (size before relaxing)
+ .debug_str     0x00004fce       0x69 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_thendin.o)
+                                0x753 (size before relaxing)
+
+.debug_loc      0x00000000     0x52cf
+ *(.debug_loc)
+ .debug_loc     0x00000000     0x1924 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .debug_loc     0x00001924       0x4d .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .debug_loc     0x00001971       0xa8 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_loc     0x00001a19      0x2b5 .\CortexM3\ARM_GCC_541\Debug\swc_clock.o
+ .debug_loc     0x00001cce       0xc7 .\CortexM3\ARM_GCC_541\Debug\clock_container.o
+ .debug_loc     0x00001d95      0x129 .\CortexM3\ARM_GCC_541\Debug\clock_widget.o
+ .debug_loc     0x00001ebe      0x10e .\CortexM3\ARM_GCC_541\Debug\rte.o
+ .debug_loc     0x00001fcc       0xb5 .\CortexM3\ARM_GCC_541\Debug\sp_common.o
+ .debug_loc     0x00002081       0x42 .\CortexM3\ARM_GCC_541\Debug\sc_displaydata_type.o
+ .debug_loc     0x000020c3       0x91 .\CortexM3\ARM_GCC_541\Debug\sc_event_type.o
+ .debug_loc     0x00002154      0x259 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_loc     0x000023ad      0x144 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_loc     0x000024f1      0x12d .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_activate.o)
+ .debug_loc     0x0000261e      0x1ed .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_alsetrel.o)
+ .debug_loc     0x0000280b      0x46c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_altick.o)
+ .debug_loc     0x00002c77       0xbc .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evclear.o)
+ .debug_loc     0x00002d33       0xa4 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evget.o)
+ .debug_loc     0x00002dd7      0x16b .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evset.o)
+ .debug_loc     0x00002f42      0x13f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evwait.o)
+ .debug_loc     0x00003081       0x62 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_irqendin.o)
+ .debug_loc     0x000030e3       0x4a .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_exchg.o)
+ .debug_loc     0x0000312d       0x36 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_first.o)
+ .debug_loc     0x00003163       0x1e .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_inser.o)
+ .debug_loc     0x00003181      0x1d8 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_startos.o)
+ .debug_loc     0x00003359       0x50 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_terminat.o)
+ .debug_loc     0x000033a9      0xa11 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .debug_loc     0x00003dba      0x1e4 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .debug_loc     0x00003f9e      0x258 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .debug_loc     0x000041f6      0x128 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG_IntClock.o)
+ .debug_loc     0x0000431e       0x42 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_3.o)
+ .debug_loc     0x00004360       0x42 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_4.o)
+ .debug_loc     0x000043a2       0x42 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_DC.o)
+ .debug_loc     0x000043e4       0x42 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_RES.o)
+ .debug_loc     0x00004426       0xfe .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .debug_loc     0x00004524      0x12c .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI_IntClock.o)
+ .debug_loc     0x00004650       0x26 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+ .debug_loc     0x00004676       0xc5 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_context.o)
+ .debug_loc     0x0000473b      0x3b2 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ .debug_loc     0x00004aed      0x705 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+ .debug_loc     0x000051f2       0xdd .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_thendin.o)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_ranges   0x00000000      0xd68
+ *(.debug_ranges)
+ .debug_ranges  0x00000000      0x168 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .debug_ranges  0x00000168       0x18 .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .debug_ranges  0x00000180       0x38 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_ranges  0x000001b8       0x38 .\CortexM3\ARM_GCC_541\Debug\swc_clock.o
+ .debug_ranges  0x000001f0       0x10 .\CortexM3\ARM_GCC_541\Debug\tsk_control.o
+ .debug_ranges  0x00000200       0x10 .\CortexM3\ARM_GCC_541\Debug\tsk_io.o
+ .debug_ranges  0x00000210       0x60 .\CortexM3\ARM_GCC_541\Debug\clock_container.o
+ .debug_ranges  0x00000270       0x40 .\CortexM3\ARM_GCC_541\Debug\clock_widget.o
+ .debug_ranges  0x000002b0       0x18 .\CortexM3\ARM_GCC_541\Debug\rte.o
+ .debug_ranges  0x000002c8       0x18 .\CortexM3\ARM_GCC_541\Debug\sp_common.o
+ .debug_ranges  0x000002e0       0x18 .\CortexM3\ARM_GCC_541\Debug\sc_displaydata_type.o
+ .debug_ranges  0x000002f8       0x18 .\CortexM3\ARM_GCC_541\Debug\sc_event_type.o
+ .debug_ranges  0x00000310       0x48 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_ranges  0x00000358       0x38 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_ranges  0x00000390       0x40 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_activate.o)
+ .debug_ranges  0x000003d0       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_alsetrel.o)
+ .debug_ranges  0x000003e0       0x78 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_altick.o)
+ .debug_ranges  0x00000458       0x28 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evclear.o)
+ .debug_ranges  0x00000480       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evget.o)
+ .debug_ranges  0x00000490       0x40 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evset.o)
+ .debug_ranges  0x000004d0       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evwait.o)
+ .debug_ranges  0x000004e0       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_irqendin.o)
+ .debug_ranges  0x00000500       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_exchg.o)
+ .debug_ranges  0x00000510       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_first.o)
+ .debug_ranges  0x00000520       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_inser.o)
+ .debug_ranges  0x00000530       0x30 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_startos.o)
+ .debug_ranges  0x00000560       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_terminat.o)
+ .debug_ranges  0x00000570       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_utils.o)
+ .debug_ranges  0x00000580      0x290 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .debug_ranges  0x00000810       0x88 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .debug_ranges  0x00000898       0xe0 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .debug_ranges  0x00000978       0x60 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG_IntClock.o)
+ .debug_ranges  0x000009d8       0x28 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_3.o)
+ .debug_ranges  0x00000a00       0x28 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_4.o)
+ .debug_ranges  0x00000a28       0x28 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_DC.o)
+ .debug_ranges  0x00000a50       0x28 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_RES.o)
+ .debug_ranges  0x00000a78       0xc8 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .debug_ranges  0x00000b40       0x60 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI_IntClock.o)
+ .debug_ranges  0x00000ba0       0x88 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+ .debug_ranges  0x00000c28       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tnterm.o)
+ .debug_ranges  0x00000c38       0x10 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tstub.o)
+ .debug_ranges  0x00000c48       0x18 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_context.o)
+ .debug_ranges  0x00000c60       0x78 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ .debug_ranges  0x00000cd8       0x70 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+ .debug_ranges  0x00000d48       0x20 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_thendin.o)
+
+.comment        0x00000000       0x6e
+ .comment       0x00000000       0x6e .\CortexM3\ARM_GCC_541\Debug\tft.o
+                                 0x6f (size before relaxing)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\main.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\swc_clock.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\tsk_control.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\tsk_io.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\clock_container.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\clock_widget.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\rte.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\sc_displaydata.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\sc_event.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\sp_common.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\sc_displaydata_type.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\sc_event_type.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_activate.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_alsetrel.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_altick.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evclear.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evget.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evset.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evwait.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_irqendin.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_lookup.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_exchg.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_first.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_inser.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_startos.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_terminat.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_utils.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_common_ee_hal_structs.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_eecfg.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG_IntClock.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_3.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_4.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_DC.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_RES.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI_IntClock.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tnterm.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tstub.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_context.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_thendin.o)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+.ARM.attributes
+                0x00000000       0x2f
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+ .ARM.attributes
+                0x0000001d       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .ARM.attributes
+                0x0000004a       0x1b c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .ARM.attributes
+                0x00000065       0x33 .\CortexM3\ARM_GCC_541\Debug\tft.o
+ .ARM.attributes
+                0x00000098       0x33 .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .ARM.attributes
+                0x000000cb       0x33 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .ARM.attributes
+                0x000000fe       0x33 .\CortexM3\ARM_GCC_541\Debug\swc_clock.o
+ .ARM.attributes
+                0x00000131       0x33 .\CortexM3\ARM_GCC_541\Debug\tsk_control.o
+ .ARM.attributes
+                0x00000164       0x33 .\CortexM3\ARM_GCC_541\Debug\tsk_io.o
+ .ARM.attributes
+                0x00000197       0x33 .\CortexM3\ARM_GCC_541\Debug\clock_container.o
+ .ARM.attributes
+                0x000001ca       0x33 .\CortexM3\ARM_GCC_541\Debug\clock_widget.o
+ .ARM.attributes
+                0x000001fd       0x33 .\CortexM3\ARM_GCC_541\Debug\rte.o
+ .ARM.attributes
+                0x00000230       0x33 .\CortexM3\ARM_GCC_541\Debug\sc_displaydata.o
+ .ARM.attributes
+                0x00000263       0x33 .\CortexM3\ARM_GCC_541\Debug\sc_event.o
+ .ARM.attributes
+                0x00000296       0x33 .\CortexM3\ARM_GCC_541\Debug\sp_common.o
+ .ARM.attributes
+                0x000002c9       0x33 .\CortexM3\ARM_GCC_541\Debug\sc_displaydata_type.o
+ .ARM.attributes
+                0x000002fc       0x33 .\CortexM3\ARM_GCC_541\Debug\sc_event_type.o
+ .ARM.attributes
+                0x0000032f       0x33 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .ARM.attributes
+                0x00000362       0x33 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .ARM.attributes
+                0x00000395       0x33 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .ARM.attributes
+                0x000003c8       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_activate.o)
+ .ARM.attributes
+                0x000003fb       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_alsetrel.o)
+ .ARM.attributes
+                0x0000042e       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_altick.o)
+ .ARM.attributes
+                0x00000461       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evclear.o)
+ .ARM.attributes
+                0x00000494       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evget.o)
+ .ARM.attributes
+                0x000004c7       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evset.o)
+ .ARM.attributes
+                0x000004fa       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_evwait.o)
+ .ARM.attributes
+                0x0000052d       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_irqendin.o)
+ .ARM.attributes
+                0x00000560       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_lookup.o)
+ .ARM.attributes
+                0x00000593       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_exchg.o)
+ .ARM.attributes
+                0x000005c6       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_first.o)
+ .ARM.attributes
+                0x000005f9       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_rq_inser.o)
+ .ARM.attributes
+                0x0000062c       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_startos.o)
+ .ARM.attributes
+                0x0000065f       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_terminat.o)
+ .ARM.attributes
+                0x00000692       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_utils.o)
+ .ARM.attributes
+                0x000006c5       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_common_ee_hal_structs.o)
+ .ARM.attributes
+                0x000006f8       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_eecfg.o)
+ .ARM.attributes
+                0x0000072b       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyLib.o)
+ .ARM.attributes
+                0x0000075e       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(cyPm.o)
+ .ARM.attributes
+                0x00000791       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG.o)
+ .ARM.attributes
+                0x000007c4       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(UART_LOG_IntClock.o)
+ .ARM.attributes
+                0x000007f7       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_3.o)
+ .ARM.attributes
+                0x0000082a       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(Button_4.o)
+ .ARM.attributes
+                0x0000085d       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_DC.o)
+ .ARM.attributes
+                0x00000890       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_RES.o)
+ .ARM.attributes
+                0x000008c3       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI.o)
+ .ARM.attributes
+                0x000008f6       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_SPI_IntClock.o)
+ .ARM.attributes
+                0x00000929       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(TFT_BackLight.o)
+ .ARM.attributes
+                0x0000095c       0x21 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_change_context_isr.o)
+ .ARM.attributes
+                0x0000097d       0x21 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_irq_stack.o)
+ .ARM.attributes
+                0x0000099e       0x21 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_multi_context.o)
+ .ARM.attributes
+                0x000009bf       0x21 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_gnu_oo.o)
+ .ARM.attributes
+                0x000009e0       0x21 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyBootAsmGnu.o)
+ .ARM.attributes
+                0x00000a01       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tnterm.o)
+ .ARM.attributes
+                0x00000a34       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_tstub.o)
+ .ARM.attributes
+                0x00000a67       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_cortex_mx_ee_context.o)
+ .ARM.attributes
+                0x00000a9a       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CyFlash.o)
+ .ARM.attributes
+                0x00000acd       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(CySpc.o)
+ .ARM.attributes
+                0x00000b00       0x33 .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a(ErikaOS_1_ee_thendin.o)
+ .ARM.attributes
+                0x00000b33       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+ .ARM.attributes
+                0x00000b60       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+ .ARM.attributes
+                0x00000b8d       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+ .ARM.attributes
+                0x00000bba       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+ .ARM.attributes
+                0x00000be7       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .ARM.attributes
+                0x00000c14       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+ .ARM.attributes
+                0x00000c41       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sprintf.o)
+ .ARM.attributes
+                0x00000c6e       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+ .ARM.attributes
+                0x00000c9b       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+ .ARM.attributes
+                0x00000cc8       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memchr-stub.o)
+ .ARM.attributes
+                0x00000cf5       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memmove.o)
+ .ARM.attributes
+                0x00000d22       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-freer.o)
+ .ARM.attributes
+                0x00000d4f       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
+ .ARM.attributes
+                0x00000d7c       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-reallocr.o)
+ .ARM.attributes
+                0x00000da9       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sbrkr.o)
+ .ARM.attributes
+                0x00000dd6       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mlock.o)
+ .ARM.attributes
+                0x00000e03       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
+ .ARM.attributes
+                0x00000e30       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-reent.o)
+ .ARM.attributes
+                0x00000e5d       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+ .ARM.attributes
+                0x00000e8a       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+
+/DISCARD/
+ *(.note.GNU-stack)
+OUTPUT(C:\Users\bolob\Documents\PSoC Creator\Clock\Electronic_Clock.cydsn\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.elf elf32-littlearm)

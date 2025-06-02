@@ -1,0 +1,88 @@
+signalclasses:
+    sc_event:
+        datatrigger: 
+    sc_displayData:
+        datatrigger:
+
+signalpools:
+    sp_common:
+        start: ADR_SP_COMMON_START
+        end: ADR_SP_COMMON_END
+        signals:
+            so_event:
+                    class: sc_event
+                    inDriver: default
+                    outDriver: default
+                    onDataUpdate: ev_event_onData
+                    onDataUpdateTask: 
+                    onDataError: 0
+                    onDataErrorTask: 
+            so_displayData:
+                    class: sc_displayData
+                    inDriver: default
+                    outDriver: default
+                    onDataUpdate: 0
+                    onDataUpdateTask: 
+                    onDataError: 0
+                    onDataErrorTask:
+
+tasks:
+    tsk_io:
+        timertickperiod: 1
+        mode: Cyclic
+        signalpoolsRO: sp_common
+        signalpoolsRW: sp_common
+        events: 
+        runnables:
+                CLOCK_input_run:
+                    task: tsk_io
+                    cycletime: 50
+                    events: 
+                    signalIN: 
+                    signalOUT: so_event
+            
+                CLOCK_display_run:
+                    task: tsk_io
+                    cycletime: 250
+                    events: 
+                    signalIN: so_displayData
+                    signalOUT: 
+            
+    tsk_control:
+        timertickperiod: 1
+        mode: Event
+        signalpoolsRO: sp_common
+        signalpoolsRW: sp_common
+        events: ev_event_onData
+        runnables:
+                CLOCK_contol_run:
+                    task: tsk_control
+                    cycletime: 0
+                    events: ev_event_onData
+                    signalIN: so_event
+                    signalOUT: so_displayData
+
+swc:
+    swc_Clock:
+        runnables:
+                CLOCK_input_run:
+                    task: tsk_io
+                    cycletime: 50
+                    events: 
+                    signalIN: 
+                    signalOUT: so_event
+            
+                CLOCK_contol_run:
+                    task: tsk_control
+                    cycletime: 0
+                    events: ev_event_onData
+                    signalIN: so_event
+                    signalOUT: so_displayData
+            
+                CLOCK_display_run:
+                    task: tsk_io
+                    cycletime: 250
+                    events: 
+                    signalIN: so_displayData
+                    signalOUT:
+

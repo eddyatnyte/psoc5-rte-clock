@@ -1,0 +1,1456 @@
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccbJ5AiW.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"ErikaOS_2_eecfg.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.comm	EE_ApplicationMode,4,4
+  20              		.global	EE_ALARM_ID
+  21              		.global	EE_ALARM_NAME
+  22              		.global	EE_th_is_extended
+  23              		.global	EE_th_waswaiting
+  24              		.global	EE_th_event_waitmask
+  25              		.global	EE_th_event_active
+  26              		.global	EE_th_terminate_nextask
+  27              		.global	EE_rq_free
+  28              		.comm	EE_rq_pairs_tid,0,4
+  29              		.global	EE_rq_pairs_next
+  30              		.global	EE_rq_link
+  31              		.global	EE_th_rnact_max
+  32              		.global	EE_th_rnact
+  33              		.global	EE_rq_bitmask
+  34              		.global	EE_rq_queues_tail
+  35              		.global	EE_rq_queues_head
+  36              		.global	EE_sys_ceiling
+  37              		.global	EE_stkfirst
+  38              		.global	EE_th_next
+  39              		.global	EE_th_status
+  40              		.global	EE_th_dispatch_prio
+  41              		.global	EE_EVENT_ID
+  42              		.global	EE_EVENT_NAME
+  43              		.global	EE_TASK_NAME
+  44              		.global	EE_th_ready_prio
+  45              		.global	EE_terminate_real_th_body
+  46              		.comm	EE_terminate_data,0,4
+  47              		.global	EE_hal_thread_body
+  48              		.global	EE_cortex_mx_IRQ_tos
+  49              		.global	EE_cortex_mx_active_tos
+  50              		.global	EE_cortex_mx_system_tos
+  51              		.global	EE_std_thread_tos
+  52              		.comm	EE_cortex_mx_stack_9,512,4
+  53              		.section	.rodata
+  54              		.align	2
+  55              		.type	EE_ALARM_ID, %object
+  56              		.size	EE_ALARM_ID, 0
+  57              	EE_ALARM_ID:
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccbJ5AiW.s 			page 2
+
+
+  58              		.type	EE_th_is_extended, %object
+  59              		.size	EE_th_is_extended, 0
+  60              	EE_th_is_extended:
+  61              		.type	EE_th_rnact_max, %object
+  62              		.size	EE_th_rnact_max, 0
+  63              	EE_th_rnact_max:
+  64              		.type	EE_th_dispatch_prio, %object
+  65              		.size	EE_th_dispatch_prio, 0
+  66              	EE_th_dispatch_prio:
+  67              		.type	EE_EVENT_ID, %object
+  68              		.size	EE_EVENT_ID, 0
+  69              	EE_EVENT_ID:
+  70              		.type	EE_th_ready_prio, %object
+  71              		.size	EE_th_ready_prio, 0
+  72              	EE_th_ready_prio:
+  73              		.type	EE_terminate_real_th_body, %object
+  74              		.size	EE_terminate_real_th_body, 0
+  75              	EE_terminate_real_th_body:
+  76              		.type	EE_hal_thread_body, %object
+  77              		.size	EE_hal_thread_body, 0
+  78              	EE_hal_thread_body:
+  79              		.type	EE_std_thread_tos, %object
+  80              		.size	EE_std_thread_tos, 4
+  81              	EE_std_thread_tos:
+  82 0000 00000000 		.space	4
+  83              		.data
+  84              		.align	2
+  85              		.type	EE_rq_queues_tail, %object
+  86              		.size	EE_rq_queues_tail, 64
+  87              	EE_rq_queues_tail:
+  88 0000 FFFFFFFF 		.word	-1
+  89 0004 FFFFFFFF 		.word	-1
+  90 0008 FFFFFFFF 		.word	-1
+  91 000c FFFFFFFF 		.word	-1
+  92 0010 FFFFFFFF 		.word	-1
+  93 0014 FFFFFFFF 		.word	-1
+  94 0018 FFFFFFFF 		.word	-1
+  95 001c FFFFFFFF 		.word	-1
+  96 0020 FFFFFFFF 		.word	-1
+  97 0024 FFFFFFFF 		.word	-1
+  98 0028 FFFFFFFF 		.word	-1
+  99 002c FFFFFFFF 		.word	-1
+ 100 0030 FFFFFFFF 		.word	-1
+ 101 0034 FFFFFFFF 		.word	-1
+ 102 0038 FFFFFFFF 		.word	-1
+ 103 003c FFFFFFFF 		.word	-1
+ 104              		.type	EE_rq_queues_head, %object
+ 105              		.size	EE_rq_queues_head, 64
+ 106              	EE_rq_queues_head:
+ 107 0040 FFFFFFFF 		.word	-1
+ 108 0044 FFFFFFFF 		.word	-1
+ 109 0048 FFFFFFFF 		.word	-1
+ 110 004c FFFFFFFF 		.word	-1
+ 111 0050 FFFFFFFF 		.word	-1
+ 112 0054 FFFFFFFF 		.word	-1
+ 113 0058 FFFFFFFF 		.word	-1
+ 114 005c FFFFFFFF 		.word	-1
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccbJ5AiW.s 			page 3
+
+
+ 115 0060 FFFFFFFF 		.word	-1
+ 116 0064 FFFFFFFF 		.word	-1
+ 117 0068 FFFFFFFF 		.word	-1
+ 118 006c FFFFFFFF 		.word	-1
+ 119 0070 FFFFFFFF 		.word	-1
+ 120 0074 FFFFFFFF 		.word	-1
+ 121 0078 FFFFFFFF 		.word	-1
+ 122 007c FFFFFFFF 		.word	-1
+ 123              		.type	EE_stkfirst, %object
+ 124              		.size	EE_stkfirst, 4
+ 125              	EE_stkfirst:
+ 126 0080 FFFFFFFF 		.word	-1
+ 127              		.type	EE_cortex_mx_IRQ_tos, %object
+ 128              		.size	EE_cortex_mx_IRQ_tos, 4
+ 129              	EE_cortex_mx_IRQ_tos:
+ 130 0084 00020000 		.word	EE_cortex_mx_stack_9+512
+ 131              		.bss
+ 132              		.align	2
+ 133              		.type	EE_ALARM_NAME, %object
+ 134              		.size	EE_ALARM_NAME, 0
+ 135              	EE_ALARM_NAME:
+ 136              		.type	EE_th_waswaiting, %object
+ 137              		.size	EE_th_waswaiting, 0
+ 138              	EE_th_waswaiting:
+ 139              		.type	EE_th_event_waitmask, %object
+ 140              		.size	EE_th_event_waitmask, 0
+ 141              	EE_th_event_waitmask:
+ 142              		.type	EE_th_event_active, %object
+ 143              		.size	EE_th_event_active, 0
+ 144              	EE_th_event_active:
+ 145              		.type	EE_th_terminate_nextask, %object
+ 146              		.size	EE_th_terminate_nextask, 0
+ 147              	EE_th_terminate_nextask:
+ 148              		.type	EE_rq_free, %object
+ 149              		.size	EE_rq_free, 4
+ 150              	EE_rq_free:
+ 151 0000 00000000 		.space	4
+ 152              		.type	EE_rq_pairs_next, %object
+ 153              		.size	EE_rq_pairs_next, 0
+ 154              	EE_rq_pairs_next:
+ 155              		.type	EE_rq_link, %object
+ 156              		.size	EE_rq_link, 0
+ 157              	EE_rq_link:
+ 158              		.type	EE_th_rnact, %object
+ 159              		.size	EE_th_rnact, 0
+ 160              	EE_th_rnact:
+ 161              		.type	EE_rq_bitmask, %object
+ 162              		.size	EE_rq_bitmask, 2
+ 163              	EE_rq_bitmask:
+ 164 0004 0000     		.space	2
+ 165 0006 0000     		.space	2
+ 166              		.type	EE_sys_ceiling, %object
+ 167              		.size	EE_sys_ceiling, 4
+ 168              	EE_sys_ceiling:
+ 169 0008 00000000 		.space	4
+ 170              		.type	EE_th_next, %object
+ 171              		.size	EE_th_next, 0
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccbJ5AiW.s 			page 4
+
+
+ 172              	EE_th_next:
+ 173              		.type	EE_th_status, %object
+ 174              		.size	EE_th_status, 0
+ 175              	EE_th_status:
+ 176              		.type	EE_EVENT_NAME, %object
+ 177              		.size	EE_EVENT_NAME, 0
+ 178              	EE_EVENT_NAME:
+ 179              		.type	EE_TASK_NAME, %object
+ 180              		.size	EE_TASK_NAME, 0
+ 181              	EE_TASK_NAME:
+ 182              		.type	EE_cortex_mx_active_tos, %object
+ 183              		.size	EE_cortex_mx_active_tos, 4
+ 184              	EE_cortex_mx_active_tos:
+ 185 000c 00000000 		.space	4
+ 186              		.type	EE_cortex_mx_system_tos, %object
+ 187              		.size	EE_cortex_mx_system_tos, 4
+ 188              	EE_cortex_mx_system_tos:
+ 189 0010 00000000 		.space	4
+ 190              		.text
+ 191              	.Letext0:
+ 192              		.file 1 "Generated_Source\\PSoC5\\ErikaOS_2_common_ee_types.inc"
+ 193              		.file 2 "Generated_Source\\PSoC5\\ErikaOS_2_cortex_mx_ee_cpu.inc"
+ 194              		.file 3 "Generated_Source\\PSoC5\\ErikaOS_2_ee_oo_common.inc"
+ 195              		.file 4 "Generated_Source\\PSoC5\\ErikaOS_2_eecfg.c"
+ 196              		.file 5 "Generated_Source\\PSoC5\\ErikaOS_2_ee_oo_intfunc.inc"
+ 197              		.file 6 "Generated_Source\\PSoC5\\ErikaOS_2_cortex_mx_ee_context.inc"
+ 198              		.file 7 "Generated_Source\\PSoC5\\ErikaOS_2_common_ee_primitives.inc"
+ 199              		.file 8 "Generated_Source\\PSoC5\\ErikaOS_2_common_ee_hal_structs.inc"
+ 200              		.section	.debug_info,"",%progbits
+ 201              	.Ldebug_info0:
+ 202 0000 6A050000 		.4byte	0x56a
+ 203 0004 0400     		.2byte	0x4
+ 204 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 205 000a 04       		.byte	0x4
+ 206 000b 01       		.uleb128 0x1
+ 207 000c 0D040000 		.4byte	.LASF61
+ 208 0010 0C       		.byte	0xc
+ 209 0011 B1000000 		.4byte	.LASF62
+ 210 0015 79020000 		.4byte	.LASF63
+ 211 0019 00000000 		.4byte	.Ldebug_line0
+ 212 001d 02       		.uleb128 0x2
+ 213 001e 01       		.byte	0x1
+ 214 001f 06       		.byte	0x6
+ 215 0020 F4010000 		.4byte	.LASF0
+ 216 0024 02       		.uleb128 0x2
+ 217 0025 01       		.byte	0x1
+ 218 0026 08       		.byte	0x8
+ 219 0027 D4010000 		.4byte	.LASF1
+ 220 002b 02       		.uleb128 0x2
+ 221 002c 02       		.byte	0x2
+ 222 002d 05       		.byte	0x5
+ 223 002e 74000000 		.4byte	.LASF2
+ 224 0032 02       		.uleb128 0x2
+ 225 0033 02       		.byte	0x2
+ 226 0034 07       		.byte	0x7
+ 227 0035 BC020000 		.4byte	.LASF3
+ 228 0039 02       		.uleb128 0x2
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccbJ5AiW.s 			page 5
+
+
+ 229 003a 04       		.byte	0x4
+ 230 003b 05       		.byte	0x5
+ 231 003c 60010000 		.4byte	.LASF4
+ 232 0040 02       		.uleb128 0x2
+ 233 0041 04       		.byte	0x4
+ 234 0042 07       		.byte	0x7
+ 235 0043 23030000 		.4byte	.LASF5
+ 236 0047 02       		.uleb128 0x2
+ 237 0048 08       		.byte	0x8
+ 238 0049 05       		.byte	0x5
+ 239 004a 42010000 		.4byte	.LASF6
+ 240 004e 02       		.uleb128 0x2
+ 241 004f 08       		.byte	0x8
+ 242 0050 07       		.byte	0x7
+ 243 0051 00020000 		.4byte	.LASF7
+ 244 0055 03       		.uleb128 0x3
+ 245 0056 04       		.byte	0x4
+ 246 0057 05       		.byte	0x5
+ 247 0058 696E7400 		.ascii	"int\000"
+ 248 005c 02       		.uleb128 0x2
+ 249 005d 04       		.byte	0x4
+ 250 005e 07       		.byte	0x7
+ 251 005f 29020000 		.4byte	.LASF8
+ 252 0063 02       		.uleb128 0x2
+ 253 0064 08       		.byte	0x8
+ 254 0065 04       		.byte	0x4
+ 255 0066 C8010000 		.4byte	.LASF9
+ 256 006a 04       		.uleb128 0x4
+ 257 006b E1020000 		.4byte	.LASF10
+ 258 006f 01       		.byte	0x1
+ 259 0070 52       		.byte	0x52
+ 260 0071 32000000 		.4byte	0x32
+ 261 0075 04       		.uleb128 0x4
+ 262 0076 5B020000 		.4byte	.LASF11
+ 263 007a 01       		.byte	0x1
+ 264 007b 53       		.byte	0x53
+ 265 007c 55000000 		.4byte	0x55
+ 266 0080 04       		.uleb128 0x4
+ 267 0081 E2010000 		.4byte	.LASF12
+ 268 0085 01       		.byte	0x1
+ 269 0086 54       		.byte	0x54
+ 270 0087 5C000000 		.4byte	0x5c
+ 271 008b 04       		.uleb128 0x4
+ 272 008c 12010000 		.4byte	.LASF13
+ 273 0090 01       		.byte	0x1
+ 274 0091 64       		.byte	0x64
+ 275 0092 96000000 		.4byte	0x96
+ 276 0096 05       		.uleb128 0x5
+ 277 0097 04       		.byte	0x4
+ 278 0098 06       		.uleb128 0x6
+ 279 0099 04       		.byte	0x4
+ 280 009a 9E000000 		.4byte	0x9e
+ 281 009e 07       		.uleb128 0x7
+ 282 009f 04       		.uleb128 0x4
+ 283 00a0 02030000 		.4byte	.LASF14
+ 284 00a4 01       		.byte	0x1
+ 285 00a5 73       		.byte	0x73
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccbJ5AiW.s 			page 6
+
+
+ 286 00a6 98000000 		.4byte	0x98
+ 287 00aa 04       		.uleb128 0x4
+ 288 00ab 26000000 		.4byte	.LASF15
+ 289 00af 02       		.byte	0x2
+ 290 00b0 4D       		.byte	0x4d
+ 291 00b1 80000000 		.4byte	0x80
+ 292 00b5 04       		.uleb128 0x4
+ 293 00b6 EC010000 		.4byte	.LASF16
+ 294 00ba 02       		.byte	0x2
+ 295 00bb 4E       		.byte	0x4e
+ 296 00bc 75000000 		.4byte	0x75
+ 297 00c0 04       		.uleb128 0x4
+ 298 00c1 A9000000 		.4byte	.LASF17
+ 299 00c5 02       		.byte	0x2
+ 300 00c6 4F       		.byte	0x4f
+ 301 00c7 80000000 		.4byte	0x80
+ 302 00cb 04       		.uleb128 0x4
+ 303 00cc 48030000 		.4byte	.LASF18
+ 304 00d0 02       		.byte	0x2
+ 305 00d1 54       		.byte	0x54
+ 306 00d2 AA000000 		.4byte	0xaa
+ 307 00d6 04       		.uleb128 0x4
+ 308 00d7 FD000000 		.4byte	.LASF19
+ 309 00db 02       		.byte	0x2
+ 310 00dc 78       		.byte	0x78
+ 311 00dd 75000000 		.4byte	0x75
+ 312 00e1 08       		.uleb128 0x8
+ 313 00e2 B0030000 		.4byte	.LASF64
+ 314 00e6 04       		.byte	0x4
+ 315 00e7 08       		.byte	0x8
+ 316 00e8 4D       		.byte	0x4d
+ 317 00e9 FA000000 		.4byte	0xfa
+ 318 00ed 09       		.uleb128 0x9
+ 319 00ee 85030000 		.4byte	.LASF65
+ 320 00f2 08       		.byte	0x8
+ 321 00f3 4E       		.byte	0x4e
+ 322 00f4 8B000000 		.4byte	0x8b
+ 323 00f8 00       		.byte	0
+ 324 00f9 00       		.byte	0
+ 325 00fa 0A       		.uleb128 0xa
+ 326 00fb 50010000 		.4byte	.LASF20
+ 327 00ff 03       		.byte	0x3
+ 328 0100 1101     		.2byte	0x111
+ 329 0102 6A000000 		.4byte	0x6a
+ 330 0106 0B       		.uleb128 0xb
+ 331 0107 1C010000 		.4byte	0x11c
+ 332 010b 15010000 		.4byte	0x115
+ 333 010f 0C       		.uleb128 0xc
+ 334 0110 15010000 		.4byte	0x115
+ 335 0114 00       		.byte	0
+ 336 0115 02       		.uleb128 0x2
+ 337 0116 04       		.byte	0x4
+ 338 0117 07       		.byte	0x7
+ 339 0118 90000000 		.4byte	.LASF21
+ 340 011c 0D       		.uleb128 0xd
+ 341 011d 9F000000 		.4byte	0x9f
+ 342 0121 0E       		.uleb128 0xe
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccbJ5AiW.s 			page 7
+
+
+ 343 0122 2F010000 		.4byte	.LASF22
+ 344 0126 04       		.byte	0x4
+ 345 0127 D2       		.byte	0xd2
+ 346 0128 32010000 		.4byte	0x132
+ 347 012c 05       		.uleb128 0x5
+ 348 012d 03       		.byte	0x3
+ 349 012e 00000000 		.4byte	EE_hal_thread_body
+ 350 0132 0D       		.uleb128 0xd
+ 351 0133 06010000 		.4byte	0x106
+ 352 0137 0B       		.uleb128 0xb
+ 353 0138 47010000 		.4byte	0x147
+ 354 013c 47010000 		.4byte	0x147
+ 355 0140 0F       		.uleb128 0xf
+ 356 0141 15010000 		.4byte	0x115
+ 357 0145 00       		.byte	0
+ 358 0146 00       		.byte	0
+ 359 0147 0D       		.uleb128 0xd
+ 360 0148 AA000000 		.4byte	0xaa
+ 361 014c 0E       		.uleb128 0xe
+ 362 014d 17020000 		.4byte	.LASF23
+ 363 0151 04       		.byte	0x4
+ 364 0152 71       		.byte	0x71
+ 365 0153 5D010000 		.4byte	0x15d
+ 366 0157 05       		.uleb128 0x5
+ 367 0158 03       		.byte	0x3
+ 368 0159 00000000 		.4byte	EE_std_thread_tos
+ 369 015d 0D       		.uleb128 0xd
+ 370 015e 37010000 		.4byte	0x137
+ 371 0162 0B       		.uleb128 0xb
+ 372 0163 80000000 		.4byte	0x80
+ 373 0167 71010000 		.4byte	0x171
+ 374 016b 0C       		.uleb128 0xc
+ 375 016c 15010000 		.4byte	0x115
+ 376 0170 00       		.byte	0
+ 377 0171 0E       		.uleb128 0xe
+ 378 0172 51000000 		.4byte	.LASF24
+ 379 0176 04       		.byte	0x4
+ 380 0177 ED       		.byte	0xed
+ 381 0178 62010000 		.4byte	0x162
+ 382 017c 05       		.uleb128 0x5
+ 383 017d 03       		.byte	0x3
+ 384 017e 00000000 		.4byte	EE_terminate_data
+ 385 0182 0B       		.uleb128 0xb
+ 386 0183 1C010000 		.4byte	0x11c
+ 387 0187 91010000 		.4byte	0x191
+ 388 018b 0C       		.uleb128 0xc
+ 389 018c 15010000 		.4byte	0x115
+ 390 0190 00       		.byte	0
+ 391 0191 0E       		.uleb128 0xe
+ 392 0192 8E010000 		.4byte	.LASF25
+ 393 0196 04       		.byte	0x4
+ 394 0197 F0       		.byte	0xf0
+ 395 0198 A2010000 		.4byte	0x1a2
+ 396 019c 05       		.uleb128 0x5
+ 397 019d 03       		.byte	0x3
+ 398 019e 00000000 		.4byte	EE_terminate_real_th_body
+ 399 01a2 0D       		.uleb128 0xd
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccbJ5AiW.s 			page 8
+
+
+ 400 01a3 82010000 		.4byte	0x182
+ 401 01a7 0B       		.uleb128 0xb
+ 402 01a8 E1000000 		.4byte	0xe1
+ 403 01ac B7010000 		.4byte	0x1b7
+ 404 01b0 0F       		.uleb128 0xf
+ 405 01b1 15010000 		.4byte	0x115
+ 406 01b5 00       		.byte	0
+ 407 01b6 00       		.byte	0
+ 408 01b7 0E       		.uleb128 0xe
+ 409 01b8 39000000 		.4byte	.LASF26
+ 410 01bc 04       		.byte	0x4
+ 411 01bd 8D       		.byte	0x8d
+ 412 01be A7010000 		.4byte	0x1a7
+ 413 01c2 05       		.uleb128 0x5
+ 414 01c3 03       		.byte	0x3
+ 415 01c4 00000000 		.4byte	EE_cortex_mx_system_tos
+ 416 01c8 0E       		.uleb128 0xe
+ 417 01c9 00000000 		.4byte	.LASF27
+ 418 01cd 04       		.byte	0x4
+ 419 01ce A9       		.byte	0xa9
+ 420 01cf AA000000 		.4byte	0xaa
+ 421 01d3 05       		.uleb128 0x5
+ 422 01d4 03       		.byte	0x3
+ 423 01d5 00000000 		.4byte	EE_cortex_mx_active_tos
+ 424 01d9 0B       		.uleb128 0xb
+ 425 01da 47010000 		.4byte	0x147
+ 426 01de E8010000 		.4byte	0x1e8
+ 427 01e2 0C       		.uleb128 0xc
+ 428 01e3 15010000 		.4byte	0x115
+ 429 01e7 00       		.byte	0
+ 430 01e8 10       		.uleb128 0x10
+ 431 01e9 99000000 		.4byte	.LASF28
+ 432 01ed 04       		.byte	0x4
+ 433 01ee E202     		.2byte	0x2e2
+ 434 01f0 FA010000 		.4byte	0x1fa
+ 435 01f4 05       		.uleb128 0x5
+ 436 01f5 03       		.byte	0x3
+ 437 01f6 00000000 		.4byte	EE_th_rnact_max
+ 438 01fa 0D       		.uleb128 0xd
+ 439 01fb D9010000 		.4byte	0x1d9
+ 440 01ff 0B       		.uleb128 0xb
+ 441 0200 47010000 		.4byte	0x147
+ 442 0204 0E020000 		.4byte	0x20e
+ 443 0208 0C       		.uleb128 0xc
+ 444 0209 15010000 		.4byte	0x115
+ 445 020d 00       		.byte	0
+ 446 020e 10       		.uleb128 0x10
+ 447 020f DA000000 		.4byte	.LASF29
+ 448 0213 04       		.byte	0x4
+ 449 0214 0C01     		.2byte	0x10c
+ 450 0216 20020000 		.4byte	0x220
+ 451 021a 05       		.uleb128 0x5
+ 452 021b 03       		.byte	0x3
+ 453 021c 00000000 		.4byte	EE_th_ready_prio
+ 454 0220 0D       		.uleb128 0xd
+ 455 0221 FF010000 		.4byte	0x1ff
+ 456 0225 0B       		.uleb128 0xb
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccbJ5AiW.s 			page 9
+
+
+ 457 0226 47010000 		.4byte	0x147
+ 458 022a 34020000 		.4byte	0x234
+ 459 022e 0C       		.uleb128 0xc
+ 460 022f 15010000 		.4byte	0x115
+ 461 0233 00       		.byte	0
+ 462 0234 10       		.uleb128 0x10
+ 463 0235 DC030000 		.4byte	.LASF30
+ 464 0239 04       		.byte	0x4
+ 465 023a 4502     		.2byte	0x245
+ 466 023c 46020000 		.4byte	0x246
+ 467 0240 05       		.uleb128 0x5
+ 468 0241 03       		.byte	0x3
+ 469 0242 00000000 		.4byte	EE_th_dispatch_prio
+ 470 0246 0D       		.uleb128 0xd
+ 471 0247 25020000 		.4byte	0x225
+ 472 024b 0B       		.uleb128 0xb
+ 473 024c 5A020000 		.4byte	0x25a
+ 474 0250 5A020000 		.4byte	0x25a
+ 475 0254 0C       		.uleb128 0xc
+ 476 0255 15010000 		.4byte	0x115
+ 477 0259 00       		.byte	0
+ 478 025a 06       		.uleb128 0x6
+ 479 025b 04       		.byte	0x4
+ 480 025c 67020000 		.4byte	0x267
+ 481 0260 02       		.uleb128 0x2
+ 482 0261 01       		.byte	0x1
+ 483 0262 08       		.byte	0x8
+ 484 0263 DC020000 		.4byte	.LASF31
+ 485 0267 0D       		.uleb128 0xd
+ 486 0268 60020000 		.4byte	0x260
+ 487 026c 10       		.uleb128 0x10
+ 488 026d CF020000 		.4byte	.LASF32
+ 489 0271 04       		.byte	0x4
+ 490 0272 2801     		.2byte	0x128
+ 491 0274 4B020000 		.4byte	0x24b
+ 492 0278 05       		.uleb128 0x5
+ 493 0279 03       		.byte	0x3
+ 494 027a 00000000 		.4byte	EE_TASK_NAME
+ 495 027e 0B       		.uleb128 0xb
+ 496 027f 5A020000 		.4byte	0x25a
+ 497 0283 8D020000 		.4byte	0x28d
+ 498 0287 0C       		.uleb128 0xc
+ 499 0288 15010000 		.4byte	0x115
+ 500 028c 00       		.byte	0
+ 501 028d 10       		.uleb128 0x10
+ 502 028e 8D030000 		.4byte	.LASF33
+ 503 0292 04       		.byte	0x4
+ 504 0293 8101     		.2byte	0x181
+ 505 0295 7E020000 		.4byte	0x27e
+ 506 0299 05       		.uleb128 0x5
+ 507 029a 03       		.byte	0x3
+ 508 029b 00000000 		.4byte	EE_EVENT_NAME
+ 509 029f 0B       		.uleb128 0xb
+ 510 02a0 5A020000 		.4byte	0x25a
+ 511 02a4 AE020000 		.4byte	0x2ae
+ 512 02a8 0C       		.uleb128 0xc
+ 513 02a9 15010000 		.4byte	0x115
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccbJ5AiW.s 			page 10
+
+
+ 514 02ad 00       		.byte	0
+ 515 02ae 10       		.uleb128 0x10
+ 516 02af 04010000 		.4byte	.LASF34
+ 517 02b3 04       		.byte	0x4
+ 518 02b4 3D06     		.2byte	0x63d
+ 519 02b6 9F020000 		.4byte	0x29f
+ 520 02ba 05       		.uleb128 0x5
+ 521 02bb 03       		.byte	0x3
+ 522 02bc 00000000 		.4byte	EE_ALARM_NAME
+ 523 02c0 0B       		.uleb128 0xb
+ 524 02c1 CF020000 		.4byte	0x2cf
+ 525 02c5 CF020000 		.4byte	0x2cf
+ 526 02c9 0C       		.uleb128 0xc
+ 527 02ca 15010000 		.4byte	0x115
+ 528 02ce 00       		.byte	0
+ 529 02cf 0D       		.uleb128 0xd
+ 530 02d0 40000000 		.4byte	0x40
+ 531 02d4 10       		.uleb128 0x10
+ 532 02d5 82010000 		.4byte	.LASF35
+ 533 02d9 04       		.byte	0x4
+ 534 02da E201     		.2byte	0x1e2
+ 535 02dc E6020000 		.4byte	0x2e6
+ 536 02e0 05       		.uleb128 0x5
+ 537 02e1 03       		.byte	0x3
+ 538 02e2 00000000 		.4byte	EE_EVENT_ID
+ 539 02e6 0D       		.uleb128 0xd
+ 540 02e7 C0020000 		.4byte	0x2c0
+ 541 02eb 0B       		.uleb128 0xb
+ 542 02ec CF020000 		.4byte	0x2cf
+ 543 02f0 FA020000 		.4byte	0x2fa
+ 544 02f4 0C       		.uleb128 0xc
+ 545 02f5 15010000 		.4byte	0x115
+ 546 02f9 00       		.byte	0
+ 547 02fa 10       		.uleb128 0x10
+ 548 02fb F6020000 		.4byte	.LASF36
+ 549 02ff 04       		.byte	0x4
+ 550 0300 5906     		.2byte	0x659
+ 551 0302 0C030000 		.4byte	0x30c
+ 552 0306 05       		.uleb128 0x5
+ 553 0307 03       		.byte	0x3
+ 554 0308 00000000 		.4byte	EE_ALARM_ID
+ 555 030c 0D       		.uleb128 0xd
+ 556 030d EB020000 		.4byte	0x2eb
+ 557 0311 0B       		.uleb128 0xb
+ 558 0312 AA000000 		.4byte	0xaa
+ 559 0316 20030000 		.4byte	0x320
+ 560 031a 0C       		.uleb128 0xc
+ 561 031b 15010000 		.4byte	0x115
+ 562 031f 00       		.byte	0
+ 563 0320 10       		.uleb128 0x10
+ 564 0321 CF030000 		.4byte	.LASF37
+ 565 0325 04       		.byte	0x4
+ 566 0326 8102     		.2byte	0x281
+ 567 0328 11030000 		.4byte	0x311
+ 568 032c 05       		.uleb128 0x5
+ 569 032d 03       		.byte	0x3
+ 570 032e 00000000 		.4byte	EE_th_status
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccbJ5AiW.s 			page 11
+
+
+ 571 0332 0B       		.uleb128 0xb
+ 572 0333 D6000000 		.4byte	0xd6
+ 573 0337 41030000 		.4byte	0x341
+ 574 033b 0C       		.uleb128 0xc
+ 575 033c 15010000 		.4byte	0x115
+ 576 0340 00       		.byte	0
+ 577 0341 10       		.uleb128 0x10
+ 578 0342 F0030000 		.4byte	.LASF38
+ 579 0346 04       		.byte	0x4
+ 580 0347 9D02     		.2byte	0x29d
+ 581 0349 32030000 		.4byte	0x332
+ 582 034d 05       		.uleb128 0x5
+ 583 034e 03       		.byte	0x3
+ 584 034f 00000000 		.4byte	EE_th_next
+ 585 0353 0B       		.uleb128 0xb
+ 586 0354 AA000000 		.4byte	0xaa
+ 587 0358 62030000 		.4byte	0x362
+ 588 035c 0C       		.uleb128 0xc
+ 589 035d 15010000 		.4byte	0x115
+ 590 0361 00       		.byte	0
+ 591 0362 10       		.uleb128 0x10
+ 592 0363 36020000 		.4byte	.LASF39
+ 593 0367 04       		.byte	0x4
+ 594 0368 C702     		.2byte	0x2c7
+ 595 036a 53030000 		.4byte	0x353
+ 596 036e 05       		.uleb128 0x5
+ 597 036f 03       		.byte	0x3
+ 598 0370 00000000 		.4byte	EE_th_rnact
+ 599 0374 0B       		.uleb128 0xb
+ 600 0375 D6000000 		.4byte	0xd6
+ 601 0379 83030000 		.4byte	0x383
+ 602 037d 0C       		.uleb128 0xc
+ 603 037e 15010000 		.4byte	0x115
+ 604 0382 00       		.byte	0
+ 605 0383 10       		.uleb128 0x10
+ 606 0384 B7030000 		.4byte	.LASF40
+ 607 0388 04       		.byte	0x4
+ 608 0389 7703     		.2byte	0x377
+ 609 038b 74030000 		.4byte	0x374
+ 610 038f 05       		.uleb128 0x5
+ 611 0390 03       		.byte	0x3
+ 612 0391 00000000 		.4byte	EE_th_terminate_nextask
+ 613 0395 10       		.uleb128 0x10
+ 614 0396 54030000 		.4byte	.LASF41
+ 615 039a 04       		.byte	0x4
+ 616 039b B902     		.2byte	0x2b9
+ 617 039d D6000000 		.4byte	0xd6
+ 618 03a1 05       		.uleb128 0x5
+ 619 03a2 03       		.byte	0x3
+ 620 03a3 00000000 		.4byte	EE_stkfirst
+ 621 03a7 10       		.uleb128 0x10
+ 622 03a8 B9010000 		.4byte	.LASF42
+ 623 03ac 04       		.byte	0x4
+ 624 03ad BC02     		.2byte	0x2bc
+ 625 03af AA000000 		.4byte	0xaa
+ 626 03b3 05       		.uleb128 0x5
+ 627 03b4 03       		.byte	0x3
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccbJ5AiW.s 			page 12
+
+
+ 628 03b5 00000000 		.4byte	EE_sys_ceiling
+ 629 03b9 0B       		.uleb128 0xb
+ 630 03ba AA000000 		.4byte	0xaa
+ 631 03be C8030000 		.4byte	0x3c8
+ 632 03c2 0C       		.uleb128 0xc
+ 633 03c3 15010000 		.4byte	0x115
+ 634 03c7 00       		.byte	0
+ 635 03c8 10       		.uleb128 0x10
+ 636 03c9 EB020000 		.4byte	.LASF43
+ 637 03cd 04       		.byte	0x4
+ 638 03ce FD02     		.2byte	0x2fd
+ 639 03d0 B9030000 		.4byte	0x3b9
+ 640 03d4 05       		.uleb128 0x5
+ 641 03d5 03       		.byte	0x3
+ 642 03d6 00000000 		.4byte	EE_rq_link
+ 643 03da 0B       		.uleb128 0xb
+ 644 03db B5000000 		.4byte	0xb5
+ 645 03df EA030000 		.4byte	0x3ea
+ 646 03e3 0F       		.uleb128 0xf
+ 647 03e4 15010000 		.4byte	0x115
+ 648 03e8 0F       		.byte	0xf
+ 649 03e9 00       		.byte	0
+ 650 03ea 10       		.uleb128 0x10
+ 651 03eb EB000000 		.4byte	.LASF44
+ 652 03ef 04       		.byte	0x4
+ 653 03f0 BF02     		.2byte	0x2bf
+ 654 03f2 DA030000 		.4byte	0x3da
+ 655 03f6 05       		.uleb128 0x5
+ 656 03f7 03       		.byte	0x3
+ 657 03f8 00000000 		.4byte	EE_rq_queues_head
+ 658 03fc 10       		.uleb128 0x10
+ 659 03fd FB030000 		.4byte	.LASF45
+ 660 0401 04       		.byte	0x4
+ 661 0402 C102     		.2byte	0x2c1
+ 662 0404 DA030000 		.4byte	0x3da
+ 663 0408 05       		.uleb128 0x5
+ 664 0409 03       		.byte	0x3
+ 665 040a 00000000 		.4byte	EE_rq_queues_tail
+ 666 040e 0B       		.uleb128 0xb
+ 667 040f B5000000 		.4byte	0xb5
+ 668 0413 1D040000 		.4byte	0x41d
+ 669 0417 0C       		.uleb128 0xc
+ 670 0418 15010000 		.4byte	0x115
+ 671 041c 00       		.byte	0
+ 672 041d 10       		.uleb128 0x10
+ 673 041e A8010000 		.4byte	.LASF46
+ 674 0422 04       		.byte	0x4
+ 675 0423 1B03     		.2byte	0x31b
+ 676 0425 0E040000 		.4byte	0x40e
+ 677 0429 05       		.uleb128 0x5
+ 678 042a 03       		.byte	0x3
+ 679 042b 00000000 		.4byte	EE_rq_pairs_next
+ 680 042f 0B       		.uleb128 0xb
+ 681 0430 D6000000 		.4byte	0xd6
+ 682 0434 3E040000 		.4byte	0x43e
+ 683 0438 0C       		.uleb128 0xc
+ 684 0439 15010000 		.4byte	0x115
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccbJ5AiW.s 			page 13
+
+
+ 685 043d 00       		.byte	0
+ 686 043e 10       		.uleb128 0x10
+ 687 043f 75030000 		.4byte	.LASF47
+ 688 0443 04       		.byte	0x4
+ 689 0444 7003     		.2byte	0x370
+ 690 0446 2F040000 		.4byte	0x42f
+ 691 044a 05       		.uleb128 0x5
+ 692 044b 03       		.byte	0x3
+ 693 044c 00000000 		.4byte	EE_rq_pairs_tid
+ 694 0450 10       		.uleb128 0x10
+ 695 0451 18000000 		.4byte	.LASF48
+ 696 0455 04       		.byte	0x4
+ 697 0456 C402     		.2byte	0x2c4
+ 698 0458 FA000000 		.4byte	0xfa
+ 699 045c 05       		.uleb128 0x5
+ 700 045d 03       		.byte	0x3
+ 701 045e 00000000 		.4byte	EE_rq_bitmask
+ 702 0462 10       		.uleb128 0x10
+ 703 0463 2E000000 		.4byte	.LASF49
+ 704 0467 04       		.byte	0x4
+ 705 0468 7303     		.2byte	0x373
+ 706 046a B5000000 		.4byte	0xb5
+ 707 046e 05       		.uleb128 0x5
+ 708 046f 03       		.byte	0x3
+ 709 0470 00000000 		.4byte	EE_rq_free
+ 710 0474 0B       		.uleb128 0xb
+ 711 0475 AA000000 		.4byte	0xaa
+ 712 0479 83040000 		.4byte	0x483
+ 713 047d 0C       		.uleb128 0xc
+ 714 047e 15010000 		.4byte	0x115
+ 715 0482 00       		.byte	0
+ 716 0483 10       		.uleb128 0x10
+ 717 0484 35030000 		.4byte	.LASF50
+ 718 0488 04       		.byte	0x4
+ 719 0489 9A03     		.2byte	0x39a
+ 720 048b 74040000 		.4byte	0x474
+ 721 048f 05       		.uleb128 0x5
+ 722 0490 03       		.byte	0x3
+ 723 0491 00000000 		.4byte	EE_th_event_active
+ 724 0495 0B       		.uleb128 0xb
+ 725 0496 AA000000 		.4byte	0xaa
+ 726 049a A4040000 		.4byte	0x4a4
+ 727 049e 0C       		.uleb128 0xc
+ 728 049f 15010000 		.4byte	0x115
+ 729 04a3 00       		.byte	0
+ 730 04a4 10       		.uleb128 0x10
+ 731 04a5 60030000 		.4byte	.LASF51
+ 732 04a9 04       		.byte	0x4
+ 733 04aa B603     		.2byte	0x3b6
+ 734 04ac 95040000 		.4byte	0x495
+ 735 04b0 05       		.uleb128 0x5
+ 736 04b1 03       		.byte	0x3
+ 737 04b2 00000000 		.4byte	EE_th_event_waitmask
+ 738 04b6 0B       		.uleb128 0xb
+ 739 04b7 CB000000 		.4byte	0xcb
+ 740 04bb C5040000 		.4byte	0x4c5
+ 741 04bf 0C       		.uleb128 0xc
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccbJ5AiW.s 			page 14
+
+
+ 742 04c0 15010000 		.4byte	0x115
+ 743 04c4 00       		.byte	0
+ 744 04c5 10       		.uleb128 0x10
+ 745 04c6 63000000 		.4byte	.LASF52
+ 746 04ca 04       		.byte	0x4
+ 747 04cb D203     		.2byte	0x3d2
+ 748 04cd B6040000 		.4byte	0x4b6
+ 749 04d1 05       		.uleb128 0x5
+ 750 04d2 03       		.byte	0x3
+ 751 04d3 00000000 		.4byte	EE_th_waswaiting
+ 752 04d7 0B       		.uleb128 0xb
+ 753 04d8 47010000 		.4byte	0x147
+ 754 04dc E6040000 		.4byte	0x4e6
+ 755 04e0 0C       		.uleb128 0xc
+ 756 04e1 15010000 		.4byte	0x115
+ 757 04e5 00       		.byte	0
+ 758 04e6 10       		.uleb128 0x10
+ 759 04e7 7E000000 		.4byte	.LASF53
+ 760 04eb 04       		.byte	0x4
+ 761 04ec EE03     		.2byte	0x3ee
+ 762 04ee F8040000 		.4byte	0x4f8
+ 763 04f2 05       		.uleb128 0x5
+ 764 04f3 03       		.byte	0x3
+ 765 04f4 00000000 		.4byte	EE_th_is_extended
+ 766 04f8 0D       		.uleb128 0xd
+ 767 04f9 D7040000 		.4byte	0x4d7
+ 768 04fd 11       		.uleb128 0x11
+ 769 04fe 9B040000 		.4byte	.LASF54
+ 770 0502 05       		.byte	0x5
+ 771 0503 40       		.byte	0x40
+ 772 0504 AA000000 		.4byte	0xaa
+ 773 0508 11       		.uleb128 0x11
+ 774 0509 69010000 		.4byte	.LASF55
+ 775 050d 05       		.byte	0x5
+ 776 050e 47       		.byte	0x47
+ 777 050f C0000000 		.4byte	0xc0
+ 778 0513 10       		.uleb128 0x10
+ 779 0514 10030000 		.4byte	.LASF56
+ 780 0518 04       		.byte	0x4
+ 781 0519 5C07     		.2byte	0x75c
+ 782 051b AA000000 		.4byte	0xaa
+ 783 051f 05       		.uleb128 0x5
+ 784 0520 03       		.byte	0x3
+ 785 0521 00000000 		.4byte	EE_ApplicationMode
+ 786 0525 11       		.uleb128 0x11
+ 787 0526 42020000 		.4byte	.LASF57
+ 788 052a 06       		.byte	0x6
+ 789 052b 48       		.byte	0x48
+ 790 052c D6000000 		.4byte	0xd6
+ 791 0530 11       		.uleb128 0x11
+ 792 0531 1A010000 		.4byte	.LASF58
+ 793 0535 07       		.byte	0x7
+ 794 0536 44       		.byte	0x44
+ 795 0537 AA000000 		.4byte	0xaa
+ 796 053b 0E       		.uleb128 0xe
+ 797 053c 9B030000 		.4byte	.LASF59
+ 798 0540 04       		.byte	0x4
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccbJ5AiW.s 			page 15
+
+
+ 799 0541 AD       		.byte	0xad
+ 800 0542 E1000000 		.4byte	0xe1
+ 801 0546 05       		.uleb128 0x5
+ 802 0547 03       		.byte	0x3
+ 803 0548 00000000 		.4byte	EE_cortex_mx_IRQ_tos
+ 804 054c 0B       		.uleb128 0xb
+ 805 054d 55000000 		.4byte	0x55
+ 806 0551 5C050000 		.4byte	0x55c
+ 807 0555 0F       		.uleb128 0xf
+ 808 0556 15010000 		.4byte	0x115
+ 809 055a 7F       		.byte	0x7f
+ 810 055b 00       		.byte	0
+ 811 055c 0E       		.uleb128 0xe
+ 812 055d 64020000 		.4byte	.LASF60
+ 813 0561 04       		.byte	0x4
+ 814 0562 32       		.byte	0x32
+ 815 0563 4C050000 		.4byte	0x54c
+ 816 0567 05       		.uleb128 0x5
+ 817 0568 03       		.byte	0x3
+ 818 0569 00000000 		.4byte	EE_cortex_mx_stack_9
+ 819 056d 00       		.byte	0
+ 820              		.section	.debug_abbrev,"",%progbits
+ 821              	.Ldebug_abbrev0:
+ 822 0000 01       		.uleb128 0x1
+ 823 0001 11       		.uleb128 0x11
+ 824 0002 01       		.byte	0x1
+ 825 0003 25       		.uleb128 0x25
+ 826 0004 0E       		.uleb128 0xe
+ 827 0005 13       		.uleb128 0x13
+ 828 0006 0B       		.uleb128 0xb
+ 829 0007 03       		.uleb128 0x3
+ 830 0008 0E       		.uleb128 0xe
+ 831 0009 1B       		.uleb128 0x1b
+ 832 000a 0E       		.uleb128 0xe
+ 833 000b 10       		.uleb128 0x10
+ 834 000c 17       		.uleb128 0x17
+ 835 000d 00       		.byte	0
+ 836 000e 00       		.byte	0
+ 837 000f 02       		.uleb128 0x2
+ 838 0010 24       		.uleb128 0x24
+ 839 0011 00       		.byte	0
+ 840 0012 0B       		.uleb128 0xb
+ 841 0013 0B       		.uleb128 0xb
+ 842 0014 3E       		.uleb128 0x3e
+ 843 0015 0B       		.uleb128 0xb
+ 844 0016 03       		.uleb128 0x3
+ 845 0017 0E       		.uleb128 0xe
+ 846 0018 00       		.byte	0
+ 847 0019 00       		.byte	0
+ 848 001a 03       		.uleb128 0x3
+ 849 001b 24       		.uleb128 0x24
+ 850 001c 00       		.byte	0
+ 851 001d 0B       		.uleb128 0xb
+ 852 001e 0B       		.uleb128 0xb
+ 853 001f 3E       		.uleb128 0x3e
+ 854 0020 0B       		.uleb128 0xb
+ 855 0021 03       		.uleb128 0x3
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccbJ5AiW.s 			page 16
+
+
+ 856 0022 08       		.uleb128 0x8
+ 857 0023 00       		.byte	0
+ 858 0024 00       		.byte	0
+ 859 0025 04       		.uleb128 0x4
+ 860 0026 16       		.uleb128 0x16
+ 861 0027 00       		.byte	0
+ 862 0028 03       		.uleb128 0x3
+ 863 0029 0E       		.uleb128 0xe
+ 864 002a 3A       		.uleb128 0x3a
+ 865 002b 0B       		.uleb128 0xb
+ 866 002c 3B       		.uleb128 0x3b
+ 867 002d 0B       		.uleb128 0xb
+ 868 002e 49       		.uleb128 0x49
+ 869 002f 13       		.uleb128 0x13
+ 870 0030 00       		.byte	0
+ 871 0031 00       		.byte	0
+ 872 0032 05       		.uleb128 0x5
+ 873 0033 0F       		.uleb128 0xf
+ 874 0034 00       		.byte	0
+ 875 0035 0B       		.uleb128 0xb
+ 876 0036 0B       		.uleb128 0xb
+ 877 0037 00       		.byte	0
+ 878 0038 00       		.byte	0
+ 879 0039 06       		.uleb128 0x6
+ 880 003a 0F       		.uleb128 0xf
+ 881 003b 00       		.byte	0
+ 882 003c 0B       		.uleb128 0xb
+ 883 003d 0B       		.uleb128 0xb
+ 884 003e 49       		.uleb128 0x49
+ 885 003f 13       		.uleb128 0x13
+ 886 0040 00       		.byte	0
+ 887 0041 00       		.byte	0
+ 888 0042 07       		.uleb128 0x7
+ 889 0043 15       		.uleb128 0x15
+ 890 0044 00       		.byte	0
+ 891 0045 27       		.uleb128 0x27
+ 892 0046 19       		.uleb128 0x19
+ 893 0047 00       		.byte	0
+ 894 0048 00       		.byte	0
+ 895 0049 08       		.uleb128 0x8
+ 896 004a 13       		.uleb128 0x13
+ 897 004b 01       		.byte	0x1
+ 898 004c 03       		.uleb128 0x3
+ 899 004d 0E       		.uleb128 0xe
+ 900 004e 0B       		.uleb128 0xb
+ 901 004f 0B       		.uleb128 0xb
+ 902 0050 3A       		.uleb128 0x3a
+ 903 0051 0B       		.uleb128 0xb
+ 904 0052 3B       		.uleb128 0x3b
+ 905 0053 0B       		.uleb128 0xb
+ 906 0054 01       		.uleb128 0x1
+ 907 0055 13       		.uleb128 0x13
+ 908 0056 00       		.byte	0
+ 909 0057 00       		.byte	0
+ 910 0058 09       		.uleb128 0x9
+ 911 0059 0D       		.uleb128 0xd
+ 912 005a 00       		.byte	0
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccbJ5AiW.s 			page 17
+
+
+ 913 005b 03       		.uleb128 0x3
+ 914 005c 0E       		.uleb128 0xe
+ 915 005d 3A       		.uleb128 0x3a
+ 916 005e 0B       		.uleb128 0xb
+ 917 005f 3B       		.uleb128 0x3b
+ 918 0060 0B       		.uleb128 0xb
+ 919 0061 49       		.uleb128 0x49
+ 920 0062 13       		.uleb128 0x13
+ 921 0063 38       		.uleb128 0x38
+ 922 0064 0B       		.uleb128 0xb
+ 923 0065 00       		.byte	0
+ 924 0066 00       		.byte	0
+ 925 0067 0A       		.uleb128 0xa
+ 926 0068 16       		.uleb128 0x16
+ 927 0069 00       		.byte	0
+ 928 006a 03       		.uleb128 0x3
+ 929 006b 0E       		.uleb128 0xe
+ 930 006c 3A       		.uleb128 0x3a
+ 931 006d 0B       		.uleb128 0xb
+ 932 006e 3B       		.uleb128 0x3b
+ 933 006f 05       		.uleb128 0x5
+ 934 0070 49       		.uleb128 0x49
+ 935 0071 13       		.uleb128 0x13
+ 936 0072 00       		.byte	0
+ 937 0073 00       		.byte	0
+ 938 0074 0B       		.uleb128 0xb
+ 939 0075 01       		.uleb128 0x1
+ 940 0076 01       		.byte	0x1
+ 941 0077 49       		.uleb128 0x49
+ 942 0078 13       		.uleb128 0x13
+ 943 0079 01       		.uleb128 0x1
+ 944 007a 13       		.uleb128 0x13
+ 945 007b 00       		.byte	0
+ 946 007c 00       		.byte	0
+ 947 007d 0C       		.uleb128 0xc
+ 948 007e 21       		.uleb128 0x21
+ 949 007f 00       		.byte	0
+ 950 0080 49       		.uleb128 0x49
+ 951 0081 13       		.uleb128 0x13
+ 952 0082 00       		.byte	0
+ 953 0083 00       		.byte	0
+ 954 0084 0D       		.uleb128 0xd
+ 955 0085 26       		.uleb128 0x26
+ 956 0086 00       		.byte	0
+ 957 0087 49       		.uleb128 0x49
+ 958 0088 13       		.uleb128 0x13
+ 959 0089 00       		.byte	0
+ 960 008a 00       		.byte	0
+ 961 008b 0E       		.uleb128 0xe
+ 962 008c 34       		.uleb128 0x34
+ 963 008d 00       		.byte	0
+ 964 008e 03       		.uleb128 0x3
+ 965 008f 0E       		.uleb128 0xe
+ 966 0090 3A       		.uleb128 0x3a
+ 967 0091 0B       		.uleb128 0xb
+ 968 0092 3B       		.uleb128 0x3b
+ 969 0093 0B       		.uleb128 0xb
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccbJ5AiW.s 			page 18
+
+
+ 970 0094 49       		.uleb128 0x49
+ 971 0095 13       		.uleb128 0x13
+ 972 0096 3F       		.uleb128 0x3f
+ 973 0097 19       		.uleb128 0x19
+ 974 0098 02       		.uleb128 0x2
+ 975 0099 18       		.uleb128 0x18
+ 976 009a 00       		.byte	0
+ 977 009b 00       		.byte	0
+ 978 009c 0F       		.uleb128 0xf
+ 979 009d 21       		.uleb128 0x21
+ 980 009e 00       		.byte	0
+ 981 009f 49       		.uleb128 0x49
+ 982 00a0 13       		.uleb128 0x13
+ 983 00a1 2F       		.uleb128 0x2f
+ 984 00a2 0B       		.uleb128 0xb
+ 985 00a3 00       		.byte	0
+ 986 00a4 00       		.byte	0
+ 987 00a5 10       		.uleb128 0x10
+ 988 00a6 34       		.uleb128 0x34
+ 989 00a7 00       		.byte	0
+ 990 00a8 03       		.uleb128 0x3
+ 991 00a9 0E       		.uleb128 0xe
+ 992 00aa 3A       		.uleb128 0x3a
+ 993 00ab 0B       		.uleb128 0xb
+ 994 00ac 3B       		.uleb128 0x3b
+ 995 00ad 05       		.uleb128 0x5
+ 996 00ae 49       		.uleb128 0x49
+ 997 00af 13       		.uleb128 0x13
+ 998 00b0 3F       		.uleb128 0x3f
+ 999 00b1 19       		.uleb128 0x19
+ 1000 00b2 02       		.uleb128 0x2
+ 1001 00b3 18       		.uleb128 0x18
+ 1002 00b4 00       		.byte	0
+ 1003 00b5 00       		.byte	0
+ 1004 00b6 11       		.uleb128 0x11
+ 1005 00b7 34       		.uleb128 0x34
+ 1006 00b8 00       		.byte	0
+ 1007 00b9 03       		.uleb128 0x3
+ 1008 00ba 0E       		.uleb128 0xe
+ 1009 00bb 3A       		.uleb128 0x3a
+ 1010 00bc 0B       		.uleb128 0xb
+ 1011 00bd 3B       		.uleb128 0x3b
+ 1012 00be 0B       		.uleb128 0xb
+ 1013 00bf 49       		.uleb128 0x49
+ 1014 00c0 13       		.uleb128 0x13
+ 1015 00c1 3F       		.uleb128 0x3f
+ 1016 00c2 19       		.uleb128 0x19
+ 1017 00c3 3C       		.uleb128 0x3c
+ 1018 00c4 19       		.uleb128 0x19
+ 1019 00c5 00       		.byte	0
+ 1020 00c6 00       		.byte	0
+ 1021 00c7 00       		.byte	0
+ 1022              		.section	.debug_aranges,"",%progbits
+ 1023 0000 14000000 		.4byte	0x14
+ 1024 0004 0200     		.2byte	0x2
+ 1025 0006 00000000 		.4byte	.Ldebug_info0
+ 1026 000a 04       		.byte	0x4
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccbJ5AiW.s 			page 19
+
+
+ 1027 000b 00       		.byte	0
+ 1028 000c 0000     		.2byte	0
+ 1029 000e 0000     		.2byte	0
+ 1030 0010 00000000 		.4byte	0
+ 1031 0014 00000000 		.4byte	0
+ 1032              		.section	.debug_line,"",%progbits
+ 1033              	.Ldebug_line0:
+ 1034 0000 38010000 		.section	.debug_str,"MS",%progbits,1
+ 1034      02003201 
+ 1034      00000201 
+ 1034      FB0E0D00 
+ 1034      01010101 
+ 1035              	.LASF27:
+ 1036 0000 45455F63 		.ascii	"EE_cortex_mx_active_tos\000"
+ 1036      6F727465 
+ 1036      785F6D78 
+ 1036      5F616374 
+ 1036      6976655F 
+ 1037              	.LASF48:
+ 1038 0018 45455F72 		.ascii	"EE_rq_bitmask\000"
+ 1038      715F6269 
+ 1038      746D6173 
+ 1038      6B00
+ 1039              	.LASF15:
+ 1040 0026 45455F55 		.ascii	"EE_UREG\000"
+ 1040      52454700 
+ 1041              	.LASF49:
+ 1042 002e 45455F72 		.ascii	"EE_rq_free\000"
+ 1042      715F6672 
+ 1042      656500
+ 1043              	.LASF26:
+ 1044 0039 45455F63 		.ascii	"EE_cortex_mx_system_tos\000"
+ 1044      6F727465 
+ 1044      785F6D78 
+ 1044      5F737973 
+ 1044      74656D5F 
+ 1045              	.LASF24:
+ 1046 0051 45455F74 		.ascii	"EE_terminate_data\000"
+ 1046      65726D69 
+ 1046      6E617465 
+ 1046      5F646174 
+ 1046      6100
+ 1047              	.LASF52:
+ 1048 0063 45455F74 		.ascii	"EE_th_waswaiting\000"
+ 1048      685F7761 
+ 1048      73776169 
+ 1048      74696E67 
+ 1048      00
+ 1049              	.LASF2:
+ 1050 0074 73686F72 		.ascii	"short int\000"
+ 1050      7420696E 
+ 1050      7400
+ 1051              	.LASF53:
+ 1052 007e 45455F74 		.ascii	"EE_th_is_extended\000"
+ 1052      685F6973 
+ 1052      5F657874 
+ 1052      656E6465 
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccbJ5AiW.s 			page 20
+
+
+ 1052      6400
+ 1053              	.LASF21:
+ 1054 0090 73697A65 		.ascii	"sizetype\000"
+ 1054      74797065 
+ 1054      00
+ 1055              	.LASF28:
+ 1056 0099 45455F74 		.ascii	"EE_th_rnact_max\000"
+ 1056      685F726E 
+ 1056      6163745F 
+ 1056      6D617800 
+ 1057              	.LASF17:
+ 1058 00a9 45455F46 		.ascii	"EE_FREG\000"
+ 1058      52454700 
+ 1059              	.LASF62:
+ 1060 00b1 47656E65 		.ascii	"Generated_Source\\PSoC5\\ErikaOS_2_eecfg.c\000"
+ 1060      72617465 
+ 1060      645F536F 
+ 1060      75726365 
+ 1060      5C50536F 
+ 1061              	.LASF29:
+ 1062 00da 45455F74 		.ascii	"EE_th_ready_prio\000"
+ 1062      685F7265 
+ 1062      6164795F 
+ 1062      7072696F 
+ 1062      00
+ 1063              	.LASF44:
+ 1064 00eb 45455F72 		.ascii	"EE_rq_queues_head\000"
+ 1064      715F7175 
+ 1064      65756573 
+ 1064      5F686561 
+ 1064      6400
+ 1065              	.LASF19:
+ 1066 00fd 45455F54 		.ascii	"EE_TID\000"
+ 1066      494400
+ 1067              	.LASF34:
+ 1068 0104 45455F41 		.ascii	"EE_ALARM_NAME\000"
+ 1068      4C41524D 
+ 1068      5F4E414D 
+ 1068      4500
+ 1069              	.LASF13:
+ 1070 0112 45455F41 		.ascii	"EE_ADDR\000"
+ 1070      44445200 
+ 1071              	.LASF58:
+ 1072 011a 45455F49 		.ascii	"EE_IRQ_nesting_level\000"
+ 1072      52515F6E 
+ 1072      65737469 
+ 1072      6E675F6C 
+ 1072      6576656C 
+ 1073              	.LASF22:
+ 1074 012f 45455F68 		.ascii	"EE_hal_thread_body\000"
+ 1074      616C5F74 
+ 1074      68726561 
+ 1074      645F626F 
+ 1074      647900
+ 1075              	.LASF6:
+ 1076 0142 6C6F6E67 		.ascii	"long long int\000"
+ 1076      206C6F6E 
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccbJ5AiW.s 			page 21
+
+
+ 1076      6720696E 
+ 1076      7400
+ 1077              	.LASF20:
+ 1078 0150 45455F54 		.ascii	"EE_TYPE_RQ_MASK\000"
+ 1078      5950455F 
+ 1078      52515F4D 
+ 1078      41534B00 
+ 1079              	.LASF4:
+ 1080 0160 6C6F6E67 		.ascii	"long int\000"
+ 1080      20696E74 
+ 1080      00
+ 1081              	.LASF55:
+ 1082 0169 45455F6F 		.ascii	"EE_oo_IRQ_suspend_status\000"
+ 1082      6F5F4952 
+ 1082      515F7375 
+ 1082      7370656E 
+ 1082      645F7374 
+ 1083              	.LASF35:
+ 1084 0182 45455F45 		.ascii	"EE_EVENT_ID\000"
+ 1084      56454E54 
+ 1084      5F494400 
+ 1085              	.LASF25:
+ 1086 018e 45455F74 		.ascii	"EE_terminate_real_th_body\000"
+ 1086      65726D69 
+ 1086      6E617465 
+ 1086      5F726561 
+ 1086      6C5F7468 
+ 1087              	.LASF46:
+ 1088 01a8 45455F72 		.ascii	"EE_rq_pairs_next\000"
+ 1088      715F7061 
+ 1088      6972735F 
+ 1088      6E657874 
+ 1088      00
+ 1089              	.LASF42:
+ 1090 01b9 45455F73 		.ascii	"EE_sys_ceiling\000"
+ 1090      79735F63 
+ 1090      65696C69 
+ 1090      6E6700
+ 1091              	.LASF9:
+ 1092 01c8 6C6F6E67 		.ascii	"long double\000"
+ 1092      20646F75 
+ 1092      626C6500 
+ 1093              	.LASF1:
+ 1094 01d4 756E7369 		.ascii	"unsigned char\000"
+ 1094      676E6564 
+ 1094      20636861 
+ 1094      7200
+ 1095              	.LASF12:
+ 1096 01e2 45455F55 		.ascii	"EE_UINT32\000"
+ 1096      494E5433 
+ 1096      3200
+ 1097              	.LASF16:
+ 1098 01ec 45455F53 		.ascii	"EE_SREG\000"
+ 1098      52454700 
+ 1099              	.LASF0:
+ 1100 01f4 7369676E 		.ascii	"signed char\000"
+ 1100      65642063 
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccbJ5AiW.s 			page 22
+
+
+ 1100      68617200 
+ 1101              	.LASF7:
+ 1102 0200 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1102      206C6F6E 
+ 1102      6720756E 
+ 1102      7369676E 
+ 1102      65642069 
+ 1103              	.LASF23:
+ 1104 0217 45455F73 		.ascii	"EE_std_thread_tos\000"
+ 1104      74645F74 
+ 1104      68726561 
+ 1104      645F746F 
+ 1104      7300
+ 1105              	.LASF8:
+ 1106 0229 756E7369 		.ascii	"unsigned int\000"
+ 1106      676E6564 
+ 1106      20696E74 
+ 1106      00
+ 1107              	.LASF39:
+ 1108 0236 45455F74 		.ascii	"EE_th_rnact\000"
+ 1108      685F726E 
+ 1108      61637400 
+ 1109              	.LASF57:
+ 1110 0242 45455F73 		.ascii	"EE_std_endcycle_next_tid\000"
+ 1110      74645F65 
+ 1110      6E646379 
+ 1110      636C655F 
+ 1110      6E657874 
+ 1111              	.LASF11:
+ 1112 025b 45455F49 		.ascii	"EE_INT32\000"
+ 1112      4E543332 
+ 1112      00
+ 1113              	.LASF60:
+ 1114 0264 45455F63 		.ascii	"EE_cortex_mx_stack_9\000"
+ 1114      6F727465 
+ 1114      785F6D78 
+ 1114      5F737461 
+ 1114      636B5F39 
+ 1115              	.LASF63:
+ 1116 0279 433A5C55 		.ascii	"C:\\Users\\bolob\\Documents\\PSoC Creator\\Clock\\E"
+ 1116      73657273 
+ 1116      5C626F6C 
+ 1116      6F625C44 
+ 1116      6F63756D 
+ 1117 02a6 6C656374 		.ascii	"lectronic_Clock.cydsn\000"
+ 1117      726F6E69 
+ 1117      635F436C 
+ 1117      6F636B2E 
+ 1117      63796473 
+ 1118              	.LASF3:
+ 1119 02bc 73686F72 		.ascii	"short unsigned int\000"
+ 1119      7420756E 
+ 1119      7369676E 
+ 1119      65642069 
+ 1119      6E7400
+ 1120              	.LASF32:
+ 1121 02cf 45455F54 		.ascii	"EE_TASK_NAME\000"
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccbJ5AiW.s 			page 23
+
+
+ 1121      41534B5F 
+ 1121      4E414D45 
+ 1121      00
+ 1122              	.LASF31:
+ 1123 02dc 63686172 		.ascii	"char\000"
+ 1123      00
+ 1124              	.LASF10:
+ 1125 02e1 45455F55 		.ascii	"EE_UINT16\000"
+ 1125      494E5431 
+ 1125      3600
+ 1126              	.LASF43:
+ 1127 02eb 45455F72 		.ascii	"EE_rq_link\000"
+ 1127      715F6C69 
+ 1127      6E6B00
+ 1128              	.LASF36:
+ 1129 02f6 45455F41 		.ascii	"EE_ALARM_ID\000"
+ 1129      4C41524D 
+ 1129      5F494400 
+ 1130              	.LASF14:
+ 1131 0302 45455F54 		.ascii	"EE_THREAD_PTR\000"
+ 1131      48524541 
+ 1131      445F5054 
+ 1131      5200
+ 1132              	.LASF56:
+ 1133 0310 45455F41 		.ascii	"EE_ApplicationMode\000"
+ 1133      70706C69 
+ 1133      63617469 
+ 1133      6F6E4D6F 
+ 1133      646500
+ 1134              	.LASF5:
+ 1135 0323 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1135      20756E73 
+ 1135      69676E65 
+ 1135      6420696E 
+ 1135      7400
+ 1136              	.LASF50:
+ 1137 0335 45455F74 		.ascii	"EE_th_event_active\000"
+ 1137      685F6576 
+ 1137      656E745F 
+ 1137      61637469 
+ 1137      766500
+ 1138              	.LASF18:
+ 1139 0348 45455F54 		.ascii	"EE_TYPEBOOL\000"
+ 1139      59504542 
+ 1139      4F4F4C00 
+ 1140              	.LASF41:
+ 1141 0354 45455F73 		.ascii	"EE_stkfirst\000"
+ 1141      746B6669 
+ 1141      72737400 
+ 1142              	.LASF51:
+ 1143 0360 45455F74 		.ascii	"EE_th_event_waitmask\000"
+ 1143      685F6576 
+ 1143      656E745F 
+ 1143      77616974 
+ 1143      6D61736B 
+ 1144              	.LASF47:
+ 1145 0375 45455F72 		.ascii	"EE_rq_pairs_tid\000"
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccbJ5AiW.s 			page 24
+
+
+ 1145      715F7061 
+ 1145      6972735F 
+ 1145      74696400 
+ 1146              	.LASF65:
+ 1147 0385 5359535F 		.ascii	"SYS_tos\000"
+ 1147      746F7300 
+ 1148              	.LASF33:
+ 1149 038d 45455F45 		.ascii	"EE_EVENT_NAME\000"
+ 1149      56454E54 
+ 1149      5F4E414D 
+ 1149      4500
+ 1150              	.LASF59:
+ 1151 039b 45455F63 		.ascii	"EE_cortex_mx_IRQ_tos\000"
+ 1151      6F727465 
+ 1151      785F6D78 
+ 1151      5F495251 
+ 1151      5F746F73 
+ 1152              	.LASF64:
+ 1153 03b0 45455F54 		.ascii	"EE_TOS\000"
+ 1153      4F5300
+ 1154              	.LASF40:
+ 1155 03b7 45455F74 		.ascii	"EE_th_terminate_nextask\000"
+ 1155      685F7465 
+ 1155      726D696E 
+ 1155      6174655F 
+ 1155      6E657874 
+ 1156              	.LASF37:
+ 1157 03cf 45455F74 		.ascii	"EE_th_status\000"
+ 1157      685F7374 
+ 1157      61747573 
+ 1157      00
+ 1158              	.LASF30:
+ 1159 03dc 45455F74 		.ascii	"EE_th_dispatch_prio\000"
+ 1159      685F6469 
+ 1159      73706174 
+ 1159      63685F70 
+ 1159      72696F00 
+ 1160              	.LASF38:
+ 1161 03f0 45455F74 		.ascii	"EE_th_next\000"
+ 1161      685F6E65 
+ 1161      787400
+ 1162              	.LASF45:
+ 1163 03fb 45455F72 		.ascii	"EE_rq_queues_tail\000"
+ 1163      715F7175 
+ 1163      65756573 
+ 1163      5F746169 
+ 1163      6C00
+ 1164              	.LASF61:
+ 1165 040d 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1165      43313120 
+ 1165      352E342E 
+ 1165      31203230 
+ 1165      31363036 
+ 1166 0440 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1166      20726576 
+ 1166      6973696F 
+ 1166      6E203233 
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccbJ5AiW.s 			page 25
+
+
+ 1166      37373135 
+ 1167 0473 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1167      66756E63 
+ 1167      74696F6E 
+ 1167      2D736563 
+ 1167      74696F6E 
+ 1168              	.LASF54:
+ 1169 049b 45455F6F 		.ascii	"EE_oo_IRQ_disable_count\000"
+ 1169      6F5F4952 
+ 1169      515F6469 
+ 1169      7361626C 
+ 1169      655F636F 
+ 1170              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

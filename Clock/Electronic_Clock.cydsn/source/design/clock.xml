@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rte>
+ <configset>
+  <config name="version" value="Erika 2"/>
+  <config name="path_out" value="{PROJECT_PATH}\.."/>
+  <config name="templateDir" value="{GEN_PATH}\..\templates\erika"/>
+  <config name="userCodeStart" value="/\* USER CODE START {TAG} \*/"/>
+  <config name="userCodeEnd" value="/\* USER CODE END {TAG} \*/"/>
+  <config name="guivers" value="0.1.2"/>
+ </configset>
+ <naming>
+  <config name="signalpoolPrefix" value="sp_"/>
+  <config name="signalpoolPostfix" value=""/>
+  <config name="taskPrefix" value="tsk_"/>
+  <config name="taskPostfix" value=""/>
+  <config name="signalclassPrefix" value="sc_"/>
+  <config name="signalclassPostfix" value=""/>
+  <config name="signalobjectPrefix" value="so_"/>
+  <config name="signalobjectPostfix" value=""/>
+  <config name="swcPrefix" value="swc_"/>
+  <config name="swcPostfix" value=""/>
+  <config name="runnablePrefix" value=""/>
+  <config name="runnablePostfix" value="_run"/>
+  <config name="eventPrefix" value="ev_"/>
+  <config name="eventPostfix" value=""/>
+  <config name="resourcePrefix" value="res_"/>
+  <config name="resourcePostfix" value=""/>
+  <config name="addrPrefix" value="ADR_"/>
+  <config name="addrStartPostfix" value="_START"/>
+  <config name="addrEndPostfix" value="_END"/>
+ </naming>
+ <signalpools>
+  <signalpool description="The common gloabl signal pool, all signals will be stored here." endaddr="ADR_SP_COMMON_END" name="sp_common" shortname="common" startaddr="ADR_SP_COMMON_START"/>
+ </signalpools>
+ <tasks>
+  <task description="This task will contain all IO operations, e. g. butons, display, ..." events="" mode="Cyclic" name="tsk_io" shortname="io" signalpoolsRO="sp_common" signalpoolsRW="sp_common" tickEvent="0" timertickperiod="1"/>
+  <task description="Task will call the application code (control algorithm, ADAS functions,..)" events="" mode="Event" name="tsk_control" shortname="control" signalpoolsRO="sp_common" signalpoolsRW="sp_common" tickEvent="0" timertickperiod="1"/>
+ </tasks>
+ <signalclasses>
+  <signalclass description="Signalclass" name="sc_event" shortname="event"/>
+  <signalclass description="Signalclass" name="sc_displayData" shortname="displayData"/>
+ </signalclasses>
+ <signalobjects>
+  <signalobject description="A Signal" indriver="default" name="so_event" onDataError="0" onDataUpdate="ev_event_onData" outdriver="default" resource="None" shortname="event" signalclass="sc_event" signalpool="sp_common"/>
+  <signalobject description="A Signal" indriver="default" name="so_displayData" onDataError="0" onDataUpdate="0" outdriver="default" resource="None" shortname="displayData" signalclass="sc_displayData" signalpool="sp_common"/>
+ </signalobjects>
+ <swcs>
+  <swc description="Software component representing the functionality of the clock" name="swc_Clock" shortname="Clock"/>
+ </swcs>
+ <runnables>
+  <runnable component="swc_Clock" cycletime="50" description="Runnable" events="" name="CLOCK_input_run" shortname="input" signalIN="" signalOUT="so_event" task="tsk_io"/>
+  <runnable component="swc_Clock" cycletime="0" description="Statemachine runnable" events="ev_event_onData" name="CLOCK_contol_run" shortname="contol" signalIN="so_event" signalOUT="so_displayData" task="tsk_control"/>
+  <runnable component="swc_Clock" cycletime="250" description="TFT display runnable" events="" name="CLOCK_display_run" shortname="display" signalIN="so_displayData" signalOUT="" task="tsk_io"/>
+ </runnables>
+ <events>
+  <event description="A Event" name="ev_event_onData" shortname="event_onData"/>
+ </events>
+ <resources/>
+</rte>

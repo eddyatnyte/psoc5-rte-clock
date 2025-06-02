@@ -1,0 +1,48 @@
+--------------- Build Started: 06/02/2025 20:43:20 Project: Electronic_Clock, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+The code generation step is up to date.
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\source\asw -I.\source\bsw -I.\source\rte -I.\source\bsw\tft\fonts -I.\source\bsw\Services -I.\source\bsw\tft -I.\source\bsw\labboard -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/clock_widget.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c clock_widget.c -o .\CortexM3\ARM_GCC_541\Debug\clock_widget.o
+In file included from .\source\rte/sc_event_type.h:15:0,
+                 from clock_container.h:15,
+                 from clock_widget.h:17,
+                 from clock_widget.c:12:
+.\source\rte/rte_types.h:46:0: warning: "GetResource" redefined
+     #define GetResource(A)
+ ^
+In file included from Generated_Source\PSoC5/ErikaOS_1_ee_api.inc:73:0,
+                 from Generated_Source\PSoC5/ErikaOS_1_ee.h:129,
+                 from Generated_Source\PSoC5/project.h:47,
+                 from .\source\rte/sc_event_type.h:13,
+                 from clock_container.h:15,
+                 from clock_widget.h:17,
+                 from clock_widget.c:12:
+Generated_Source\PSoC5/ErikaOS_1_ee_oo_api.inc:136:0: note: this is the location of the previous definition
+ #define GetResource               EE_oo_GetResource
+ ^
+In file included from .\source\rte/sc_event_type.h:15:0,
+                 from clock_container.h:15,
+                 from clock_widget.h:17,
+                 from clock_widget.c:12:
+.\source\rte/rte_types.h:47:0: warning: "ReleaseResource" redefined
+     #define ReleaseResource(A)
+ ^
+In file included from Generated_Source\PSoC5/ErikaOS_1_ee_api.inc:73:0,
+                 from Generated_Source\PSoC5/ErikaOS_1_ee.h:129,
+                 from Generated_Source\PSoC5/project.h:47,
+                 from .\source\rte/sc_event_type.h:13,
+                 from clock_container.h:15,
+                 from clock_widget.h:17,
+                 from clock_widget.c:12:
+Generated_Source\PSoC5/ErikaOS_1_ee_oo_api.inc:140:0: note: this is the location of the previous definition
+ #define ReleaseResource           EE_oo_ReleaseResource
+ ^
+arm-none-eabi-ar.exe -rs .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_activate.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_alcancel.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_alget.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_algetbase.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_alsetabs.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_alsetrel.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_altick.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_chaintas.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_evclear.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_evget.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_evset.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_evwait.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_force_schedule.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_getcountervalue.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_getelapsedvalue.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_gettaskid.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_gettaskstate.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_iparam.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_irqendin.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_lockres.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_lookup.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_rq_exchg.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_rq_first.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_rq_inser.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_schedule.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_semgetvalue.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_sempost.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_semtrywait.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_semwait.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_shtdown.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_startos.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_terminat.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_thendin.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_tnterm.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_tstub.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_ulockallres.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_ulockres.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_cortex_mx_ee_context.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_cortex_mx_ee_system_timer.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_cortex_mx_ee_utils.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_common_ee_hal_structs.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_eecfg.o .\CortexM3\ARM_GCC_541\Debug\CyDmac.o .\CortexM3\ARM_GCC_541\Debug\CyFlash.o .\CortexM3\ARM_GCC_541\Debug\CyLib.o .\CortexM3\ARM_GCC_541\Debug\cyPm.o .\CortexM3\ARM_GCC_541\Debug\CySpc.o .\CortexM3\ARM_GCC_541\Debug\cyutils.o .\CortexM3\ARM_GCC_541\Debug\cy_em_eeprom.o .\CortexM3\ARM_GCC_541\Debug\green_LED.o .\CortexM3\ARM_GCC_541\Debug\yellow_LED.o .\CortexM3\ARM_GCC_541\Debug\red_LED.o .\CortexM3\ARM_GCC_541\Debug\Clock_1.o .\CortexM3\ARM_GCC_541\Debug\UART_LOG.o .\CortexM3\ARM_GCC_541\Debug\UART_LOG_PM.o .\CortexM3\ARM_GCC_541\Debug\UART_LOG_INT.o .\CortexM3\ARM_GCC_541\Debug\UART_LOG_BOOT.o .\CortexM3\ARM_GCC_541\Debug\UART_LOG_IntClock.o .\CortexM3\ARM_GCC_541\Debug\Button_1.o .\CortexM3\ARM_GCC_541\Debug\Button_2.o .\CortexM3\ARM_GCC_541\Debug\Button_3.o .\CortexM3\ARM_GCC_541\Debug\Button_4.o .\CortexM3\ARM_GCC_541\Debug\TFT_CS.o .\CortexM3\ARM_GCC_541\Debug\TFT_DC.o .\CortexM3\ARM_GCC_541\Debug\TFT_RES.o .\CortexM3\ARM_GCC_541\Debug\TFT_SPI.o .\CortexM3\ARM_GCC_541\Debug\TFT_SPI_PM.o .\CortexM3\ARM_GCC_541\Debug\TFT_SPI_INT.o .\CortexM3\ARM_GCC_541\Debug\TFT_SDA.o .\CortexM3\ARM_GCC_541\Debug\TFT_SCL.o .\CortexM3\ARM_GCC_541\Debug\TFT_LED.o .\CortexM3\ARM_GCC_541\Debug\TFT_SPI_IntClock.o .\CortexM3\ARM_GCC_541\Debug\TFT_BackLight.o .\CortexM3\ARM_GCC_541\Debug\TFT_BackLight_PM.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_gnu_change_context_isr.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_gnu_irq_stack.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_gnu_multi_context.o .\CortexM3\ARM_GCC_541\Debug\ErikaOS_1_ee_gnu_oo.o .\CortexM3\ARM_GCC_541\Debug\CyBootAsmGnu.o
+arm-none-eabi-ar.exe: creating .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a
+arm-none-eabi-gcc.exe -Wl,--start-group -o "C:\Users\bolob\Documents\PSoC Creator\Clock\Electronic_Clock.cydsn\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.elf" .\CortexM3\ARM_GCC_541\Debug\tft.o .\CortexM3\ARM_GCC_541\Debug\logging.o .\CortexM3\ARM_GCC_541\Debug\main.o .\CortexM3\ARM_GCC_541\Debug\swc_clock.o .\CortexM3\ARM_GCC_541\Debug\tsk_control.o .\CortexM3\ARM_GCC_541\Debug\tsk_io.o .\CortexM3\ARM_GCC_541\Debug\clock_container.o .\CortexM3\ARM_GCC_541\Debug\clock_widget.o .\CortexM3\ARM_GCC_541\Debug\rte.o .\CortexM3\ARM_GCC_541\Debug\sc_displaydata.o .\CortexM3\ARM_GCC_541\Debug\sc_event.o .\CortexM3\ARM_GCC_541\Debug\sp_common.o .\CortexM3\ARM_GCC_541\Debug\sc_displaydata_type.o .\CortexM3\ARM_GCC_541\Debug\sc_event_type.o .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o .\CortexM3\ARM_GCC_541\Debug\cymetadata.o .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o .\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.a "C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_541\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -L Generated_Source\PSoC5 -Wl,-Map,.\CortexM3\ARM_GCC_541\Debug/Electronic_Clock.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -Og -ffat-lto-objects -Wl,--end-group
+cyelftool.exe -C "C:\Users\bolob\Documents\PSoC Creator\Clock\Electronic_Clock.cydsn\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.elf" --flash_row_size 256 --flash_size 262144 --flash_offset 0x00000000
+No ELF section .cychecksum found, creating one
+Application checksum calculated and stored in ELF section .cychecksum
+Checksum calculated and stored in ELF section .cymeta
+cyelftool.exe -S "C:\Users\bolob\Documents\PSoC Creator\Clock\Electronic_Clock.cydsn\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.elf"
+Flash used: 15224 of 262144 bytes (5,8 %).
+SRAM used: 4785 of 65536 bytes (7,3 %). Stack: 2048 bytes. Heap: 128 bytes.
+--------------- Build Succeeded: 06/02/2025 20:43:21 ---------------

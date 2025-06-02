@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Clock\Electronic_Clock\rte\sc_event_type.c">
+<ExpandedNodeIds>
+<v>Clock</v>
+<v>Clock\Electronic_Clock</v>
+<v>Clock\Electronic_Clock\TopDesign</v>
+<v>Clock\Electronic_Clock\Electronic_Clock.cydwr</v>
+<v>Clock\Electronic_Clock\Electronic_Clock.cydwr\Pins</v>
+<v>Clock\Electronic_Clock\Electronic_Clock.cydwr\Analog</v>
+<v>Clock\Electronic_Clock\Electronic_Clock.cydwr\Clocks</v>
+<v>Clock\Electronic_Clock\Electronic_Clock.cydwr\Interrupts</v>
+<v>Clock\Electronic_Clock\Electronic_Clock.cydwr\DMA</v>
+<v>Clock\Electronic_Clock\Electronic_Clock.cydwr\System</v>
+<v>Clock\Electronic_Clock\Electronic_Clock.cydwr\Directives</v>
+<v>Clock\Electronic_Clock\Electronic_Clock.cydwr\Flash Security</v>
+<v>Clock\Electronic_Clock\Electronic_Clock.cydwr\EEPROM</v>
+<v>Clock\Electronic_Clock\asw</v>
+<v>Clock\Electronic_Clock\asw\clock_common.h</v>
+<v>Clock\Electronic_Clock\asw\clock_container.c</v>
+<v>Clock\Electronic_Clock\asw\clock_container.h</v>
+<v>Clock\Electronic_Clock\asw\clock_widget.c</v>
+<v>Clock\Electronic_Clock\asw\clock_widget.h</v>
+<v>Clock\Electronic_Clock\asw\main.c</v>
+<v>Clock\Electronic_Clock\asw\swc_clock.c</v>
+<v>Clock\Electronic_Clock\asw\swc_clock.h</v>
+<v>Clock\Electronic_Clock\asw\tsk_control.c</v>
+<v>Clock\Electronic_Clock\asw\tsk_control.h</v>
+<v>Clock\Electronic_Clock\asw\tsk_io.c</v>
+<v>Clock\Electronic_Clock\asw\tsk_io.h</v>
+<v>Clock\Electronic_Clock\bsw</v>
+<v>Clock\Electronic_Clock\bsw\Services\logging.c</v>
+<v>Clock\Electronic_Clock\bsw\Services\logging.h</v>
+<v>Clock\Electronic_Clock\bsw\Services\logging_cfg.h</v>
+<v>Clock\Electronic_Clock\bsw\Services\math_helper.h</v>
+<v>Clock\Electronic_Clock\bsw\Services\ringbuffer.h</v>
+<v>Clock\Electronic_Clock\bsw\tft</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeMono12pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeMono18pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeMono24pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeMono9pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeMonoBold12pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeMonoBold18pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeMonoBold24pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeMonoBold9pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeMonoBoldOblique12pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeMonoBoldOblique18pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeMonoBoldOblique24pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeMonoBoldOblique9pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeMonoOblique12pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeMonoOblique18pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeMonoOblique24pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeMonoOblique9pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSans12pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSans18pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSans24pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSans9pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSansBold12pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSansBold18pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSansBold24pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSansBold9pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSansBoldOblique12pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSansBoldOblique18pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSansBoldOblique24pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSansBoldOblique9pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSansOblique12pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSansOblique18pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSansOblique24pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSansOblique9pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSerif12pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSerif18pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSerif24pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSerif9pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSerifBold12pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSerifBold18pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSerifBold24pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSerifBold9pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSerifBoldItalic12pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSerifBoldItalic18pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSerifBoldItalic24pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSerifBoldItalic9pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSerifItalic12pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSerifItalic18pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSerifItalic24pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\FreeSerifItalic9pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\glcdfont.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\Org_01.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\Picopixel.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\Tiny3x3a2pt7b.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts\TomThumb.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\ST7735.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\tft.c</v>
+<v>Clock\Electronic_Clock\bsw\tft\tft.h</v>
+<v>Clock\Electronic_Clock\bsw\derivate.h</v>
+<v>Clock\Electronic_Clock\bsw\global.h</v>
+<v>Clock\Electronic_Clock\rte</v>
+<v>Clock\Electronic_Clock\rte\rte.c</v>
+<v>Clock\Electronic_Clock\rte\rte.h</v>
+<v>Clock\Electronic_Clock\rte\rte_types.h</v>
+<v>Clock\Electronic_Clock\rte\sc_displaydata.c</v>
+<v>Clock\Electronic_Clock\rte\sc_displaydata.h</v>
+<v>Clock\Electronic_Clock\rte\sc_displaydata_type.c</v>
+<v>Clock\Electronic_Clock\rte\sc_displaydata_type.h</v>
+<v>Clock\Electronic_Clock\rte\sc_event.c</v>
+<v>Clock\Electronic_Clock\rte\sc_event.h</v>
+<v>Clock\Electronic_Clock\rte\sc_event_type.c</v>
+<v>Clock\Electronic_Clock\rte\sc_event_type.h</v>
+<v>Clock\Electronic_Clock\rte\sp_common.c</v>
+<v>Clock\Electronic_Clock\rte\sp_common.h</v>
+<v>Clock\Electronic_Clock\Generated_Source\PSoC5</v>
+<v>Clock\Electronic_Clock\Generated_Source\PSoC5\Button_1</v>
+<v>Clock\Electronic_Clock\Generated_Source\PSoC5\Button_3</v>
+<v>Clock\Electronic_Clock\Generated_Source\PSoC5\green_LED</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Clock</v>
+<v>Clock\Electronic_Clock</v>
+<v>Clock\Electronic_Clock\TopDesign</v>
+<v>Clock\Electronic_Clock\Electronic_Clock.cydwr</v>
+<v>Clock\Electronic_Clock\Electronic_Clock.cydwr\Pins</v>
+<v>Clock\Electronic_Clock\Electronic_Clock.cydwr\Analog</v>
+<v>Clock\Electronic_Clock\Electronic_Clock.cydwr\Clocks</v>
+<v>Clock\Electronic_Clock\Electronic_Clock.cydwr\Interrupts</v>
+<v>Clock\Electronic_Clock\Electronic_Clock.cydwr\DMA</v>
+<v>Clock\Electronic_Clock\Electronic_Clock.cydwr\System</v>
+<v>Clock\Electronic_Clock\Electronic_Clock.cydwr\Directives</v>
+<v>Clock\Electronic_Clock\Electronic_Clock.cydwr\Flash Security</v>
+<v>Clock\Electronic_Clock\Electronic_Clock.cydwr\EEPROM</v>
+<v>Clock\Electronic_Clock\asw</v>
+<v>Clock\Electronic_Clock\asw\clock_common.h</v>
+<v>Clock\Electronic_Clock\asw\clock_container.c</v>
+<v>Clock\Electronic_Clock\asw\clock_container.h</v>
+<v>Clock\Electronic_Clock\asw\clock_widget.c</v>
+<v>Clock\Electronic_Clock\asw\clock_widget.h</v>
+<v>Clock\Electronic_Clock\asw\main.c</v>
+<v>Clock\Electronic_Clock\asw\swc_clock.c</v>
+<v>Clock\Electronic_Clock\asw\swc_clock.h</v>
+<v>Clock\Electronic_Clock\asw\tsk_control.c</v>
+<v>Clock\Electronic_Clock\asw\tsk_control.h</v>
+<v>Clock\Electronic_Clock\asw\tsk_io.c</v>
+<v>Clock\Electronic_Clock\asw\tsk_io.h</v>
+<v>Clock\Electronic_Clock\bsw</v>
+<v>Clock\Electronic_Clock\bsw\Services</v>
+<v>Clock\Electronic_Clock\bsw\tft</v>
+<v>Clock\Electronic_Clock\bsw\tft\fonts</v>
+<v>Clock\Electronic_Clock\bsw\tft\ST7735.h</v>
+<v>Clock\Electronic_Clock\bsw\tft\tft.c</v>
+<v>Clock\Electronic_Clock\bsw\tft\tft.h</v>
+<v>Clock\Electronic_Clock\bsw\derivate.h</v>
+<v>Clock\Electronic_Clock\bsw\global.h</v>
+<v>Clock\Electronic_Clock\rte</v>
+<v>Clock\Electronic_Clock\rte\rte.c</v>
+<v>Clock\Electronic_Clock\rte\rte.h</v>
+<v>Clock\Electronic_Clock\rte\rte_types.h</v>
+<v>Clock\Electronic_Clock\rte\sc_displaydata.c</v>
+<v>Clock\Electronic_Clock\rte\sc_displaydata.h</v>
+<v>Clock\Electronic_Clock\rte\sc_displaydata_type.c</v>
+<v>Clock\Electronic_Clock\rte\sc_displaydata_type.h</v>
+<v>Clock\Electronic_Clock\rte\sc_event.c</v>
+<v>Clock\Electronic_Clock\rte\sc_event.h</v>
+<v>Clock\Electronic_Clock\rte\sc_event_type.c</v>
+<v>Clock\Electronic_Clock\rte\sc_event_type.h</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Clock">
+<ExpandedNodeIds>
+<v>Clock</v>
+<v>Clock\Electronic_Clock</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\common_ee_compiler_gcc.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\common_ee_hal_structs.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\common_ee_hal_structs.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\common_ee_irqstub.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\common_ee_primitives.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\common_ee_stdint.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\common_ee_types.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\cortex_mx_ee_context.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\cortex_mx_ee_context.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\cortex_mx_ee_cpu.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\cortex_mx_ee_internal.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\cortex_mx_ee_irq.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\cortex_mx_ee_irq_cng_cont.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\cortex_mx_ee_nvic.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\cortex_mx_ee_system_timer.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\cortex_mx_ee_systick.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\cortex_mx_ee_utils.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee.h</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_activate.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_alcancel.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_alget.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_algetbase.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_alsetabs.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_alsetrel.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_altick.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_api.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_as_internal.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_as_kernel.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_as_timing_prot.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_chaintas.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_evclear.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_evget.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_evset.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_evwait.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_force_schedule.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_getcountervalue.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_getelapsedvalue.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_gettaskid.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_gettaskstate.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_gnu_change_context_isr.s</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_gnu_irq_stack.s</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_gnu_multi_context.s</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_gnu_oo.s</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_internal.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_iparam.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_irq.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_irqendin.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_lockres.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_lookup.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_oo_api.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_oo_common.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_oo_inline.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_oo_internal.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_oo_intfunc.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_oo_irq.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_oo_kernel.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_os.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_rq_exchg.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_rq_first.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_rq_inser.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_rtdruid_versions.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_schedule.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_semgetvalue.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_sempost.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_semtrywait.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_semwait.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_shtdown.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_startos.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_terminat.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_thendin.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_tnterm.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_tracing.h</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_tstub.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_ulockallres.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_ulockres.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\eecfg.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\eecfg.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\event_definition.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ISR_definition.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\resource_priorities.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\task_priorities.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\Custom</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\Custom\ErikaOSAlarmsCounters.cs</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\Custom\ErikaOSAlarmsCounters.Designer.cs</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\Custom\ErikaOSAlarmsCounters.resx</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\Custom\ErikaOSControl.cs</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\Custom\ErikaOSControl.Designer.cs</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\Custom\ErikaOSControl.resx</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\Custom\ErikaOSCustomizer.cs</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\Custom\ErikaOSEventsResources.cs</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\Custom\ErikaOSEventsResources.Designer.cs</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\Custom\ErikaOSEventsResources.resx</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\Custom\ErikaOSISRs.cs</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\Custom\ErikaOSISRs.Designer.cs</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\Custom\ErikaOSISRs.resx</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\Custom\ErikaOSParameters.cs</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\Custom\ErikaOSTask.cs</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\Custom\ErikaOSTask.Designer.cs</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\Custom\ErikaOSTask.resx</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\ErikaOS_v2_5_3.cysym</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\ErikaOS_v2_5_3.pdf</v>
+<v>Clock\Electronic_Clock\TopDesign</v>
+<v>Clock\Electronic_Clock\TopDesign\TopDesign.cysch</v>
+<v>Clock\Electronic_Clock\TopDesign\TopDesign_01.cymacro</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Clock</v>
+<v>Clock\Electronic_Clock</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\common_ee_compiler_gcc.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\common_ee_hal_structs.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\common_ee_hal_structs.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\common_ee_irqstub.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\common_ee_primitives.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\common_ee_stdint.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\common_ee_types.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\cortex_mx_ee_context.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\cortex_mx_ee_context.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\cortex_mx_ee_cpu.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\cortex_mx_ee_internal.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\cortex_mx_ee_irq.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\cortex_mx_ee_irq_cng_cont.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\cortex_mx_ee_nvic.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\cortex_mx_ee_system_timer.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\cortex_mx_ee_systick.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\cortex_mx_ee_utils.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee.h</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_activate.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_alcancel.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_alget.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_algetbase.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_alsetabs.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_alsetrel.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_altick.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_api.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_as_internal.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_as_kernel.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_as_timing_prot.inc</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_chaintas.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_evclear.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_evget.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_evset.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_evwait.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_force_schedule.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_getcountervalue.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_getelapsedvalue.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_gettaskid.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_gettaskstate.c</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_gnu_change_context_isr.s</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_gnu_irq_stack.s</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_gnu_multi_context.s</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3\API\ee_gnu_oo.s</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Clock</v>
+<v>Clock\Electronic_Clock</v>
+<v>Clock\Electronic_Clock\CortexM3</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\Button_1.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\Button_2.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\Button_3.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\Button_4.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_1.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\clock_container.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\clock_widget.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_common_ee_hal_structs.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_cortex_mx_ee_context.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_cortex_mx_ee_system_timer.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_cortex_mx_ee_utils.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_activate.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_alcancel.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_alget.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_algetbase.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_alsetabs.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_alsetrel.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_altick.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_chaintas.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_evclear.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_evget.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_evset.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_evwait.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_force_schedule.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_getcountervalue.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_getelapsedvalue.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_gettaskid.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_gettaskstate.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_gnu_change_context_isr.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_gnu_irq_stack.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_gnu_multi_context.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_gnu_oo.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_iparam.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_irqendin.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_lockres.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_lookup.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_rq_exchg.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_rq_first.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_rq_inser.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_schedule.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_semgetvalue.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_sempost.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_semtrywait.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_semwait.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_shtdown.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_startos.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_terminat.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_thendin.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_tnterm.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_tstub.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_ulockallres.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_ulockres.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_eecfg.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\green_LED.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\logging.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\red_LED.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\rte.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\sc_displaydata.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\sc_displaydata_type.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\sc_event.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\sc_event_type.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\sp_common.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\swc_clock.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\tft.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\TFT_BackLight.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\TFT_BackLight_PM.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\TFT_CS.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\TFT_DC.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\TFT_LED.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\TFT_RES.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\TFT_SCL.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\TFT_SDA.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\TFT_SPI.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\TFT_SPI_INT.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\TFT_SPI_IntClock.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\TFT_SPI_PM.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\tsk_control.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\tsk_io.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_LOG.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_LOG_BOOT.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_LOG_INT.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_LOG_IntClock.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_LOG_PM.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\yellow_LED.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.elf</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.hex</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Electronic_Clock.map</v>
+<v>Clock\Electronic_Clock\Electronic_Clock.gpdsc</v>
+<v>Clock\Electronic_Clock\Electronic_Clock.rpt</v>
+<v>Clock\Electronic_Clock\Electronic_Clock_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Clock</v>
+<v>Clock\Electronic_Clock</v>
+<v>Clock\Electronic_Clock\CortexM3</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\Button_1.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\Button_2.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\Button_3.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\Button_4.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_1.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\clock_container.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\clock_widget.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_common_ee_hal_structs.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_cortex_mx_ee_context.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_cortex_mx_ee_system_timer.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_cortex_mx_ee_utils.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_activate.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_alcancel.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_alget.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_algetbase.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_alsetabs.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_alsetrel.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_altick.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_chaintas.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_evclear.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_evget.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_evset.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_evwait.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_force_schedule.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_getcountervalue.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_getelapsedvalue.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_gettaskid.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_gettaskstate.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_gnu_change_context_isr.lst</v>
+<v>Clock\Electronic_Clock\CortexM3\ARM_GCC_541\Debug\Listing Files\ErikaOS_1_ee_gnu_irq_stack.lst</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Clock</v>
+<v>Clock\Electronic_Clock</v>
+<v>Clock\Electronic_Clock\PSoC 5LP Architecture TRM</v>
+<v>Clock\Electronic_Clock\CY8C58LP Family Datasheet</v>
+<v>Clock\Electronic_Clock\System Reference Guides</v>
+<v>Clock\Electronic_Clock\System Reference Guides\cy_boot_v6_0</v>
+<v>Clock\Electronic_Clock\cy_clock_v2_20.pdf</v>
+<v>Clock\Electronic_Clock\cy_constant_v1_0</v>
+<v>Clock\Electronic_Clock\cy_constant_v1_0\cy_constant_v1_0.pdf</v>
+<v>Clock\Electronic_Clock\cy_pins_v2_20</v>
+<v>Clock\Electronic_Clock\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3.pdf</v>
+<v>Clock\Electronic_Clock\PWM_v3_30.pdf</v>
+<v>Clock\Electronic_Clock\SPI_Master_v2_50.pdf</v>
+<v>Clock\Electronic_Clock\UART_v2_50.pdf</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Clock</v>
+<v>Clock\Electronic_Clock</v>
+<v>Clock\Electronic_Clock\PSoC 5LP Architecture TRM</v>
+<v>Clock\Electronic_Clock\CY8C58LP Family Datasheet</v>
+<v>Clock\Electronic_Clock\System Reference Guides</v>
+<v>Clock\Electronic_Clock\System Reference Guides\cy_boot_v6_0</v>
+<v>Clock\Electronic_Clock\cy_clock_v2_20.pdf</v>
+<v>Clock\Electronic_Clock\cy_constant_v1_0</v>
+<v>Clock\Electronic_Clock\cy_constant_v1_0\cy_constant_v1_0.pdf</v>
+<v>Clock\Electronic_Clock\cy_pins_v2_20</v>
+<v>Clock\Electronic_Clock\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>Clock\Electronic_Clock\ErikaOS_v2_5_3.pdf</v>
+<v>Clock\Electronic_Clock\PWM_v3_30.pdf</v>
+<v>Clock\Electronic_Clock\SPI_Master_v2_50.pdf</v>
+<v>Clock\Electronic_Clock\UART_v2_50.pdf</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs>
+<name v=".\Electronic_Clock.cydsn\clock_widget.c" />
+<name v=".\Electronic_Clock.cydsn\source\asw\main.c" />
+<name v=".\Electronic_Clock.cydsn\source\asw\swc_clock.c" />
+<name v=".\Electronic_Clock.cydsn\source\bsw\tft\tft.h" />
+<name v=".\Electronic_Clock.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\Electronic_Clock.cydsn\clock_common.h" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Vertical"><TabbedMdiContainer Size="1155, 510" SelectedTabbedMdiWindow="1eac3cfa-e6e3-44ab-8f7f-02f2c5192c58"><DocumentWindow Key="C:\Users\bolob\Documents\PSoC Creator\Clock\Electronic_Clock.cydsn\clock_widget.c" Guid="64327509-10b3-4acb-88f3-636e60dde437" /><DocumentWindow Key="C:\Users\bolob\Documents\PSoC Creator\Clock\Electronic_Clock.cydsn\source\asw\main.c" Guid="1b8ceeaa-01a2-48fe-9076-fd4a0754c01f" /><DocumentWindow Key="C:\Users\bolob\Documents\PSoC Creator\Clock\Electronic_Clock.cydsn\source\asw\swc_clock.c" Guid="6fea38a8-4e16-4e22-8edc-ef93ee71491d" /><DocumentWindow Key="C:\Users\bolob\Documents\PSoC Creator\Clock\Electronic_Clock.cydsn\source\bsw\tft\tft.h" Guid="0e8604ce-9466-49e3-80b1-a28b76487600" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="e4a4b5e4-da4c-4941-9ea8-bb7a329b4a07" /><DocumentWindow Key="C:\Users\bolob\Documents\PSoC Creator\Clock\Electronic_Clock.cydsn\TopDesign\TopDesign.cysch" Guid="05d32fb9-7137-4fa6-bb24-8c2e4103dbdd" /><DocumentWindow Key="C:\Users\bolob\Documents\PSoC Creator\Clock\Electronic_Clock.cydsn\clock_common.h" Guid="1eac3cfa-e6e3-44ab-8f7f-02f2c5192c58" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>

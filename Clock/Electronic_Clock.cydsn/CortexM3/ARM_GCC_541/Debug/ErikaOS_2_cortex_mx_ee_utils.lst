@@ -1,0 +1,1526 @@
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccjP4M6J.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"ErikaOS_2_cortex_mx_ee_utils.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.EE_system_init,"ax",%progbits
+  20              		.align	2
+  21              		.global	EE_system_init
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	EE_system_init, %function
+  25              	EE_system_init:
+  26              	.LFB65:
+  27              		.file 1 "Generated_Source\\PSoC5\\ErikaOS_2_cortex_mx_ee_utils.c"
+   1:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** /* ###*B*###
+   2:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * ERIKA Enterprise - a tiny RTOS for small microcontrollers
+   3:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  *
+   4:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * Copyright (C) 2002-2011  Evidence Srl
+   5:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  *
+   6:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * This file is part of ERIKA Enterprise.
+   7:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  *
+   8:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * ERIKA Enterprise is free software; you can redistribute it
+   9:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * and/or modify it under the terms of the GNU General Public License
+  10:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * version 2 as published by the Free Software Foundation, 
+  11:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * (with a special exception described below).
+  12:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  *
+  13:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * Linking this code statically or dynamically with other modules is
+  14:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * making a combined work based on this code.  Thus, the terms and
+  15:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * conditions of the GNU General Public License cover the whole
+  16:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * combination.
+  17:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  *
+  18:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * As a special exception, the copyright holders of this library give you
+  19:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * permission to link this code with independent modules to produce an
+  20:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * executable, regardless of the license terms of these independent
+  21:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * modules, and to copy and distribute the resulting executable under
+  22:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * terms of your choice, provided that you also meet, for each linked
+  23:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * independent module, the terms and conditions of the license of that
+  24:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * module.  An independent module is a module which is not derived from
+  25:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * or based on this library.  If you modify this code, you may extend
+  26:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * this exception to your version of the code, but you are not
+  27:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * obligated to do so.  If you do not wish to do so, delete this
+  28:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * exception statement from your version.
+  29:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  *
+  30:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * ERIKA Enterprise is distributed in the hope that it will be
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccjP4M6J.s 			page 2
+
+
+  31:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+  32:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  33:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * GNU General Public License version 2 for more details.
+  34:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  *
+  35:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * You should have received a copy of the GNU General Public License
+  36:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * version 2 along with ERIKA Enterprise; if not, write to the
+  37:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+  38:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * Boston, MA 02110-1301 USA.
+  39:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * ###*E*### */
+  40:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** 
+  41:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** /** 
+  42:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** 	@file ee_utils.c
+  43:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** 	@brief Functions to initialize the RTOS services
+  44:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** 	@author Gianluca Franchino
+  45:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** 	@author Giuseppe Serano
+  46:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** 	@date 2011
+  47:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** */ 
+  48:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****     
+  49:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** /*
+  50:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * PSoC Port and API Generation
+  51:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * Carlos Fernando Meier Martinez
+  52:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * P. Fromm 2020
+  53:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  * Hochschule Darmstadt, Germany. 2017.
+  54:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****  */
+  55:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** 
+  56:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** #include "ErikaOS_2_ee_internal.inc"
+  57:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** #include "ErikaOS_2_ee_irq.inc"
+  58:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** //~ #include "ErikaOS_2_cortex_mx_ee_nvic.inc"
+  59:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** #include "cyfitter.h"
+  60:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** #include "cylib.h"
+  61:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** 
+  62:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** //PF v2.5.3
+  63:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** //We have to translate the Erika Priorities from 1..16 to 0..7
+  64:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** //We probably should not set the priority to 0 (highest), as this might interfear with the systick 
+  65:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** //#define ISR_SCALE(prio) ((prio-1)>>1)
+  66:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** 
+  67:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** //Update for Release v2.5.3 - The GUI has been modified, only allowing values between 1..7
+  68:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** //i.e. the value can be takes as it is
+  69:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** #define ISR_SCALE(prio) (prio)
+  70:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** 
+  71:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** #define Number_of_ISRs  0
+  72:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** 
+  73:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** extern void EE_set_switch_context_pri(void);
+  74:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** 
+  75:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** /* Function used to calculate the initialize the system */
+  76:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** void EE_system_init(void)
+  77:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** {
+  28              		.loc 1 77 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  36              	.LBB14:
+  37              	.LBB15:
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccjP4M6J.s 			page 3
+
+
+  38              	.LBB16:
+  39              		.file 2 "Generated_Source\\PSoC5\\ErikaOS_2_cortex_mx_ee_cpu.inc"
+   1:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /* ###*B*###
+   2:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * ERIKA Enterprise - a tiny RTOS for small microcontrollers
+   3:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  *
+   4:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * Copyright (C) 2002-2011  Evidence Srl
+   5:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  *
+   6:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * This file is part of ERIKA Enterprise.
+   7:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  *
+   8:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * ERIKA Enterprise is free software; you can redistribute it
+   9:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * and/or modify it under the terms of the GNU General Public License
+  10:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * version 2 as published by the Free Software Foundation, 
+  11:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * (with a special exception described below).
+  12:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  *
+  13:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * Linking this code statically or dynamically with other modules is
+  14:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * making a combined work based on this code.  Thus, the terms and
+  15:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * conditions of the GNU General Public License cover the whole
+  16:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * combination.
+  17:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  *
+  18:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * As a special exception, the copyright holders of this library give you
+  19:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * permission to link this code with independent modules to produce an
+  20:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * executable, regardless of the license terms of these independent
+  21:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * modules, and to copy and distribute the resulting executable under
+  22:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * terms of your choice, provided that you also meet, for each linked
+  23:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * independent module, the terms and conditions of the license of that
+  24:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * module.  An independent module is a module which is not derived from
+  25:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * or based on this library.  If you modify this code, you may extend
+  26:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * this exception to your version of the code, but you are not
+  27:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * obligated to do so.  If you do not wish to do so, delete this
+  28:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * exception statement from your version.
+  29:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  *
+  30:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * ERIKA Enterprise is distributed in the hope that it will be
+  31:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+  32:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  33:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * GNU General Public License version 2 for more details.
+  34:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  *
+  35:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * You should have received a copy of the GNU General Public License
+  36:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * version 2 along with ERIKA Enterprise; if not, write to the
+  37:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+  38:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * Boston, MA 02110-1301 USA.
+  39:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * ###*E*### */
+  40:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+  41:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /** 
+  42:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	@file ee_cpu.h
+  43:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	@brief CPU-dependent part of HAL. Derived from pkg/cpu/pic30/inc/ee_cpu.h
+  44:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	@author Gianluca Franchino
+  45:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	@author Giuseppe Serano
+  46:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	@date 2011
+  47:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** */ 
+  48:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****     
+  49:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /*
+  50:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * PSoC Port and API Generation
+  51:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * Carlos Fernando Meier Martinez
+  52:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * Hochschule Darmstadt, Germany. 2017.
+  53:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  */
+  54:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+  55:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #ifndef __INCLUDE_CORTEX_MX_EE_CPU_H__
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccjP4M6J.s 			page 4
+
+
+  56:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #define __INCLUDE_CORTEX_MX_EE_CPU_H__
+  57:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+  58:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #include "ErikaOS_2_eecfg.inc"
+  59:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+  60:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+  61:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #ifdef __GNU__
+  62:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #include "ErikaOS_2_common_ee_compiler_gcc.inc"
+  63:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #endif
+  64:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+  65:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /* Initial stack offset (in words): Used in multistack. */
+  66:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #ifndef CORTEX_MX_INIT_TOS_OFFSET
+  67:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #define CORTEX_MX_INIT_TOS_OFFSET 10
+  68:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #endif
+  69:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+  70:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /*************************************************************************
+  71:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  HAL Types and structures
+  72:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  *************************************************************************/
+  73:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+  74:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /* Primitive data types */
+  75:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #include "ErikaOS_2_common_ee_types.inc"
+  76:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+  77:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** typedef EE_UINT32 EE_UREG;
+  78:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** typedef EE_INT32  EE_SREG;
+  79:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** typedef EE_UINT32 EE_FREG;
+  80:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #define EE_UREG_SIZE 4
+  81:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+  82:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /* boolean type */
+  83:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #ifndef EE_TYPEBOOL
+  84:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** typedef EE_UREG EE_TYPEBOOL;
+  85:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #endif
+  86:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+  87:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /* boolean true define */
+  88:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #ifndef EE_TRUE
+  89:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #define EE_TRUE ((EE_TYPEBOOL)1U)
+  90:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #endif
+  91:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+  92:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /* boolean false define */
+  93:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #ifndef EE_FALSE
+  94:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #define EE_FALSE ((EE_TYPEBOOL)0U)
+  95:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #endif
+  96:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+  97:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #define	EE_HWREG_PTR		volatile EE_UREG *
+  98:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #define	EE_HWREG_ADDR(x)	((EE_HWREG_PTR)(x))
+  99:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #define	EE_HWREG(x)		(*EE_HWREG_ADDR(x))
+ 100:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+ 101:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #ifdef __GNU__
+ 102:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+ 103:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /* Get current SP */
+ 104:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** __INLINE__ EE_UINT32  __current_sp(void)
+ 105:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** {
+ 106:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** EE_UINT32 temp;
+ 107:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** __ASM ("mov %0, sp" : "=r" (temp) : );
+ 108:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** return temp;
+ 109:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** }
+ 110:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+ 111:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /* Set a breakpoint */
+ 112:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #define __breakpoint(value)	__ASM ("bkpt "#value)
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccjP4M6J.s 			page 5
+
+
+ 113:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+ 114:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #endif
+ 115:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+ 116:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /* ISR Priority representation type */
+ 117:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** typedef EE_UREG EE_TYPEISR2PRIO;
+ 118:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+ 119:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /* Thread IDs */
+ 120:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** typedef EE_INT32 EE_TID;
+ 121:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+ 122:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /* Thread IDs - unsigned version*/
+ 123:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** typedef EE_UINT32 EE_UTID;
+ 124:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+ 125:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /* Used by the common layer to decide whether to start a new thread */
+ 126:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #define TID_IS_STACKED_MARK 0x80000000
+ 127:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+ 128:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /* EE_TYPEIRQ is currently unused */
+ 129:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+ 130:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /* XXX: define EE_TIME? */
+ 131:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+ 132:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /* Use the "standard" implementation */
+ 133:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #include "ErikaOS_2_common_ee_hal_structs.inc"
+ 134:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+ 135:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /******************************************************************************
+ 136:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  Application dependent data types
+ 137:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  ******************************************************************************/
+ 138:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+ 139:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #ifdef	__HAS_TYPES_H__
+ 140:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #include	"types.h"
+ 141:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #endif
+ 142:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+ 143:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /******************************************************************************
+ 144:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  CPU Peripherals
+ 145:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  ******************************************************************************/
+ 146:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+ 147:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #ifdef __CORTEX_MX__
+ 148:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #include "ErikaOS_2_cortex_mx_ee_nvic.inc"
+ 149:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #include "ErikaOS_2_cortex_mx_ee_systick.inc"
+ 150:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #endif
+ 151:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+ 152:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /******************************************************************************
+ 153:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  HAL Variables
+ 154:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  ******************************************************************************/
+ 155:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+ 156:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #ifdef __MULTI__
+ 157:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+ 158:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /* Top-of-stack of each private stack */
+ 159:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** extern struct EE_TOS EE_cortex_mx_system_tos[];
+ 160:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** //#define	EE_std_system_tos EE_cortex_mx_system_tos
+ 161:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+ 162:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /* Index of the current stack */
+ 163:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** extern EE_UREG EE_cortex_mx_active_tos;
+ 164:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #define	EE_hal_active_tos EE_cortex_mx_active_tos
+ 165:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+ 166:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /*extern	EE_UREG EE_pic30_thread_tos[];
+ 167:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #define	EE_std_thread_tos EE_pic30_thread_tos */
+ 168:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #endif /* __MULTI__ */
+ 169:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccjP4M6J.s 			page 6
+
+
+ 170:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /*********************************************************************
+ 171:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  Cortex M0 interrupt disabling/enabling
+ 172:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  *********************************************************************/
+ 173:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+ 174:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /* Used to check the value returned by EE_cortex_mx_disableIRQ */
+ 175:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #define EE_cortex_mx_are_IRQs_enabled(ie) ((ie) ^ 1)
+ 176:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+ 177:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /**
+ 178:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * Enable interrupts
+ 179:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  */
+ 180:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** __INLINE__ void  EE_cortex_mx_enableIRQ(void)
+ 181:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** {
+ 182:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #ifdef __IAR__
+ 183:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	__ASM ("cpsie i");
+ 184:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #else	/* __IAR__ */
+ 185:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #ifdef __CCS__
+ 186:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	__ASM ("    cpsie    i\n");
+ 187:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #else	/* __CCS__ */
+ 188:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #ifdef __KEIL__
+ 189:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	__enable_irq();
+ 190:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #else	/* __KEIL__ */
+ 191:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	__ASM volatile("cpsie i");
+ 192:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #endif	/* !__KEIL__ */
+ 193:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #endif	/* !__CCS__ */
+ 194:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #endif	/* !__IAR__ */
+ 195:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** }
+ 196:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+ 197:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /**
+ 198:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * Disable interrupts
+ 199:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  */
+ 200:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** __INLINE__ void  EE_cortex_mx_disableIRQ(void)
+ 201:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** {
+ 202:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #ifdef __IAR__
+ 203:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	__ASM ("cpsid i");
+ 204:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #else	/* __IAR__ */
+ 205:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #ifdef __CCS__
+ 206:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	__ASM ("    cpsid    i\n");
+ 207:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #else	/* __CCS__ */
+ 208:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #ifdef __KEIL__
+ 209:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	__disable_irq();
+ 210:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #else	/* __KEIL__ */
+ 211:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	__ASM volatile("cpsid i");
+ 212:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #endif	/* !__KEIL__ */
+ 213:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #endif	/* !__CCS__ */
+ 214:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #endif	/* !__IAR__ */
+ 215:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** }
+ 216:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+ 217:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /**
+ 218:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * Resume interrupts
+ 219:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  */
+ 220:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** __INLINE__ void  EE_cortex_mx_resumeIRQ(EE_FREG f)
+ 221:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** {
+ 222:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #ifdef __IAR__
+ 223:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	__set_PRIMASK(f);
+ 224:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #else	/* __IAR__ */
+ 225:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #ifdef __CCS__
+ 226:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	__ASM ("    msr    primask, r0\n");
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccjP4M6J.s 			page 7
+
+
+ 227:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #else	/* __CCS__ */
+ 228:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #ifdef __KEIL__
+ 229:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	register EE_FREG PRIMASK __ASM("primask");
+ 230:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	PRIMASK = f;
+ 231:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #else	/* __KEIL__ */
+ 232:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	__ASM volatile("msr primask, %0" :: "r" (f));
+ 233:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #endif	/* !__KEIL__ */
+ 234:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #endif	/* !__CCS__ */
+ 235:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #endif	/* !__IAR__ */
+ 236:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** }
+ 237:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 
+ 238:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** /**
+ 239:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  * Suspend interrupts
+ 240:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc ****  */
+ 241:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** __INLINE__ EE_FREG  EE_cortex_mx_suspendIRQ(void)
+ 242:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** {
+ 243:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #ifndef __CCS__
+ 244:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	EE_FREG istat;
+ 245:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #endif
+ 246:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #ifdef __IAR__
+ 247:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	 istat = __get_PRIMASK();
+ 248:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	__ASM ("cpsid i");
+ 249:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #else	/* __IAR__ */
+ 250:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #ifdef __CCS__
+ 251:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	__ASM ("    mrs     r0, primask\n"
+ 252:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	       "    cpsid   i\n"
+ 253:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	       "    bx      lr\n");
+ 254:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #else	/* __CCS__ */
+ 255:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #ifdef __KEIL__
+ 256:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	register EE_FREG PRIMASK __ASM("primask");
+ 257:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	istat = PRIMASK;
+ 258:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	__disable_irq();
+ 259:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #else	/* __KEIL__ */
+ 260:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	__ASM volatile ("mrs %0, primask" : "=r" (istat) );
+  40              		.loc 2 260 0
+  41              		.syntax unified
+  42              	@ 260 "Generated_Source\PSoC5\ErikaOS_2_cortex_mx_ee_cpu.inc" 1
+  43 0002 EFF31084 		mrs r4, primask
+  44              	@ 0 "" 2
+ 261:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** 	__ASM volatile ("cpsid i");
+  45              		.loc 2 261 0
+  46              	@ 261 "Generated_Source\PSoC5\ErikaOS_2_cortex_mx_ee_cpu.inc" 1
+  47 0006 72B6     		cpsid i
+  48              	@ 0 "" 2
+  49              		.thumb
+  50              		.syntax unified
+  51              	.LBE16:
+  52              	.LBE15:
+  53              	.LBE14:
+  78:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** #if (Number_of_ISRs > 0)
+  79:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****   cyisraddress *ramVectorTable = *CY_INT_VECT_TABLE;
+  80:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** #endif
+  81:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****   register EE_UREG flags;
+  82:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** 
+  83:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c ****   flags = EE_hal_suspendIRQ();
+  84:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** 
+  85:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** 	/* 
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccjP4M6J.s 			page 8
+
+
+  86:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** 	 * Set the priority of PendSV to the minimum one
+  87:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** 	 * PendSV is the software interrupt used for context switch
+  88:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** 	 */
+  89:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_utils.c **** 	EE_set_switch_context_pri();
+  54              		.loc 1 89 0
+  55 0008 FFF7FEFF 		bl	EE_set_switch_context_pri
+  56              	.LVL0:
+  57              	.LBB17:
+  58              	.LBB18:
+  59              	.LBB19:
+ 232:Generated_Source\PSoC5/ErikaOS_2_cortex_mx_ee_cpu.inc **** #endif	/* !__KEIL__ */
+  60              		.loc 2 232 0
+  61              		.syntax unified
+  62              	@ 232 "Generated_Source\PSoC5\ErikaOS_2_cortex_mx_ee_cpu.inc" 1
+  63 000c 84F31088 		msr primask, r4
+  64              	@ 0 "" 2
+  65              		.thumb
+  66              		.syntax unified
+  67 0010 10BD     		pop	{r4, pc}
+  68              	.LBE19:
+  69              	.LBE18:
+  70              	.LBE17:
+  71              		.cfi_endproc
+  72              	.LFE65:
+  73              		.size	EE_system_init, .-EE_system_init
+  74 0012 00BF     		.text
+  75              	.Letext0:
+  76              		.file 3 "Generated_Source\\PSoC5\\ErikaOS_2_common_ee_types.inc"
+  77              		.file 4 "Generated_Source\\PSoC5\\ErikaOS_2_ee_oo_common.inc"
+  78              		.file 5 "Generated_Source\\PSoC5\\ErikaOS_2_common_ee_primitives.inc"
+  79              		.file 6 "Generated_Source\\PSoC5\\ErikaOS_2_cortex_mx_ee_context.inc"
+  80              		.file 7 "Generated_Source\\PSoC5\\ErikaOS_2_ee_oo_intfunc.inc"
+  81              		.file 8 "Generated_Source\\PSoC5\\ErikaOS_2_ee_oo_internal.inc"
+  82              		.section	.debug_info,"",%progbits
+  83              	.Ldebug_info0:
+  84 0000 25030000 		.4byte	0x325
+  85 0004 0400     		.2byte	0x4
+  86 0006 00000000 		.4byte	.Ldebug_abbrev0
+  87 000a 04       		.byte	0x4
+  88 000b 01       		.uleb128 0x1
+  89 000c B6000000 		.4byte	.LASF43
+  90 0010 0C       		.byte	0xc
+  91 0011 3D020000 		.4byte	.LASF44
+  92 0015 56030000 		.4byte	.LASF45
+  93 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  94 001d 00000000 		.4byte	0
+  95 0021 00000000 		.4byte	.Ldebug_line0
+  96 0025 02       		.uleb128 0x2
+  97 0026 01       		.byte	0x1
+  98 0027 06       		.byte	0x6
+  99 0028 21030000 		.4byte	.LASF0
+ 100 002c 02       		.uleb128 0x2
+ 101 002d 01       		.byte	0x1
+ 102 002e 08       		.byte	0x8
+ 103 002f A8000000 		.4byte	.LASF1
+ 104 0033 02       		.uleb128 0x2
+ 105 0034 02       		.byte	0x2
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccjP4M6J.s 			page 9
+
+
+ 106 0035 05       		.byte	0x5
+ 107 0036 E4020000 		.4byte	.LASF2
+ 108 003a 02       		.uleb128 0x2
+ 109 003b 02       		.byte	0x2
+ 110 003c 07       		.byte	0x7
+ 111 003d 86010000 		.4byte	.LASF3
+ 112 0041 02       		.uleb128 0x2
+ 113 0042 04       		.byte	0x4
+ 114 0043 05       		.byte	0x5
+ 115 0044 FF020000 		.4byte	.LASF4
+ 116 0048 02       		.uleb128 0x2
+ 117 0049 04       		.byte	0x4
+ 118 004a 07       		.byte	0x7
+ 119 004b 60010000 		.4byte	.LASF5
+ 120 004f 02       		.uleb128 0x2
+ 121 0050 08       		.byte	0x8
+ 122 0051 05       		.byte	0x5
+ 123 0052 A8020000 		.4byte	.LASF6
+ 124 0056 02       		.uleb128 0x2
+ 125 0057 08       		.byte	0x8
+ 126 0058 07       		.byte	0x7
+ 127 0059 1E020000 		.4byte	.LASF7
+ 128 005d 03       		.uleb128 0x3
+ 129 005e 04       		.byte	0x4
+ 130 005f 05       		.byte	0x5
+ 131 0060 696E7400 		.ascii	"int\000"
+ 132 0064 02       		.uleb128 0x2
+ 133 0065 04       		.byte	0x4
+ 134 0066 07       		.byte	0x7
+ 135 0067 F6010000 		.4byte	.LASF8
+ 136 006b 02       		.uleb128 0x2
+ 137 006c 08       		.byte	0x8
+ 138 006d 04       		.byte	0x4
+ 139 006e 15030000 		.4byte	.LASF9
+ 140 0072 04       		.uleb128 0x4
+ 141 0073 35020000 		.4byte	.LASF10
+ 142 0077 03       		.byte	0x3
+ 143 0078 3F       		.byte	0x3f
+ 144 0079 25000000 		.4byte	0x25
+ 145 007d 04       		.uleb128 0x4
+ 146 007e EC010000 		.4byte	.LASF11
+ 147 0082 03       		.byte	0x3
+ 148 0083 52       		.byte	0x52
+ 149 0084 3A000000 		.4byte	0x3a
+ 150 0088 04       		.uleb128 0x4
+ 151 0089 57010000 		.4byte	.LASF12
+ 152 008d 03       		.byte	0x3
+ 153 008e 53       		.byte	0x53
+ 154 008f 5D000000 		.4byte	0x5d
+ 155 0093 04       		.uleb128 0x4
+ 156 0094 09020000 		.4byte	.LASF13
+ 157 0098 03       		.byte	0x3
+ 158 0099 54       		.byte	0x54
+ 159 009a 64000000 		.4byte	0x64
+ 160 009e 04       		.uleb128 0x4
+ 161 009f BB020000 		.4byte	.LASF14
+ 162 00a3 02       		.byte	0x2
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccjP4M6J.s 			page 10
+
+
+ 163 00a4 4D       		.byte	0x4d
+ 164 00a5 93000000 		.4byte	0x93
+ 165 00a9 04       		.uleb128 0x4
+ 166 00aa 97020000 		.4byte	.LASF15
+ 167 00ae 02       		.byte	0x2
+ 168 00af 4F       		.byte	0x4f
+ 169 00b0 93000000 		.4byte	0x93
+ 170 00b4 04       		.uleb128 0x4
+ 171 00b5 10000000 		.4byte	.LASF16
+ 172 00b9 02       		.byte	0x2
+ 173 00ba 54       		.byte	0x54
+ 174 00bb 9E000000 		.4byte	0x9e
+ 175 00bf 04       		.uleb128 0x4
+ 176 00c0 84000000 		.4byte	.LASF17
+ 177 00c4 02       		.byte	0x2
+ 178 00c5 78       		.byte	0x78
+ 179 00c6 88000000 		.4byte	0x88
+ 180 00ca 05       		.uleb128 0x5
+ 181 00cb 00000000 		.4byte	.LASF18
+ 182 00cf 04       		.byte	0x4
+ 183 00d0 1101     		.2byte	0x111
+ 184 00d2 7D000000 		.4byte	0x7d
+ 185 00d6 02       		.uleb128 0x2
+ 186 00d7 04       		.byte	0x4
+ 187 00d8 07       		.byte	0x7
+ 188 00d9 9F020000 		.4byte	.LASF19
+ 189 00dd 02       		.uleb128 0x2
+ 190 00de 01       		.byte	0x1
+ 191 00df 08       		.byte	0x8
+ 192 00e0 B6020000 		.4byte	.LASF20
+ 193 00e4 02       		.uleb128 0x2
+ 194 00e5 04       		.byte	0x4
+ 195 00e6 04       		.byte	0x4
+ 196 00e7 A2000000 		.4byte	.LASF21
+ 197 00eb 02       		.uleb128 0x2
+ 198 00ec 08       		.byte	0x8
+ 199 00ed 04       		.byte	0x4
+ 200 00ee BD010000 		.4byte	.LASF22
+ 201 00f2 06       		.uleb128 0x6
+ 202 00f3 8B000000 		.4byte	.LASF23
+ 203 00f7 02       		.byte	0x2
+ 204 00f8 DC       		.byte	0xdc
+ 205 00f9 03       		.byte	0x3
+ 206 00fa 08010000 		.4byte	0x108
+ 207 00fe 07       		.uleb128 0x7
+ 208 00ff 6600     		.ascii	"f\000"
+ 209 0101 02       		.byte	0x2
+ 210 0102 DC       		.byte	0xdc
+ 211 0103 A9000000 		.4byte	0xa9
+ 212 0107 00       		.byte	0
+ 213 0108 08       		.uleb128 0x8
+ 214 0109 3E030000 		.4byte	.LASF46
+ 215 010d 02       		.byte	0x2
+ 216 010e F1       		.byte	0xf1
+ 217 010f A9000000 		.4byte	0xa9
+ 218 0113 03       		.byte	0x3
+ 219 0114 24010000 		.4byte	0x124
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccjP4M6J.s 			page 11
+
+
+ 220 0118 09       		.uleb128 0x9
+ 221 0119 7E000000 		.4byte	.LASF25
+ 222 011d 02       		.byte	0x2
+ 223 011e F4       		.byte	0xf4
+ 224 011f A9000000 		.4byte	0xa9
+ 225 0123 00       		.byte	0
+ 226 0124 0A       		.uleb128 0xa
+ 227 0125 EE020000 		.4byte	.LASF24
+ 228 0129 02       		.byte	0x2
+ 229 012a A201     		.2byte	0x1a2
+ 230 012c 03       		.byte	0x3
+ 231 012d 3C010000 		.4byte	0x13c
+ 232 0131 0B       		.uleb128 0xb
+ 233 0132 6600     		.ascii	"f\000"
+ 234 0134 02       		.byte	0x2
+ 235 0135 A201     		.2byte	0x1a2
+ 236 0137 A9000000 		.4byte	0xa9
+ 237 013b 00       		.byte	0
+ 238 013c 0C       		.uleb128 0xc
+ 239 013d 53000000 		.4byte	.LASF47
+ 240 0141 02       		.byte	0x2
+ 241 0142 A801     		.2byte	0x1a8
+ 242 0144 A9000000 		.4byte	0xa9
+ 243 0148 03       		.byte	0x3
+ 244 0149 0D       		.uleb128 0xd
+ 245 014a 1C000000 		.4byte	.LASF48
+ 246 014e 01       		.byte	0x1
+ 247 014f 4C       		.byte	0x4c
+ 248 0150 00000000 		.4byte	.LFB65
+ 249 0154 12000000 		.4byte	.LFE65-.LFB65
+ 250 0158 01       		.uleb128 0x1
+ 251 0159 9C       		.byte	0x9c
+ 252 015a D7010000 		.4byte	0x1d7
+ 253 015e 09       		.uleb128 0x9
+ 254 015f 03020000 		.4byte	.LASF26
+ 255 0163 01       		.byte	0x1
+ 256 0164 51       		.byte	0x51
+ 257 0165 9E000000 		.4byte	0x9e
+ 258 0169 0E       		.uleb128 0xe
+ 259 016a 3C010000 		.4byte	0x13c
+ 260 016e 02000000 		.4byte	.LBB14
+ 261 0172 06000000 		.4byte	.LBE14-.LBB14
+ 262 0176 01       		.byte	0x1
+ 263 0177 53       		.byte	0x53
+ 264 0178 9D010000 		.4byte	0x19d
+ 265 017c 0F       		.uleb128 0xf
+ 266 017d 08010000 		.4byte	0x108
+ 267 0181 02000000 		.4byte	.LBB15
+ 268 0185 06000000 		.4byte	.LBE15-.LBB15
+ 269 0189 02       		.byte	0x2
+ 270 018a AA01     		.2byte	0x1aa
+ 271 018c 10       		.uleb128 0x10
+ 272 018d 02000000 		.4byte	.LBB16
+ 273 0191 06000000 		.4byte	.LBE16-.LBB16
+ 274 0195 11       		.uleb128 0x11
+ 275 0196 18010000 		.4byte	0x118
+ 276 019a 00       		.byte	0
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccjP4M6J.s 			page 12
+
+
+ 277 019b 00       		.byte	0
+ 278 019c 00       		.byte	0
+ 279 019d 12       		.uleb128 0x12
+ 280 019e 24010000 		.4byte	0x124
+ 281 01a2 0C000000 		.4byte	.LBB17
+ 282 01a6 06000000 		.4byte	.LBE17-.LBB17
+ 283 01aa 01       		.byte	0x1
+ 284 01ab 1901     		.2byte	0x119
+ 285 01ad CD010000 		.4byte	0x1cd
+ 286 01b1 13       		.uleb128 0x13
+ 287 01b2 31010000 		.4byte	0x131
+ 288 01b6 0F       		.uleb128 0xf
+ 289 01b7 F2000000 		.4byte	0xf2
+ 290 01bb 0C000000 		.4byte	.LBB18
+ 291 01bf 06000000 		.4byte	.LBE18-.LBB18
+ 292 01c3 02       		.byte	0x2
+ 293 01c4 A401     		.2byte	0x1a4
+ 294 01c6 13       		.uleb128 0x13
+ 295 01c7 FE000000 		.4byte	0xfe
+ 296 01cb 00       		.byte	0
+ 297 01cc 00       		.byte	0
+ 298 01cd 14       		.uleb128 0x14
+ 299 01ce 0C000000 		.4byte	.LVL0
+ 300 01d2 1D030000 		.4byte	0x31d
+ 301 01d6 00       		.byte	0
+ 302 01d7 15       		.uleb128 0x15
+ 303 01d8 C3020000 		.4byte	.LASF27
+ 304 01dc 05       		.byte	0x5
+ 305 01dd 44       		.byte	0x44
+ 306 01de 9E000000 		.4byte	0x9e
+ 307 01e2 15       		.uleb128 0x15
+ 308 01e3 D3010000 		.4byte	.LASF28
+ 309 01e7 06       		.byte	0x6
+ 310 01e8 48       		.byte	0x48
+ 311 01e9 BF000000 		.4byte	0xbf
+ 312 01ed 16       		.uleb128 0x16
+ 313 01ee FC010000 		.4byte	0x1fc
+ 314 01f2 FC010000 		.4byte	0x1fc
+ 315 01f6 17       		.uleb128 0x17
+ 316 01f7 D6000000 		.4byte	0xd6
+ 317 01fb 00       		.byte	0
+ 318 01fc 18       		.uleb128 0x18
+ 319 01fd 9E000000 		.4byte	0x9e
+ 320 0201 15       		.uleb128 0x15
+ 321 0202 86020000 		.4byte	.LASF29
+ 322 0206 04       		.byte	0x4
+ 323 0207 B2       		.byte	0xb2
+ 324 0208 0C020000 		.4byte	0x20c
+ 325 020c 18       		.uleb128 0x18
+ 326 020d ED010000 		.4byte	0x1ed
+ 327 0211 16       		.uleb128 0x16
+ 328 0212 FC010000 		.4byte	0x1fc
+ 329 0216 20020000 		.4byte	0x220
+ 330 021a 17       		.uleb128 0x17
+ 331 021b D6000000 		.4byte	0xd6
+ 332 021f 00       		.byte	0
+ 333 0220 15       		.uleb128 0x15
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccjP4M6J.s 			page 13
+
+
+ 334 0221 72010000 		.4byte	.LASF30
+ 335 0225 04       		.byte	0x4
+ 336 0226 B3       		.byte	0xb3
+ 337 0227 2B020000 		.4byte	0x22b
+ 338 022b 18       		.uleb128 0x18
+ 339 022c 11020000 		.4byte	0x211
+ 340 0230 16       		.uleb128 0x16
+ 341 0231 9E000000 		.4byte	0x9e
+ 342 0235 3F020000 		.4byte	0x23f
+ 343 0239 17       		.uleb128 0x17
+ 344 023a D6000000 		.4byte	0xd6
+ 345 023e 00       		.byte	0
+ 346 023f 15       		.uleb128 0x15
+ 347 0240 99030000 		.4byte	.LASF31
+ 348 0244 04       		.byte	0x4
+ 349 0245 CA       		.byte	0xca
+ 350 0246 30020000 		.4byte	0x230
+ 351 024a 16       		.uleb128 0x16
+ 352 024b BF000000 		.4byte	0xbf
+ 353 024f 59020000 		.4byte	0x259
+ 354 0253 17       		.uleb128 0x17
+ 355 0254 D6000000 		.4byte	0xd6
+ 356 0258 00       		.byte	0
+ 357 0259 15       		.uleb128 0x15
+ 358 025a 13020000 		.4byte	.LASF32
+ 359 025e 04       		.byte	0x4
+ 360 025f D2       		.byte	0xd2
+ 361 0260 4A020000 		.4byte	0x24a
+ 362 0264 16       		.uleb128 0x16
+ 363 0265 9E000000 		.4byte	0x9e
+ 364 0269 73020000 		.4byte	0x273
+ 365 026d 17       		.uleb128 0x17
+ 366 026e D6000000 		.4byte	0xd6
+ 367 0272 00       		.byte	0
+ 368 0273 15       		.uleb128 0x15
+ 369 0274 99010000 		.4byte	.LASF33
+ 370 0278 04       		.byte	0x4
+ 371 0279 DA       		.byte	0xda
+ 372 027a 64020000 		.4byte	0x264
+ 373 027e 15       		.uleb128 0x15
+ 374 027f D8020000 		.4byte	.LASF34
+ 375 0283 04       		.byte	0x4
+ 376 0284 E2       		.byte	0xe2
+ 377 0285 BF000000 		.4byte	0xbf
+ 378 0289 15       		.uleb128 0x15
+ 379 028a C4010000 		.4byte	.LASF35
+ 380 028e 04       		.byte	0x4
+ 381 028f F7       		.byte	0xf7
+ 382 0290 9E000000 		.4byte	0x9e
+ 383 0294 19       		.uleb128 0x19
+ 384 0295 2B000000 		.4byte	.LASF36
+ 385 0299 04       		.byte	0x4
+ 386 029a 3F01     		.2byte	0x13f
+ 387 029c CA000000 		.4byte	0xca
+ 388 02a0 16       		.uleb128 0x16
+ 389 02a1 9E000000 		.4byte	0x9e
+ 390 02a5 AF020000 		.4byte	0x2af
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccjP4M6J.s 			page 14
+
+
+ 391 02a9 17       		.uleb128 0x17
+ 392 02aa D6000000 		.4byte	0xd6
+ 393 02ae 00       		.byte	0
+ 394 02af 19       		.uleb128 0x19
+ 395 02b0 44010000 		.4byte	.LASF37
+ 396 02b4 04       		.byte	0x4
+ 397 02b5 5C01     		.2byte	0x15c
+ 398 02b7 A0020000 		.4byte	0x2a0
+ 399 02bb 16       		.uleb128 0x16
+ 400 02bc B4000000 		.4byte	0xb4
+ 401 02c0 CA020000 		.4byte	0x2ca
+ 402 02c4 17       		.uleb128 0x17
+ 403 02c5 D6000000 		.4byte	0xd6
+ 404 02c9 00       		.byte	0
+ 405 02ca 19       		.uleb128 0x19
+ 406 02cb 2D030000 		.4byte	.LASF38
+ 407 02cf 04       		.byte	0x4
+ 408 02d0 6701     		.2byte	0x167
+ 409 02d2 BB020000 		.4byte	0x2bb
+ 410 02d6 15       		.uleb128 0x15
+ 411 02d7 A5010000 		.4byte	.LASF39
+ 412 02db 07       		.byte	0x7
+ 413 02dc 40       		.byte	0x40
+ 414 02dd 9E000000 		.4byte	0x9e
+ 415 02e1 15       		.uleb128 0x15
+ 416 02e2 65000000 		.4byte	.LASF40
+ 417 02e6 07       		.byte	0x7
+ 418 02e7 47       		.byte	0x47
+ 419 02e8 A9000000 		.4byte	0xa9
+ 420 02ec 15       		.uleb128 0x15
+ 421 02ed 73020000 		.4byte	.LASF41
+ 422 02f1 07       		.byte	0x7
+ 423 02f2 4A       		.byte	0x4a
+ 424 02f3 9E000000 		.4byte	0x9e
+ 425 02f7 16       		.uleb128 0x16
+ 426 02f8 07030000 		.4byte	0x307
+ 427 02fc 07030000 		.4byte	0x307
+ 428 0300 1A       		.uleb128 0x1a
+ 429 0301 D6000000 		.4byte	0xd6
+ 430 0305 FF       		.byte	0xff
+ 431 0306 00       		.byte	0
+ 432 0307 18       		.uleb128 0x18
+ 433 0308 72000000 		.4byte	0x72
+ 434 030c 19       		.uleb128 0x19
+ 435 030d 08030000 		.4byte	.LASF42
+ 436 0311 08       		.byte	0x8
+ 437 0312 AB01     		.2byte	0x1ab
+ 438 0314 18030000 		.4byte	0x318
+ 439 0318 18       		.uleb128 0x18
+ 440 0319 F7020000 		.4byte	0x2f7
+ 441 031d 1B       		.uleb128 0x1b
+ 442 031e 39000000 		.4byte	.LASF49
+ 443 0322 39000000 		.4byte	.LASF49
+ 444 0326 01       		.byte	0x1
+ 445 0327 49       		.byte	0x49
+ 446 0328 00       		.byte	0
+ 447              		.section	.debug_abbrev,"",%progbits
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccjP4M6J.s 			page 15
+
+
+ 448              	.Ldebug_abbrev0:
+ 449 0000 01       		.uleb128 0x1
+ 450 0001 11       		.uleb128 0x11
+ 451 0002 01       		.byte	0x1
+ 452 0003 25       		.uleb128 0x25
+ 453 0004 0E       		.uleb128 0xe
+ 454 0005 13       		.uleb128 0x13
+ 455 0006 0B       		.uleb128 0xb
+ 456 0007 03       		.uleb128 0x3
+ 457 0008 0E       		.uleb128 0xe
+ 458 0009 1B       		.uleb128 0x1b
+ 459 000a 0E       		.uleb128 0xe
+ 460 000b 55       		.uleb128 0x55
+ 461 000c 17       		.uleb128 0x17
+ 462 000d 11       		.uleb128 0x11
+ 463 000e 01       		.uleb128 0x1
+ 464 000f 10       		.uleb128 0x10
+ 465 0010 17       		.uleb128 0x17
+ 466 0011 00       		.byte	0
+ 467 0012 00       		.byte	0
+ 468 0013 02       		.uleb128 0x2
+ 469 0014 24       		.uleb128 0x24
+ 470 0015 00       		.byte	0
+ 471 0016 0B       		.uleb128 0xb
+ 472 0017 0B       		.uleb128 0xb
+ 473 0018 3E       		.uleb128 0x3e
+ 474 0019 0B       		.uleb128 0xb
+ 475 001a 03       		.uleb128 0x3
+ 476 001b 0E       		.uleb128 0xe
+ 477 001c 00       		.byte	0
+ 478 001d 00       		.byte	0
+ 479 001e 03       		.uleb128 0x3
+ 480 001f 24       		.uleb128 0x24
+ 481 0020 00       		.byte	0
+ 482 0021 0B       		.uleb128 0xb
+ 483 0022 0B       		.uleb128 0xb
+ 484 0023 3E       		.uleb128 0x3e
+ 485 0024 0B       		.uleb128 0xb
+ 486 0025 03       		.uleb128 0x3
+ 487 0026 08       		.uleb128 0x8
+ 488 0027 00       		.byte	0
+ 489 0028 00       		.byte	0
+ 490 0029 04       		.uleb128 0x4
+ 491 002a 16       		.uleb128 0x16
+ 492 002b 00       		.byte	0
+ 493 002c 03       		.uleb128 0x3
+ 494 002d 0E       		.uleb128 0xe
+ 495 002e 3A       		.uleb128 0x3a
+ 496 002f 0B       		.uleb128 0xb
+ 497 0030 3B       		.uleb128 0x3b
+ 498 0031 0B       		.uleb128 0xb
+ 499 0032 49       		.uleb128 0x49
+ 500 0033 13       		.uleb128 0x13
+ 501 0034 00       		.byte	0
+ 502 0035 00       		.byte	0
+ 503 0036 05       		.uleb128 0x5
+ 504 0037 16       		.uleb128 0x16
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccjP4M6J.s 			page 16
+
+
+ 505 0038 00       		.byte	0
+ 506 0039 03       		.uleb128 0x3
+ 507 003a 0E       		.uleb128 0xe
+ 508 003b 3A       		.uleb128 0x3a
+ 509 003c 0B       		.uleb128 0xb
+ 510 003d 3B       		.uleb128 0x3b
+ 511 003e 05       		.uleb128 0x5
+ 512 003f 49       		.uleb128 0x49
+ 513 0040 13       		.uleb128 0x13
+ 514 0041 00       		.byte	0
+ 515 0042 00       		.byte	0
+ 516 0043 06       		.uleb128 0x6
+ 517 0044 2E       		.uleb128 0x2e
+ 518 0045 01       		.byte	0x1
+ 519 0046 03       		.uleb128 0x3
+ 520 0047 0E       		.uleb128 0xe
+ 521 0048 3A       		.uleb128 0x3a
+ 522 0049 0B       		.uleb128 0xb
+ 523 004a 3B       		.uleb128 0x3b
+ 524 004b 0B       		.uleb128 0xb
+ 525 004c 27       		.uleb128 0x27
+ 526 004d 19       		.uleb128 0x19
+ 527 004e 20       		.uleb128 0x20
+ 528 004f 0B       		.uleb128 0xb
+ 529 0050 01       		.uleb128 0x1
+ 530 0051 13       		.uleb128 0x13
+ 531 0052 00       		.byte	0
+ 532 0053 00       		.byte	0
+ 533 0054 07       		.uleb128 0x7
+ 534 0055 05       		.uleb128 0x5
+ 535 0056 00       		.byte	0
+ 536 0057 03       		.uleb128 0x3
+ 537 0058 08       		.uleb128 0x8
+ 538 0059 3A       		.uleb128 0x3a
+ 539 005a 0B       		.uleb128 0xb
+ 540 005b 3B       		.uleb128 0x3b
+ 541 005c 0B       		.uleb128 0xb
+ 542 005d 49       		.uleb128 0x49
+ 543 005e 13       		.uleb128 0x13
+ 544 005f 00       		.byte	0
+ 545 0060 00       		.byte	0
+ 546 0061 08       		.uleb128 0x8
+ 547 0062 2E       		.uleb128 0x2e
+ 548 0063 01       		.byte	0x1
+ 549 0064 03       		.uleb128 0x3
+ 550 0065 0E       		.uleb128 0xe
+ 551 0066 3A       		.uleb128 0x3a
+ 552 0067 0B       		.uleb128 0xb
+ 553 0068 3B       		.uleb128 0x3b
+ 554 0069 0B       		.uleb128 0xb
+ 555 006a 27       		.uleb128 0x27
+ 556 006b 19       		.uleb128 0x19
+ 557 006c 49       		.uleb128 0x49
+ 558 006d 13       		.uleb128 0x13
+ 559 006e 20       		.uleb128 0x20
+ 560 006f 0B       		.uleb128 0xb
+ 561 0070 01       		.uleb128 0x1
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccjP4M6J.s 			page 17
+
+
+ 562 0071 13       		.uleb128 0x13
+ 563 0072 00       		.byte	0
+ 564 0073 00       		.byte	0
+ 565 0074 09       		.uleb128 0x9
+ 566 0075 34       		.uleb128 0x34
+ 567 0076 00       		.byte	0
+ 568 0077 03       		.uleb128 0x3
+ 569 0078 0E       		.uleb128 0xe
+ 570 0079 3A       		.uleb128 0x3a
+ 571 007a 0B       		.uleb128 0xb
+ 572 007b 3B       		.uleb128 0x3b
+ 573 007c 0B       		.uleb128 0xb
+ 574 007d 49       		.uleb128 0x49
+ 575 007e 13       		.uleb128 0x13
+ 576 007f 00       		.byte	0
+ 577 0080 00       		.byte	0
+ 578 0081 0A       		.uleb128 0xa
+ 579 0082 2E       		.uleb128 0x2e
+ 580 0083 01       		.byte	0x1
+ 581 0084 03       		.uleb128 0x3
+ 582 0085 0E       		.uleb128 0xe
+ 583 0086 3A       		.uleb128 0x3a
+ 584 0087 0B       		.uleb128 0xb
+ 585 0088 3B       		.uleb128 0x3b
+ 586 0089 05       		.uleb128 0x5
+ 587 008a 27       		.uleb128 0x27
+ 588 008b 19       		.uleb128 0x19
+ 589 008c 20       		.uleb128 0x20
+ 590 008d 0B       		.uleb128 0xb
+ 591 008e 01       		.uleb128 0x1
+ 592 008f 13       		.uleb128 0x13
+ 593 0090 00       		.byte	0
+ 594 0091 00       		.byte	0
+ 595 0092 0B       		.uleb128 0xb
+ 596 0093 05       		.uleb128 0x5
+ 597 0094 00       		.byte	0
+ 598 0095 03       		.uleb128 0x3
+ 599 0096 08       		.uleb128 0x8
+ 600 0097 3A       		.uleb128 0x3a
+ 601 0098 0B       		.uleb128 0xb
+ 602 0099 3B       		.uleb128 0x3b
+ 603 009a 05       		.uleb128 0x5
+ 604 009b 49       		.uleb128 0x49
+ 605 009c 13       		.uleb128 0x13
+ 606 009d 00       		.byte	0
+ 607 009e 00       		.byte	0
+ 608 009f 0C       		.uleb128 0xc
+ 609 00a0 2E       		.uleb128 0x2e
+ 610 00a1 00       		.byte	0
+ 611 00a2 03       		.uleb128 0x3
+ 612 00a3 0E       		.uleb128 0xe
+ 613 00a4 3A       		.uleb128 0x3a
+ 614 00a5 0B       		.uleb128 0xb
+ 615 00a6 3B       		.uleb128 0x3b
+ 616 00a7 05       		.uleb128 0x5
+ 617 00a8 27       		.uleb128 0x27
+ 618 00a9 19       		.uleb128 0x19
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccjP4M6J.s 			page 18
+
+
+ 619 00aa 49       		.uleb128 0x49
+ 620 00ab 13       		.uleb128 0x13
+ 621 00ac 20       		.uleb128 0x20
+ 622 00ad 0B       		.uleb128 0xb
+ 623 00ae 00       		.byte	0
+ 624 00af 00       		.byte	0
+ 625 00b0 0D       		.uleb128 0xd
+ 626 00b1 2E       		.uleb128 0x2e
+ 627 00b2 01       		.byte	0x1
+ 628 00b3 3F       		.uleb128 0x3f
+ 629 00b4 19       		.uleb128 0x19
+ 630 00b5 03       		.uleb128 0x3
+ 631 00b6 0E       		.uleb128 0xe
+ 632 00b7 3A       		.uleb128 0x3a
+ 633 00b8 0B       		.uleb128 0xb
+ 634 00b9 3B       		.uleb128 0x3b
+ 635 00ba 0B       		.uleb128 0xb
+ 636 00bb 27       		.uleb128 0x27
+ 637 00bc 19       		.uleb128 0x19
+ 638 00bd 11       		.uleb128 0x11
+ 639 00be 01       		.uleb128 0x1
+ 640 00bf 12       		.uleb128 0x12
+ 641 00c0 06       		.uleb128 0x6
+ 642 00c1 40       		.uleb128 0x40
+ 643 00c2 18       		.uleb128 0x18
+ 644 00c3 9742     		.uleb128 0x2117
+ 645 00c5 19       		.uleb128 0x19
+ 646 00c6 01       		.uleb128 0x1
+ 647 00c7 13       		.uleb128 0x13
+ 648 00c8 00       		.byte	0
+ 649 00c9 00       		.byte	0
+ 650 00ca 0E       		.uleb128 0xe
+ 651 00cb 1D       		.uleb128 0x1d
+ 652 00cc 01       		.byte	0x1
+ 653 00cd 31       		.uleb128 0x31
+ 654 00ce 13       		.uleb128 0x13
+ 655 00cf 11       		.uleb128 0x11
+ 656 00d0 01       		.uleb128 0x1
+ 657 00d1 12       		.uleb128 0x12
+ 658 00d2 06       		.uleb128 0x6
+ 659 00d3 58       		.uleb128 0x58
+ 660 00d4 0B       		.uleb128 0xb
+ 661 00d5 59       		.uleb128 0x59
+ 662 00d6 0B       		.uleb128 0xb
+ 663 00d7 01       		.uleb128 0x1
+ 664 00d8 13       		.uleb128 0x13
+ 665 00d9 00       		.byte	0
+ 666 00da 00       		.byte	0
+ 667 00db 0F       		.uleb128 0xf
+ 668 00dc 1D       		.uleb128 0x1d
+ 669 00dd 01       		.byte	0x1
+ 670 00de 31       		.uleb128 0x31
+ 671 00df 13       		.uleb128 0x13
+ 672 00e0 11       		.uleb128 0x11
+ 673 00e1 01       		.uleb128 0x1
+ 674 00e2 12       		.uleb128 0x12
+ 675 00e3 06       		.uleb128 0x6
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccjP4M6J.s 			page 19
+
+
+ 676 00e4 58       		.uleb128 0x58
+ 677 00e5 0B       		.uleb128 0xb
+ 678 00e6 59       		.uleb128 0x59
+ 679 00e7 05       		.uleb128 0x5
+ 680 00e8 00       		.byte	0
+ 681 00e9 00       		.byte	0
+ 682 00ea 10       		.uleb128 0x10
+ 683 00eb 0B       		.uleb128 0xb
+ 684 00ec 01       		.byte	0x1
+ 685 00ed 11       		.uleb128 0x11
+ 686 00ee 01       		.uleb128 0x1
+ 687 00ef 12       		.uleb128 0x12
+ 688 00f0 06       		.uleb128 0x6
+ 689 00f1 00       		.byte	0
+ 690 00f2 00       		.byte	0
+ 691 00f3 11       		.uleb128 0x11
+ 692 00f4 34       		.uleb128 0x34
+ 693 00f5 00       		.byte	0
+ 694 00f6 31       		.uleb128 0x31
+ 695 00f7 13       		.uleb128 0x13
+ 696 00f8 00       		.byte	0
+ 697 00f9 00       		.byte	0
+ 698 00fa 12       		.uleb128 0x12
+ 699 00fb 1D       		.uleb128 0x1d
+ 700 00fc 01       		.byte	0x1
+ 701 00fd 31       		.uleb128 0x31
+ 702 00fe 13       		.uleb128 0x13
+ 703 00ff 11       		.uleb128 0x11
+ 704 0100 01       		.uleb128 0x1
+ 705 0101 12       		.uleb128 0x12
+ 706 0102 06       		.uleb128 0x6
+ 707 0103 58       		.uleb128 0x58
+ 708 0104 0B       		.uleb128 0xb
+ 709 0105 59       		.uleb128 0x59
+ 710 0106 05       		.uleb128 0x5
+ 711 0107 01       		.uleb128 0x1
+ 712 0108 13       		.uleb128 0x13
+ 713 0109 00       		.byte	0
+ 714 010a 00       		.byte	0
+ 715 010b 13       		.uleb128 0x13
+ 716 010c 05       		.uleb128 0x5
+ 717 010d 00       		.byte	0
+ 718 010e 31       		.uleb128 0x31
+ 719 010f 13       		.uleb128 0x13
+ 720 0110 00       		.byte	0
+ 721 0111 00       		.byte	0
+ 722 0112 14       		.uleb128 0x14
+ 723 0113 898201   		.uleb128 0x4109
+ 724 0116 00       		.byte	0
+ 725 0117 11       		.uleb128 0x11
+ 726 0118 01       		.uleb128 0x1
+ 727 0119 31       		.uleb128 0x31
+ 728 011a 13       		.uleb128 0x13
+ 729 011b 00       		.byte	0
+ 730 011c 00       		.byte	0
+ 731 011d 15       		.uleb128 0x15
+ 732 011e 34       		.uleb128 0x34
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccjP4M6J.s 			page 20
+
+
+ 733 011f 00       		.byte	0
+ 734 0120 03       		.uleb128 0x3
+ 735 0121 0E       		.uleb128 0xe
+ 736 0122 3A       		.uleb128 0x3a
+ 737 0123 0B       		.uleb128 0xb
+ 738 0124 3B       		.uleb128 0x3b
+ 739 0125 0B       		.uleb128 0xb
+ 740 0126 49       		.uleb128 0x49
+ 741 0127 13       		.uleb128 0x13
+ 742 0128 3F       		.uleb128 0x3f
+ 743 0129 19       		.uleb128 0x19
+ 744 012a 3C       		.uleb128 0x3c
+ 745 012b 19       		.uleb128 0x19
+ 746 012c 00       		.byte	0
+ 747 012d 00       		.byte	0
+ 748 012e 16       		.uleb128 0x16
+ 749 012f 01       		.uleb128 0x1
+ 750 0130 01       		.byte	0x1
+ 751 0131 49       		.uleb128 0x49
+ 752 0132 13       		.uleb128 0x13
+ 753 0133 01       		.uleb128 0x1
+ 754 0134 13       		.uleb128 0x13
+ 755 0135 00       		.byte	0
+ 756 0136 00       		.byte	0
+ 757 0137 17       		.uleb128 0x17
+ 758 0138 21       		.uleb128 0x21
+ 759 0139 00       		.byte	0
+ 760 013a 49       		.uleb128 0x49
+ 761 013b 13       		.uleb128 0x13
+ 762 013c 00       		.byte	0
+ 763 013d 00       		.byte	0
+ 764 013e 18       		.uleb128 0x18
+ 765 013f 26       		.uleb128 0x26
+ 766 0140 00       		.byte	0
+ 767 0141 49       		.uleb128 0x49
+ 768 0142 13       		.uleb128 0x13
+ 769 0143 00       		.byte	0
+ 770 0144 00       		.byte	0
+ 771 0145 19       		.uleb128 0x19
+ 772 0146 34       		.uleb128 0x34
+ 773 0147 00       		.byte	0
+ 774 0148 03       		.uleb128 0x3
+ 775 0149 0E       		.uleb128 0xe
+ 776 014a 3A       		.uleb128 0x3a
+ 777 014b 0B       		.uleb128 0xb
+ 778 014c 3B       		.uleb128 0x3b
+ 779 014d 05       		.uleb128 0x5
+ 780 014e 49       		.uleb128 0x49
+ 781 014f 13       		.uleb128 0x13
+ 782 0150 3F       		.uleb128 0x3f
+ 783 0151 19       		.uleb128 0x19
+ 784 0152 3C       		.uleb128 0x3c
+ 785 0153 19       		.uleb128 0x19
+ 786 0154 00       		.byte	0
+ 787 0155 00       		.byte	0
+ 788 0156 1A       		.uleb128 0x1a
+ 789 0157 21       		.uleb128 0x21
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccjP4M6J.s 			page 21
+
+
+ 790 0158 00       		.byte	0
+ 791 0159 49       		.uleb128 0x49
+ 792 015a 13       		.uleb128 0x13
+ 793 015b 2F       		.uleb128 0x2f
+ 794 015c 0B       		.uleb128 0xb
+ 795 015d 00       		.byte	0
+ 796 015e 00       		.byte	0
+ 797 015f 1B       		.uleb128 0x1b
+ 798 0160 2E       		.uleb128 0x2e
+ 799 0161 00       		.byte	0
+ 800 0162 3F       		.uleb128 0x3f
+ 801 0163 19       		.uleb128 0x19
+ 802 0164 3C       		.uleb128 0x3c
+ 803 0165 19       		.uleb128 0x19
+ 804 0166 6E       		.uleb128 0x6e
+ 805 0167 0E       		.uleb128 0xe
+ 806 0168 03       		.uleb128 0x3
+ 807 0169 0E       		.uleb128 0xe
+ 808 016a 3A       		.uleb128 0x3a
+ 809 016b 0B       		.uleb128 0xb
+ 810 016c 3B       		.uleb128 0x3b
+ 811 016d 0B       		.uleb128 0xb
+ 812 016e 00       		.byte	0
+ 813 016f 00       		.byte	0
+ 814 0170 00       		.byte	0
+ 815              		.section	.debug_aranges,"",%progbits
+ 816 0000 1C000000 		.4byte	0x1c
+ 817 0004 0200     		.2byte	0x2
+ 818 0006 00000000 		.4byte	.Ldebug_info0
+ 819 000a 04       		.byte	0x4
+ 820 000b 00       		.byte	0
+ 821 000c 0000     		.2byte	0
+ 822 000e 0000     		.2byte	0
+ 823 0010 00000000 		.4byte	.LFB65
+ 824 0014 12000000 		.4byte	.LFE65-.LFB65
+ 825 0018 00000000 		.4byte	0
+ 826 001c 00000000 		.4byte	0
+ 827              		.section	.debug_ranges,"",%progbits
+ 828              	.Ldebug_ranges0:
+ 829 0000 00000000 		.4byte	.LFB65
+ 830 0004 12000000 		.4byte	.LFE65
+ 831 0008 00000000 		.4byte	0
+ 832 000c 00000000 		.4byte	0
+ 833              		.section	.debug_line,"",%progbits
+ 834              	.Ldebug_line0:
+ 835 0000 61010000 		.section	.debug_str,"MS",%progbits,1
+ 835      02003801 
+ 835      00000201 
+ 835      FB0E0D00 
+ 835      01010101 
+ 836              	.LASF18:
+ 837 0000 45455F54 		.ascii	"EE_TYPE_RQ_MASK\000"
+ 837      5950455F 
+ 837      52515F4D 
+ 837      41534B00 
+ 838              	.LASF16:
+ 839 0010 45455F54 		.ascii	"EE_TYPEBOOL\000"
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccjP4M6J.s 			page 22
+
+
+ 839      59504542 
+ 839      4F4F4C00 
+ 840              	.LASF48:
+ 841 001c 45455F73 		.ascii	"EE_system_init\000"
+ 841      79737465 
+ 841      6D5F696E 
+ 841      697400
+ 842              	.LASF36:
+ 843 002b 45455F72 		.ascii	"EE_rq_bitmask\000"
+ 843      715F6269 
+ 843      746D6173 
+ 843      6B00
+ 844              	.LASF49:
+ 845 0039 45455F73 		.ascii	"EE_set_switch_context_pri\000"
+ 845      65745F73 
+ 845      77697463 
+ 845      685F636F 
+ 845      6E746578 
+ 846              	.LASF47:
+ 847 0053 45455F68 		.ascii	"EE_hal_suspendIRQ\000"
+ 847      616C5F73 
+ 847      75737065 
+ 847      6E644952 
+ 847      5100
+ 848              	.LASF40:
+ 849 0065 45455F6F 		.ascii	"EE_oo_IRQ_suspend_status\000"
+ 849      6F5F4952 
+ 849      515F7375 
+ 849      7370656E 
+ 849      645F7374 
+ 850              	.LASF25:
+ 851 007e 69737461 		.ascii	"istat\000"
+ 851      7400
+ 852              	.LASF17:
+ 853 0084 45455F54 		.ascii	"EE_TID\000"
+ 853      494400
+ 854              	.LASF23:
+ 855 008b 45455F63 		.ascii	"EE_cortex_mx_resumeIRQ\000"
+ 855      6F727465 
+ 855      785F6D78 
+ 855      5F726573 
+ 855      756D6549 
+ 856              	.LASF21:
+ 857 00a2 666C6F61 		.ascii	"float\000"
+ 857      7400
+ 858              	.LASF1:
+ 859 00a8 756E7369 		.ascii	"unsigned char\000"
+ 859      676E6564 
+ 859      20636861 
+ 859      7200
+ 860              	.LASF43:
+ 861 00b6 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 861      43313120 
+ 861      352E342E 
+ 861      31203230 
+ 861      31363036 
+ 862 00e9 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccjP4M6J.s 			page 23
+
+
+ 862      20726576 
+ 862      6973696F 
+ 862      6E203233 
+ 862      37373135 
+ 863 011c 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 863      66756E63 
+ 863      74696F6E 
+ 863      2D736563 
+ 863      74696F6E 
+ 864              	.LASF37:
+ 865 0144 45455F74 		.ascii	"EE_th_event_active\000"
+ 865      685F6576 
+ 865      656E745F 
+ 865      61637469 
+ 865      766500
+ 866              	.LASF12:
+ 867 0157 45455F49 		.ascii	"EE_INT32\000"
+ 867      4E543332 
+ 867      00
+ 868              	.LASF5:
+ 869 0160 6C6F6E67 		.ascii	"long unsigned int\000"
+ 869      20756E73 
+ 869      69676E65 
+ 869      6420696E 
+ 869      7400
+ 870              	.LASF30:
+ 871 0172 45455F74 		.ascii	"EE_th_dispatch_prio\000"
+ 871      685F6469 
+ 871      73706174 
+ 871      63685F70 
+ 871      72696F00 
+ 872              	.LASF3:
+ 873 0186 73686F72 		.ascii	"short unsigned int\000"
+ 873      7420756E 
+ 873      7369676E 
+ 873      65642069 
+ 873      6E7400
+ 874              	.LASF33:
+ 875 0199 45455F74 		.ascii	"EE_th_rnact\000"
+ 875      685F726E 
+ 875      61637400 
+ 876              	.LASF39:
+ 877 01a5 45455F6F 		.ascii	"EE_oo_IRQ_disable_count\000"
+ 877      6F5F4952 
+ 877      515F6469 
+ 877      7361626C 
+ 877      655F636F 
+ 878              	.LASF22:
+ 879 01bd 646F7562 		.ascii	"double\000"
+ 879      6C6500
+ 880              	.LASF35:
+ 881 01c4 45455F73 		.ascii	"EE_sys_ceiling\000"
+ 881      79735F63 
+ 881      65696C69 
+ 881      6E6700
+ 882              	.LASF28:
+ 883 01d3 45455F73 		.ascii	"EE_std_endcycle_next_tid\000"
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccjP4M6J.s 			page 24
+
+
+ 883      74645F65 
+ 883      6E646379 
+ 883      636C655F 
+ 883      6E657874 
+ 884              	.LASF11:
+ 885 01ec 45455F55 		.ascii	"EE_UINT16\000"
+ 885      494E5431 
+ 885      3600
+ 886              	.LASF8:
+ 887 01f6 756E7369 		.ascii	"unsigned int\000"
+ 887      676E6564 
+ 887      20696E74 
+ 887      00
+ 888              	.LASF26:
+ 889 0203 666C6167 		.ascii	"flags\000"
+ 889      7300
+ 890              	.LASF13:
+ 891 0209 45455F55 		.ascii	"EE_UINT32\000"
+ 891      494E5433 
+ 891      3200
+ 892              	.LASF32:
+ 893 0213 45455F74 		.ascii	"EE_th_next\000"
+ 893      685F6E65 
+ 893      787400
+ 894              	.LASF7:
+ 895 021e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 895      206C6F6E 
+ 895      6720756E 
+ 895      7369676E 
+ 895      65642069 
+ 896              	.LASF10:
+ 897 0235 45455F49 		.ascii	"EE_INT8\000"
+ 897      4E543800 
+ 898              	.LASF44:
+ 899 023d 47656E65 		.ascii	"Generated_Source\\PSoC5\\ErikaOS_2_cortex_mx_ee_uti"
+ 899      72617465 
+ 899      645F536F 
+ 899      75726365 
+ 899      5C50536F 
+ 900 026e 6C732E63 		.ascii	"ls.c\000"
+ 900      00
+ 901              	.LASF41:
+ 902 0273 45455F41 		.ascii	"EE_ApplicationMode\000"
+ 902      70706C69 
+ 902      63617469 
+ 902      6F6E4D6F 
+ 902      646500
+ 903              	.LASF29:
+ 904 0286 45455F74 		.ascii	"EE_th_ready_prio\000"
+ 904      685F7265 
+ 904      6164795F 
+ 904      7072696F 
+ 904      00
+ 905              	.LASF15:
+ 906 0297 45455F46 		.ascii	"EE_FREG\000"
+ 906      52454700 
+ 907              	.LASF19:
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccjP4M6J.s 			page 25
+
+
+ 908 029f 73697A65 		.ascii	"sizetype\000"
+ 908      74797065 
+ 908      00
+ 909              	.LASF6:
+ 910 02a8 6C6F6E67 		.ascii	"long long int\000"
+ 910      206C6F6E 
+ 910      6720696E 
+ 910      7400
+ 911              	.LASF20:
+ 912 02b6 63686172 		.ascii	"char\000"
+ 912      00
+ 913              	.LASF14:
+ 914 02bb 45455F55 		.ascii	"EE_UREG\000"
+ 914      52454700 
+ 915              	.LASF27:
+ 916 02c3 45455F49 		.ascii	"EE_IRQ_nesting_level\000"
+ 916      52515F6E 
+ 916      65737469 
+ 916      6E675F6C 
+ 916      6576656C 
+ 917              	.LASF34:
+ 918 02d8 45455F73 		.ascii	"EE_stkfirst\000"
+ 918      746B6669 
+ 918      72737400 
+ 919              	.LASF2:
+ 920 02e4 73686F72 		.ascii	"short int\000"
+ 920      7420696E 
+ 920      7400
+ 921              	.LASF24:
+ 922 02ee 45455F68 		.ascii	"EE_hal_resumeIRQ\000"
+ 922      616C5F72 
+ 922      6573756D 
+ 922      65495251 
+ 922      00
+ 923              	.LASF4:
+ 924 02ff 6C6F6E67 		.ascii	"long int\000"
+ 924      20696E74 
+ 924      00
+ 925              	.LASF42:
+ 926 0308 45455F72 		.ascii	"EE_rq_lookup\000"
+ 926      715F6C6F 
+ 926      6F6B7570 
+ 926      00
+ 927              	.LASF9:
+ 928 0315 6C6F6E67 		.ascii	"long double\000"
+ 928      20646F75 
+ 928      626C6500 
+ 929              	.LASF0:
+ 930 0321 7369676E 		.ascii	"signed char\000"
+ 930      65642063 
+ 930      68617200 
+ 931              	.LASF38:
+ 932 032d 45455F74 		.ascii	"EE_th_waswaiting\000"
+ 932      685F7761 
+ 932      73776169 
+ 932      74696E67 
+ 932      00
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccjP4M6J.s 			page 26
+
+
+ 933              	.LASF46:
+ 934 033e 45455F63 		.ascii	"EE_cortex_mx_suspendIRQ\000"
+ 934      6F727465 
+ 934      785F6D78 
+ 934      5F737573 
+ 934      70656E64 
+ 935              	.LASF45:
+ 936 0356 433A5C55 		.ascii	"C:\\Users\\bolob\\Documents\\PSoC Creator\\Clock\\E"
+ 936      73657273 
+ 936      5C626F6C 
+ 936      6F625C44 
+ 936      6F63756D 
+ 937 0383 6C656374 		.ascii	"lectronic_Clock.cydsn\000"
+ 937      726F6E69 
+ 937      635F436C 
+ 937      6F636B2E 
+ 937      63796473 
+ 938              	.LASF31:
+ 939 0399 45455F74 		.ascii	"EE_th_status\000"
+ 939      685F7374 
+ 939      61747573 
+ 939      00
+ 940              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

@@ -1,0 +1,2530 @@
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"clock_container.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.CLOCK__increment1Minute,"ax",%progbits
+  20              		.align	2
+  21              		.global	CLOCK__increment1Minute
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	CLOCK__increment1Minute, %function
+  25              	CLOCK__increment1Minute:
+  26              	.LFB134:
+  27              		.file 1 "clock_container.c"
+   1:clock_container.c **** /* ========================================
+   2:clock_container.c ****  *
+   3:clock_container.c ****  * Copyright YOUR COMPANY, THE YEAR
+   4:clock_container.c ****  * All Rights Reserved
+   5:clock_container.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:clock_container.c ****  *
+   7:clock_container.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:clock_container.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:clock_container.c ****  *
+  10:clock_container.c ****  * ========================================
+  11:clock_container.c **** */
+  12:clock_container.c **** #include "clock_container.h"
+  13:clock_container.c **** 
+  14:clock_container.c **** // =================================== Container ===================================
+  15:clock_container.c **** 
+  16:clock_container.c **** /** ==== CLOCK_C_ISDISPLAYING ===== */
+  17:clock_container.c **** const STATE_stateInnerTransitionTable_t STATE_CLOCK_C_ISDISPLAYING_Transitions[] = {
+  18:clock_container.c **** /*    Event                     ToState                Guard    Action                   */
+  19:clock_container.c ****     { EV_KEYLEFT,               CLOCK_C_ISEDITINGHOURS, 0,      CLOCK__dispatch_KL_Hours },
+  20:clock_container.c ****     { EV_1MIN,                  CLOCK_C_ISDISPLAYING, 0,        CLOCK__increment1Minute }
+  21:clock_container.c **** };
+  22:clock_container.c **** 
+  23:clock_container.c **** /** ==== CLOCK_C_ISEDITINGHOURS ===== */
+  24:clock_container.c **** const STATE_stateInnerTransitionTable_t STATE_CLOCK_C_ISEDITINGHOURS_Transitions[] = {
+  25:clock_container.c **** /*    Event                     ToState                Guard    Action                   */
+  26:clock_container.c ****     { EV_KEYLEFT,               CLOCK_C_ISEDITINGMINUTES, 0,    CLOCK__dispatch_KL_HoursMin } ,
+  27:clock_container.c ****     { EV_KEYRIGHT,              CLOCK_C_ISEDITINGHOURS,   0,    CLOCK__dispatch_KR_Hours },
+  28:clock_container.c ****     { EV_KEYRIGHTLONGPRESS,     CLOCK_C_ISEDITINGHOURS,   0,    CLOCK__dispatch_KRLP_Hours },
+  29:clock_container.c ****     { EV_250MS,                 CLOCK_C_ISEDITINGHOURS,   0,    CLOCK__dispatch_250MS_Hours }
+  30:clock_container.c **** };
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 2
+
+
+  31:clock_container.c **** 
+  32:clock_container.c **** /** ==== CLOCK_C_ISEDITINGMINUTES ===== */
+  33:clock_container.c **** const STATE_stateInnerTransitionTable_t STATE_CLOCK_C_ISEDITINGMINUTES_Transitions[] = {
+  34:clock_container.c **** /*    Event                     ToState                Guard    Action                   */
+  35:clock_container.c ****     { EV_KEYLEFT,               CLOCK_C_ISDISPLAYING,    0,     CLOCK__dispatch_KL_Min },
+  36:clock_container.c ****     { EV_KEYRIGHT,              CLOCK_C_ISEDITINGMINUTES, 0,    CLOCK__dispatch_KR_Min },
+  37:clock_container.c ****     { EV_KEYRIGHTLONGPRESS,     CLOCK_C_ISEDITINGMINUTES, 0,    CLOCK__dispatch_KRLP_Min },
+  38:clock_container.c ****     { EV_250MS,                 CLOCK_C_ISEDITINGMINUTES, 0,    CLOCK__dispatch_250MS_Min }
+  39:clock_container.c **** };
+  40:clock_container.c **** 
+  41:clock_container.c **** // =============== Outer Table ===============
+  42:clock_container.c **** 
+  43:clock_container.c **** const STATE_stateOuterTransitionTable_t CLOCK_Container_Transitions[] = {
+  44:clock_container.c ****     { CLOCK_C_ISDISPLAYING,      STATE_CLOCK_C_ISDISPLAYING_Transitions, sizeof(STATE_CLOCK_C_ISDIS
+  45:clock_container.c ****     { CLOCK_C_ISEDITINGHOURS,     STATE_CLOCK_C_ISEDITINGHOURS_Transitions, sizeof(STATE_CLOCK_C_IS
+  46:clock_container.c ****     { CLOCK_C_ISEDITINGMINUTES,   STATE_CLOCK_C_ISEDITINGMINUTES_Transitions, sizeof(STATE_CLOCK_C_
+  47:clock_container.c **** };
+  48:clock_container.c **** 
+  49:clock_container.c **** const uint16_t CLOCK_Container_Transitions_Size = sizeof(CLOCK_Container_Transitions)/sizeof(STATE_
+  50:clock_container.c **** 
+  51:clock_container.c **** // Function in order to process the events
+  52:clock_container.c **** void CONTAINER_processEvent(ClockContainerState* currentState, EVENT_enum_t event) {
+  53:clock_container.c ****     for (uint8_t i = 0; i < CLOCK_Container_Transitions_Size; ++i) {
+  54:clock_container.c ****         if (CLOCK_Container_Transitions[i].currentState == *currentState) {
+  55:clock_container.c ****             const STATE_stateInnerTransitionTable_t* table = CLOCK_Container_Transitions[i].transit
+  56:clock_container.c ****             uint16_t size = CLOCK_Container_Transitions[i].tableSize;
+  57:clock_container.c **** 
+  58:clock_container.c ****             for (uint16_t j = 0; j < size; ++j) {
+  59:clock_container.c ****                 if (table[j].event == event) {
+  60:clock_container.c ****                     if (table[j].guard == NULL || table[j].guard()) {
+  61:clock_container.c ****                         if (table[j].action) {
+  62:clock_container.c ****                             table[j].action();
+  63:clock_container.c ****                         }
+  64:clock_container.c ****                         *currentState = table[j].nextState;
+  65:clock_container.c ****                         return;
+  66:clock_container.c ****                     }
+  67:clock_container.c ****                 }
+  68:clock_container.c ****             }
+  69:clock_container.c ****         }
+  70:clock_container.c ****     }
+  71:clock_container.c **** }
+  72:clock_container.c **** 
+  73:clock_container.c **** 
+  74:clock_container.c **** void CLOCK__increment1Minute(void) {
+  28              		.loc 1 74 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  75:clock_container.c ****     g_minutes++;
+  33              		.loc 1 75 0
+  34 0000 094A     		ldr	r2, .L3
+  35 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  36 0004 0133     		adds	r3, r3, #1
+  37 0006 DBB2     		uxtb	r3, r3
+  38 0008 1370     		strb	r3, [r2]
+  76:clock_container.c ****     
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 3
+
+
+  77:clock_container.c ****     // If 60 minutes have been reached,
+  78:clock_container.c ****     if(g_minutes >= 60) {
+  39              		.loc 1 78 0
+  40 000a 3B2B     		cmp	r3, #59
+  41 000c 0BD9     		bls	.L1
+  79:clock_container.c ****         // increase the current hour
+  80:clock_container.c ****         g_hours++;
+  42              		.loc 1 80 0
+  43 000e 074A     		ldr	r2, .L3+4
+  44 0010 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  45 0012 0133     		adds	r3, r3, #1
+  46 0014 DBB2     		uxtb	r3, r3
+  47 0016 1370     		strb	r3, [r2]
+  81:clock_container.c ****          
+  82:clock_container.c ****         // and reset the counter for the minutes.
+  83:clock_container.c ****         g_minutes = 0;
+  48              		.loc 1 83 0
+  49 0018 0021     		movs	r1, #0
+  50 001a 034A     		ldr	r2, .L3
+  51 001c 1170     		strb	r1, [r2]
+  84:clock_container.c ****         
+  85:clock_container.c ****         // if 24 hours have been reached,
+  86:clock_container.c ****         if(g_hours >= 24){
+  52              		.loc 1 86 0
+  53 001e 172B     		cmp	r3, #23
+  54 0020 01D9     		bls	.L1
+  87:clock_container.c ****             // reset the hours
+  88:clock_container.c ****             g_hours = 0;
+  55              		.loc 1 88 0
+  56 0022 024B     		ldr	r3, .L3+4
+  57 0024 1970     		strb	r1, [r3]
+  58              	.L1:
+  59 0026 7047     		bx	lr
+  60              	.L4:
+  61              		.align	2
+  62              	.L3:
+  63 0028 00000000 		.word	g_minutes
+  64 002c 00000000 		.word	g_hours
+  65              		.cfi_endproc
+  66              	.LFE134:
+  67              		.size	CLOCK__increment1Minute, .-CLOCK__increment1Minute
+  68              		.section	.text.CLOCK__dispatch_KL_Hours,"ax",%progbits
+  69              		.align	2
+  70              		.global	CLOCK__dispatch_KL_Hours
+  71              		.thumb
+  72              		.thumb_func
+  73              		.type	CLOCK__dispatch_KL_Hours, %function
+  74              	CLOCK__dispatch_KL_Hours:
+  75              	.LFB135:
+  89:clock_container.c ****         }
+  90:clock_container.c ****     }
+  91:clock_container.c ****         
+  92:clock_container.c **** }
+  93:clock_container.c **** 
+  94:clock_container.c **** void CLOCK__dispatch_KL_Hours(void) {
+  76              		.loc 1 94 0
+  77              		.cfi_startproc
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 4
+
+
+  78              		@ args = 0, pretend = 0, frame = 0
+  79              		@ frame_needed = 0, uses_anonymous_args = 0
+  80 0000 08B5     		push	{r3, lr}
+  81              		.cfi_def_cfa_offset 8
+  82              		.cfi_offset 3, -8
+  83              		.cfi_offset 14, -4
+  95:clock_container.c ****     WIDGET__processEvent(&CLOCK_hours, EV_KEYLEFT);
+  84              		.loc 1 95 0
+  85 0002 0221     		movs	r1, #2
+  86 0004 0148     		ldr	r0, .L7
+  87 0006 FFF7FEFF 		bl	WIDGET__processEvent
+  88              	.LVL0:
+  89 000a 08BD     		pop	{r3, pc}
+  90              	.L8:
+  91              		.align	2
+  92              	.L7:
+  93 000c 00000000 		.word	CLOCK_hours
+  94              		.cfi_endproc
+  95              	.LFE135:
+  96              		.size	CLOCK__dispatch_KL_Hours, .-CLOCK__dispatch_KL_Hours
+  97              		.section	.text.CLOCK__dispatch_KL_HoursMin,"ax",%progbits
+  98              		.align	2
+  99              		.global	CLOCK__dispatch_KL_HoursMin
+ 100              		.thumb
+ 101              		.thumb_func
+ 102              		.type	CLOCK__dispatch_KL_HoursMin, %function
+ 103              	CLOCK__dispatch_KL_HoursMin:
+ 104              	.LFB136:
+  96:clock_container.c **** }
+  97:clock_container.c **** 
+  98:clock_container.c **** void CLOCK__dispatch_KL_HoursMin(void) {
+ 105              		.loc 1 98 0
+ 106              		.cfi_startproc
+ 107              		@ args = 0, pretend = 0, frame = 0
+ 108              		@ frame_needed = 0, uses_anonymous_args = 0
+ 109 0000 08B5     		push	{r3, lr}
+ 110              		.cfi_def_cfa_offset 8
+ 111              		.cfi_offset 3, -8
+ 112              		.cfi_offset 14, -4
+  99:clock_container.c ****     WIDGET__processEvent(&CLOCK_hours, EV_KEYLEFT);
+ 113              		.loc 1 99 0
+ 114 0002 0221     		movs	r1, #2
+ 115 0004 0348     		ldr	r0, .L11
+ 116 0006 FFF7FEFF 		bl	WIDGET__processEvent
+ 117              	.LVL1:
+ 100:clock_container.c ****     WIDGET__processEvent(&CLOCK_minutes, EV_KEYLEFT);
+ 118              		.loc 1 100 0
+ 119 000a 0221     		movs	r1, #2
+ 120 000c 0248     		ldr	r0, .L11+4
+ 121 000e FFF7FEFF 		bl	WIDGET__processEvent
+ 122              	.LVL2:
+ 123 0012 08BD     		pop	{r3, pc}
+ 124              	.L12:
+ 125              		.align	2
+ 126              	.L11:
+ 127 0014 00000000 		.word	CLOCK_hours
+ 128 0018 00000000 		.word	CLOCK_minutes
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 5
+
+
+ 129              		.cfi_endproc
+ 130              	.LFE136:
+ 131              		.size	CLOCK__dispatch_KL_HoursMin, .-CLOCK__dispatch_KL_HoursMin
+ 132              		.section	.text.CLOCK__dispatch_KR_Hours,"ax",%progbits
+ 133              		.align	2
+ 134              		.global	CLOCK__dispatch_KR_Hours
+ 135              		.thumb
+ 136              		.thumb_func
+ 137              		.type	CLOCK__dispatch_KR_Hours, %function
+ 138              	CLOCK__dispatch_KR_Hours:
+ 139              	.LFB137:
+ 101:clock_container.c **** }
+ 102:clock_container.c **** 
+ 103:clock_container.c **** void CLOCK__dispatch_KR_Hours(void) {
+ 140              		.loc 1 103 0
+ 141              		.cfi_startproc
+ 142              		@ args = 0, pretend = 0, frame = 0
+ 143              		@ frame_needed = 0, uses_anonymous_args = 0
+ 144 0000 08B5     		push	{r3, lr}
+ 145              		.cfi_def_cfa_offset 8
+ 146              		.cfi_offset 3, -8
+ 147              		.cfi_offset 14, -4
+ 104:clock_container.c ****     WIDGET__processEvent(&CLOCK_hours, EV_KEYRIGHT);
+ 148              		.loc 1 104 0
+ 149 0002 0121     		movs	r1, #1
+ 150 0004 0148     		ldr	r0, .L15
+ 151 0006 FFF7FEFF 		bl	WIDGET__processEvent
+ 152              	.LVL3:
+ 153 000a 08BD     		pop	{r3, pc}
+ 154              	.L16:
+ 155              		.align	2
+ 156              	.L15:
+ 157 000c 00000000 		.word	CLOCK_hours
+ 158              		.cfi_endproc
+ 159              	.LFE137:
+ 160              		.size	CLOCK__dispatch_KR_Hours, .-CLOCK__dispatch_KR_Hours
+ 161              		.section	.text.CLOCK__dispatch_KRLP_Hours,"ax",%progbits
+ 162              		.align	2
+ 163              		.global	CLOCK__dispatch_KRLP_Hours
+ 164              		.thumb
+ 165              		.thumb_func
+ 166              		.type	CLOCK__dispatch_KRLP_Hours, %function
+ 167              	CLOCK__dispatch_KRLP_Hours:
+ 168              	.LFB138:
+ 105:clock_container.c **** }
+ 106:clock_container.c **** 
+ 107:clock_container.c **** void CLOCK__dispatch_KRLP_Hours(void) {
+ 169              		.loc 1 107 0
+ 170              		.cfi_startproc
+ 171              		@ args = 0, pretend = 0, frame = 0
+ 172              		@ frame_needed = 0, uses_anonymous_args = 0
+ 173 0000 08B5     		push	{r3, lr}
+ 174              		.cfi_def_cfa_offset 8
+ 175              		.cfi_offset 3, -8
+ 176              		.cfi_offset 14, -4
+ 108:clock_container.c ****     WIDGET__processEvent(&CLOCK_hours, EV_KEYRIGHTLONGPRESS);
+ 177              		.loc 1 108 0
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 6
+
+
+ 178 0002 0321     		movs	r1, #3
+ 179 0004 0148     		ldr	r0, .L19
+ 180 0006 FFF7FEFF 		bl	WIDGET__processEvent
+ 181              	.LVL4:
+ 182 000a 08BD     		pop	{r3, pc}
+ 183              	.L20:
+ 184              		.align	2
+ 185              	.L19:
+ 186 000c 00000000 		.word	CLOCK_hours
+ 187              		.cfi_endproc
+ 188              	.LFE138:
+ 189              		.size	CLOCK__dispatch_KRLP_Hours, .-CLOCK__dispatch_KRLP_Hours
+ 190              		.section	.text.CLOCK__dispatch_250MS_Hours,"ax",%progbits
+ 191              		.align	2
+ 192              		.global	CLOCK__dispatch_250MS_Hours
+ 193              		.thumb
+ 194              		.thumb_func
+ 195              		.type	CLOCK__dispatch_250MS_Hours, %function
+ 196              	CLOCK__dispatch_250MS_Hours:
+ 197              	.LFB139:
+ 109:clock_container.c **** }
+ 110:clock_container.c **** 
+ 111:clock_container.c **** void CLOCK__dispatch_250MS_Hours(void) {
+ 198              		.loc 1 111 0
+ 199              		.cfi_startproc
+ 200              		@ args = 0, pretend = 0, frame = 0
+ 201              		@ frame_needed = 0, uses_anonymous_args = 0
+ 202 0000 08B5     		push	{r3, lr}
+ 203              		.cfi_def_cfa_offset 8
+ 204              		.cfi_offset 3, -8
+ 205              		.cfi_offset 14, -4
+ 112:clock_container.c ****     WIDGET__processEvent(&CLOCK_hours, EV_250MS);
+ 206              		.loc 1 112 0
+ 207 0002 0421     		movs	r1, #4
+ 208 0004 0148     		ldr	r0, .L23
+ 209 0006 FFF7FEFF 		bl	WIDGET__processEvent
+ 210              	.LVL5:
+ 211 000a 08BD     		pop	{r3, pc}
+ 212              	.L24:
+ 213              		.align	2
+ 214              	.L23:
+ 215 000c 00000000 		.word	CLOCK_hours
+ 216              		.cfi_endproc
+ 217              	.LFE139:
+ 218              		.size	CLOCK__dispatch_250MS_Hours, .-CLOCK__dispatch_250MS_Hours
+ 219              		.section	.text.CLOCK__dispatch_KL_Min,"ax",%progbits
+ 220              		.align	2
+ 221              		.global	CLOCK__dispatch_KL_Min
+ 222              		.thumb
+ 223              		.thumb_func
+ 224              		.type	CLOCK__dispatch_KL_Min, %function
+ 225              	CLOCK__dispatch_KL_Min:
+ 226              	.LFB140:
+ 113:clock_container.c **** }
+ 114:clock_container.c **** 
+ 115:clock_container.c **** void CLOCK__dispatch_KL_Min(void) {
+ 227              		.loc 1 115 0
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 7
+
+
+ 228              		.cfi_startproc
+ 229              		@ args = 0, pretend = 0, frame = 0
+ 230              		@ frame_needed = 0, uses_anonymous_args = 0
+ 231 0000 08B5     		push	{r3, lr}
+ 232              		.cfi_def_cfa_offset 8
+ 233              		.cfi_offset 3, -8
+ 234              		.cfi_offset 14, -4
+ 116:clock_container.c ****     WIDGET__processEvent(&CLOCK_minutes, EV_KEYLEFT);
+ 235              		.loc 1 116 0
+ 236 0002 0221     		movs	r1, #2
+ 237 0004 0148     		ldr	r0, .L27
+ 238 0006 FFF7FEFF 		bl	WIDGET__processEvent
+ 239              	.LVL6:
+ 240 000a 08BD     		pop	{r3, pc}
+ 241              	.L28:
+ 242              		.align	2
+ 243              	.L27:
+ 244 000c 00000000 		.word	CLOCK_minutes
+ 245              		.cfi_endproc
+ 246              	.LFE140:
+ 247              		.size	CLOCK__dispatch_KL_Min, .-CLOCK__dispatch_KL_Min
+ 248              		.section	.text.CLOCK__dispatch_KR_Min,"ax",%progbits
+ 249              		.align	2
+ 250              		.global	CLOCK__dispatch_KR_Min
+ 251              		.thumb
+ 252              		.thumb_func
+ 253              		.type	CLOCK__dispatch_KR_Min, %function
+ 254              	CLOCK__dispatch_KR_Min:
+ 255              	.LFB141:
+ 117:clock_container.c **** }
+ 118:clock_container.c **** 
+ 119:clock_container.c **** void CLOCK__dispatch_KR_Min(void) {
+ 256              		.loc 1 119 0
+ 257              		.cfi_startproc
+ 258              		@ args = 0, pretend = 0, frame = 0
+ 259              		@ frame_needed = 0, uses_anonymous_args = 0
+ 260 0000 08B5     		push	{r3, lr}
+ 261              		.cfi_def_cfa_offset 8
+ 262              		.cfi_offset 3, -8
+ 263              		.cfi_offset 14, -4
+ 120:clock_container.c ****     WIDGET__processEvent(&CLOCK_minutes, EV_KEYRIGHT);
+ 264              		.loc 1 120 0
+ 265 0002 0121     		movs	r1, #1
+ 266 0004 0148     		ldr	r0, .L31
+ 267 0006 FFF7FEFF 		bl	WIDGET__processEvent
+ 268              	.LVL7:
+ 269 000a 08BD     		pop	{r3, pc}
+ 270              	.L32:
+ 271              		.align	2
+ 272              	.L31:
+ 273 000c 00000000 		.word	CLOCK_minutes
+ 274              		.cfi_endproc
+ 275              	.LFE141:
+ 276              		.size	CLOCK__dispatch_KR_Min, .-CLOCK__dispatch_KR_Min
+ 277              		.section	.text.CLOCK__dispatch_KRLP_Min,"ax",%progbits
+ 278              		.align	2
+ 279              		.global	CLOCK__dispatch_KRLP_Min
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 8
+
+
+ 280              		.thumb
+ 281              		.thumb_func
+ 282              		.type	CLOCK__dispatch_KRLP_Min, %function
+ 283              	CLOCK__dispatch_KRLP_Min:
+ 284              	.LFB142:
+ 121:clock_container.c **** }
+ 122:clock_container.c **** 
+ 123:clock_container.c **** void CLOCK__dispatch_KRLP_Min(void) {
+ 285              		.loc 1 123 0
+ 286              		.cfi_startproc
+ 287              		@ args = 0, pretend = 0, frame = 0
+ 288              		@ frame_needed = 0, uses_anonymous_args = 0
+ 289 0000 08B5     		push	{r3, lr}
+ 290              		.cfi_def_cfa_offset 8
+ 291              		.cfi_offset 3, -8
+ 292              		.cfi_offset 14, -4
+ 124:clock_container.c ****     WIDGET__processEvent(&CLOCK_minutes, EV_KEYRIGHTLONGPRESS);
+ 293              		.loc 1 124 0
+ 294 0002 0321     		movs	r1, #3
+ 295 0004 0148     		ldr	r0, .L35
+ 296 0006 FFF7FEFF 		bl	WIDGET__processEvent
+ 297              	.LVL8:
+ 298 000a 08BD     		pop	{r3, pc}
+ 299              	.L36:
+ 300              		.align	2
+ 301              	.L35:
+ 302 000c 00000000 		.word	CLOCK_minutes
+ 303              		.cfi_endproc
+ 304              	.LFE142:
+ 305              		.size	CLOCK__dispatch_KRLP_Min, .-CLOCK__dispatch_KRLP_Min
+ 306              		.section	.text.CLOCK__dispatch_250MS_Min,"ax",%progbits
+ 307              		.align	2
+ 308              		.global	CLOCK__dispatch_250MS_Min
+ 309              		.thumb
+ 310              		.thumb_func
+ 311              		.type	CLOCK__dispatch_250MS_Min, %function
+ 312              	CLOCK__dispatch_250MS_Min:
+ 313              	.LFB143:
+ 125:clock_container.c **** }
+ 126:clock_container.c **** 
+ 127:clock_container.c **** void CLOCK__dispatch_250MS_Min(void) {
+ 314              		.loc 1 127 0
+ 315              		.cfi_startproc
+ 316              		@ args = 0, pretend = 0, frame = 0
+ 317              		@ frame_needed = 0, uses_anonymous_args = 0
+ 318 0000 08B5     		push	{r3, lr}
+ 319              		.cfi_def_cfa_offset 8
+ 320              		.cfi_offset 3, -8
+ 321              		.cfi_offset 14, -4
+ 128:clock_container.c ****     WIDGET__processEvent(&CLOCK_minutes, EV_250MS);
+ 322              		.loc 1 128 0
+ 323 0002 0421     		movs	r1, #4
+ 324 0004 0148     		ldr	r0, .L39
+ 325 0006 FFF7FEFF 		bl	WIDGET__processEvent
+ 326              	.LVL9:
+ 327 000a 08BD     		pop	{r3, pc}
+ 328              	.L40:
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 9
+
+
+ 329              		.align	2
+ 330              	.L39:
+ 331 000c 00000000 		.word	CLOCK_minutes
+ 332              		.cfi_endproc
+ 333              	.LFE143:
+ 334              		.size	CLOCK__dispatch_250MS_Min, .-CLOCK__dispatch_250MS_Min
+ 335              		.section	.text.CONTAINER_processEvent,"ax",%progbits
+ 336              		.align	2
+ 337              		.global	CONTAINER_processEvent
+ 338              		.thumb
+ 339              		.thumb_func
+ 340              		.type	CONTAINER_processEvent, %function
+ 341              	CONTAINER_processEvent:
+ 342              	.LFB133:
+  52:clock_container.c ****     for (uint8_t i = 0; i < CLOCK_Container_Transitions_Size; ++i) {
+ 343              		.loc 1 52 0
+ 344              		.cfi_startproc
+ 345              		@ args = 0, pretend = 0, frame = 0
+ 346              		@ frame_needed = 0, uses_anonymous_args = 0
+ 347              	.LVL10:
+ 348 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+ 349              		.cfi_def_cfa_offset 32
+ 350              		.cfi_offset 4, -32
+ 351              		.cfi_offset 5, -28
+ 352              		.cfi_offset 6, -24
+ 353              		.cfi_offset 7, -20
+ 354              		.cfi_offset 8, -16
+ 355              		.cfi_offset 9, -12
+ 356              		.cfi_offset 10, -8
+ 357              		.cfi_offset 14, -4
+ 358 0004 8246     		mov	r10, r0
+ 359 0006 8946     		mov	r9, r1
+ 360              	.LVL11:
+ 361              	.LBB2:
+  53:clock_container.c ****         if (CLOCK_Container_Transitions[i].currentState == *currentState) {
+ 362              		.loc 1 53 0
+ 363 0008 0026     		movs	r6, #0
+ 364 000a 29E0     		b	.L42
+ 365              	.LVL12:
+ 366              	.L50:
+  54:clock_container.c ****             const STATE_stateInnerTransitionTable_t* table = CLOCK_Container_Transitions[i].transit
+ 367              		.loc 1 54 0
+ 368 000c 06EB4602 		add	r2, r6, r6, lsl #1
+ 369 0010 9300     		lsls	r3, r2, #2
+ 370 0012 154A     		ldr	r2, .L52
+ 371 0014 D258     		ldr	r2, [r2, r3]
+ 372 0016 9AF80030 		ldrb	r3, [r10]	@ zero_extendqisi2
+ 373 001a 9A42     		cmp	r2, r3
+ 374 001c 1ED1     		bne	.L43
+ 375              	.LBB3:
+  55:clock_container.c ****             uint16_t size = CLOCK_Container_Transitions[i].tableSize;
+ 376              		.loc 1 55 0
+ 377 001e 1248     		ldr	r0, .L52
+ 378 0020 7300     		lsls	r3, r6, #1
+ 379 0022 9A19     		adds	r2, r3, r6
+ 380 0024 9100     		lsls	r1, r2, #2
+ 381 0026 0144     		add	r1, r1, r0
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 10
+
+
+ 382 0028 4D68     		ldr	r5, [r1, #4]
+ 383              	.LVL13:
+  56:clock_container.c **** 
+ 384              		.loc 1 56 0
+ 385 002a B1F80880 		ldrh	r8, [r1, #8]
+ 386              	.LVL14:
+ 387              	.LBB4:
+  58:clock_container.c ****                 if (table[j].event == event) {
+ 388              		.loc 1 58 0
+ 389 002e 0024     		movs	r4, #0
+ 390 0030 12E0     		b	.L44
+ 391              	.LVL15:
+ 392              	.L49:
+  59:clock_container.c ****                     if (table[j].guard == NULL || table[j].guard()) {
+ 393              		.loc 1 59 0
+ 394 0032 2301     		lsls	r3, r4, #4
+ 395 0034 EF18     		adds	r7, r5, r3
+ 396 0036 EB5C     		ldrb	r3, [r5, r3]	@ zero_extendqisi2
+ 397 0038 4B45     		cmp	r3, r9
+ 398 003a 0BD1     		bne	.L45
+  60:clock_container.c ****                         if (table[j].action) {
+ 399              		.loc 1 60 0
+ 400 003c BB68     		ldr	r3, [r7, #8]
+ 401 003e 0BB1     		cbz	r3, .L46
+  60:clock_container.c ****                         if (table[j].action) {
+ 402              		.loc 1 60 0 is_stmt 0 discriminator 1
+ 403 0040 9847     		blx	r3
+ 404              	.LVL16:
+ 405 0042 38B1     		cbz	r0, .L45
+ 406              	.L46:
+  61:clock_container.c ****                             table[j].action();
+ 407              		.loc 1 61 0 is_stmt 1
+ 408 0044 FB68     		ldr	r3, [r7, #12]
+ 409 0046 03B1     		cbz	r3, .L47
+  62:clock_container.c ****                         }
+ 410              		.loc 1 62 0
+ 411 0048 9847     		blx	r3
+ 412              	.LVL17:
+ 413              	.L47:
+  64:clock_container.c ****                         return;
+ 414              		.loc 1 64 0
+ 415 004a 7B68     		ldr	r3, [r7, #4]
+ 416 004c 8AF80030 		strb	r3, [r10]
+  65:clock_container.c ****                     }
+ 417              		.loc 1 65 0
+ 418 0050 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 419              	.LVL18:
+ 420              	.L45:
+  58:clock_container.c ****                 if (table[j].event == event) {
+ 421              		.loc 1 58 0 discriminator 2
+ 422 0054 0134     		adds	r4, r4, #1
+ 423              	.LVL19:
+ 424 0056 A4B2     		uxth	r4, r4
+ 425              	.LVL20:
+ 426              	.L44:
+  58:clock_container.c ****                 if (table[j].event == event) {
+ 427              		.loc 1 58 0 is_stmt 0 discriminator 1
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 11
+
+
+ 428 0058 4445     		cmp	r4, r8
+ 429 005a EAD3     		bcc	.L49
+ 430              	.LVL21:
+ 431              	.L43:
+ 432              	.LBE4:
+ 433              	.LBE3:
+  53:clock_container.c ****         if (CLOCK_Container_Transitions[i].currentState == *currentState) {
+ 434              		.loc 1 53 0 is_stmt 1 discriminator 2
+ 435 005c 0136     		adds	r6, r6, #1
+ 436              	.LVL22:
+ 437 005e F6B2     		uxtb	r6, r6
+ 438              	.LVL23:
+ 439              	.L42:
+  53:clock_container.c ****         if (CLOCK_Container_Transitions[i].currentState == *currentState) {
+ 440              		.loc 1 53 0 is_stmt 0 discriminator 1
+ 441 0060 022E     		cmp	r6, #2
+ 442 0062 D3D9     		bls	.L50
+ 443 0064 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 444              	.LVL24:
+ 445              	.L53:
+ 446              		.align	2
+ 447              	.L52:
+ 448 0068 00000000 		.word	.LANCHOR0
+ 449              	.LBE2:
+ 450              		.cfi_endproc
+ 451              	.LFE133:
+ 452              		.size	CONTAINER_processEvent, .-CONTAINER_processEvent
+ 453              		.global	CLOCK_Container_Transitions_Size
+ 454              		.global	CLOCK_Container_Transitions
+ 455              		.global	STATE_CLOCK_C_ISEDITINGMINUTES_Transitions
+ 456              		.global	STATE_CLOCK_C_ISEDITINGHOURS_Transitions
+ 457              		.global	STATE_CLOCK_C_ISDISPLAYING_Transitions
+ 458              		.section	.rodata
+ 459              		.align	2
+ 460              		.set	.LANCHOR0,. + 0
+ 461              		.type	CLOCK_Container_Transitions, %object
+ 462              		.size	CLOCK_Container_Transitions, 36
+ 463              	CLOCK_Container_Transitions:
+ 464 0000 00000000 		.word	0
+ 465 0004 00000000 		.word	STATE_CLOCK_C_ISDISPLAYING_Transitions
+ 466 0008 0200     		.short	2
+ 467 000a 0000     		.space	2
+ 468 000c 02000000 		.word	2
+ 469 0010 00000000 		.word	STATE_CLOCK_C_ISEDITINGHOURS_Transitions
+ 470 0014 0400     		.short	4
+ 471 0016 0000     		.space	2
+ 472 0018 01000000 		.word	1
+ 473 001c 00000000 		.word	STATE_CLOCK_C_ISEDITINGMINUTES_Transitions
+ 474 0020 0400     		.short	4
+ 475 0022 0000     		.space	2
+ 476              		.type	CLOCK_Container_Transitions_Size, %object
+ 477              		.size	CLOCK_Container_Transitions_Size, 2
+ 478              	CLOCK_Container_Transitions_Size:
+ 479 0024 0300     		.short	3
+ 480 0026 0000     		.space	2
+ 481              		.type	STATE_CLOCK_C_ISEDITINGMINUTES_Transitions, %object
+ 482              		.size	STATE_CLOCK_C_ISEDITINGMINUTES_Transitions, 64
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 12
+
+
+ 483              	STATE_CLOCK_C_ISEDITINGMINUTES_Transitions:
+ 484 0028 02       		.byte	2
+ 485 0029 000000   		.space	3
+ 486 002c 00000000 		.word	0
+ 487 0030 00000000 		.word	0
+ 488 0034 00000000 		.word	CLOCK__dispatch_KL_Min
+ 489 0038 01       		.byte	1
+ 490 0039 000000   		.space	3
+ 491 003c 01000000 		.word	1
+ 492 0040 00000000 		.word	0
+ 493 0044 00000000 		.word	CLOCK__dispatch_KR_Min
+ 494 0048 03       		.byte	3
+ 495 0049 000000   		.space	3
+ 496 004c 01000000 		.word	1
+ 497 0050 00000000 		.word	0
+ 498 0054 00000000 		.word	CLOCK__dispatch_KRLP_Min
+ 499 0058 04       		.byte	4
+ 500 0059 000000   		.space	3
+ 501 005c 01000000 		.word	1
+ 502 0060 00000000 		.word	0
+ 503 0064 00000000 		.word	CLOCK__dispatch_250MS_Min
+ 504              		.type	STATE_CLOCK_C_ISEDITINGHOURS_Transitions, %object
+ 505              		.size	STATE_CLOCK_C_ISEDITINGHOURS_Transitions, 64
+ 506              	STATE_CLOCK_C_ISEDITINGHOURS_Transitions:
+ 507 0068 02       		.byte	2
+ 508 0069 000000   		.space	3
+ 509 006c 01000000 		.word	1
+ 510 0070 00000000 		.word	0
+ 511 0074 00000000 		.word	CLOCK__dispatch_KL_HoursMin
+ 512 0078 01       		.byte	1
+ 513 0079 000000   		.space	3
+ 514 007c 02000000 		.word	2
+ 515 0080 00000000 		.word	0
+ 516 0084 00000000 		.word	CLOCK__dispatch_KR_Hours
+ 517 0088 03       		.byte	3
+ 518 0089 000000   		.space	3
+ 519 008c 02000000 		.word	2
+ 520 0090 00000000 		.word	0
+ 521 0094 00000000 		.word	CLOCK__dispatch_KRLP_Hours
+ 522 0098 04       		.byte	4
+ 523 0099 000000   		.space	3
+ 524 009c 02000000 		.word	2
+ 525 00a0 00000000 		.word	0
+ 526 00a4 00000000 		.word	CLOCK__dispatch_250MS_Hours
+ 527              		.type	STATE_CLOCK_C_ISDISPLAYING_Transitions, %object
+ 528              		.size	STATE_CLOCK_C_ISDISPLAYING_Transitions, 32
+ 529              	STATE_CLOCK_C_ISDISPLAYING_Transitions:
+ 530 00a8 02       		.byte	2
+ 531 00a9 000000   		.space	3
+ 532 00ac 02000000 		.word	2
+ 533 00b0 00000000 		.word	0
+ 534 00b4 00000000 		.word	CLOCK__dispatch_KL_Hours
+ 535 00b8 05       		.byte	5
+ 536 00b9 000000   		.space	3
+ 537 00bc 00000000 		.word	0
+ 538 00c0 00000000 		.word	0
+ 539 00c4 00000000 		.word	CLOCK__increment1Minute
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 13
+
+
+ 540              		.text
+ 541              	.Letext0:
+ 542              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 543              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 544              		.file 4 "Generated_Source\\PSoC5/ErikaOS_1_common_ee_types.inc"
+ 545              		.file 5 "Generated_Source\\PSoC5/ErikaOS_1_cortex_mx_ee_cpu.inc"
+ 546              		.file 6 ".\\source\\bsw/global.h"
+ 547              		.file 7 ".\\source\\rte/sc_event_type.h"
+ 548              		.file 8 "clock_widget.h"
+ 549              		.file 9 "clock_common.h"
+ 550              		.file 10 "clock_container.h"
+ 551              		.file 11 "Generated_Source\\PSoC5/ErikaOS_1_ee_oo_intfunc.inc"
+ 552              		.file 12 "Generated_Source\\PSoC5/ErikaOS_1_cortex_mx_ee_context.inc"
+ 553              		.file 13 "Generated_Source\\PSoC5/ErikaOS_1_common_ee_primitives.inc"
+ 554              		.file 14 "Generated_Source\\PSoC5/core_cm3.h"
+ 555              		.file 15 ".\\source\\asw/swc_clock.h"
+ 556              		.section	.debug_info,"",%progbits
+ 557              	.Ldebug_info0:
+ 558 0000 C9050000 		.4byte	0x5c9
+ 559 0004 0400     		.2byte	0x4
+ 560 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 561 000a 04       		.byte	0x4
+ 562 000b 01       		.uleb128 0x1
+ 563 000c 5C050000 		.4byte	.LASF85
+ 564 0010 0C       		.byte	0xc
+ 565 0011 2E050000 		.4byte	.LASF86
+ 566 0015 11030000 		.4byte	.LASF87
+ 567 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 568 001d 00000000 		.4byte	0
+ 569 0021 00000000 		.4byte	.Ldebug_line0
+ 570 0025 02       		.uleb128 0x2
+ 571 0026 01       		.byte	0x1
+ 572 0027 06       		.byte	0x6
+ 573 0028 6F020000 		.4byte	.LASF0
+ 574 002c 03       		.uleb128 0x3
+ 575 002d 15020000 		.4byte	.LASF3
+ 576 0031 02       		.byte	0x2
+ 577 0032 1D       		.byte	0x1d
+ 578 0033 37000000 		.4byte	0x37
+ 579 0037 02       		.uleb128 0x2
+ 580 0038 01       		.byte	0x1
+ 581 0039 08       		.byte	0x8
+ 582 003a 57020000 		.4byte	.LASF1
+ 583 003e 02       		.uleb128 0x2
+ 584 003f 02       		.byte	0x2
+ 585 0040 05       		.byte	0x5
+ 586 0041 7A000000 		.4byte	.LASF2
+ 587 0045 03       		.uleb128 0x3
+ 588 0046 C2000000 		.4byte	.LASF4
+ 589 004a 02       		.byte	0x2
+ 590 004b 2B       		.byte	0x2b
+ 591 004c 50000000 		.4byte	0x50
+ 592 0050 02       		.uleb128 0x2
+ 593 0051 02       		.byte	0x2
+ 594 0052 07       		.byte	0x7
+ 595 0053 54030000 		.4byte	.LASF5
+ 596 0057 03       		.uleb128 0x3
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 14
+
+
+ 597 0058 CB040000 		.4byte	.LASF6
+ 598 005c 02       		.byte	0x2
+ 599 005d 3F       		.byte	0x3f
+ 600 005e 62000000 		.4byte	0x62
+ 601 0062 02       		.uleb128 0x2
+ 602 0063 04       		.byte	0x4
+ 603 0064 05       		.byte	0x5
+ 604 0065 C9010000 		.4byte	.LASF7
+ 605 0069 02       		.uleb128 0x2
+ 606 006a 04       		.byte	0x4
+ 607 006b 07       		.byte	0x7
+ 608 006c 8E040000 		.4byte	.LASF8
+ 609 0070 02       		.uleb128 0x2
+ 610 0071 08       		.byte	0x8
+ 611 0072 05       		.byte	0x5
+ 612 0073 95000000 		.4byte	.LASF9
+ 613 0077 02       		.uleb128 0x2
+ 614 0078 08       		.byte	0x8
+ 615 0079 07       		.byte	0x7
+ 616 007a 88020000 		.4byte	.LASF10
+ 617 007e 04       		.uleb128 0x4
+ 618 007f 04       		.byte	0x4
+ 619 0080 05       		.byte	0x5
+ 620 0081 696E7400 		.ascii	"int\000"
+ 621 0085 02       		.uleb128 0x2
+ 622 0086 04       		.byte	0x4
+ 623 0087 07       		.byte	0x7
+ 624 0088 A4020000 		.4byte	.LASF11
+ 625 008c 03       		.uleb128 0x3
+ 626 008d 2A010000 		.4byte	.LASF12
+ 627 0091 03       		.byte	0x3
+ 628 0092 18       		.byte	0x18
+ 629 0093 2C000000 		.4byte	0x2c
+ 630 0097 03       		.uleb128 0x3
+ 631 0098 C8020000 		.4byte	.LASF13
+ 632 009c 03       		.byte	0x3
+ 633 009d 24       		.byte	0x24
+ 634 009e 45000000 		.4byte	0x45
+ 635 00a2 03       		.uleb128 0x3
+ 636 00a3 E7030000 		.4byte	.LASF14
+ 637 00a7 03       		.byte	0x3
+ 638 00a8 2C       		.byte	0x2c
+ 639 00a9 57000000 		.4byte	0x57
+ 640 00ad 02       		.uleb128 0x2
+ 641 00ae 04       		.byte	0x4
+ 642 00af 04       		.byte	0x4
+ 643 00b0 09000000 		.4byte	.LASF15
+ 644 00b4 02       		.uleb128 0x2
+ 645 00b5 08       		.byte	0x8
+ 646 00b6 04       		.byte	0x4
+ 647 00b7 AB040000 		.4byte	.LASF16
+ 648 00bb 02       		.uleb128 0x2
+ 649 00bc 01       		.byte	0x1
+ 650 00bd 08       		.byte	0x8
+ 651 00be D1030000 		.4byte	.LASF17
+ 652 00c2 05       		.uleb128 0x5
+ 653 00c3 04       		.byte	0x4
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 15
+
+
+ 654 00c4 C8000000 		.4byte	0xc8
+ 655 00c8 06       		.uleb128 0x6
+ 656 00c9 02       		.uleb128 0x2
+ 657 00ca 08       		.byte	0x8
+ 658 00cb 04       		.byte	0x4
+ 659 00cc 34020000 		.4byte	.LASF18
+ 660 00d0 02       		.uleb128 0x2
+ 661 00d1 04       		.byte	0x4
+ 662 00d2 07       		.byte	0x7
+ 663 00d3 84000000 		.4byte	.LASF19
+ 664 00d7 03       		.uleb128 0x3
+ 665 00d8 C8030000 		.4byte	.LASF20
+ 666 00dc 04       		.byte	0x4
+ 667 00dd 53       		.byte	0x53
+ 668 00de 7E000000 		.4byte	0x7e
+ 669 00e2 03       		.uleb128 0x3
+ 670 00e3 65020000 		.4byte	.LASF21
+ 671 00e7 04       		.byte	0x4
+ 672 00e8 54       		.byte	0x54
+ 673 00e9 85000000 		.4byte	0x85
+ 674 00ed 03       		.uleb128 0x3
+ 675 00ee 0F000000 		.4byte	.LASF22
+ 676 00f2 05       		.byte	0x5
+ 677 00f3 4D       		.byte	0x4d
+ 678 00f4 E2000000 		.4byte	0xe2
+ 679 00f8 03       		.uleb128 0x3
+ 680 00f9 8D000000 		.4byte	.LASF23
+ 681 00fd 05       		.byte	0x5
+ 682 00fe 4F       		.byte	0x4f
+ 683 00ff E2000000 		.4byte	0xe2
+ 684 0103 03       		.uleb128 0x3
+ 685 0104 DB010000 		.4byte	.LASF24
+ 686 0108 05       		.byte	0x5
+ 687 0109 78       		.byte	0x78
+ 688 010a D7000000 		.4byte	0xd7
+ 689 010e 03       		.uleb128 0x3
+ 690 010f 1F020000 		.4byte	.LASF25
+ 691 0113 06       		.byte	0x6
+ 692 0114 9C       		.byte	0x9c
+ 693 0115 37000000 		.4byte	0x37
+ 694 0119 07       		.uleb128 0x7
+ 695 011a 01       		.byte	0x1
+ 696 011b 37000000 		.4byte	0x37
+ 697 011f 07       		.byte	0x7
+ 698 0120 1C       		.byte	0x1c
+ 699 0121 4A010000 		.4byte	0x14a
+ 700 0125 08       		.uleb128 0x8
+ 701 0126 F1040000 		.4byte	.LASF26
+ 702 012a 00       		.byte	0
+ 703 012b 08       		.uleb128 0x8
+ 704 012c 39000000 		.4byte	.LASF27
+ 705 0130 01       		.byte	0x1
+ 706 0131 08       		.uleb128 0x8
+ 707 0132 0E050000 		.4byte	.LASF28
+ 708 0136 02       		.byte	0x2
+ 709 0137 08       		.uleb128 0x8
+ 710 0138 F9040000 		.4byte	.LASF29
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 16
+
+
+ 711 013c 03       		.byte	0x3
+ 712 013d 08       		.uleb128 0x8
+ 713 013e 00000000 		.4byte	.LASF30
+ 714 0142 04       		.byte	0x4
+ 715 0143 08       		.uleb128 0x8
+ 716 0144 5E010000 		.4byte	.LASF31
+ 717 0148 05       		.byte	0x5
+ 718 0149 00       		.byte	0
+ 719 014a 03       		.uleb128 0x3
+ 720 014b 7B020000 		.4byte	.LASF32
+ 721 014f 07       		.byte	0x7
+ 722 0150 23       		.byte	0x23
+ 723 0151 19010000 		.4byte	0x119
+ 724 0155 05       		.uleb128 0x5
+ 725 0156 04       		.byte	0x4
+ 726 0157 8C000000 		.4byte	0x8c
+ 727 015b 07       		.uleb128 0x7
+ 728 015c 01       		.byte	0x1
+ 729 015d 37000000 		.4byte	0x37
+ 730 0161 08       		.byte	0x8
+ 731 0162 17       		.byte	0x17
+ 732 0163 74010000 		.4byte	0x174
+ 733 0167 08       		.uleb128 0x8
+ 734 0168 BB010000 		.4byte	.LASF33
+ 735 016c 00       		.byte	0
+ 736 016d 08       		.uleb128 0x8
+ 737 016e A0030000 		.4byte	.LASF34
+ 738 0172 01       		.byte	0x1
+ 739 0173 00       		.byte	0
+ 740 0174 03       		.uleb128 0x3
+ 741 0175 A0040000 		.4byte	.LASF35
+ 742 0179 08       		.byte	0x8
+ 743 017a 1A       		.byte	0x1a
+ 744 017b 5B010000 		.4byte	0x15b
+ 745 017f 07       		.uleb128 0x7
+ 746 0180 01       		.byte	0x1
+ 747 0181 37000000 		.4byte	0x37
+ 748 0185 08       		.byte	0x8
+ 749 0186 1D       		.byte	0x1d
+ 750 0187 9E010000 		.4byte	0x19e
+ 751 018b 08       		.uleb128 0x8
+ 752 018c 66040000 		.4byte	.LASF36
+ 753 0190 00       		.byte	0
+ 754 0191 08       		.uleb128 0x8
+ 755 0192 CD000000 		.4byte	.LASF37
+ 756 0196 01       		.byte	0x1
+ 757 0197 08       		.uleb128 0x8
+ 758 0198 F6000000 		.4byte	.LASF38
+ 759 019c 02       		.byte	0x2
+ 760 019d 00       		.byte	0
+ 761 019e 03       		.uleb128 0x3
+ 762 019f D6030000 		.4byte	.LASF39
+ 763 01a3 08       		.byte	0x8
+ 764 01a4 21       		.byte	0x21
+ 765 01a5 7F010000 		.4byte	0x17f
+ 766 01a9 09       		.uleb128 0x9
+ 767 01aa 0C       		.byte	0xc
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 17
+
+
+ 768 01ab 08       		.byte	0x8
+ 769 01ac 24       		.byte	0x24
+ 770 01ad E2010000 		.4byte	0x1e2
+ 771 01b1 0A       		.uleb128 0xa
+ 772 01b2 5A000000 		.4byte	.LASF40
+ 773 01b6 08       		.byte	0x8
+ 774 01b7 25       		.byte	0x25
+ 775 01b8 9E010000 		.4byte	0x19e
+ 776 01bc 00       		.byte	0
+ 777 01bd 0A       		.uleb128 0xa
+ 778 01be 46050000 		.4byte	.LASF41
+ 779 01c2 08       		.byte	0x8
+ 780 01c3 26       		.byte	0x26
+ 781 01c4 55010000 		.4byte	0x155
+ 782 01c8 04       		.byte	0x4
+ 783 01c9 0A       		.uleb128 0xa
+ 784 01ca D2010000 		.4byte	.LASF42
+ 785 01ce 08       		.byte	0x8
+ 786 01cf 27       		.byte	0x27
+ 787 01d0 8C000000 		.4byte	0x8c
+ 788 01d4 08       		.byte	0x8
+ 789 01d5 0A       		.uleb128 0xa
+ 790 01d6 9F020000 		.4byte	.LASF43
+ 791 01da 08       		.byte	0x8
+ 792 01db 28       		.byte	0x28
+ 793 01dc 74010000 		.4byte	0x174
+ 794 01e0 09       		.byte	0x9
+ 795 01e1 00       		.byte	0
+ 796 01e2 03       		.uleb128 0x3
+ 797 01e3 7D010000 		.4byte	.LASF44
+ 798 01e7 08       		.byte	0x8
+ 799 01e8 29       		.byte	0x29
+ 800 01e9 A9010000 		.4byte	0x1a9
+ 801 01ed 09       		.uleb128 0x9
+ 802 01ee 10       		.byte	0x10
+ 803 01ef 09       		.byte	0x9
+ 804 01f0 12       		.byte	0x12
+ 805 01f1 26020000 		.4byte	0x226
+ 806 01f5 0A       		.uleb128 0xa
+ 807 01f6 BC000000 		.4byte	.LASF45
+ 808 01fa 09       		.byte	0x9
+ 809 01fb 13       		.byte	0x13
+ 810 01fc 4A010000 		.4byte	0x14a
+ 811 0200 00       		.byte	0
+ 812 0201 0A       		.uleb128 0xa
+ 813 0202 C1040000 		.4byte	.LASF46
+ 814 0206 09       		.byte	0x9
+ 815 0207 14       		.byte	0x14
+ 816 0208 7E000000 		.4byte	0x7e
+ 817 020c 04       		.byte	0x4
+ 818 020d 0A       		.uleb128 0xa
+ 819 020e 60000000 		.4byte	.LASF47
+ 820 0212 09       		.byte	0x9
+ 821 0213 15       		.byte	0x15
+ 822 0214 2B020000 		.4byte	0x22b
+ 823 0218 08       		.byte	0x8
+ 824 0219 0A       		.uleb128 0xa
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 18
+
+
+ 825 021a B4010000 		.4byte	.LASF48
+ 826 021e 09       		.byte	0x9
+ 827 021f 16       		.byte	0x16
+ 828 0220 C2000000 		.4byte	0xc2
+ 829 0224 0C       		.byte	0xc
+ 830 0225 00       		.byte	0
+ 831 0226 0B       		.uleb128 0xb
+ 832 0227 0E010000 		.4byte	0x10e
+ 833 022b 05       		.uleb128 0x5
+ 834 022c 04       		.byte	0x4
+ 835 022d 26020000 		.4byte	0x226
+ 836 0231 03       		.uleb128 0x3
+ 837 0232 EA050000 		.4byte	.LASF49
+ 838 0236 09       		.byte	0x9
+ 839 0237 17       		.byte	0x17
+ 840 0238 ED010000 		.4byte	0x1ed
+ 841 023c 09       		.uleb128 0x9
+ 842 023d 0C       		.byte	0xc
+ 843 023e 09       		.byte	0x9
+ 844 023f 1A       		.byte	0x1a
+ 845 0240 69020000 		.4byte	0x269
+ 846 0244 0A       		.uleb128 0xa
+ 847 0245 66010000 		.4byte	.LASF50
+ 848 0249 09       		.byte	0x9
+ 849 024a 1B       		.byte	0x1b
+ 850 024b 7E000000 		.4byte	0x7e
+ 851 024f 00       		.byte	0
+ 852 0250 0A       		.uleb128 0xa
+ 853 0251 29020000 		.4byte	.LASF51
+ 854 0255 09       		.byte	0x9
+ 855 0256 1C       		.byte	0x1c
+ 856 0257 69020000 		.4byte	0x269
+ 857 025b 04       		.byte	0x4
+ 858 025c 0A       		.uleb128 0xa
+ 859 025d B7040000 		.4byte	.LASF52
+ 860 0261 09       		.byte	0x9
+ 861 0262 1D       		.byte	0x1d
+ 862 0263 74020000 		.4byte	0x274
+ 863 0267 08       		.byte	0x8
+ 864 0268 00       		.byte	0
+ 865 0269 05       		.uleb128 0x5
+ 866 026a 04       		.byte	0x4
+ 867 026b 6F020000 		.4byte	0x26f
+ 868 026f 0C       		.uleb128 0xc
+ 869 0270 31020000 		.4byte	0x231
+ 870 0274 0C       		.uleb128 0xc
+ 871 0275 97000000 		.4byte	0x97
+ 872 0279 03       		.uleb128 0x3
+ 873 027a 17000000 		.4byte	.LASF53
+ 874 027e 09       		.byte	0x9
+ 875 027f 1E       		.byte	0x1e
+ 876 0280 3C020000 		.4byte	0x23c
+ 877 0284 07       		.uleb128 0x7
+ 878 0285 01       		.byte	0x1
+ 879 0286 37000000 		.4byte	0x37
+ 880 028a 0A       		.byte	0xa
+ 881 028b 14       		.byte	0x14
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 19
+
+
+ 882 028c A3020000 		.4byte	0x2a3
+ 883 0290 08       		.uleb128 0x8
+ 884 0291 45000000 		.4byte	.LASF54
+ 885 0295 00       		.byte	0
+ 886 0296 08       		.uleb128 0x8
+ 887 0297 A3000000 		.4byte	.LASF55
+ 888 029b 01       		.byte	0x1
+ 889 029c 08       		.uleb128 0x8
+ 890 029d 4F040000 		.4byte	.LASF56
+ 891 02a1 02       		.byte	0x2
+ 892 02a2 00       		.byte	0
+ 893 02a3 03       		.uleb128 0x3
+ 894 02a4 66000000 		.4byte	.LASF57
+ 895 02a8 0A       		.byte	0xa
+ 896 02a9 18       		.byte	0x18
+ 897 02aa 84020000 		.4byte	0x284
+ 898 02ae 0D       		.uleb128 0xd
+ 899 02af 67030000 		.4byte	.LASF88
+ 900 02b3 01       		.byte	0x1
+ 901 02b4 4A       		.byte	0x4a
+ 902 02b5 00000000 		.4byte	.LFB134
+ 903 02b9 30000000 		.4byte	.LFE134-.LFB134
+ 904 02bd 01       		.uleb128 0x1
+ 905 02be 9C       		.byte	0x9c
+ 906 02bf 0E       		.uleb128 0xe
+ 907 02c0 DD000000 		.4byte	.LASF58
+ 908 02c4 01       		.byte	0x1
+ 909 02c5 5E       		.byte	0x5e
+ 910 02c6 00000000 		.4byte	.LFB135
+ 911 02ca 10000000 		.4byte	.LFE135-.LFB135
+ 912 02ce 01       		.uleb128 0x1
+ 913 02cf 9C       		.byte	0x9c
+ 914 02d0 E4020000 		.4byte	0x2e4
+ 915 02d4 0F       		.uleb128 0xf
+ 916 02d5 0A000000 		.4byte	.LVL0
+ 917 02d9 C1050000 		.4byte	0x5c1
+ 918 02dd 10       		.uleb128 0x10
+ 919 02de 01       		.uleb128 0x1
+ 920 02df 51       		.byte	0x51
+ 921 02e0 01       		.uleb128 0x1
+ 922 02e1 32       		.byte	0x32
+ 923 02e2 00       		.byte	0
+ 924 02e3 00       		.byte	0
+ 925 02e4 0E       		.uleb128 0xe
+ 926 02e5 AC030000 		.4byte	.LASF59
+ 927 02e9 01       		.byte	0x1
+ 928 02ea 62       		.byte	0x62
+ 929 02eb 00000000 		.4byte	.LFB136
+ 930 02ef 1C000000 		.4byte	.LFE136-.LFB136
+ 931 02f3 01       		.uleb128 0x1
+ 932 02f4 9C       		.byte	0x9c
+ 933 02f5 1C030000 		.4byte	0x31c
+ 934 02f9 11       		.uleb128 0x11
+ 935 02fa 0A000000 		.4byte	.LVL1
+ 936 02fe C1050000 		.4byte	0x5c1
+ 937 0302 0C030000 		.4byte	0x30c
+ 938 0306 10       		.uleb128 0x10
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 20
+
+
+ 939 0307 01       		.uleb128 0x1
+ 940 0308 51       		.byte	0x51
+ 941 0309 01       		.uleb128 0x1
+ 942 030a 32       		.byte	0x32
+ 943 030b 00       		.byte	0
+ 944 030c 0F       		.uleb128 0xf
+ 945 030d 12000000 		.4byte	.LVL2
+ 946 0311 C1050000 		.4byte	0x5c1
+ 947 0315 10       		.uleb128 0x10
+ 948 0316 01       		.uleb128 0x1
+ 949 0317 51       		.byte	0x51
+ 950 0318 01       		.uleb128 0x1
+ 951 0319 32       		.byte	0x32
+ 952 031a 00       		.byte	0
+ 953 031b 00       		.byte	0
+ 954 031c 0E       		.uleb128 0xe
+ 955 031d 24060000 		.4byte	.LASF60
+ 956 0321 01       		.byte	0x1
+ 957 0322 67       		.byte	0x67
+ 958 0323 00000000 		.4byte	.LFB137
+ 959 0327 10000000 		.4byte	.LFE137-.LFB137
+ 960 032b 01       		.uleb128 0x1
+ 961 032c 9C       		.byte	0x9c
+ 962 032d 41030000 		.4byte	0x341
+ 963 0331 0F       		.uleb128 0xf
+ 964 0332 0A000000 		.4byte	.LVL3
+ 965 0336 C1050000 		.4byte	0x5c1
+ 966 033a 10       		.uleb128 0x10
+ 967 033b 01       		.uleb128 0x1
+ 968 033c 51       		.byte	0x51
+ 969 033d 01       		.uleb128 0x1
+ 970 033e 31       		.byte	0x31
+ 971 033f 00       		.byte	0
+ 972 0340 00       		.byte	0
+ 973 0341 0E       		.uleb128 0xe
+ 974 0342 99010000 		.4byte	.LASF61
+ 975 0346 01       		.byte	0x1
+ 976 0347 6B       		.byte	0x6b
+ 977 0348 00000000 		.4byte	.LFB138
+ 978 034c 10000000 		.4byte	.LFE138-.LFB138
+ 979 0350 01       		.uleb128 0x1
+ 980 0351 9C       		.byte	0x9c
+ 981 0352 66030000 		.4byte	0x366
+ 982 0356 0F       		.uleb128 0xf
+ 983 0357 0A000000 		.4byte	.LVL4
+ 984 035b C1050000 		.4byte	0x5c1
+ 985 035f 10       		.uleb128 0x10
+ 986 0360 01       		.uleb128 0x1
+ 987 0361 51       		.byte	0x51
+ 988 0362 01       		.uleb128 0x1
+ 989 0363 33       		.byte	0x33
+ 990 0364 00       		.byte	0
+ 991 0365 00       		.byte	0
+ 992 0366 0E       		.uleb128 0xe
+ 993 0367 D5040000 		.4byte	.LASF62
+ 994 036b 01       		.byte	0x1
+ 995 036c 6F       		.byte	0x6f
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 21
+
+
+ 996 036d 00000000 		.4byte	.LFB139
+ 997 0371 10000000 		.4byte	.LFE139-.LFB139
+ 998 0375 01       		.uleb128 0x1
+ 999 0376 9C       		.byte	0x9c
+ 1000 0377 8B030000 		.4byte	0x38b
+ 1001 037b 0F       		.uleb128 0xf
+ 1002 037c 0A000000 		.4byte	.LVL5
+ 1003 0380 C1050000 		.4byte	0x5c1
+ 1004 0384 10       		.uleb128 0x10
+ 1005 0385 01       		.uleb128 0x1
+ 1006 0386 51       		.byte	0x51
+ 1007 0387 01       		.uleb128 0x1
+ 1008 0388 34       		.byte	0x34
+ 1009 0389 00       		.byte	0
+ 1010 038a 00       		.byte	0
+ 1011 038b 0E       		.uleb128 0xe
+ 1012 038c B1020000 		.4byte	.LASF63
+ 1013 0390 01       		.byte	0x1
+ 1014 0391 73       		.byte	0x73
+ 1015 0392 00000000 		.4byte	.LFB140
+ 1016 0396 10000000 		.4byte	.LFE140-.LFB140
+ 1017 039a 01       		.uleb128 0x1
+ 1018 039b 9C       		.byte	0x9c
+ 1019 039c B0030000 		.4byte	0x3b0
+ 1020 03a0 0F       		.uleb128 0xf
+ 1021 03a1 0A000000 		.4byte	.LVL6
+ 1022 03a5 C1050000 		.4byte	0x5c1
+ 1023 03a9 10       		.uleb128 0x10
+ 1024 03aa 01       		.uleb128 0x1
+ 1025 03ab 51       		.byte	0x51
+ 1026 03ac 01       		.uleb128 0x1
+ 1027 03ad 32       		.byte	0x32
+ 1028 03ae 00       		.byte	0
+ 1029 03af 00       		.byte	0
+ 1030 03b0 0E       		.uleb128 0xe
+ 1031 03b1 32010000 		.4byte	.LASF64
+ 1032 03b5 01       		.byte	0x1
+ 1033 03b6 77       		.byte	0x77
+ 1034 03b7 00000000 		.4byte	.LFB141
+ 1035 03bb 10000000 		.4byte	.LFE141-.LFB141
+ 1036 03bf 01       		.uleb128 0x1
+ 1037 03c0 9C       		.byte	0x9c
+ 1038 03c1 D5030000 		.4byte	0x3d5
+ 1039 03c5 0F       		.uleb128 0xf
+ 1040 03c6 0A000000 		.4byte	.LVL7
+ 1041 03ca C1050000 		.4byte	0x5c1
+ 1042 03ce 10       		.uleb128 0x10
+ 1043 03cf 01       		.uleb128 0x1
+ 1044 03d0 51       		.byte	0x51
+ 1045 03d1 01       		.uleb128 0x1
+ 1046 03d2 31       		.byte	0x31
+ 1047 03d3 00       		.byte	0
+ 1048 03d4 00       		.byte	0
+ 1049 03d5 0E       		.uleb128 0xe
+ 1050 03d6 F8020000 		.4byte	.LASF65
+ 1051 03da 01       		.byte	0x1
+ 1052 03db 7B       		.byte	0x7b
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 22
+
+
+ 1053 03dc 00000000 		.4byte	.LFB142
+ 1054 03e0 10000000 		.4byte	.LFE142-.LFB142
+ 1055 03e4 01       		.uleb128 0x1
+ 1056 03e5 9C       		.byte	0x9c
+ 1057 03e6 FA030000 		.4byte	0x3fa
+ 1058 03ea 0F       		.uleb128 0xf
+ 1059 03eb 0A000000 		.4byte	.LVL8
+ 1060 03ef C1050000 		.4byte	0x5c1
+ 1061 03f3 10       		.uleb128 0x10
+ 1062 03f4 01       		.uleb128 0x1
+ 1063 03f5 51       		.byte	0x51
+ 1064 03f6 01       		.uleb128 0x1
+ 1065 03f7 33       		.byte	0x33
+ 1066 03f8 00       		.byte	0
+ 1067 03f9 00       		.byte	0
+ 1068 03fa 0E       		.uleb128 0xe
+ 1069 03fb FB010000 		.4byte	.LASF66
+ 1070 03ff 01       		.byte	0x1
+ 1071 0400 7F       		.byte	0x7f
+ 1072 0401 00000000 		.4byte	.LFB143
+ 1073 0405 10000000 		.4byte	.LFE143-.LFB143
+ 1074 0409 01       		.uleb128 0x1
+ 1075 040a 9C       		.byte	0x9c
+ 1076 040b 1F040000 		.4byte	0x41f
+ 1077 040f 0F       		.uleb128 0xf
+ 1078 0410 0A000000 		.4byte	.LVL9
+ 1079 0414 C1050000 		.4byte	0x5c1
+ 1080 0418 10       		.uleb128 0x10
+ 1081 0419 01       		.uleb128 0x1
+ 1082 041a 51       		.byte	0x51
+ 1083 041b 01       		.uleb128 0x1
+ 1084 041c 34       		.byte	0x34
+ 1085 041d 00       		.byte	0
+ 1086 041e 00       		.byte	0
+ 1087 041f 12       		.uleb128 0x12
+ 1088 0420 40020000 		.4byte	.LASF67
+ 1089 0424 01       		.byte	0x1
+ 1090 0425 34       		.byte	0x34
+ 1091 0426 00000000 		.4byte	.LFB133
+ 1092 042a 6C000000 		.4byte	.LFE133-.LFB133
+ 1093 042e 01       		.uleb128 0x1
+ 1094 042f 9C       		.byte	0x9c
+ 1095 0430 A9040000 		.4byte	0x4a9
+ 1096 0434 13       		.uleb128 0x13
+ 1097 0435 66010000 		.4byte	.LASF50
+ 1098 0439 01       		.byte	0x1
+ 1099 043a 34       		.byte	0x34
+ 1100 043b A9040000 		.4byte	0x4a9
+ 1101 043f 00000000 		.4byte	.LLST0
+ 1102 0443 13       		.uleb128 0x13
+ 1103 0444 BC000000 		.4byte	.LASF45
+ 1104 0448 01       		.byte	0x1
+ 1105 0449 34       		.byte	0x34
+ 1106 044a 4A010000 		.4byte	0x14a
+ 1107 044e 2C000000 		.4byte	.LLST1
+ 1108 0452 14       		.uleb128 0x14
+ 1109 0453 08000000 		.4byte	.LBB2
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 23
+
+
+ 1110 0457 64000000 		.4byte	.LBE2-.LBB2
+ 1111 045b 15       		.uleb128 0x15
+ 1112 045c 6900     		.ascii	"i\000"
+ 1113 045e 01       		.byte	0x1
+ 1114 045f 35       		.byte	0x35
+ 1115 0460 8C000000 		.4byte	0x8c
+ 1116 0464 4D000000 		.4byte	.LLST2
+ 1117 0468 14       		.uleb128 0x14
+ 1118 0469 1E000000 		.4byte	.LBB3
+ 1119 046d 3E000000 		.4byte	.LBE3-.LBB3
+ 1120 0471 16       		.uleb128 0x16
+ 1121 0472 40050000 		.4byte	.LASF68
+ 1122 0476 01       		.byte	0x1
+ 1123 0477 37       		.byte	0x37
+ 1124 0478 69020000 		.4byte	0x269
+ 1125 047c 77000000 		.4byte	.LLST3
+ 1126 0480 16       		.uleb128 0x16
+ 1127 0481 B2040000 		.4byte	.LASF69
+ 1128 0485 01       		.byte	0x1
+ 1129 0486 38       		.byte	0x38
+ 1130 0487 97000000 		.4byte	0x97
+ 1131 048b 8A000000 		.4byte	.LLST4
+ 1132 048f 14       		.uleb128 0x14
+ 1133 0490 2E000000 		.4byte	.LBB4
+ 1134 0494 2E000000 		.4byte	.LBE4-.LBB4
+ 1135 0498 15       		.uleb128 0x15
+ 1136 0499 6A00     		.ascii	"j\000"
+ 1137 049b 01       		.byte	0x1
+ 1138 049c 3A       		.byte	0x3a
+ 1139 049d 97000000 		.4byte	0x97
+ 1140 04a1 9D000000 		.4byte	.LLST5
+ 1141 04a5 00       		.byte	0
+ 1142 04a6 00       		.byte	0
+ 1143 04a7 00       		.byte	0
+ 1144 04a8 00       		.byte	0
+ 1145 04a9 05       		.uleb128 0x5
+ 1146 04aa 04       		.byte	0x4
+ 1147 04ab A3020000 		.4byte	0x2a3
+ 1148 04af 17       		.uleb128 0x17
+ 1149 04b0 0C060000 		.4byte	.LASF70
+ 1150 04b4 0B       		.byte	0xb
+ 1151 04b5 40       		.byte	0x40
+ 1152 04b6 ED000000 		.4byte	0xed
+ 1153 04ba 17       		.uleb128 0x17
+ 1154 04bb E2010000 		.4byte	.LASF71
+ 1155 04bf 0B       		.byte	0xb
+ 1156 04c0 47       		.byte	0x47
+ 1157 04c1 F8000000 		.4byte	0xf8
+ 1158 04c5 17       		.uleb128 0x17
+ 1159 04c6 7B040000 		.4byte	.LASF72
+ 1160 04ca 0B       		.byte	0xb
+ 1161 04cb 4A       		.byte	0x4a
+ 1162 04cc ED000000 		.4byte	0xed
+ 1163 04d0 17       		.uleb128 0x17
+ 1164 04d1 DF020000 		.4byte	.LASF73
+ 1165 04d5 0C       		.byte	0xc
+ 1166 04d6 48       		.byte	0x48
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 24
+
+
+ 1167 04d7 03010000 		.4byte	0x103
+ 1168 04db 17       		.uleb128 0x17
+ 1169 04dc 49010000 		.4byte	.LASF74
+ 1170 04e0 0D       		.byte	0xd
+ 1171 04e1 44       		.byte	0x44
+ 1172 04e2 ED000000 		.4byte	0xed
+ 1173 04e6 18       		.uleb128 0x18
+ 1174 04e7 4F050000 		.4byte	.LASF75
+ 1175 04eb 0E       		.byte	0xe
+ 1176 04ec 1207     		.2byte	0x712
+ 1177 04ee F2040000 		.4byte	0x4f2
+ 1178 04f2 19       		.uleb128 0x19
+ 1179 04f3 A2000000 		.4byte	0xa2
+ 1180 04f7 17       		.uleb128 0x17
+ 1181 04f8 91010000 		.4byte	.LASF76
+ 1182 04fc 0F       		.byte	0xf
+ 1183 04fd 19       		.byte	0x19
+ 1184 04fe 8C000000 		.4byte	0x8c
+ 1185 0502 17       		.uleb128 0x17
+ 1186 0503 73010000 		.4byte	.LASF77
+ 1187 0507 0F       		.byte	0xf
+ 1188 0508 1A       		.byte	0x1a
+ 1189 0509 8C000000 		.4byte	0x8c
+ 1190 050d 17       		.uleb128 0x17
+ 1191 050e 43040000 		.4byte	.LASF78
+ 1192 0512 08       		.byte	0x8
+ 1193 0513 2C       		.byte	0x2c
+ 1194 0514 E2010000 		.4byte	0x1e2
+ 1195 0518 17       		.uleb128 0x17
+ 1196 0519 D1020000 		.4byte	.LASF79
+ 1197 051d 08       		.byte	0x8
+ 1198 051e 2D       		.byte	0x2d
+ 1199 051f E2010000 		.4byte	0x1e2
+ 1200 0523 1A       		.uleb128 0x1a
+ 1201 0524 6F020000 		.4byte	0x26f
+ 1202 0528 33050000 		.4byte	0x533
+ 1203 052c 1B       		.uleb128 0x1b
+ 1204 052d D0000000 		.4byte	0xd0
+ 1205 0531 01       		.byte	0x1
+ 1206 0532 00       		.byte	0
+ 1207 0533 1C       		.uleb128 0x1c
+ 1208 0534 3D060000 		.4byte	.LASF80
+ 1209 0538 01       		.byte	0x1
+ 1210 0539 11       		.byte	0x11
+ 1211 053a 44050000 		.4byte	0x544
+ 1212 053e 05       		.uleb128 0x5
+ 1213 053f 03       		.byte	0x3
+ 1214 0540 00000000 		.4byte	STATE_CLOCK_C_ISDISPLAYING_Transitions
+ 1215 0544 0C       		.uleb128 0xc
+ 1216 0545 23050000 		.4byte	0x523
+ 1217 0549 1A       		.uleb128 0x1a
+ 1218 054a 6F020000 		.4byte	0x26f
+ 1219 054e 59050000 		.4byte	0x559
+ 1220 0552 1B       		.uleb128 0x1b
+ 1221 0553 D0000000 		.4byte	0xd0
+ 1222 0557 03       		.byte	0x3
+ 1223 0558 00       		.byte	0
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 25
+
+
+ 1224 0559 1C       		.uleb128 0x1c
+ 1225 055a 1A040000 		.4byte	.LASF81
+ 1226 055e 01       		.byte	0x1
+ 1227 055f 18       		.byte	0x18
+ 1228 0560 6A050000 		.4byte	0x56a
+ 1229 0564 05       		.uleb128 0x5
+ 1230 0565 03       		.byte	0x3
+ 1231 0566 00000000 		.4byte	STATE_CLOCK_C_ISEDITINGHOURS_Transitions
+ 1232 056a 0C       		.uleb128 0xc
+ 1233 056b 49050000 		.4byte	0x549
+ 1234 056f 1C       		.uleb128 0x1c
+ 1235 0570 EF030000 		.4byte	.LASF82
+ 1236 0574 01       		.byte	0x1
+ 1237 0575 21       		.byte	0x21
+ 1238 0576 80050000 		.4byte	0x580
+ 1239 057a 05       		.uleb128 0x5
+ 1240 057b 03       		.byte	0x3
+ 1241 057c 00000000 		.4byte	STATE_CLOCK_C_ISEDITINGMINUTES_Transitions
+ 1242 0580 0C       		.uleb128 0xc
+ 1243 0581 49050000 		.4byte	0x549
+ 1244 0585 1A       		.uleb128 0x1a
+ 1245 0586 95050000 		.4byte	0x595
+ 1246 058a 95050000 		.4byte	0x595
+ 1247 058e 1B       		.uleb128 0x1b
+ 1248 058f D0000000 		.4byte	0xd0
+ 1249 0593 02       		.byte	0x2
+ 1250 0594 00       		.byte	0
+ 1251 0595 0C       		.uleb128 0xc
+ 1252 0596 79020000 		.4byte	0x279
+ 1253 059a 1C       		.uleb128 0x1c
+ 1254 059b 0E010000 		.4byte	.LASF83
+ 1255 059f 01       		.byte	0x1
+ 1256 05a0 2B       		.byte	0x2b
+ 1257 05a1 AB050000 		.4byte	0x5ab
+ 1258 05a5 05       		.uleb128 0x5
+ 1259 05a6 03       		.byte	0x3
+ 1260 05a7 00000000 		.4byte	CLOCK_Container_Transitions
+ 1261 05ab 0C       		.uleb128 0xc
+ 1262 05ac 85050000 		.4byte	0x585
+ 1263 05b0 1C       		.uleb128 0x1c
+ 1264 05b1 7F030000 		.4byte	.LASF84
+ 1265 05b5 01       		.byte	0x1
+ 1266 05b6 31       		.byte	0x31
+ 1267 05b7 74020000 		.4byte	0x274
+ 1268 05bb 05       		.uleb128 0x5
+ 1269 05bc 03       		.byte	0x3
+ 1270 05bd 00000000 		.4byte	CLOCK_Container_Transitions_Size
+ 1271 05c1 1D       		.uleb128 0x1d
+ 1272 05c2 19050000 		.4byte	.LASF89
+ 1273 05c6 19050000 		.4byte	.LASF89
+ 1274 05ca 08       		.byte	0x8
+ 1275 05cb 42       		.byte	0x42
+ 1276 05cc 00       		.byte	0
+ 1277              		.section	.debug_abbrev,"",%progbits
+ 1278              	.Ldebug_abbrev0:
+ 1279 0000 01       		.uleb128 0x1
+ 1280 0001 11       		.uleb128 0x11
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 26
+
+
+ 1281 0002 01       		.byte	0x1
+ 1282 0003 25       		.uleb128 0x25
+ 1283 0004 0E       		.uleb128 0xe
+ 1284 0005 13       		.uleb128 0x13
+ 1285 0006 0B       		.uleb128 0xb
+ 1286 0007 03       		.uleb128 0x3
+ 1287 0008 0E       		.uleb128 0xe
+ 1288 0009 1B       		.uleb128 0x1b
+ 1289 000a 0E       		.uleb128 0xe
+ 1290 000b 55       		.uleb128 0x55
+ 1291 000c 17       		.uleb128 0x17
+ 1292 000d 11       		.uleb128 0x11
+ 1293 000e 01       		.uleb128 0x1
+ 1294 000f 10       		.uleb128 0x10
+ 1295 0010 17       		.uleb128 0x17
+ 1296 0011 00       		.byte	0
+ 1297 0012 00       		.byte	0
+ 1298 0013 02       		.uleb128 0x2
+ 1299 0014 24       		.uleb128 0x24
+ 1300 0015 00       		.byte	0
+ 1301 0016 0B       		.uleb128 0xb
+ 1302 0017 0B       		.uleb128 0xb
+ 1303 0018 3E       		.uleb128 0x3e
+ 1304 0019 0B       		.uleb128 0xb
+ 1305 001a 03       		.uleb128 0x3
+ 1306 001b 0E       		.uleb128 0xe
+ 1307 001c 00       		.byte	0
+ 1308 001d 00       		.byte	0
+ 1309 001e 03       		.uleb128 0x3
+ 1310 001f 16       		.uleb128 0x16
+ 1311 0020 00       		.byte	0
+ 1312 0021 03       		.uleb128 0x3
+ 1313 0022 0E       		.uleb128 0xe
+ 1314 0023 3A       		.uleb128 0x3a
+ 1315 0024 0B       		.uleb128 0xb
+ 1316 0025 3B       		.uleb128 0x3b
+ 1317 0026 0B       		.uleb128 0xb
+ 1318 0027 49       		.uleb128 0x49
+ 1319 0028 13       		.uleb128 0x13
+ 1320 0029 00       		.byte	0
+ 1321 002a 00       		.byte	0
+ 1322 002b 04       		.uleb128 0x4
+ 1323 002c 24       		.uleb128 0x24
+ 1324 002d 00       		.byte	0
+ 1325 002e 0B       		.uleb128 0xb
+ 1326 002f 0B       		.uleb128 0xb
+ 1327 0030 3E       		.uleb128 0x3e
+ 1328 0031 0B       		.uleb128 0xb
+ 1329 0032 03       		.uleb128 0x3
+ 1330 0033 08       		.uleb128 0x8
+ 1331 0034 00       		.byte	0
+ 1332 0035 00       		.byte	0
+ 1333 0036 05       		.uleb128 0x5
+ 1334 0037 0F       		.uleb128 0xf
+ 1335 0038 00       		.byte	0
+ 1336 0039 0B       		.uleb128 0xb
+ 1337 003a 0B       		.uleb128 0xb
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 27
+
+
+ 1338 003b 49       		.uleb128 0x49
+ 1339 003c 13       		.uleb128 0x13
+ 1340 003d 00       		.byte	0
+ 1341 003e 00       		.byte	0
+ 1342 003f 06       		.uleb128 0x6
+ 1343 0040 15       		.uleb128 0x15
+ 1344 0041 00       		.byte	0
+ 1345 0042 27       		.uleb128 0x27
+ 1346 0043 19       		.uleb128 0x19
+ 1347 0044 00       		.byte	0
+ 1348 0045 00       		.byte	0
+ 1349 0046 07       		.uleb128 0x7
+ 1350 0047 04       		.uleb128 0x4
+ 1351 0048 01       		.byte	0x1
+ 1352 0049 0B       		.uleb128 0xb
+ 1353 004a 0B       		.uleb128 0xb
+ 1354 004b 49       		.uleb128 0x49
+ 1355 004c 13       		.uleb128 0x13
+ 1356 004d 3A       		.uleb128 0x3a
+ 1357 004e 0B       		.uleb128 0xb
+ 1358 004f 3B       		.uleb128 0x3b
+ 1359 0050 0B       		.uleb128 0xb
+ 1360 0051 01       		.uleb128 0x1
+ 1361 0052 13       		.uleb128 0x13
+ 1362 0053 00       		.byte	0
+ 1363 0054 00       		.byte	0
+ 1364 0055 08       		.uleb128 0x8
+ 1365 0056 28       		.uleb128 0x28
+ 1366 0057 00       		.byte	0
+ 1367 0058 03       		.uleb128 0x3
+ 1368 0059 0E       		.uleb128 0xe
+ 1369 005a 1C       		.uleb128 0x1c
+ 1370 005b 0B       		.uleb128 0xb
+ 1371 005c 00       		.byte	0
+ 1372 005d 00       		.byte	0
+ 1373 005e 09       		.uleb128 0x9
+ 1374 005f 13       		.uleb128 0x13
+ 1375 0060 01       		.byte	0x1
+ 1376 0061 0B       		.uleb128 0xb
+ 1377 0062 0B       		.uleb128 0xb
+ 1378 0063 3A       		.uleb128 0x3a
+ 1379 0064 0B       		.uleb128 0xb
+ 1380 0065 3B       		.uleb128 0x3b
+ 1381 0066 0B       		.uleb128 0xb
+ 1382 0067 01       		.uleb128 0x1
+ 1383 0068 13       		.uleb128 0x13
+ 1384 0069 00       		.byte	0
+ 1385 006a 00       		.byte	0
+ 1386 006b 0A       		.uleb128 0xa
+ 1387 006c 0D       		.uleb128 0xd
+ 1388 006d 00       		.byte	0
+ 1389 006e 03       		.uleb128 0x3
+ 1390 006f 0E       		.uleb128 0xe
+ 1391 0070 3A       		.uleb128 0x3a
+ 1392 0071 0B       		.uleb128 0xb
+ 1393 0072 3B       		.uleb128 0x3b
+ 1394 0073 0B       		.uleb128 0xb
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 28
+
+
+ 1395 0074 49       		.uleb128 0x49
+ 1396 0075 13       		.uleb128 0x13
+ 1397 0076 38       		.uleb128 0x38
+ 1398 0077 0B       		.uleb128 0xb
+ 1399 0078 00       		.byte	0
+ 1400 0079 00       		.byte	0
+ 1401 007a 0B       		.uleb128 0xb
+ 1402 007b 15       		.uleb128 0x15
+ 1403 007c 00       		.byte	0
+ 1404 007d 27       		.uleb128 0x27
+ 1405 007e 19       		.uleb128 0x19
+ 1406 007f 49       		.uleb128 0x49
+ 1407 0080 13       		.uleb128 0x13
+ 1408 0081 00       		.byte	0
+ 1409 0082 00       		.byte	0
+ 1410 0083 0C       		.uleb128 0xc
+ 1411 0084 26       		.uleb128 0x26
+ 1412 0085 00       		.byte	0
+ 1413 0086 49       		.uleb128 0x49
+ 1414 0087 13       		.uleb128 0x13
+ 1415 0088 00       		.byte	0
+ 1416 0089 00       		.byte	0
+ 1417 008a 0D       		.uleb128 0xd
+ 1418 008b 2E       		.uleb128 0x2e
+ 1419 008c 00       		.byte	0
+ 1420 008d 3F       		.uleb128 0x3f
+ 1421 008e 19       		.uleb128 0x19
+ 1422 008f 03       		.uleb128 0x3
+ 1423 0090 0E       		.uleb128 0xe
+ 1424 0091 3A       		.uleb128 0x3a
+ 1425 0092 0B       		.uleb128 0xb
+ 1426 0093 3B       		.uleb128 0x3b
+ 1427 0094 0B       		.uleb128 0xb
+ 1428 0095 27       		.uleb128 0x27
+ 1429 0096 19       		.uleb128 0x19
+ 1430 0097 11       		.uleb128 0x11
+ 1431 0098 01       		.uleb128 0x1
+ 1432 0099 12       		.uleb128 0x12
+ 1433 009a 06       		.uleb128 0x6
+ 1434 009b 40       		.uleb128 0x40
+ 1435 009c 18       		.uleb128 0x18
+ 1436 009d 9742     		.uleb128 0x2117
+ 1437 009f 19       		.uleb128 0x19
+ 1438 00a0 00       		.byte	0
+ 1439 00a1 00       		.byte	0
+ 1440 00a2 0E       		.uleb128 0xe
+ 1441 00a3 2E       		.uleb128 0x2e
+ 1442 00a4 01       		.byte	0x1
+ 1443 00a5 3F       		.uleb128 0x3f
+ 1444 00a6 19       		.uleb128 0x19
+ 1445 00a7 03       		.uleb128 0x3
+ 1446 00a8 0E       		.uleb128 0xe
+ 1447 00a9 3A       		.uleb128 0x3a
+ 1448 00aa 0B       		.uleb128 0xb
+ 1449 00ab 3B       		.uleb128 0x3b
+ 1450 00ac 0B       		.uleb128 0xb
+ 1451 00ad 27       		.uleb128 0x27
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 29
+
+
+ 1452 00ae 19       		.uleb128 0x19
+ 1453 00af 11       		.uleb128 0x11
+ 1454 00b0 01       		.uleb128 0x1
+ 1455 00b1 12       		.uleb128 0x12
+ 1456 00b2 06       		.uleb128 0x6
+ 1457 00b3 40       		.uleb128 0x40
+ 1458 00b4 18       		.uleb128 0x18
+ 1459 00b5 9742     		.uleb128 0x2117
+ 1460 00b7 19       		.uleb128 0x19
+ 1461 00b8 01       		.uleb128 0x1
+ 1462 00b9 13       		.uleb128 0x13
+ 1463 00ba 00       		.byte	0
+ 1464 00bb 00       		.byte	0
+ 1465 00bc 0F       		.uleb128 0xf
+ 1466 00bd 898201   		.uleb128 0x4109
+ 1467 00c0 01       		.byte	0x1
+ 1468 00c1 11       		.uleb128 0x11
+ 1469 00c2 01       		.uleb128 0x1
+ 1470 00c3 31       		.uleb128 0x31
+ 1471 00c4 13       		.uleb128 0x13
+ 1472 00c5 00       		.byte	0
+ 1473 00c6 00       		.byte	0
+ 1474 00c7 10       		.uleb128 0x10
+ 1475 00c8 8A8201   		.uleb128 0x410a
+ 1476 00cb 00       		.byte	0
+ 1477 00cc 02       		.uleb128 0x2
+ 1478 00cd 18       		.uleb128 0x18
+ 1479 00ce 9142     		.uleb128 0x2111
+ 1480 00d0 18       		.uleb128 0x18
+ 1481 00d1 00       		.byte	0
+ 1482 00d2 00       		.byte	0
+ 1483 00d3 11       		.uleb128 0x11
+ 1484 00d4 898201   		.uleb128 0x4109
+ 1485 00d7 01       		.byte	0x1
+ 1486 00d8 11       		.uleb128 0x11
+ 1487 00d9 01       		.uleb128 0x1
+ 1488 00da 31       		.uleb128 0x31
+ 1489 00db 13       		.uleb128 0x13
+ 1490 00dc 01       		.uleb128 0x1
+ 1491 00dd 13       		.uleb128 0x13
+ 1492 00de 00       		.byte	0
+ 1493 00df 00       		.byte	0
+ 1494 00e0 12       		.uleb128 0x12
+ 1495 00e1 2E       		.uleb128 0x2e
+ 1496 00e2 01       		.byte	0x1
+ 1497 00e3 3F       		.uleb128 0x3f
+ 1498 00e4 19       		.uleb128 0x19
+ 1499 00e5 03       		.uleb128 0x3
+ 1500 00e6 0E       		.uleb128 0xe
+ 1501 00e7 3A       		.uleb128 0x3a
+ 1502 00e8 0B       		.uleb128 0xb
+ 1503 00e9 3B       		.uleb128 0x3b
+ 1504 00ea 0B       		.uleb128 0xb
+ 1505 00eb 27       		.uleb128 0x27
+ 1506 00ec 19       		.uleb128 0x19
+ 1507 00ed 11       		.uleb128 0x11
+ 1508 00ee 01       		.uleb128 0x1
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 30
+
+
+ 1509 00ef 12       		.uleb128 0x12
+ 1510 00f0 06       		.uleb128 0x6
+ 1511 00f1 40       		.uleb128 0x40
+ 1512 00f2 18       		.uleb128 0x18
+ 1513 00f3 9642     		.uleb128 0x2116
+ 1514 00f5 19       		.uleb128 0x19
+ 1515 00f6 01       		.uleb128 0x1
+ 1516 00f7 13       		.uleb128 0x13
+ 1517 00f8 00       		.byte	0
+ 1518 00f9 00       		.byte	0
+ 1519 00fa 13       		.uleb128 0x13
+ 1520 00fb 05       		.uleb128 0x5
+ 1521 00fc 00       		.byte	0
+ 1522 00fd 03       		.uleb128 0x3
+ 1523 00fe 0E       		.uleb128 0xe
+ 1524 00ff 3A       		.uleb128 0x3a
+ 1525 0100 0B       		.uleb128 0xb
+ 1526 0101 3B       		.uleb128 0x3b
+ 1527 0102 0B       		.uleb128 0xb
+ 1528 0103 49       		.uleb128 0x49
+ 1529 0104 13       		.uleb128 0x13
+ 1530 0105 02       		.uleb128 0x2
+ 1531 0106 17       		.uleb128 0x17
+ 1532 0107 00       		.byte	0
+ 1533 0108 00       		.byte	0
+ 1534 0109 14       		.uleb128 0x14
+ 1535 010a 0B       		.uleb128 0xb
+ 1536 010b 01       		.byte	0x1
+ 1537 010c 11       		.uleb128 0x11
+ 1538 010d 01       		.uleb128 0x1
+ 1539 010e 12       		.uleb128 0x12
+ 1540 010f 06       		.uleb128 0x6
+ 1541 0110 00       		.byte	0
+ 1542 0111 00       		.byte	0
+ 1543 0112 15       		.uleb128 0x15
+ 1544 0113 34       		.uleb128 0x34
+ 1545 0114 00       		.byte	0
+ 1546 0115 03       		.uleb128 0x3
+ 1547 0116 08       		.uleb128 0x8
+ 1548 0117 3A       		.uleb128 0x3a
+ 1549 0118 0B       		.uleb128 0xb
+ 1550 0119 3B       		.uleb128 0x3b
+ 1551 011a 0B       		.uleb128 0xb
+ 1552 011b 49       		.uleb128 0x49
+ 1553 011c 13       		.uleb128 0x13
+ 1554 011d 02       		.uleb128 0x2
+ 1555 011e 17       		.uleb128 0x17
+ 1556 011f 00       		.byte	0
+ 1557 0120 00       		.byte	0
+ 1558 0121 16       		.uleb128 0x16
+ 1559 0122 34       		.uleb128 0x34
+ 1560 0123 00       		.byte	0
+ 1561 0124 03       		.uleb128 0x3
+ 1562 0125 0E       		.uleb128 0xe
+ 1563 0126 3A       		.uleb128 0x3a
+ 1564 0127 0B       		.uleb128 0xb
+ 1565 0128 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 31
+
+
+ 1566 0129 0B       		.uleb128 0xb
+ 1567 012a 49       		.uleb128 0x49
+ 1568 012b 13       		.uleb128 0x13
+ 1569 012c 02       		.uleb128 0x2
+ 1570 012d 17       		.uleb128 0x17
+ 1571 012e 00       		.byte	0
+ 1572 012f 00       		.byte	0
+ 1573 0130 17       		.uleb128 0x17
+ 1574 0131 34       		.uleb128 0x34
+ 1575 0132 00       		.byte	0
+ 1576 0133 03       		.uleb128 0x3
+ 1577 0134 0E       		.uleb128 0xe
+ 1578 0135 3A       		.uleb128 0x3a
+ 1579 0136 0B       		.uleb128 0xb
+ 1580 0137 3B       		.uleb128 0x3b
+ 1581 0138 0B       		.uleb128 0xb
+ 1582 0139 49       		.uleb128 0x49
+ 1583 013a 13       		.uleb128 0x13
+ 1584 013b 3F       		.uleb128 0x3f
+ 1585 013c 19       		.uleb128 0x19
+ 1586 013d 3C       		.uleb128 0x3c
+ 1587 013e 19       		.uleb128 0x19
+ 1588 013f 00       		.byte	0
+ 1589 0140 00       		.byte	0
+ 1590 0141 18       		.uleb128 0x18
+ 1591 0142 34       		.uleb128 0x34
+ 1592 0143 00       		.byte	0
+ 1593 0144 03       		.uleb128 0x3
+ 1594 0145 0E       		.uleb128 0xe
+ 1595 0146 3A       		.uleb128 0x3a
+ 1596 0147 0B       		.uleb128 0xb
+ 1597 0148 3B       		.uleb128 0x3b
+ 1598 0149 05       		.uleb128 0x5
+ 1599 014a 49       		.uleb128 0x49
+ 1600 014b 13       		.uleb128 0x13
+ 1601 014c 3F       		.uleb128 0x3f
+ 1602 014d 19       		.uleb128 0x19
+ 1603 014e 3C       		.uleb128 0x3c
+ 1604 014f 19       		.uleb128 0x19
+ 1605 0150 00       		.byte	0
+ 1606 0151 00       		.byte	0
+ 1607 0152 19       		.uleb128 0x19
+ 1608 0153 35       		.uleb128 0x35
+ 1609 0154 00       		.byte	0
+ 1610 0155 49       		.uleb128 0x49
+ 1611 0156 13       		.uleb128 0x13
+ 1612 0157 00       		.byte	0
+ 1613 0158 00       		.byte	0
+ 1614 0159 1A       		.uleb128 0x1a
+ 1615 015a 01       		.uleb128 0x1
+ 1616 015b 01       		.byte	0x1
+ 1617 015c 49       		.uleb128 0x49
+ 1618 015d 13       		.uleb128 0x13
+ 1619 015e 01       		.uleb128 0x1
+ 1620 015f 13       		.uleb128 0x13
+ 1621 0160 00       		.byte	0
+ 1622 0161 00       		.byte	0
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 32
+
+
+ 1623 0162 1B       		.uleb128 0x1b
+ 1624 0163 21       		.uleb128 0x21
+ 1625 0164 00       		.byte	0
+ 1626 0165 49       		.uleb128 0x49
+ 1627 0166 13       		.uleb128 0x13
+ 1628 0167 2F       		.uleb128 0x2f
+ 1629 0168 0B       		.uleb128 0xb
+ 1630 0169 00       		.byte	0
+ 1631 016a 00       		.byte	0
+ 1632 016b 1C       		.uleb128 0x1c
+ 1633 016c 34       		.uleb128 0x34
+ 1634 016d 00       		.byte	0
+ 1635 016e 03       		.uleb128 0x3
+ 1636 016f 0E       		.uleb128 0xe
+ 1637 0170 3A       		.uleb128 0x3a
+ 1638 0171 0B       		.uleb128 0xb
+ 1639 0172 3B       		.uleb128 0x3b
+ 1640 0173 0B       		.uleb128 0xb
+ 1641 0174 49       		.uleb128 0x49
+ 1642 0175 13       		.uleb128 0x13
+ 1643 0176 3F       		.uleb128 0x3f
+ 1644 0177 19       		.uleb128 0x19
+ 1645 0178 02       		.uleb128 0x2
+ 1646 0179 18       		.uleb128 0x18
+ 1647 017a 00       		.byte	0
+ 1648 017b 00       		.byte	0
+ 1649 017c 1D       		.uleb128 0x1d
+ 1650 017d 2E       		.uleb128 0x2e
+ 1651 017e 00       		.byte	0
+ 1652 017f 3F       		.uleb128 0x3f
+ 1653 0180 19       		.uleb128 0x19
+ 1654 0181 3C       		.uleb128 0x3c
+ 1655 0182 19       		.uleb128 0x19
+ 1656 0183 6E       		.uleb128 0x6e
+ 1657 0184 0E       		.uleb128 0xe
+ 1658 0185 03       		.uleb128 0x3
+ 1659 0186 0E       		.uleb128 0xe
+ 1660 0187 3A       		.uleb128 0x3a
+ 1661 0188 0B       		.uleb128 0xb
+ 1662 0189 3B       		.uleb128 0x3b
+ 1663 018a 0B       		.uleb128 0xb
+ 1664 018b 00       		.byte	0
+ 1665 018c 00       		.byte	0
+ 1666 018d 00       		.byte	0
+ 1667              		.section	.debug_loc,"",%progbits
+ 1668              	.Ldebug_loc0:
+ 1669              	.LLST0:
+ 1670 0000 00000000 		.4byte	.LVL10
+ 1671 0004 0C000000 		.4byte	.LVL12
+ 1672 0008 0100     		.2byte	0x1
+ 1673 000a 50       		.byte	0x50
+ 1674 000b 0C000000 		.4byte	.LVL12
+ 1675 000f 68000000 		.4byte	.LVL24
+ 1676 0013 0100     		.2byte	0x1
+ 1677 0015 5A       		.byte	0x5a
+ 1678 0016 68000000 		.4byte	.LVL24
+ 1679 001a 6C000000 		.4byte	.LFE133
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 33
+
+
+ 1680 001e 0400     		.2byte	0x4
+ 1681 0020 F3       		.byte	0xf3
+ 1682 0021 01       		.uleb128 0x1
+ 1683 0022 50       		.byte	0x50
+ 1684 0023 9F       		.byte	0x9f
+ 1685 0024 00000000 		.4byte	0
+ 1686 0028 00000000 		.4byte	0
+ 1687              	.LLST1:
+ 1688 002c 00000000 		.4byte	.LVL10
+ 1689 0030 0C000000 		.4byte	.LVL12
+ 1690 0034 0100     		.2byte	0x1
+ 1691 0036 51       		.byte	0x51
+ 1692 0037 0C000000 		.4byte	.LVL12
+ 1693 003b 6C000000 		.4byte	.LFE133
+ 1694 003f 0400     		.2byte	0x4
+ 1695 0041 F3       		.byte	0xf3
+ 1696 0042 01       		.uleb128 0x1
+ 1697 0043 51       		.byte	0x51
+ 1698 0044 9F       		.byte	0x9f
+ 1699 0045 00000000 		.4byte	0
+ 1700 0049 00000000 		.4byte	0
+ 1701              	.LLST2:
+ 1702 004d 08000000 		.4byte	.LVL11
+ 1703 0051 0C000000 		.4byte	.LVL12
+ 1704 0055 0200     		.2byte	0x2
+ 1705 0057 30       		.byte	0x30
+ 1706 0058 9F       		.byte	0x9f
+ 1707 0059 0C000000 		.4byte	.LVL12
+ 1708 005d 5E000000 		.4byte	.LVL22
+ 1709 0061 0100     		.2byte	0x1
+ 1710 0063 56       		.byte	0x56
+ 1711 0064 60000000 		.4byte	.LVL23
+ 1712 0068 68000000 		.4byte	.LVL24
+ 1713 006c 0100     		.2byte	0x1
+ 1714 006e 56       		.byte	0x56
+ 1715 006f 00000000 		.4byte	0
+ 1716 0073 00000000 		.4byte	0
+ 1717              	.LLST3:
+ 1718 0077 2A000000 		.4byte	.LVL13
+ 1719 007b 5C000000 		.4byte	.LVL21
+ 1720 007f 0100     		.2byte	0x1
+ 1721 0081 55       		.byte	0x55
+ 1722 0082 00000000 		.4byte	0
+ 1723 0086 00000000 		.4byte	0
+ 1724              	.LLST4:
+ 1725 008a 2E000000 		.4byte	.LVL14
+ 1726 008e 5C000000 		.4byte	.LVL21
+ 1727 0092 0100     		.2byte	0x1
+ 1728 0094 58       		.byte	0x58
+ 1729 0095 00000000 		.4byte	0
+ 1730 0099 00000000 		.4byte	0
+ 1731              	.LLST5:
+ 1732 009d 2E000000 		.4byte	.LVL14
+ 1733 00a1 32000000 		.4byte	.LVL15
+ 1734 00a5 0200     		.2byte	0x2
+ 1735 00a7 30       		.byte	0x30
+ 1736 00a8 9F       		.byte	0x9f
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 34
+
+
+ 1737 00a9 32000000 		.4byte	.LVL15
+ 1738 00ad 56000000 		.4byte	.LVL19
+ 1739 00b1 0100     		.2byte	0x1
+ 1740 00b3 54       		.byte	0x54
+ 1741 00b4 58000000 		.4byte	.LVL20
+ 1742 00b8 5C000000 		.4byte	.LVL21
+ 1743 00bc 0100     		.2byte	0x1
+ 1744 00be 54       		.byte	0x54
+ 1745 00bf 00000000 		.4byte	0
+ 1746 00c3 00000000 		.4byte	0
+ 1747              		.section	.debug_aranges,"",%progbits
+ 1748 0000 6C000000 		.4byte	0x6c
+ 1749 0004 0200     		.2byte	0x2
+ 1750 0006 00000000 		.4byte	.Ldebug_info0
+ 1751 000a 04       		.byte	0x4
+ 1752 000b 00       		.byte	0
+ 1753 000c 0000     		.2byte	0
+ 1754 000e 0000     		.2byte	0
+ 1755 0010 00000000 		.4byte	.LFB134
+ 1756 0014 30000000 		.4byte	.LFE134-.LFB134
+ 1757 0018 00000000 		.4byte	.LFB135
+ 1758 001c 10000000 		.4byte	.LFE135-.LFB135
+ 1759 0020 00000000 		.4byte	.LFB136
+ 1760 0024 1C000000 		.4byte	.LFE136-.LFB136
+ 1761 0028 00000000 		.4byte	.LFB137
+ 1762 002c 10000000 		.4byte	.LFE137-.LFB137
+ 1763 0030 00000000 		.4byte	.LFB138
+ 1764 0034 10000000 		.4byte	.LFE138-.LFB138
+ 1765 0038 00000000 		.4byte	.LFB139
+ 1766 003c 10000000 		.4byte	.LFE139-.LFB139
+ 1767 0040 00000000 		.4byte	.LFB140
+ 1768 0044 10000000 		.4byte	.LFE140-.LFB140
+ 1769 0048 00000000 		.4byte	.LFB141
+ 1770 004c 10000000 		.4byte	.LFE141-.LFB141
+ 1771 0050 00000000 		.4byte	.LFB142
+ 1772 0054 10000000 		.4byte	.LFE142-.LFB142
+ 1773 0058 00000000 		.4byte	.LFB143
+ 1774 005c 10000000 		.4byte	.LFE143-.LFB143
+ 1775 0060 00000000 		.4byte	.LFB133
+ 1776 0064 6C000000 		.4byte	.LFE133-.LFB133
+ 1777 0068 00000000 		.4byte	0
+ 1778 006c 00000000 		.4byte	0
+ 1779              		.section	.debug_ranges,"",%progbits
+ 1780              	.Ldebug_ranges0:
+ 1781 0000 00000000 		.4byte	.LFB134
+ 1782 0004 30000000 		.4byte	.LFE134
+ 1783 0008 00000000 		.4byte	.LFB135
+ 1784 000c 10000000 		.4byte	.LFE135
+ 1785 0010 00000000 		.4byte	.LFB136
+ 1786 0014 1C000000 		.4byte	.LFE136
+ 1787 0018 00000000 		.4byte	.LFB137
+ 1788 001c 10000000 		.4byte	.LFE137
+ 1789 0020 00000000 		.4byte	.LFB138
+ 1790 0024 10000000 		.4byte	.LFE138
+ 1791 0028 00000000 		.4byte	.LFB139
+ 1792 002c 10000000 		.4byte	.LFE139
+ 1793 0030 00000000 		.4byte	.LFB140
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 35
+
+
+ 1794 0034 10000000 		.4byte	.LFE140
+ 1795 0038 00000000 		.4byte	.LFB141
+ 1796 003c 10000000 		.4byte	.LFE141
+ 1797 0040 00000000 		.4byte	.LFB142
+ 1798 0044 10000000 		.4byte	.LFE142
+ 1799 0048 00000000 		.4byte	.LFB143
+ 1800 004c 10000000 		.4byte	.LFE143
+ 1801 0050 00000000 		.4byte	.LFB133
+ 1802 0054 6C000000 		.4byte	.LFE133
+ 1803 0058 00000000 		.4byte	0
+ 1804 005c 00000000 		.4byte	0
+ 1805              		.section	.debug_line,"",%progbits
+ 1806              	.Ldebug_line0:
+ 1807 0000 76030000 		.section	.debug_str,"MS",%progbits,1
+ 1807      02008602 
+ 1807      00000201 
+ 1807      FB0E0D00 
+ 1807      01010101 
+ 1808              	.LASF30:
+ 1809 0000 45565F32 		.ascii	"EV_250MS\000"
+ 1809      35304D53 
+ 1809      00
+ 1810              	.LASF15:
+ 1811 0009 666C6F61 		.ascii	"float\000"
+ 1811      7400
+ 1812              	.LASF22:
+ 1813 000f 45455F55 		.ascii	"EE_UREG\000"
+ 1813      52454700 
+ 1814              	.LASF53:
+ 1815 0017 53544154 		.ascii	"STATE_stateOuterTransitionTable_t\000"
+ 1815      455F7374 
+ 1815      6174654F 
+ 1815      75746572 
+ 1815      5472616E 
+ 1816              	.LASF27:
+ 1817 0039 45565F4B 		.ascii	"EV_KEYRIGHT\000"
+ 1817      45595249 
+ 1817      47485400 
+ 1818              	.LASF54:
+ 1819 0045 434C4F43 		.ascii	"CLOCK_C_ISDISPLAYING\000"
+ 1819      4B5F435F 
+ 1819      49534449 
+ 1819      53504C41 
+ 1819      59494E47 
+ 1820              	.LASF40:
+ 1821 005a 73746174 		.ascii	"state\000"
+ 1821      6500
+ 1822              	.LASF47:
+ 1823 0060 67756172 		.ascii	"guard\000"
+ 1823      6400
+ 1824              	.LASF57:
+ 1825 0066 436C6F63 		.ascii	"ClockContainerState\000"
+ 1825      6B436F6E 
+ 1825      7461696E 
+ 1825      65725374 
+ 1825      61746500 
+ 1826              	.LASF2:
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 36
+
+
+ 1827 007a 73686F72 		.ascii	"short int\000"
+ 1827      7420696E 
+ 1827      7400
+ 1828              	.LASF19:
+ 1829 0084 73697A65 		.ascii	"sizetype\000"
+ 1829      74797065 
+ 1829      00
+ 1830              	.LASF23:
+ 1831 008d 45455F46 		.ascii	"EE_FREG\000"
+ 1831      52454700 
+ 1832              	.LASF9:
+ 1833 0095 6C6F6E67 		.ascii	"long long int\000"
+ 1833      206C6F6E 
+ 1833      6720696E 
+ 1833      7400
+ 1834              	.LASF55:
+ 1835 00a3 434C4F43 		.ascii	"CLOCK_C_ISEDITINGMINUTES\000"
+ 1835      4B5F435F 
+ 1835      49534544 
+ 1835      4954494E 
+ 1835      474D494E 
+ 1836              	.LASF45:
+ 1837 00bc 6576656E 		.ascii	"event\000"
+ 1837      7400
+ 1838              	.LASF4:
+ 1839 00c2 5F5F7569 		.ascii	"__uint16_t\000"
+ 1839      6E743136 
+ 1839      5F7400
+ 1840              	.LASF37:
+ 1841 00cd 434C4F43 		.ascii	"CLOCK_W_ISFOCUS\000"
+ 1841      4B5F575F 
+ 1841      4953464F 
+ 1841      43555300 
+ 1842              	.LASF58:
+ 1843 00dd 434C4F43 		.ascii	"CLOCK__dispatch_KL_Hours\000"
+ 1843      4B5F5F64 
+ 1843      69737061 
+ 1843      7463685F 
+ 1843      4B4C5F48 
+ 1844              	.LASF38:
+ 1845 00f6 434C4F43 		.ascii	"CLOCK_W_ISAUTOINCREMENT\000"
+ 1845      4B5F575F 
+ 1845      49534155 
+ 1845      544F494E 
+ 1845      4352454D 
+ 1846              	.LASF83:
+ 1847 010e 434C4F43 		.ascii	"CLOCK_Container_Transitions\000"
+ 1847      4B5F436F 
+ 1847      6E746169 
+ 1847      6E65725F 
+ 1847      5472616E 
+ 1848              	.LASF12:
+ 1849 012a 75696E74 		.ascii	"uint8_t\000"
+ 1849      385F7400 
+ 1850              	.LASF64:
+ 1851 0132 434C4F43 		.ascii	"CLOCK__dispatch_KR_Min\000"
+ 1851      4B5F5F64 
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 37
+
+
+ 1851      69737061 
+ 1851      7463685F 
+ 1851      4B525F4D 
+ 1852              	.LASF74:
+ 1853 0149 45455F49 		.ascii	"EE_IRQ_nesting_level\000"
+ 1853      52515F6E 
+ 1853      65737469 
+ 1853      6E675F6C 
+ 1853      6576656C 
+ 1854              	.LASF31:
+ 1855 015e 45565F31 		.ascii	"EV_1MIN\000"
+ 1855      4D494E00 
+ 1856              	.LASF50:
+ 1857 0166 63757272 		.ascii	"currentState\000"
+ 1857      656E7453 
+ 1857      74617465 
+ 1857      00
+ 1858              	.LASF77:
+ 1859 0173 675F6D69 		.ascii	"g_minutes\000"
+ 1859      6E757465 
+ 1859      7300
+ 1860              	.LASF44:
+ 1861 017d 436C6F63 		.ascii	"ClockWidgetInstance\000"
+ 1861      6B576964 
+ 1861      67657449 
+ 1861      6E737461 
+ 1861      6E636500 
+ 1862              	.LASF76:
+ 1863 0191 675F686F 		.ascii	"g_hours\000"
+ 1863      75727300 
+ 1864              	.LASF61:
+ 1865 0199 434C4F43 		.ascii	"CLOCK__dispatch_KRLP_Hours\000"
+ 1865      4B5F5F64 
+ 1865      69737061 
+ 1865      7463685F 
+ 1865      4B524C50 
+ 1866              	.LASF48:
+ 1867 01b4 61637469 		.ascii	"action\000"
+ 1867      6F6E00
+ 1868              	.LASF33:
+ 1869 01bb 57494447 		.ascii	"WIDGET_MINUTE\000"
+ 1869      45545F4D 
+ 1869      494E5554 
+ 1869      4500
+ 1870              	.LASF7:
+ 1871 01c9 6C6F6E67 		.ascii	"long int\000"
+ 1871      20696E74 
+ 1871      00
+ 1872              	.LASF42:
+ 1873 01d2 6D617856 		.ascii	"maxValue\000"
+ 1873      616C7565 
+ 1873      00
+ 1874              	.LASF24:
+ 1875 01db 45455F54 		.ascii	"EE_TID\000"
+ 1875      494400
+ 1876              	.LASF71:
+ 1877 01e2 45455F6F 		.ascii	"EE_oo_IRQ_suspend_status\000"
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 38
+
+
+ 1877      6F5F4952 
+ 1877      515F7375 
+ 1877      7370656E 
+ 1877      645F7374 
+ 1878              	.LASF66:
+ 1879 01fb 434C4F43 		.ascii	"CLOCK__dispatch_250MS_Min\000"
+ 1879      4B5F5F64 
+ 1879      69737061 
+ 1879      7463685F 
+ 1879      3235304D 
+ 1880              	.LASF3:
+ 1881 0215 5F5F7569 		.ascii	"__uint8_t\000"
+ 1881      6E74385F 
+ 1881      7400
+ 1882              	.LASF25:
+ 1883 021f 626F6F6C 		.ascii	"boolean_t\000"
+ 1883      65616E5F 
+ 1883      7400
+ 1884              	.LASF51:
+ 1885 0229 7472616E 		.ascii	"transition\000"
+ 1885      73697469 
+ 1885      6F6E00
+ 1886              	.LASF18:
+ 1887 0234 6C6F6E67 		.ascii	"long double\000"
+ 1887      20646F75 
+ 1887      626C6500 
+ 1888              	.LASF67:
+ 1889 0240 434F4E54 		.ascii	"CONTAINER_processEvent\000"
+ 1889      41494E45 
+ 1889      525F7072 
+ 1889      6F636573 
+ 1889      73457665 
+ 1890              	.LASF1:
+ 1891 0257 756E7369 		.ascii	"unsigned char\000"
+ 1891      676E6564 
+ 1891      20636861 
+ 1891      7200
+ 1892              	.LASF21:
+ 1893 0265 45455F55 		.ascii	"EE_UINT32\000"
+ 1893      494E5433 
+ 1893      3200
+ 1894              	.LASF0:
+ 1895 026f 7369676E 		.ascii	"signed char\000"
+ 1895      65642063 
+ 1895      68617200 
+ 1896              	.LASF32:
+ 1897 027b 4556454E 		.ascii	"EVENT_enum_t\000"
+ 1897      545F656E 
+ 1897      756D5F74 
+ 1897      00
+ 1898              	.LASF10:
+ 1899 0288 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1899      206C6F6E 
+ 1899      6720756E 
+ 1899      7369676E 
+ 1899      65642069 
+ 1900              	.LASF43:
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 39
+
+
+ 1901 029f 74797065 		.ascii	"type\000"
+ 1901      00
+ 1902              	.LASF11:
+ 1903 02a4 756E7369 		.ascii	"unsigned int\000"
+ 1903      676E6564 
+ 1903      20696E74 
+ 1903      00
+ 1904              	.LASF63:
+ 1905 02b1 434C4F43 		.ascii	"CLOCK__dispatch_KL_Min\000"
+ 1905      4B5F5F64 
+ 1905      69737061 
+ 1905      7463685F 
+ 1905      4B4C5F4D 
+ 1906              	.LASF13:
+ 1907 02c8 75696E74 		.ascii	"uint16_t\000"
+ 1907      31365F74 
+ 1907      00
+ 1908              	.LASF79:
+ 1909 02d1 434C4F43 		.ascii	"CLOCK_minutes\000"
+ 1909      4B5F6D69 
+ 1909      6E757465 
+ 1909      7300
+ 1910              	.LASF73:
+ 1911 02df 45455F73 		.ascii	"EE_std_endcycle_next_tid\000"
+ 1911      74645F65 
+ 1911      6E646379 
+ 1911      636C655F 
+ 1911      6E657874 
+ 1912              	.LASF65:
+ 1913 02f8 434C4F43 		.ascii	"CLOCK__dispatch_KRLP_Min\000"
+ 1913      4B5F5F64 
+ 1913      69737061 
+ 1913      7463685F 
+ 1913      4B524C50 
+ 1914              	.LASF87:
+ 1915 0311 433A5C55 		.ascii	"C:\\Users\\bolob\\Documents\\PSoC Creator\\Clock\\E"
+ 1915      73657273 
+ 1915      5C626F6C 
+ 1915      6F625C44 
+ 1915      6F63756D 
+ 1916 033e 6C656374 		.ascii	"lectronic_Clock.cydsn\000"
+ 1916      726F6E69 
+ 1916      635F436C 
+ 1916      6F636B2E 
+ 1916      63796473 
+ 1917              	.LASF5:
+ 1918 0354 73686F72 		.ascii	"short unsigned int\000"
+ 1918      7420756E 
+ 1918      7369676E 
+ 1918      65642069 
+ 1918      6E7400
+ 1919              	.LASF88:
+ 1920 0367 434C4F43 		.ascii	"CLOCK__increment1Minute\000"
+ 1920      4B5F5F69 
+ 1920      6E637265 
+ 1920      6D656E74 
+ 1920      314D696E 
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 40
+
+
+ 1921              	.LASF84:
+ 1922 037f 434C4F43 		.ascii	"CLOCK_Container_Transitions_Size\000"
+ 1922      4B5F436F 
+ 1922      6E746169 
+ 1922      6E65725F 
+ 1922      5472616E 
+ 1923              	.LASF34:
+ 1924 03a0 57494447 		.ascii	"WIDGET_HOUR\000"
+ 1924      45545F48 
+ 1924      4F555200 
+ 1925              	.LASF59:
+ 1926 03ac 434C4F43 		.ascii	"CLOCK__dispatch_KL_HoursMin\000"
+ 1926      4B5F5F64 
+ 1926      69737061 
+ 1926      7463685F 
+ 1926      4B4C5F48 
+ 1927              	.LASF20:
+ 1928 03c8 45455F49 		.ascii	"EE_INT32\000"
+ 1928      4E543332 
+ 1928      00
+ 1929              	.LASF17:
+ 1930 03d1 63686172 		.ascii	"char\000"
+ 1930      00
+ 1931              	.LASF39:
+ 1932 03d6 436C6F63 		.ascii	"ClockWidgetState\000"
+ 1932      6B576964 
+ 1932      67657453 
+ 1932      74617465 
+ 1932      00
+ 1933              	.LASF14:
+ 1934 03e7 696E7433 		.ascii	"int32_t\000"
+ 1934      325F7400 
+ 1935              	.LASF82:
+ 1936 03ef 53544154 		.ascii	"STATE_CLOCK_C_ISEDITINGMINUTES_Transitions\000"
+ 1936      455F434C 
+ 1936      4F434B5F 
+ 1936      435F4953 
+ 1936      45444954 
+ 1937              	.LASF81:
+ 1938 041a 53544154 		.ascii	"STATE_CLOCK_C_ISEDITINGHOURS_Transitions\000"
+ 1938      455F434C 
+ 1938      4F434B5F 
+ 1938      435F4953 
+ 1938      45444954 
+ 1939              	.LASF78:
+ 1940 0443 434C4F43 		.ascii	"CLOCK_hours\000"
+ 1940      4B5F686F 
+ 1940      75727300 
+ 1941              	.LASF56:
+ 1942 044f 434C4F43 		.ascii	"CLOCK_C_ISEDITINGHOURS\000"
+ 1942      4B5F435F 
+ 1942      49534544 
+ 1942      4954494E 
+ 1942      47484F55 
+ 1943              	.LASF36:
+ 1944 0466 434C4F43 		.ascii	"CLOCK_W_ISDISPLAYING\000"
+ 1944      4B5F575F 
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 41
+
+
+ 1944      49534449 
+ 1944      53504C41 
+ 1944      59494E47 
+ 1945              	.LASF72:
+ 1946 047b 45455F41 		.ascii	"EE_ApplicationMode\000"
+ 1946      70706C69 
+ 1946      63617469 
+ 1946      6F6E4D6F 
+ 1946      646500
+ 1947              	.LASF8:
+ 1948 048e 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1948      20756E73 
+ 1948      69676E65 
+ 1948      6420696E 
+ 1948      7400
+ 1949              	.LASF35:
+ 1950 04a0 57696467 		.ascii	"WidgetType\000"
+ 1950      65745479 
+ 1950      706500
+ 1951              	.LASF16:
+ 1952 04ab 646F7562 		.ascii	"double\000"
+ 1952      6C6500
+ 1953              	.LASF69:
+ 1954 04b2 73697A65 		.ascii	"size\000"
+ 1954      00
+ 1955              	.LASF52:
+ 1956 04b7 7461626C 		.ascii	"tableSize\000"
+ 1956      6553697A 
+ 1956      6500
+ 1957              	.LASF46:
+ 1958 04c1 6E657874 		.ascii	"nextState\000"
+ 1958      53746174 
+ 1958      6500
+ 1959              	.LASF6:
+ 1960 04cb 5F5F696E 		.ascii	"__int32_t\000"
+ 1960      7433325F 
+ 1960      7400
+ 1961              	.LASF62:
+ 1962 04d5 434C4F43 		.ascii	"CLOCK__dispatch_250MS_Hours\000"
+ 1962      4B5F5F64 
+ 1962      69737061 
+ 1962      7463685F 
+ 1962      3235304D 
+ 1963              	.LASF26:
+ 1964 04f1 45565F4E 		.ascii	"EV_NONE\000"
+ 1964      4F4E4500 
+ 1965              	.LASF29:
+ 1966 04f9 45565F4B 		.ascii	"EV_KEYRIGHTLONGPRESS\000"
+ 1966      45595249 
+ 1966      4748544C 
+ 1966      4F4E4750 
+ 1966      52455353 
+ 1967              	.LASF28:
+ 1968 050e 45565F4B 		.ascii	"EV_KEYLEFT\000"
+ 1968      45594C45 
+ 1968      465400
+ 1969              	.LASF89:
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 42
+
+
+ 1970 0519 57494447 		.ascii	"WIDGET__processEvent\000"
+ 1970      45545F5F 
+ 1970      70726F63 
+ 1970      65737345 
+ 1970      76656E74 
+ 1971              	.LASF86:
+ 1972 052e 636C6F63 		.ascii	"clock_container.c\000"
+ 1972      6B5F636F 
+ 1972      6E746169 
+ 1972      6E65722E 
+ 1972      6300
+ 1973              	.LASF68:
+ 1974 0540 7461626C 		.ascii	"table\000"
+ 1974      6500
+ 1975              	.LASF41:
+ 1976 0546 76616C75 		.ascii	"valuePtr\000"
+ 1976      65507472 
+ 1976      00
+ 1977              	.LASF75:
+ 1978 054f 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1978      52784275 
+ 1978      66666572 
+ 1978      00
+ 1979              	.LASF85:
+ 1980 055c 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1980      43313120 
+ 1980      352E342E 
+ 1980      31203230 
+ 1980      31363036 
+ 1981 058f 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1981      20726576 
+ 1981      6973696F 
+ 1981      6E203233 
+ 1981      37373135 
+ 1982 05c2 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1982      66756E63 
+ 1982      74696F6E 
+ 1982      2D736563 
+ 1982      74696F6E 
+ 1983              	.LASF49:
+ 1984 05ea 53544154 		.ascii	"STATE_stateInnerTransitionTable_t\000"
+ 1984      455F7374 
+ 1984      61746549 
+ 1984      6E6E6572 
+ 1984      5472616E 
+ 1985              	.LASF70:
+ 1986 060c 45455F6F 		.ascii	"EE_oo_IRQ_disable_count\000"
+ 1986      6F5F4952 
+ 1986      515F6469 
+ 1986      7361626C 
+ 1986      655F636F 
+ 1987              	.LASF60:
+ 1988 0624 434C4F43 		.ascii	"CLOCK__dispatch_KR_Hours\000"
+ 1988      4B5F5F64 
+ 1988      69737061 
+ 1988      7463685F 
+ 1988      4B525F48 
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\ccxlCnWg.s 			page 43
+
+
+ 1989              	.LASF80:
+ 1990 063d 53544154 		.ascii	"STATE_CLOCK_C_ISDISPLAYING_Transitions\000"
+ 1990      455F434C 
+ 1990      4F434B5F 
+ 1990      435F4953 
+ 1990      44495350 
+ 1991              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

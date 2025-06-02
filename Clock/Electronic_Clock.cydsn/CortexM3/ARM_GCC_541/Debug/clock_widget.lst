@@ -1,0 +1,3788 @@
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"clock_widget.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.CLOCK__incrementWidget,"ax",%progbits
+  20              		.align	2
+  21              		.global	CLOCK__incrementWidget
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	CLOCK__incrementWidget, %function
+  25              	CLOCK__incrementWidget:
+  26              	.LFB134:
+  27              		.file 1 "clock_widget.c"
+   1:clock_widget.c **** /* ========================================
+   2:clock_widget.c ****  *
+   3:clock_widget.c ****  * Copyright YOUR COMPANY, THE YEAR
+   4:clock_widget.c ****  * All Rights Reserved
+   5:clock_widget.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:clock_widget.c ****  *
+   7:clock_widget.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:clock_widget.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:clock_widget.c ****  *
+  10:clock_widget.c ****  * ========================================
+  11:clock_widget.c **** */
+  12:clock_widget.c **** #include "clock_widget.h"
+  13:clock_widget.c **** 
+  14:clock_widget.c **** static ClockWidgetInstance* currentWidgetContext = NULL;
+  15:clock_widget.c **** 
+  16:clock_widget.c **** // =================================== Widget ===================================
+  17:clock_widget.c **** 
+  18:clock_widget.c **** ClockWidgetInstance CLOCK_hours = {
+  19:clock_widget.c ****     .state = CLOCK_W_ISFOCUS,
+  20:clock_widget.c ****     .valuePtr = &g_hours,
+  21:clock_widget.c ****     .maxValue = 24,
+  22:clock_widget.c ****     .type = WIDGET_HOUR
+  23:clock_widget.c **** };
+  24:clock_widget.c **** 
+  25:clock_widget.c **** ClockWidgetInstance CLOCK_minutes = {
+  26:clock_widget.c ****     .state = CLOCK_W_ISFOCUS,
+  27:clock_widget.c ****     .valuePtr = &g_minutes,
+  28:clock_widget.c ****     .maxValue = 60,
+  29:clock_widget.c ****     .type = WIDGET_MINUTE
+  30:clock_widget.c **** };
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 2
+
+
+  31:clock_widget.c **** 
+  32:clock_widget.c **** /**
+  33:clock_widget.c **** * Wird dieser zustand benötigt?
+  34:clock_widget.c **** * Initialzustand: Focus dann Autoinc
+  35:clock_widget.c **** */
+  36:clock_widget.c **** /** ==== CLOCK_W_ISDISPLAYING ===== */
+  37:clock_widget.c **** const STATE_stateInnerTransitionTable_t STATE_CLOCK_W_ISDISPLAYING_Transitions[] = {
+  38:clock_widget.c **** /*    Event                     ToState                Guard    Action                   */
+  39:clock_widget.c ****     { EV_KEYLEFT,               CLOCK_W_ISFOCUS,       0,       CLOCK__updateTime }
+  40:clock_widget.c **** };
+  41:clock_widget.c **** 
+  42:clock_widget.c **** /** ==== CLOCK_W_ISFOCUS ===== */
+  43:clock_widget.c **** const STATE_stateInnerTransitionTable_t STATE_CLOCK_W_ISFOCUS_Transitions[] = {
+  44:clock_widget.c **** /*    Event                     ToState                Guard    Action                   */
+  45:clock_widget.c ****     { EV_KEYRIGHT,              CLOCK_W_ISFOCUS,       0,       CLOCK__incrementWidget },
+  46:clock_widget.c ****     { EV_KEYRIGHTLONGPRESS,     CLOCK_W_ISAUTOINCREMENT, 0,     0 },
+  47:clock_widget.c ****     { EV_KEYLEFT,               CLOCK_W_ISFOCUS,        0,      CLOCK__setDisplayFonts }
+  48:clock_widget.c **** };
+  49:clock_widget.c **** 
+  50:clock_widget.c **** /** ==== CLOCK_W_ISAUTOINCREMENT ===== */
+  51:clock_widget.c **** const STATE_stateInnerTransitionTable_t STATE_CLOCK_W_ISAUTOINCREMENT_Transitions[] = {
+  52:clock_widget.c **** /*    Event                     ToState                Guard    Action                   */
+  53:clock_widget.c ****     { EV_KEYRIGHT,              CLOCK_W_ISFOCUS,        0,      CLOCK__incrementWidget },
+  54:clock_widget.c ****     { EV_KEYLEFT,               CLOCK_W_ISFOCUS,        0,      CLOCK__setDisplayFonts }, // go bac
+  55:clock_widget.c ****     { EV_250MS,                 CLOCK_W_ISAUTOINCREMENT,0,      CLOCK__incrementWidget }
+  56:clock_widget.c **** };
+  57:clock_widget.c **** 
+  58:clock_widget.c **** // =============== Outer Table ===============
+  59:clock_widget.c **** 
+  60:clock_widget.c **** const STATE_stateOuterTransitionTable_t CLOCK_Widget_Transitions[] = {
+  61:clock_widget.c ****     { CLOCK_W_ISFOCUS,      STATE_CLOCK_W_ISFOCUS_Transitions, sizeof(STATE_CLOCK_W_ISFOCUS_Transit
+  62:clock_widget.c ****     { CLOCK_W_ISAUTOINCREMENT,   STATE_CLOCK_W_ISAUTOINCREMENT_Transitions, sizeof(STATE_CLOCK_W_IS
+  63:clock_widget.c **** };
+  64:clock_widget.c **** 
+  65:clock_widget.c **** const uint16_t CLOCK_Widget_Transitions_Size = sizeof(CLOCK_Widget_Transitions)/sizeof(STATE_stateO
+  66:clock_widget.c **** 
+  67:clock_widget.c **** void WIDGET__processEvent(ClockWidgetInstance* widget, EVENT_enum_t event) {
+  68:clock_widget.c ****     currentWidgetContext = widget;  // Kontext setzen
+  69:clock_widget.c **** 
+  70:clock_widget.c ****     for (uint8_t i = 0; i < CLOCK_Widget_Transitions_Size; ++i) {
+  71:clock_widget.c ****         if (CLOCK_Widget_Transitions[i].currentState == widget->state) {
+  72:clock_widget.c ****             const STATE_stateInnerTransitionTable_t* table = CLOCK_Widget_Transitions[i].transition
+  73:clock_widget.c ****             uint16_t size = CLOCK_Widget_Transitions[i].tableSize;
+  74:clock_widget.c **** 
+  75:clock_widget.c ****             for (uint16_t j = 0; j < size; ++j) {
+  76:clock_widget.c ****                 if (table[j].event == event && (!table[j].guard || table[j].guard())) {
+  77:clock_widget.c ****                     if (table[j].action) {
+  78:clock_widget.c ****                         table[j].action();  // Zugriff über globalen Kontext möglich
+  79:clock_widget.c ****                     }
+  80:clock_widget.c ****                     widget->state = table[j].nextState;
+  81:clock_widget.c ****                     return;
+  82:clock_widget.c ****                 }
+  83:clock_widget.c ****             }
+  84:clock_widget.c ****         }
+  85:clock_widget.c ****     }
+  86:clock_widget.c **** 
+  87:clock_widget.c ****     // reset the current context
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 3
+
+
+  88:clock_widget.c ****     currentWidgetContext = NULL; 
+  89:clock_widget.c **** }
+  90:clock_widget.c **** 
+  91:clock_widget.c **** 
+  92:clock_widget.c **** void CLOCK__incrementWidget() {
+  28              		.loc 1 92 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  93:clock_widget.c ****     if (currentWidgetContext == NULL || currentWidgetContext->valuePtr == NULL)
+  33              		.loc 1 93 0
+  34 0000 074B     		ldr	r3, .L3
+  35 0002 1B68     		ldr	r3, [r3]
+  36 0004 5BB1     		cbz	r3, .L1
+  37              		.loc 1 93 0 is_stmt 0 discriminator 1
+  38 0006 5A68     		ldr	r2, [r3, #4]
+  39 0008 4AB1     		cbz	r2, .L1
+  94:clock_widget.c ****         return;
+  95:clock_widget.c **** 
+  96:clock_widget.c ****     // Increase the value of the widget
+  97:clock_widget.c ****     (*currentWidgetContext->valuePtr)++;
+  40              		.loc 1 97 0 is_stmt 1
+  41 000a 1178     		ldrb	r1, [r2]	@ zero_extendqisi2
+  42 000c 0131     		adds	r1, r1, #1
+  43 000e 1170     		strb	r1, [r2]
+  98:clock_widget.c ****     
+  99:clock_widget.c ****     //
+ 100:clock_widget.c ****     if (*currentWidgetContext->valuePtr >= currentWidgetContext->maxValue) {
+  44              		.loc 1 100 0
+  45 0010 5A68     		ldr	r2, [r3, #4]
+  46 0012 1178     		ldrb	r1, [r2]	@ zero_extendqisi2
+  47 0014 1B7A     		ldrb	r3, [r3, #8]	@ zero_extendqisi2
+  48 0016 9942     		cmp	r1, r3
+  49 0018 01D3     		bcc	.L1
+ 101:clock_widget.c ****         *currentWidgetContext->valuePtr = 0;
+  50              		.loc 1 101 0
+  51 001a 0023     		movs	r3, #0
+  52 001c 1370     		strb	r3, [r2]
+  53              	.L1:
+  54 001e 7047     		bx	lr
+  55              	.L4:
+  56              		.align	2
+  57              	.L3:
+  58 0020 00000000 		.word	.LANCHOR0
+  59              		.cfi_endproc
+  60              	.LFE134:
+  61              		.size	CLOCK__incrementWidget, .-CLOCK__incrementWidget
+  62              		.section	.text.CLOCK__updateTime,"ax",%progbits
+  63              		.align	2
+  64              		.global	CLOCK__updateTime
+  65              		.thumb
+  66              		.thumb_func
+  67              		.type	CLOCK__updateTime, %function
+  68              	CLOCK__updateTime:
+  69              	.LFB137:
+ 102:clock_widget.c ****     }
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 4
+
+
+ 103:clock_widget.c **** }
+ 104:clock_widget.c **** 
+ 105:clock_widget.c **** // Probably not necessary....
+ 106:clock_widget.c **** void CLOCK__incrementHours(){
+ 107:clock_widget.c ****         // currently a dummy
+ 108:clock_widget.c **** }
+ 109:clock_widget.c **** void CLOCK__incrementMinutes(){
+ 110:clock_widget.c ****         // currently a dummy
+ 111:clock_widget.c **** }
+ 112:clock_widget.c **** // is done in the display runnable, probably not needed
+ 113:clock_widget.c **** void CLOCK__updateTime(){
+  70              		.loc 1 113 0
+  71              		.cfi_startproc
+  72              		@ args = 0, pretend = 0, frame = 0
+  73              		@ frame_needed = 0, uses_anonymous_args = 0
+  74              		@ link register save eliminated.
+  75 0000 7047     		bx	lr
+  76              		.cfi_endproc
+  77              	.LFE137:
+  78              		.size	CLOCK__updateTime, .-CLOCK__updateTime
+  79 0002 00BF     		.section	.text.CLOCK__setDisplayFonts,"ax",%progbits
+  80              		.align	2
+  81              		.global	CLOCK__setDisplayFonts
+  82              		.thumb
+  83              		.thumb_func
+  84              		.type	CLOCK__setDisplayFonts, %function
+  85              	CLOCK__setDisplayFonts:
+  86              	.LFB139:
+ 114:clock_widget.c ****     // currently a dummy
+ 115:clock_widget.c **** }
+ 116:clock_widget.c **** void CLOCK__updateDisplay(){
+ 117:clock_widget.c ****         // currently a dummy
+ 118:clock_widget.c **** }
+ 119:clock_widget.c **** 
+ 120:clock_widget.c **** void CLOCK__setDisplayFonts(){
+  87              		.loc 1 120 0
+  88              		.cfi_startproc
+  89              		@ args = 0, pretend = 0, frame = 16
+  90              		@ frame_needed = 0, uses_anonymous_args = 0
+  91              		.loc 1 120 0
+  92 0000 30B5     		push	{r4, r5, lr}
+  93              		.cfi_def_cfa_offset 12
+  94              		.cfi_offset 4, -12
+  95              		.cfi_offset 5, -8
+  96              		.cfi_offset 14, -4
+  97 0002 85B0     		sub	sp, sp, #20
+  98              		.cfi_def_cfa_offset 32
+  99              	.LVL0:
+ 100              	.LBB7:
+ 101              	.LBB8:
+ 102              		.file 2 ".\\source\\rte/sc_displaydata.h"
+   1:.\source\rte/sc_displaydata.h **** 
+   2:.\source\rte/sc_displaydata.h **** 
+   3:.\source\rte/sc_displaydata.h **** /**
+   4:.\source\rte/sc_displaydata.h ****  *  file    SC_DISPLAYDATA_signal.h
+   5:.\source\rte/sc_displaydata.h ****  *
+   6:.\source\rte/sc_displaydata.h ****  *  brief   signal base class for signal sc_displaydata
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 5
+
+
+   7:.\source\rte/sc_displaydata.h ****  *
+   8:.\source\rte/sc_displaydata.h ****  *  author  Autogenerated, Peter Fromm       <peter.fromm@h-da.de>
+   9:.\source\rte/sc_displaydata.h ****  *
+  10:.\source\rte/sc_displaydata.h ****  * description: Signalclass
+  11:.\source\rte/sc_displaydata.h ****  * name: sc_displayData
+  12:.\source\rte/sc_displaydata.h ****  * shortname: displayData
+  13:.\source\rte/sc_displaydata.h ****  *
+  14:.\source\rte/sc_displaydata.h ****  */
+  15:.\source\rte/sc_displaydata.h **** 
+  16:.\source\rte/sc_displaydata.h **** 
+  17:.\source\rte/sc_displaydata.h **** 
+  18:.\source\rte/sc_displaydata.h **** #ifndef SC_DISPLAYDATA_SIGNAL_H_INCLUDED
+  19:.\source\rte/sc_displaydata.h **** #define SC_DISPLAYDATA_SIGNAL_H_INCLUDED
+  20:.\source\rte/sc_displaydata.h **** 
+  21:.\source\rte/sc_displaydata.h **** /*================================================[ public includes  ]=============================
+  22:.\source\rte/sc_displaydata.h **** #include "global.h"
+  23:.\source\rte/sc_displaydata.h **** #include "project.h"
+  24:.\source\rte/sc_displaydata.h **** #include "rte.h"
+  25:.\source\rte/sc_displaydata.h **** #include "rte_types.h"
+  26:.\source\rte/sc_displaydata.h **** 
+  27:.\source\rte/sc_displaydata.h **** #include "sc_displaydata_type.h"
+  28:.\source\rte/sc_displaydata.h **** 
+  29:.\source\rte/sc_displaydata.h **** 
+  30:.\source\rte/sc_displaydata.h **** /**************************************************************************************************
+  31:.\source\rte/sc_displaydata.h **** /* The driver API block																						*/
+  32:.\source\rte/sc_displaydata.h **** /**************************************************************************************************
+  33:.\source\rte/sc_displaydata.h ****                                                                                                    
+  34:.\source\rte/sc_displaydata.h **** /**
+  35:.\source\rte/sc_displaydata.h ****  *  Definition of function types for driver interfaces.
+  36:.\source\rte/sc_displaydata.h ****  *  I-Port
+  37:.\source\rte/sc_displaydata.h ****  */
+  38:.\source\rte/sc_displaydata.h **** typedef RC_t (*SC_DISPLAYDATA_driverIn_t)(SC_DISPLAYDATA_data_t * const);
+  39:.\source\rte/sc_displaydata.h **** 
+  40:.\source\rte/sc_displaydata.h **** /**
+  41:.\source\rte/sc_displaydata.h ****  *  Definition of function types for driver interfaces.
+  42:.\source\rte/sc_displaydata.h ****  *  O-Port
+  43:.\source\rte/sc_displaydata.h ****  */
+  44:.\source\rte/sc_displaydata.h **** typedef RC_t (*SC_DISPLAYDATA_driverOut_t)( const SC_DISPLAYDATA_data_t * const);
+  45:.\source\rte/sc_displaydata.h **** 
+  46:.\source\rte/sc_displaydata.h **** 
+  47:.\source\rte/sc_displaydata.h **** /**************************************************************************************************
+  48:.\source\rte/sc_displaydata.h **** /* The signal configuration API block																				*/
+  49:.\source\rte/sc_displaydata.h **** /**************************************************************************************************
+  50:.\source\rte/sc_displaydata.h **** 
+  51:.\source\rte/sc_displaydata.h **** /**
+  52:.\source\rte/sc_displaydata.h ****  * Instances of the struct SC_DISPLAYDATA_cfg_t represent the signal object configuration.
+  53:.\source\rte/sc_displaydata.h ****  */
+  54:.\source\rte/sc_displaydata.h **** struct SC_DISPLAYDATA_cfg_s
+  55:.\source\rte/sc_displaydata.h **** {
+  56:.\source\rte/sc_displaydata.h ****     /**
+  57:.\source\rte/sc_displaydata.h ****      * Function pointer to the input driver
+  58:.\source\rte/sc_displaydata.h ****      */
+  59:.\source\rte/sc_displaydata.h ****     SC_DISPLAYDATA_driverIn_t const inDriver;
+  60:.\source\rte/sc_displaydata.h **** 
+  61:.\source\rte/sc_displaydata.h ****     /**
+  62:.\source\rte/sc_displaydata.h ****      * Function pointer to the output driver table
+  63:.\source\rte/sc_displaydata.h ****      */
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 6
+
+
+  64:.\source\rte/sc_displaydata.h ****    SC_DISPLAYDATA_driverOut_t const outDriver;
+  65:.\source\rte/sc_displaydata.h ****    
+  66:.\source\rte/sc_displaydata.h ****     /**
+  67:.\source\rte/sc_displaydata.h ****      * Event onUpdate
+  68:.\source\rte/sc_displaydata.h ****      */
+  69:.\source\rte/sc_displaydata.h ****     EventMaskType const evOnUpdate;
+  70:.\source\rte/sc_displaydata.h ****     
+  71:.\source\rte/sc_displaydata.h ****     
+  72:.\source\rte/sc_displaydata.h ****     /**
+  73:.\source\rte/sc_displaydata.h ****      * Event onError
+  74:.\source\rte/sc_displaydata.h ****      */
+  75:.\source\rte/sc_displaydata.h ****     EventMaskType const evOnError;
+  76:.\source\rte/sc_displaydata.h ****     
+  77:.\source\rte/sc_displaydata.h ****     /**
+  78:.\source\rte/sc_displaydata.h ****      * Task Count onUpdate
+  79:.\source\rte/sc_displaydata.h ****      */
+  80:.\source\rte/sc_displaydata.h ****     size_t const onUpdateTaskCount;
+  81:.\source\rte/sc_displaydata.h **** 
+  82:.\source\rte/sc_displaydata.h ****     /**
+  83:.\source\rte/sc_displaydata.h ****      * Task List onUpdate
+  84:.\source\rte/sc_displaydata.h ****      */
+  85:.\source\rte/sc_displaydata.h ****     TaskTypeArray* const onUpdateTasks;
+  86:.\source\rte/sc_displaydata.h ****     
+  87:.\source\rte/sc_displaydata.h ****     /**
+  88:.\source\rte/sc_displaydata.h ****      * Task Count onError
+  89:.\source\rte/sc_displaydata.h ****      */
+  90:.\source\rte/sc_displaydata.h ****     size_t const onErrorTaskCount;
+  91:.\source\rte/sc_displaydata.h **** 
+  92:.\source\rte/sc_displaydata.h ****     /**
+  93:.\source\rte/sc_displaydata.h ****      * Task List onError
+  94:.\source\rte/sc_displaydata.h ****      */
+  95:.\source\rte/sc_displaydata.h ****     TaskTypeArray* const onErrorTasks;
+  96:.\source\rte/sc_displaydata.h **** 	
+  97:.\source\rte/sc_displaydata.h **** 	
+  98:.\source\rte/sc_displaydata.h **** 	/**
+  99:.\source\rte/sc_displaydata.h **** 	 * Ressourse is active? We need an additional boolean as a ressource value 0 is valid.
+ 100:.\source\rte/sc_displaydata.h **** 	 */
+ 101:.\source\rte/sc_displaydata.h **** 	 boolean_t const resourceActive;
+ 102:.\source\rte/sc_displaydata.h **** 	 
+ 103:.\source\rte/sc_displaydata.h **** 	/**
+ 104:.\source\rte/sc_displaydata.h **** 	 * Ressourse 
+ 105:.\source\rte/sc_displaydata.h **** 	 */
+ 106:.\source\rte/sc_displaydata.h **** 	 ResourceType const resource;
+ 107:.\source\rte/sc_displaydata.h **** 
+ 108:.\source\rte/sc_displaydata.h **** };                                                                                                 
+ 109:.\source\rte/sc_displaydata.h **** typedef const struct SC_DISPLAYDATA_cfg_s SC_DISPLAYDATA_cfg_t;
+ 110:.\source\rte/sc_displaydata.h ****                               
+ 111:.\source\rte/sc_displaydata.h **** /**************************************************************************************************
+ 112:.\source\rte/sc_displaydata.h **** /* The data interface block																							*/
+ 113:.\source\rte/sc_displaydata.h **** /**************************************************************************************************
+ 114:.\source\rte/sc_displaydata.h **** 
+ 115:.\source\rte/sc_displaydata.h ****                                                                                                    
+ 116:.\source\rte/sc_displaydata.h **** 							  
+ 117:.\source\rte/sc_displaydata.h **** /**
+ 118:.\source\rte/sc_displaydata.h ****  * Instances of the struct SC_DISPLAYDATA_t represent the signal objects.
+ 119:.\source\rte/sc_displaydata.h ****  * A signal object contains the current application value 'value' as well as relevant meta data.
+ 120:.\source\rte/sc_displaydata.h ****  */
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 7
+
+
+ 121:.\source\rte/sc_displaydata.h **** struct SC_DISPLAYDATA_s
+ 122:.\source\rte/sc_displaydata.h **** {                                                                                                  
+ 123:.\source\rte/sc_displaydata.h **** 
+ 124:.\source\rte/sc_displaydata.h **** 	/**
+ 125:.\source\rte/sc_displaydata.h **** 	 * Data buffer for the application value
+ 126:.\source\rte/sc_displaydata.h **** 	 */
+ 127:.\source\rte/sc_displaydata.h ****     SC_DISPLAYDATA_data_t value;
+ 128:.\source\rte/sc_displaydata.h **** 
+ 129:.\source\rte/sc_displaydata.h ****     /**
+ 130:.\source\rte/sc_displaydata.h ****      * Current signal status
+ 131:.\source\rte/sc_displaydata.h ****      */
+ 132:.\source\rte/sc_displaydata.h ****     RTE_signalStatus_t status;
+ 133:.\source\rte/sc_displaydata.h **** 
+ 134:.\source\rte/sc_displaydata.h ****     /**
+ 135:.\source\rte/sc_displaydata.h ****      * Current age of the signal (in calling cycles)
+ 136:.\source\rte/sc_displaydata.h ****      */
+ 137:.\source\rte/sc_displaydata.h ****     uint32_t age;
+ 138:.\source\rte/sc_displaydata.h **** 
+ 139:.\source\rte/sc_displaydata.h ****     /**
+ 140:.\source\rte/sc_displaydata.h ****      * Pointer to the signal configuration
+ 141:.\source\rte/sc_displaydata.h ****      */
+ 142:.\source\rte/sc_displaydata.h **** 	const SC_DISPLAYDATA_cfg_t * const    pSigCfg;
+ 143:.\source\rte/sc_displaydata.h **** 
+ 144:.\source\rte/sc_displaydata.h **** };                                                                                                 
+ 145:.\source\rte/sc_displaydata.h **** typedef struct SC_DISPLAYDATA_s SC_DISPLAYDATA_t;
+ 146:.\source\rte/sc_displaydata.h **** 
+ 147:.\source\rte/sc_displaydata.h **** /**************************************************************************************************
+ 148:.\source\rte/sc_displaydata.h **** /* Signal initialisation   																							*/
+ 149:.\source\rte/sc_displaydata.h **** /**************************************************************************************************
+ 150:.\source\rte/sc_displaydata.h **** 
+ 151:.\source\rte/sc_displaydata.h **** /**
+ 152:.\source\rte/sc_displaydata.h ****  * Initializes a signal instance with a passed init value.
+ 153:.\source\rte/sc_displaydata.h ****  * Depending on the configured conversion or scaling function the raw_value will be calculated.
+ 154:.\source\rte/sc_displaydata.h ****  * Signal status will change from RTE_SIGNALSTATUS_STARTUP to RTE_SIGNALSTATUS_INITIALIZED.
+ 155:.\source\rte/sc_displaydata.h ****  *
+ 156:.\source\rte/sc_displaydata.h ****  * @param  SC_DISPLAYDATA_t * const signal: Pointer to the signal object which will be initialised
+ 157:.\source\rte/sc_displaydata.h ****  * @return RC_t: standard return code, currently only RC_SUCCESS
+ 158:.\source\rte/sc_displaydata.h ****  *
+ 159:.\source\rte/sc_displaydata.h ****  **/
+ 160:.\source\rte/sc_displaydata.h **** inline RC_t RTE_SC_DISPLAYDATA_init( SC_DISPLAYDATA_t * const signal )
+ 161:.\source\rte/sc_displaydata.h **** {                                                                                                  
+ 162:.\source\rte/sc_displaydata.h **** 
+ 163:.\source\rte/sc_displaydata.h ****    RC_t ret = RC_SUCCESS;
+ 164:.\source\rte/sc_displaydata.h **** 
+ 165:.\source\rte/sc_displaydata.h ****    //Set value and raw value
+ 166:.\source\rte/sc_displaydata.h ****    signal->value  = SC_DISPLAYDATA_INIT_DATA;
+ 167:.\source\rte/sc_displaydata.h ****    signal->age    = 0;
+ 168:.\source\rte/sc_displaydata.h ****    signal->status = RTE_SIGNALSTATUS_INITIALIZED;
+ 169:.\source\rte/sc_displaydata.h **** 
+ 170:.\source\rte/sc_displaydata.h ****    return ret;
+ 171:.\source\rte/sc_displaydata.h **** }
+ 172:.\source\rte/sc_displaydata.h **** 
+ 173:.\source\rte/sc_displaydata.h **** /**************************************************************************************************
+ 174:.\source\rte/sc_displaydata.h **** /* Status and timeout control																						*/
+ 175:.\source\rte/sc_displaydata.h **** /**************************************************************************************************
+ 176:.\source\rte/sc_displaydata.h **** 
+ 177:.\source\rte/sc_displaydata.h **** /**
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 8
+
+
+ 178:.\source\rte/sc_displaydata.h ****  *  Returns the current signal status of the passed signal instance.
+ 179:.\source\rte/sc_displaydata.h ****  *
+ 180:.\source\rte/sc_displaydata.h ****  * @param  SC_DISPLAYDATA_t * const signal: Pointer to the signal object
+ 181:.\source\rte/sc_displaydata.h ****  * @return  sig_status_t: The current signal status
+ 182:.\source\rte/sc_displaydata.h ****  *
+ 183:.\source\rte/sc_displaydata.h ****  **/
+ 184:.\source\rte/sc_displaydata.h **** inline RTE_signalStatus_t RTE_SC_DISPLAYDATA_getStatus( const SC_DISPLAYDATA_t * const signal )
+ 185:.\source\rte/sc_displaydata.h **** {
+ 186:.\source\rte/sc_displaydata.h ****    return signal->status;
+ 187:.\source\rte/sc_displaydata.h **** }
+ 188:.\source\rte/sc_displaydata.h **** 
+ 189:.\source\rte/sc_displaydata.h **** 
+ 190:.\source\rte/sc_displaydata.h **** /**
+ 191:.\source\rte/sc_displaydata.h ****  *  Sets a new signal status of the passed signal instance by passing the new status.
+ 192:.\source\rte/sc_displaydata.h ****  *
+ 193:.\source\rte/sc_displaydata.h ****  * @param  SC_DISPLAYDATA_t * const signal: Pointer to the signal object
+ 194:.\source\rte/sc_displaydata.h ****  * @param  const sig_status_t status: New signal status
+ 195:.\source\rte/sc_displaydata.h ****  * @return RC_t: standard return code, currently only RC_SUCCESS
+ 196:.\source\rte/sc_displaydata.h ****  *
+ 197:.\source\rte/sc_displaydata.h ****  */
+ 198:.\source\rte/sc_displaydata.h **** inline RC_t RTE_SC_DISPLAYDATA_setStatus( SC_DISPLAYDATA_t * const signal, const RTE_signalStatus_t
+ 199:.\source\rte/sc_displaydata.h **** {
+ 200:.\source\rte/sc_displaydata.h ****    signal->status = status;
+ 201:.\source\rte/sc_displaydata.h ****    size_t taskNum=0;
+ 202:.\source\rte/sc_displaydata.h ****    
+ 203:.\source\rte/sc_displaydata.h ****    //Fire error events in case of invalid state
+ 204:.\source\rte/sc_displaydata.h ****    if (signal->status == RTE_SIGNALSTATUS_INVALID)
+ 205:.\source\rte/sc_displaydata.h ****    {
+ 206:.\source\rte/sc_displaydata.h **** 	    //Pointer to the Taskarray, containing the tasks receiving the onUpdate events
+ 207:.\source\rte/sc_displaydata.h **** 		TaskTypeArray* pTaskArray = signal->pSigCfg->onErrorTasks;
+ 208:.\source\rte/sc_displaydata.h **** 
+ 209:.\source\rte/sc_displaydata.h **** 		if (0 != signal->pSigCfg->evOnError && NULL != pTaskArray){
+ 210:.\source\rte/sc_displaydata.h **** 			for( taskNum=0 ; taskNum < signal->pSigCfg->onErrorTaskCount ;taskNum++){
+ 211:.\source\rte/sc_displaydata.h **** 				TaskType task = (*pTaskArray)[taskNum];
+ 212:.\source\rte/sc_displaydata.h **** 				SetEvent( task, signal->pSigCfg->evOnError);
+ 213:.\source\rte/sc_displaydata.h **** 			}
+ 214:.\source\rte/sc_displaydata.h **** 		}
+ 215:.\source\rte/sc_displaydata.h ****    }
+ 216:.\source\rte/sc_displaydata.h ****    
+ 217:.\source\rte/sc_displaydata.h ****    return RC_SUCCESS;
+ 218:.\source\rte/sc_displaydata.h **** }
+ 219:.\source\rte/sc_displaydata.h **** 
+ 220:.\source\rte/sc_displaydata.h **** 
+ 221:.\source\rte/sc_displaydata.h **** /**
+ 222:.\source\rte/sc_displaydata.h ****  * Returns the count of refreshing trials (refresh, set or set_raw) that failed.
+ 223:.\source\rte/sc_displaydata.h ****  * Prerquisite: The signal is refreshed cyclically
+ 224:.\source\rte/sc_displaydata.h ****  *
+ 225:.\source\rte/sc_displaydata.h ****  * @param  SC_DISPLAYDATA_t * const signal: Pointer to the signal object
+ 226:.\source\rte/sc_displaydata.h ****  * @return uint32_t: Number of cycles since the signal has been updated for the last time
+ 227:.\source\rte/sc_displaydata.h ****  */
+ 228:.\source\rte/sc_displaydata.h **** inline uint32_t RTE_SC_DISPLAYDATA_getAge( const SC_DISPLAYDATA_t * const signal )
+ 229:.\source\rte/sc_displaydata.h **** {
+ 230:.\source\rte/sc_displaydata.h ****    return signal->age;
+ 231:.\source\rte/sc_displaydata.h **** }
+ 232:.\source\rte/sc_displaydata.h **** 
+ 233:.\source\rte/sc_displaydata.h **** /**
+ 234:.\source\rte/sc_displaydata.h ****  * Should be called by application or driver if no new value can be provided.
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 9
+
+
+ 235:.\source\rte/sc_displaydata.h ****  * @param  SC_DISPLAYDATA_t * const signal: Pointer to the signal object
+ 236:.\source\rte/sc_displaydata.h ****  * @param uint32_t increment: incrementvalue, typically in [ms]
+ 237:.\source\rte/sc_displaydata.h ****  * @return void
+ 238:.\source\rte/sc_displaydata.h ****  */
+ 239:.\source\rte/sc_displaydata.h **** inline void RTE_SC_DISPLAYDATA_incAge(  SC_DISPLAYDATA_t * const signal , uint32_t increment)
+ 240:.\source\rte/sc_displaydata.h **** {
+ 241:.\source\rte/sc_displaydata.h **** 	   //Hack....
+ 242:.\source\rte/sc_displaydata.h **** 	   if ( 0xFFFF0000 > (signal->age + increment) )
+ 243:.\source\rte/sc_displaydata.h **** 	   {
+ 244:.\source\rte/sc_displaydata.h **** 	      signal->age += increment;
+ 245:.\source\rte/sc_displaydata.h **** 	   }
+ 246:.\source\rte/sc_displaydata.h **** }
+ 247:.\source\rte/sc_displaydata.h **** 
+ 248:.\source\rte/sc_displaydata.h **** 
+ 249:.\source\rte/sc_displaydata.h **** /**************************************************************************************************
+ 250:.\source\rte/sc_displaydata.h **** /* Application Data read/write Interface																			*/
+ 251:.\source\rte/sc_displaydata.h **** /**************************************************************************************************
+ 252:.\source\rte/sc_displaydata.h **** 
+ 253:.\source\rte/sc_displaydata.h **** /**
+ 254:.\source\rte/sc_displaydata.h ****  * Returns the current application value as pointer to the signal payload.
+ 255:.\source\rte/sc_displaydata.h ****  * Careful: This is not threadsafe!!!
+ 256:.\source\rte/sc_displaydata.h ****  *
+ 257:.\source\rte/sc_displaydata.h ****  * @param  SC_DISPLAYDATA_t * const signal: Pointer to the signal object
+ 258:.\source\rte/sc_displaydata.h ****  * @return sc_displaydata_data_t*: pointer to the current value of the application data buffer
+ 259:.\source\rte/sc_displaydata.h ****  *
+ 260:.\source\rte/sc_displaydata.h ****  **/
+ 261:.\source\rte/sc_displaydata.h **** inline SC_DISPLAYDATA_data_t* RTE_SC_DISPLAYDATA_getPtr( SC_DISPLAYDATA_t * const signal )
+ 262:.\source\rte/sc_displaydata.h **** {               
+ 263:.\source\rte/sc_displaydata.h ****    //Todo: Critical region cannot be protected using return values																						
+ 264:.\source\rte/sc_displaydata.h ****    return &(signal->value);                                                                        
+ 265:.\source\rte/sc_displaydata.h **** }
+ 266:.\source\rte/sc_displaydata.h **** 
+ 267:.\source\rte/sc_displaydata.h **** /**
+ 268:.\source\rte/sc_displaydata.h ****  * Returns the current application value of the passed signal instance.
+ 269:.\source\rte/sc_displaydata.h ****  *
+ 270:.\source\rte/sc_displaydata.h ****  * @param  SC_DISPLAYDATA_t * const signal: Pointer to the signal object
+ 271:.\source\rte/sc_displaydata.h ****  * @return sc_displaydata_data_t: current value of the application data buffer
+ 272:.\source\rte/sc_displaydata.h ****  *
+ 273:.\source\rte/sc_displaydata.h ****  **/
+ 274:.\source\rte/sc_displaydata.h **** inline SC_DISPLAYDATA_data_t RTE_SC_DISPLAYDATA_get( const SC_DISPLAYDATA_t * const signal )
+ 275:.\source\rte/sc_displaydata.h **** {               
+ 276:.\source\rte/sc_displaydata.h ****    //Todo: Critical region cannot be protected using return values																						
+ 277:.\source\rte/sc_displaydata.h ****    return signal->value;                                                                           
+ 103              		.loc 2 277 0
+ 104 0004 214B     		ldr	r3, .L15
+ 105 0006 1B88     		ldrh	r3, [r3]
+ 106 0008 ADF80C30 		strh	r3, [sp, #12]	@ movhi
+ 107 000c ADF80830 		strh	r3, [sp, #8]	@ movhi
+ 108              	.LVL1:
+ 109              	.LBE8:
+ 110              	.LBE7:
+ 121:clock_widget.c ****      // Tracks if the edit mode is going to be exit
+ 122:clock_widget.c ****     static boolean_t leavingEditMode = FALSE; 
+ 123:clock_widget.c ****     
+ 124:clock_widget.c ****     // Retrieve current display configuration data
+ 125:clock_widget.c ****     SC_DISPLAYDATA_data_t data = RTE_SC_DISPLAYDATA_get(&SO_DISPLAYDATA_signal);  
+ 126:clock_widget.c **** 
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 10
+
+
+ 127:clock_widget.c ****     // If the currently focused widget is the hour field,
+ 128:clock_widget.c ****     if(currentWidgetContext->type == WIDGET_HOUR){
+ 111              		.loc 1 128 0
+ 112 0010 1F4B     		ldr	r3, .L15+4
+ 113 0012 1B68     		ldr	r3, [r3]
+ 114 0014 5B7A     		ldrb	r3, [r3, #9]	@ zero_extendqisi2
+ 115 0016 012B     		cmp	r3, #1
+ 116 0018 05D1     		bne	.L7
+ 129:clock_widget.c ****         // only highlight the hour field.
+ 130:clock_widget.c ****         data.invHours = TRUE;         
+ 117              		.loc 1 130 0
+ 118 001a 8DF80830 		strb	r3, [sp, #8]
+ 131:clock_widget.c ****         data.invMinutes = FALSE;   
+ 119              		.loc 1 131 0
+ 120 001e 0023     		movs	r3, #0
+ 121 0020 8DF80930 		strb	r3, [sp, #9]
+ 122 0024 12E0     		b	.L8
+ 123              	.L7:
+ 132:clock_widget.c ****     }
+ 133:clock_widget.c ****     // If the focused widget is the minute field and the editing mode hasn't been left yet,
+ 134:clock_widget.c ****     else if((currentWidgetContext->type == WIDGET_MINUTE) && !leavingEditMode){
+ 124              		.loc 1 134 0
+ 125 0026 53B9     		cbnz	r3, .L9
+ 126              		.loc 1 134 0 is_stmt 0 discriminator 1
+ 127 0028 194B     		ldr	r3, .L15+4
+ 128 002a 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 129 002c 3BB9     		cbnz	r3, .L9
+ 135:clock_widget.c ****          // only highlight the minute field ...
+ 136:clock_widget.c ****         data.invHours = FALSE;      
+ 130              		.loc 1 136 0 is_stmt 1
+ 131 002e 8DF80830 		strb	r3, [sp, #8]
+ 137:clock_widget.c ****         data.invMinutes = TRUE;     
+ 132              		.loc 1 137 0
+ 133 0032 0123     		movs	r3, #1
+ 134 0034 8DF80930 		strb	r3, [sp, #9]
+ 138:clock_widget.c ****         
+ 139:clock_widget.c ****         // Mark that the next EV_KEYLEFT will lead to leaving the edit mode
+ 140:clock_widget.c ****         leavingEditMode = TRUE;       
+ 135              		.loc 1 140 0
+ 136 0038 154A     		ldr	r2, .L15+4
+ 137 003a 1371     		strb	r3, [r2, #4]
+ 138 003c 06E0     		b	.L8
+ 139              	.L9:
+ 141:clock_widget.c ****     }
+ 142:clock_widget.c ****     // All other cases (e.g., no widget focused or after leaving minute editing mode)
+ 143:clock_widget.c ****     else{
+ 144:clock_widget.c ****         // No speciifc highlighting
+ 145:clock_widget.c ****         data.invHours = FALSE;       
+ 140              		.loc 1 145 0
+ 141 003e 0023     		movs	r3, #0
+ 142 0040 8DF80830 		strb	r3, [sp, #8]
+ 146:clock_widget.c ****         data.invMinutes = FALSE;    
+ 143              		.loc 1 146 0
+ 144 0044 8DF80930 		strb	r3, [sp, #9]
+ 147:clock_widget.c ****         
+ 148:clock_widget.c ****         // Reset the flag in order to re-enter the minute mode correctly
+ 149:clock_widget.c ****         leavingEditMode = FALSE;     
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 11
+
+
+ 145              		.loc 1 149 0
+ 146 0048 114A     		ldr	r2, .L15+4
+ 147 004a 1371     		strb	r3, [r2, #4]
+ 148              	.L8:
+ 149              	.LVL2:
+ 150 004c BDF80810 		ldrh	r1, [sp, #8]
+ 151 0050 ADF80410 		strh	r1, [sp, #4]	@ movhi
+ 152              	.LVL3:
+ 153              	.LBB9:
+ 154              	.LBB10:
+ 278:.\source\rte/sc_displaydata.h **** }                                                                                                  
+ 279:.\source\rte/sc_displaydata.h ****                                                                                                    
+ 280:.\source\rte/sc_displaydata.h **** /**
+ 281:.\source\rte/sc_displaydata.h ****  * Returns the current application value of the passed signal instance threadsafe.
+ 282:.\source\rte/sc_displaydata.h ****  *
+ 283:.\source\rte/sc_displaydata.h ****  * @param  SC_DISPLAYDATA_t * const signal: Pointer to the signal object
+ 284:.\source\rte/sc_displaydata.h ****  * @param  SC_DISPLAYDATA_data_t* data: Pointer to the return data Pointer to the signal object
+ 285:.\source\rte/sc_displaydata.h ****  * @return RC_SUCCESS
+ 286:.\source\rte/sc_displaydata.h ****  *
+ 287:.\source\rte/sc_displaydata.h ****  **/
+ 288:.\source\rte/sc_displaydata.h **** inline RC_t RTE_SC_DISPLAYDATA_getThreadSafe( const SC_DISPLAYDATA_t * const signal, SC_DISPLAYDATA
+ 289:.\source\rte/sc_displaydata.h **** {    
+ 290:.\source\rte/sc_displaydata.h ****    if (TRUE == signal->pSigCfg->resourceActive) GetResource(signal->pSigCfg->resource);
+ 291:.\source\rte/sc_displaydata.h ****    *data = signal->value;
+ 292:.\source\rte/sc_displaydata.h ****    if (TRUE == signal->pSigCfg->resourceActive) ReleaseResource(signal->pSigCfg->resource);        
+ 293:.\source\rte/sc_displaydata.h **** 
+ 294:.\source\rte/sc_displaydata.h ****    return RC_SUCCESS;                                                                   
+ 295:.\source\rte/sc_displaydata.h ****    
+ 296:.\source\rte/sc_displaydata.h **** }                                                                                                  
+ 297:.\source\rte/sc_displaydata.h ****                                                                                                    
+ 298:.\source\rte/sc_displaydata.h **** /**
+ 299:.\source\rte/sc_displaydata.h ****  * Sets a new application value to the passed signal instance by passing the new value.
+ 300:.\source\rte/sc_displaydata.h ****  * The corresponding driver raw value will be calculated immediately by using the default conversio
+ 301:.\source\rte/sc_displaydata.h ****  * signal specific scaling function.
+ 302:.\source\rte/sc_displaydata.h ****  * The signal age will be set to 0 and the new status will be 'RTE_SIGNALSTATUS_VALID'.
+ 303:.\source\rte/sc_displaydata.h ****  *
+ 304:.\source\rte/sc_displaydata.h ****  * @param  SC_DISPLAYDATA_t * const signal: Pointer to the signal object
+ 305:.\source\rte/sc_displaydata.h ****  * @param  sc_displaydata_data_t const value: value for the application data buffer
+ 306:.\source\rte/sc_displaydata.h ****  * @return RC_t: standard return code, currently only RC_SUCCESS
+ 307:.\source\rte/sc_displaydata.h ****  *
+ 308:.\source\rte/sc_displaydata.h ****  **/
+ 309:.\source\rte/sc_displaydata.h **** inline RC_t RTE_SC_DISPLAYDATA_set(SC_DISPLAYDATA_t * const signal, const SC_DISPLAYDATA_data_t val
+ 310:.\source\rte/sc_displaydata.h **** {
+ 311:.\source\rte/sc_displaydata.h **** 
+ 312:.\source\rte/sc_displaydata.h ****    RC_t ret = RC_SUCCESS;
+ 313:.\source\rte/sc_displaydata.h ****    size_t taskNum=0;
+ 314:.\source\rte/sc_displaydata.h **** 
+ 315:.\source\rte/sc_displaydata.h **** 
+ 316:.\source\rte/sc_displaydata.h ****    if (TRUE == signal->pSigCfg->resourceActive) GetResource(signal->pSigCfg->resource);
+ 155              		.loc 2 316 0
+ 156 0054 0D4B     		ldr	r3, .L15
+ 157 0056 9A68     		ldr	r2, [r3, #8]
+ 317:.\source\rte/sc_displaydata.h ****    signal->value  = value;
+ 158              		.loc 2 317 0
+ 159 0058 1980     		strh	r1, [r3]	@ movhi
+ 318:.\source\rte/sc_displaydata.h ****    signal->age    = 0;
+ 160              		.loc 2 318 0
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 12
+
+
+ 161 005a 0021     		movs	r1, #0
+ 162 005c 5960     		str	r1, [r3, #4]
+ 319:.\source\rte/sc_displaydata.h ****    signal->status = RTE_SIGNALSTATUS_VALID;
+ 163              		.loc 2 319 0
+ 164 005e 0221     		movs	r1, #2
+ 165 0060 9970     		strb	r1, [r3, #2]
+ 320:.\source\rte/sc_displaydata.h ****    if (TRUE == signal->pSigCfg->resourceActive) ReleaseResource(signal->pSigCfg->resource);
+ 321:.\source\rte/sc_displaydata.h **** 
+ 322:.\source\rte/sc_displaydata.h ****    //Pointer to the Taskarray, containing the tasks receiving the onUpdate events
+ 323:.\source\rte/sc_displaydata.h ****    TaskTypeArray* pTaskArray = signal->pSigCfg->onUpdateTasks;
+ 166              		.loc 2 323 0
+ 167 0062 5569     		ldr	r5, [r2, #20]
+ 168              	.LVL4:
+ 324:.\source\rte/sc_displaydata.h **** 
+ 325:.\source\rte/sc_displaydata.h ****    if (0 != signal->pSigCfg->evOnUpdate && NULL != pTaskArray){
+ 169              		.loc 2 325 0
+ 170 0064 9368     		ldr	r3, [r2, #8]
+ 171 0066 73B1     		cbz	r3, .L6
+ 172 0068 3DB9     		cbnz	r5, .L13
+ 173 006a 0CE0     		b	.L6
+ 174              	.LVL5:
+ 175              	.L12:
+ 176              	.LBB11:
+ 326:.\source\rte/sc_displaydata.h ****       for( taskNum=0 ; taskNum < signal->pSigCfg->onUpdateTaskCount ;taskNum++){
+ 327:.\source\rte/sc_displaydata.h **** 		  
+ 328:.\source\rte/sc_displaydata.h ****           TaskType task = (*pTaskArray)[taskNum];
+ 329:.\source\rte/sc_displaydata.h **** 	      SetEvent( task, signal->pSigCfg->evOnUpdate);
+ 177              		.loc 2 329 0
+ 178 006c 9968     		ldr	r1, [r3, #8]
+ 179 006e 55F82400 		ldr	r0, [r5, r4, lsl #2]
+ 180 0072 FFF7FEFF 		bl	EE_oo_SetEvent
+ 181              	.LVL6:
+ 182              	.LBE11:
+ 326:.\source\rte/sc_displaydata.h ****       for( taskNum=0 ; taskNum < signal->pSigCfg->onUpdateTaskCount ;taskNum++){
+ 183              		.loc 2 326 0
+ 184 0076 0134     		adds	r4, r4, #1
+ 185              	.LVL7:
+ 186 0078 00E0     		b	.L11
+ 187              	.LVL8:
+ 188              	.L13:
+ 325:.\source\rte/sc_displaydata.h ****       for( taskNum=0 ; taskNum < signal->pSigCfg->onUpdateTaskCount ;taskNum++){
+ 189              		.loc 2 325 0
+ 190 007a 0024     		movs	r4, #0
+ 191              	.LVL9:
+ 192              	.L11:
+ 326:.\source\rte/sc_displaydata.h ****       for( taskNum=0 ; taskNum < signal->pSigCfg->onUpdateTaskCount ;taskNum++){
+ 193              		.loc 2 326 0
+ 194 007c 034B     		ldr	r3, .L15
+ 195 007e 9B68     		ldr	r3, [r3, #8]
+ 196 0080 1A69     		ldr	r2, [r3, #16]
+ 197 0082 9442     		cmp	r4, r2
+ 198 0084 F2D3     		bcc	.L12
+ 199              	.LVL10:
+ 200              	.L6:
+ 201              	.LBE10:
+ 202              	.LBE9:
+ 150:clock_widget.c ****     }
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 13
+
+
+ 151:clock_widget.c **** 
+ 152:clock_widget.c ****     // Update the display signal with the modified highlight flags
+ 153:clock_widget.c ****     RTE_SC_DISPLAYDATA_set(&SO_DISPLAYDATA_signal, data);  
+ 154:clock_widget.c **** }
+ 203              		.loc 1 154 0
+ 204 0086 05B0     		add	sp, sp, #20
+ 205              		.cfi_def_cfa_offset 12
+ 206              		@ sp needed
+ 207 0088 30BD     		pop	{r4, r5, pc}
+ 208              	.LVL11:
+ 209              	.L16:
+ 210 008a 00BF     		.align	2
+ 211              	.L15:
+ 212 008c 00000000 		.word	SO_DISPLAYDATA_signal
+ 213 0090 00000000 		.word	.LANCHOR0
+ 214              		.cfi_endproc
+ 215              	.LFE139:
+ 216              		.size	CLOCK__setDisplayFonts, .-CLOCK__setDisplayFonts
+ 217              		.section	.text.WIDGET__processEvent,"ax",%progbits
+ 218              		.align	2
+ 219              		.global	WIDGET__processEvent
+ 220              		.thumb
+ 221              		.thumb_func
+ 222              		.type	WIDGET__processEvent, %function
+ 223              	WIDGET__processEvent:
+ 224              	.LFB133:
+  67:clock_widget.c ****     currentWidgetContext = widget;  // Kontext setzen
+ 225              		.loc 1 67 0
+ 226              		.cfi_startproc
+ 227              		@ args = 0, pretend = 0, frame = 0
+ 228              		@ frame_needed = 0, uses_anonymous_args = 0
+ 229              	.LVL12:
+ 230 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+ 231              		.cfi_def_cfa_offset 32
+ 232              		.cfi_offset 4, -32
+ 233              		.cfi_offset 5, -28
+ 234              		.cfi_offset 6, -24
+ 235              		.cfi_offset 7, -20
+ 236              		.cfi_offset 8, -16
+ 237              		.cfi_offset 9, -12
+ 238              		.cfi_offset 10, -8
+ 239              		.cfi_offset 14, -4
+ 240 0004 8246     		mov	r10, r0
+ 241 0006 8846     		mov	r8, r1
+  68:clock_widget.c **** 
+ 242              		.loc 1 68 0
+ 243 0008 1A4B     		ldr	r3, .L28
+ 244 000a 1860     		str	r0, [r3]
+ 245              	.LVL13:
+ 246              	.LBB12:
+  70:clock_widget.c ****         if (CLOCK_Widget_Transitions[i].currentState == widget->state) {
+ 247              		.loc 1 70 0
+ 248 000c 0026     		movs	r6, #0
+ 249 000e 29E0     		b	.L18
+ 250              	.LVL14:
+ 251              	.L26:
+  71:clock_widget.c ****             const STATE_stateInnerTransitionTable_t* table = CLOCK_Widget_Transitions[i].transition
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 14
+
+
+ 252              		.loc 1 71 0
+ 253 0010 06EB4602 		add	r2, r6, r6, lsl #1
+ 254 0014 9300     		lsls	r3, r2, #2
+ 255 0016 184A     		ldr	r2, .L28+4
+ 256 0018 D258     		ldr	r2, [r2, r3]
+ 257 001a 9AF80030 		ldrb	r3, [r10]	@ zero_extendqisi2
+ 258 001e 9A42     		cmp	r2, r3
+ 259 0020 1ED1     		bne	.L19
+ 260              	.LBB13:
+  72:clock_widget.c ****             uint16_t size = CLOCK_Widget_Transitions[i].tableSize;
+ 261              		.loc 1 72 0
+ 262 0022 1548     		ldr	r0, .L28+4
+ 263 0024 7300     		lsls	r3, r6, #1
+ 264 0026 9A19     		adds	r2, r3, r6
+ 265 0028 9100     		lsls	r1, r2, #2
+ 266 002a 0144     		add	r1, r1, r0
+ 267 002c 4D68     		ldr	r5, [r1, #4]
+ 268              	.LVL15:
+  73:clock_widget.c **** 
+ 269              		.loc 1 73 0
+ 270 002e B1F80890 		ldrh	r9, [r1, #8]
+ 271              	.LVL16:
+ 272              	.LBB14:
+  75:clock_widget.c ****                 if (table[j].event == event && (!table[j].guard || table[j].guard())) {
+ 273              		.loc 1 75 0
+ 274 0032 0024     		movs	r4, #0
+ 275 0034 12E0     		b	.L20
+ 276              	.LVL17:
+ 277              	.L25:
+  76:clock_widget.c ****                     if (table[j].action) {
+ 278              		.loc 1 76 0
+ 279 0036 2301     		lsls	r3, r4, #4
+ 280 0038 EF18     		adds	r7, r5, r3
+ 281 003a EB5C     		ldrb	r3, [r5, r3]	@ zero_extendqisi2
+ 282 003c 4345     		cmp	r3, r8
+ 283 003e 0BD1     		bne	.L21
+  76:clock_widget.c ****                     if (table[j].action) {
+ 284              		.loc 1 76 0 is_stmt 0 discriminator 1
+ 285 0040 BB68     		ldr	r3, [r7, #8]
+ 286 0042 0BB1     		cbz	r3, .L22
+  76:clock_widget.c ****                     if (table[j].action) {
+ 287              		.loc 1 76 0 discriminator 2
+ 288 0044 9847     		blx	r3
+ 289              	.LVL18:
+ 290 0046 38B1     		cbz	r0, .L21
+ 291              	.L22:
+  77:clock_widget.c ****                         table[j].action();  // Zugriff über globalen Kontext möglich
+ 292              		.loc 1 77 0 is_stmt 1
+ 293 0048 FB68     		ldr	r3, [r7, #12]
+ 294 004a 03B1     		cbz	r3, .L23
+  78:clock_widget.c ****                     }
+ 295              		.loc 1 78 0
+ 296 004c 9847     		blx	r3
+ 297              	.LVL19:
+ 298              	.L23:
+  80:clock_widget.c ****                     return;
+ 299              		.loc 1 80 0
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 15
+
+
+ 300 004e 7B68     		ldr	r3, [r7, #4]
+ 301 0050 8AF80030 		strb	r3, [r10]
+  81:clock_widget.c ****                 }
+ 302              		.loc 1 81 0
+ 303 0054 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 304              	.LVL20:
+ 305              	.L21:
+  75:clock_widget.c ****                 if (table[j].event == event && (!table[j].guard || table[j].guard())) {
+ 306              		.loc 1 75 0 discriminator 2
+ 307 0058 0134     		adds	r4, r4, #1
+ 308              	.LVL21:
+ 309 005a A4B2     		uxth	r4, r4
+ 310              	.LVL22:
+ 311              	.L20:
+  75:clock_widget.c ****                 if (table[j].event == event && (!table[j].guard || table[j].guard())) {
+ 312              		.loc 1 75 0 is_stmt 0 discriminator 1
+ 313 005c 4C45     		cmp	r4, r9
+ 314 005e EAD3     		bcc	.L25
+ 315              	.LVL23:
+ 316              	.L19:
+ 317              	.LBE14:
+ 318              	.LBE13:
+  70:clock_widget.c ****         if (CLOCK_Widget_Transitions[i].currentState == widget->state) {
+ 319              		.loc 1 70 0 is_stmt 1 discriminator 2
+ 320 0060 0136     		adds	r6, r6, #1
+ 321              	.LVL24:
+ 322 0062 F6B2     		uxtb	r6, r6
+ 323              	.LVL25:
+ 324              	.L18:
+  70:clock_widget.c ****         if (CLOCK_Widget_Transitions[i].currentState == widget->state) {
+ 325              		.loc 1 70 0 is_stmt 0 discriminator 1
+ 326 0064 012E     		cmp	r6, #1
+ 327 0066 D3D9     		bls	.L26
+ 328              	.LBE12:
+  88:clock_widget.c **** }
+ 329              		.loc 1 88 0 is_stmt 1
+ 330 0068 0022     		movs	r2, #0
+ 331 006a 024B     		ldr	r3, .L28
+ 332 006c 1A60     		str	r2, [r3]
+ 333 006e BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 334              	.LVL26:
+ 335              	.L29:
+ 336 0072 00BF     		.align	2
+ 337              	.L28:
+ 338 0074 00000000 		.word	.LANCHOR0
+ 339 0078 00000000 		.word	.LANCHOR1
+ 340              		.cfi_endproc
+ 341              	.LFE133:
+ 342              		.size	WIDGET__processEvent, .-WIDGET__processEvent
+ 343              		.section	.text.CLOCK__incrementHours,"ax",%progbits
+ 344              		.align	2
+ 345              		.global	CLOCK__incrementHours
+ 346              		.thumb
+ 347              		.thumb_func
+ 348              		.type	CLOCK__incrementHours, %function
+ 349              	CLOCK__incrementHours:
+ 350              	.LFB135:
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 16
+
+
+ 106:clock_widget.c ****         // currently a dummy
+ 351              		.loc 1 106 0
+ 352              		.cfi_startproc
+ 353              		@ args = 0, pretend = 0, frame = 0
+ 354              		@ frame_needed = 0, uses_anonymous_args = 0
+ 355              		@ link register save eliminated.
+ 356 0000 7047     		bx	lr
+ 357              		.cfi_endproc
+ 358              	.LFE135:
+ 359              		.size	CLOCK__incrementHours, .-CLOCK__incrementHours
+ 360 0002 00BF     		.section	.text.CLOCK__incrementMinutes,"ax",%progbits
+ 361              		.align	2
+ 362              		.global	CLOCK__incrementMinutes
+ 363              		.thumb
+ 364              		.thumb_func
+ 365              		.type	CLOCK__incrementMinutes, %function
+ 366              	CLOCK__incrementMinutes:
+ 367              	.LFB136:
+ 109:clock_widget.c ****         // currently a dummy
+ 368              		.loc 1 109 0
+ 369              		.cfi_startproc
+ 370              		@ args = 0, pretend = 0, frame = 0
+ 371              		@ frame_needed = 0, uses_anonymous_args = 0
+ 372              		@ link register save eliminated.
+ 373 0000 7047     		bx	lr
+ 374              		.cfi_endproc
+ 375              	.LFE136:
+ 376              		.size	CLOCK__incrementMinutes, .-CLOCK__incrementMinutes
+ 377 0002 00BF     		.section	.text.CLOCK__updateDisplay,"ax",%progbits
+ 378              		.align	2
+ 379              		.global	CLOCK__updateDisplay
+ 380              		.thumb
+ 381              		.thumb_func
+ 382              		.type	CLOCK__updateDisplay, %function
+ 383              	CLOCK__updateDisplay:
+ 384              	.LFB138:
+ 116:clock_widget.c ****         // currently a dummy
+ 385              		.loc 1 116 0
+ 386              		.cfi_startproc
+ 387              		@ args = 0, pretend = 0, frame = 0
+ 388              		@ frame_needed = 0, uses_anonymous_args = 0
+ 389              		@ link register save eliminated.
+ 390 0000 7047     		bx	lr
+ 391              		.cfi_endproc
+ 392              	.LFE138:
+ 393              		.size	CLOCK__updateDisplay, .-CLOCK__updateDisplay
+ 394              		.global	CLOCK_Widget_Transitions_Size
+ 395              		.global	CLOCK_Widget_Transitions
+ 396              		.global	STATE_CLOCK_W_ISAUTOINCREMENT_Transitions
+ 397              		.global	STATE_CLOCK_W_ISFOCUS_Transitions
+ 398              		.global	STATE_CLOCK_W_ISDISPLAYING_Transitions
+ 399              		.global	CLOCK_minutes
+ 400              		.global	CLOCK_hours
+ 401 0002 00BF     		.section	.rodata
+ 402              		.align	2
+ 403              		.set	.LANCHOR1,. + 0
+ 404              		.type	CLOCK_Widget_Transitions, %object
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 17
+
+
+ 405              		.size	CLOCK_Widget_Transitions, 24
+ 406              	CLOCK_Widget_Transitions:
+ 407 0000 01000000 		.word	1
+ 408 0004 00000000 		.word	STATE_CLOCK_W_ISFOCUS_Transitions
+ 409 0008 0300     		.short	3
+ 410 000a 0000     		.space	2
+ 411 000c 02000000 		.word	2
+ 412 0010 00000000 		.word	STATE_CLOCK_W_ISAUTOINCREMENT_Transitions
+ 413 0014 0300     		.short	3
+ 414 0016 0000     		.space	2
+ 415              		.type	CLOCK_Widget_Transitions_Size, %object
+ 416              		.size	CLOCK_Widget_Transitions_Size, 2
+ 417              	CLOCK_Widget_Transitions_Size:
+ 418 0018 0200     		.short	2
+ 419 001a 0000     		.space	2
+ 420              		.type	STATE_CLOCK_W_ISAUTOINCREMENT_Transitions, %object
+ 421              		.size	STATE_CLOCK_W_ISAUTOINCREMENT_Transitions, 48
+ 422              	STATE_CLOCK_W_ISAUTOINCREMENT_Transitions:
+ 423 001c 01       		.byte	1
+ 424 001d 000000   		.space	3
+ 425 0020 01000000 		.word	1
+ 426 0024 00000000 		.word	0
+ 427 0028 00000000 		.word	CLOCK__incrementWidget
+ 428 002c 02       		.byte	2
+ 429 002d 000000   		.space	3
+ 430 0030 01000000 		.word	1
+ 431 0034 00000000 		.word	0
+ 432 0038 00000000 		.word	CLOCK__setDisplayFonts
+ 433 003c 04       		.byte	4
+ 434 003d 000000   		.space	3
+ 435 0040 02000000 		.word	2
+ 436 0044 00000000 		.word	0
+ 437 0048 00000000 		.word	CLOCK__incrementWidget
+ 438              		.type	STATE_CLOCK_W_ISFOCUS_Transitions, %object
+ 439              		.size	STATE_CLOCK_W_ISFOCUS_Transitions, 48
+ 440              	STATE_CLOCK_W_ISFOCUS_Transitions:
+ 441 004c 01       		.byte	1
+ 442 004d 000000   		.space	3
+ 443 0050 01000000 		.word	1
+ 444 0054 00000000 		.word	0
+ 445 0058 00000000 		.word	CLOCK__incrementWidget
+ 446 005c 03       		.byte	3
+ 447 005d 000000   		.space	3
+ 448 0060 02000000 		.word	2
+ 449 0064 00000000 		.word	0
+ 450 0068 00000000 		.word	0
+ 451 006c 02       		.byte	2
+ 452 006d 000000   		.space	3
+ 453 0070 01000000 		.word	1
+ 454 0074 00000000 		.word	0
+ 455 0078 00000000 		.word	CLOCK__setDisplayFonts
+ 456              		.type	STATE_CLOCK_W_ISDISPLAYING_Transitions, %object
+ 457              		.size	STATE_CLOCK_W_ISDISPLAYING_Transitions, 16
+ 458              	STATE_CLOCK_W_ISDISPLAYING_Transitions:
+ 459 007c 02       		.byte	2
+ 460 007d 000000   		.space	3
+ 461 0080 01000000 		.word	1
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 18
+
+
+ 462 0084 00000000 		.word	0
+ 463 0088 00000000 		.word	CLOCK__updateTime
+ 464              		.data
+ 465              		.align	2
+ 466              		.type	CLOCK_minutes, %object
+ 467              		.size	CLOCK_minutes, 12
+ 468              	CLOCK_minutes:
+ 469 0000 01       		.byte	1
+ 470 0001 000000   		.space	3
+ 471 0004 00000000 		.word	g_minutes
+ 472 0008 3C       		.byte	60
+ 473 0009 00       		.byte	0
+ 474 000a 0000     		.space	2
+ 475              		.type	CLOCK_hours, %object
+ 476              		.size	CLOCK_hours, 12
+ 477              	CLOCK_hours:
+ 478 000c 01       		.byte	1
+ 479 000d 000000   		.space	3
+ 480 0010 00000000 		.word	g_hours
+ 481 0014 18       		.byte	24
+ 482 0015 01       		.byte	1
+ 483 0016 0000     		.space	2
+ 484              		.bss
+ 485              		.align	2
+ 486              		.set	.LANCHOR0,. + 0
+ 487              		.type	currentWidgetContext, %object
+ 488              		.size	currentWidgetContext, 4
+ 489              	currentWidgetContext:
+ 490 0000 00000000 		.space	4
+ 491              		.type	leavingEditMode.7667, %object
+ 492              		.size	leavingEditMode.7667, 1
+ 493              	leavingEditMode.7667:
+ 494 0004 00       		.space	1
+ 495              		.text
+ 496              	.Letext0:
+ 497              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 498              		.file 4 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 499              		.file 5 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 500              		.file 6 "Generated_Source\\PSoC5/ErikaOS_1_common_ee_types.inc"
+ 501              		.file 7 "Generated_Source\\PSoC5/ErikaOS_1_cortex_mx_ee_cpu.inc"
+ 502              		.file 8 "Generated_Source\\PSoC5/ErikaOS_1_ee_oo_common.inc"
+ 503              		.file 9 ".\\source\\bsw/global.h"
+ 504              		.file 10 ".\\source\\rte/rte_types.h"
+ 505              		.file 11 ".\\source\\rte/sc_event_type.h"
+ 506              		.file 12 "clock_common.h"
+ 507              		.file 13 ".\\source\\rte/rte.h"
+ 508              		.file 14 ".\\source\\rte/sc_displaydata_type.h"
+ 509              		.file 15 "clock_widget.h"
+ 510              		.file 16 "Generated_Source\\PSoC5/ErikaOS_1_ee_oo_intfunc.inc"
+ 511              		.file 17 "Generated_Source\\PSoC5/ErikaOS_1_cortex_mx_ee_context.inc"
+ 512              		.file 18 "Generated_Source\\PSoC5/ErikaOS_1_common_ee_primitives.inc"
+ 513              		.file 19 "Generated_Source\\PSoC5/core_cm3.h"
+ 514              		.file 20 ".\\source\\rte/sp_common.h"
+ 515              		.file 21 ".\\source\\asw/swc_clock.h"
+ 516              		.file 22 "Generated_Source\\PSoC5/ErikaOS_1_ee_oo_kernel.inc"
+ 517              		.section	.debug_info,"",%progbits
+ 518              	.Ldebug_info0:
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 19
+
+
+ 519 0000 C0080000 		.4byte	0x8c0
+ 520 0004 0400     		.2byte	0x4
+ 521 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 522 000a 04       		.byte	0x4
+ 523 000b 01       		.uleb128 0x1
+ 524 000c D4060000 		.4byte	.LASF148
+ 525 0010 0C       		.byte	0xc
+ 526 0011 C6090000 		.4byte	.LASF149
+ 527 0015 73040000 		.4byte	.LASF150
+ 528 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 529 001d 00000000 		.4byte	0
+ 530 0021 00000000 		.4byte	.Ldebug_line0
+ 531 0025 02       		.uleb128 0x2
+ 532 0026 01       		.byte	0x1
+ 533 0027 06       		.byte	0x6
+ 534 0028 26010000 		.4byte	.LASF0
+ 535 002c 03       		.uleb128 0x3
+ 536 002d 52000000 		.4byte	.LASF3
+ 537 0031 03       		.byte	0x3
+ 538 0032 1D       		.byte	0x1d
+ 539 0033 37000000 		.4byte	0x37
+ 540 0037 02       		.uleb128 0x2
+ 541 0038 01       		.byte	0x1
+ 542 0039 08       		.byte	0x8
+ 543 003a 63060000 		.4byte	.LASF1
+ 544 003e 02       		.uleb128 0x2
+ 545 003f 02       		.byte	0x2
+ 546 0040 05       		.byte	0x5
+ 547 0041 93060000 		.4byte	.LASF2
+ 548 0045 03       		.uleb128 0x3
+ 549 0046 12080000 		.4byte	.LASF4
+ 550 004a 03       		.byte	0x3
+ 551 004b 2B       		.byte	0x2b
+ 552 004c 50000000 		.4byte	0x50
+ 553 0050 02       		.uleb128 0x2
+ 554 0051 02       		.byte	0x2
+ 555 0052 07       		.byte	0x7
+ 556 0053 99080000 		.4byte	.LASF5
+ 557 0057 03       		.uleb128 0x3
+ 558 0058 1D080000 		.4byte	.LASF6
+ 559 005c 03       		.byte	0x3
+ 560 005d 3F       		.byte	0x3f
+ 561 005e 62000000 		.4byte	0x62
+ 562 0062 02       		.uleb128 0x2
+ 563 0063 04       		.byte	0x4
+ 564 0064 05       		.byte	0x5
+ 565 0065 BA010000 		.4byte	.LASF7
+ 566 0069 03       		.uleb128 0x3
+ 567 006a 86020000 		.4byte	.LASF8
+ 568 006e 03       		.byte	0x3
+ 569 006f 41       		.byte	0x41
+ 570 0070 74000000 		.4byte	0x74
+ 571 0074 02       		.uleb128 0x2
+ 572 0075 04       		.byte	0x4
+ 573 0076 07       		.byte	0x7
+ 574 0077 53030000 		.4byte	.LASF9
+ 575 007b 02       		.uleb128 0x2
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 20
+
+
+ 576 007c 08       		.byte	0x8
+ 577 007d 05       		.byte	0x5
+ 578 007e 18010000 		.4byte	.LASF10
+ 579 0082 02       		.uleb128 0x2
+ 580 0083 08       		.byte	0x8
+ 581 0084 07       		.byte	0x7
+ 582 0085 7D000000 		.4byte	.LASF11
+ 583 0089 04       		.uleb128 0x4
+ 584 008a 04       		.byte	0x4
+ 585 008b 05       		.byte	0x5
+ 586 008c 696E7400 		.ascii	"int\000"
+ 587 0090 02       		.uleb128 0x2
+ 588 0091 04       		.byte	0x4
+ 589 0092 07       		.byte	0x7
+ 590 0093 E1020000 		.4byte	.LASF12
+ 591 0097 03       		.uleb128 0x3
+ 592 0098 53090000 		.4byte	.LASF13
+ 593 009c 04       		.byte	0x4
+ 594 009d 18       		.byte	0x18
+ 595 009e 2C000000 		.4byte	0x2c
+ 596 00a2 03       		.uleb128 0x3
+ 597 00a3 04030000 		.4byte	.LASF14
+ 598 00a7 04       		.byte	0x4
+ 599 00a8 24       		.byte	0x24
+ 600 00a9 45000000 		.4byte	0x45
+ 601 00ad 03       		.uleb128 0x3
+ 602 00ae 5B060000 		.4byte	.LASF15
+ 603 00b2 04       		.byte	0x4
+ 604 00b3 2C       		.byte	0x2c
+ 605 00b4 57000000 		.4byte	0x57
+ 606 00b8 03       		.uleb128 0x3
+ 607 00b9 8B070000 		.4byte	.LASF16
+ 608 00bd 04       		.byte	0x4
+ 609 00be 30       		.byte	0x30
+ 610 00bf 69000000 		.4byte	0x69
+ 611 00c3 02       		.uleb128 0x2
+ 612 00c4 04       		.byte	0x4
+ 613 00c5 04       		.byte	0x4
+ 614 00c6 C8050000 		.4byte	.LASF17
+ 615 00ca 02       		.uleb128 0x2
+ 616 00cb 08       		.byte	0x8
+ 617 00cc 04       		.byte	0x4
+ 618 00cd 0E020000 		.4byte	.LASF18
+ 619 00d1 02       		.uleb128 0x2
+ 620 00d2 01       		.byte	0x1
+ 621 00d3 08       		.byte	0x8
+ 622 00d4 F0070000 		.4byte	.LASF19
+ 623 00d8 05       		.uleb128 0x5
+ 624 00d9 04       		.byte	0x4
+ 625 00da DE000000 		.4byte	0xde
+ 626 00de 06       		.uleb128 0x6
+ 627 00df 03       		.uleb128 0x3
+ 628 00e0 2B000000 		.4byte	.LASF20
+ 629 00e4 05       		.byte	0x5
+ 630 00e5 D8       		.byte	0xd8
+ 631 00e6 90000000 		.4byte	0x90
+ 632 00ea 02       		.uleb128 0x2
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 21
+
+
+ 633 00eb 08       		.byte	0x8
+ 634 00ec 04       		.byte	0x4
+ 635 00ed E4070000 		.4byte	.LASF21
+ 636 00f1 02       		.uleb128 0x2
+ 637 00f2 04       		.byte	0x4
+ 638 00f3 07       		.byte	0x7
+ 639 00f4 05050000 		.4byte	.LASF22
+ 640 00f8 03       		.uleb128 0x3
+ 641 00f9 4A090000 		.4byte	.LASF23
+ 642 00fd 06       		.byte	0x6
+ 643 00fe 53       		.byte	0x53
+ 644 00ff 89000000 		.4byte	0x89
+ 645 0103 03       		.uleb128 0x3
+ 646 0104 29090000 		.4byte	.LASF24
+ 647 0108 06       		.byte	0x6
+ 648 0109 54       		.byte	0x54
+ 649 010a 90000000 		.4byte	0x90
+ 650 010e 03       		.uleb128 0x3
+ 651 010f 75000000 		.4byte	.LASF25
+ 652 0113 07       		.byte	0x7
+ 653 0114 4D       		.byte	0x4d
+ 654 0115 03010000 		.4byte	0x103
+ 655 0119 03       		.uleb128 0x3
+ 656 011a D5090000 		.4byte	.LASF26
+ 657 011e 07       		.byte	0x7
+ 658 011f 4F       		.byte	0x4f
+ 659 0120 03010000 		.4byte	0x103
+ 660 0124 03       		.uleb128 0x3
+ 661 0125 D4020000 		.4byte	.LASF27
+ 662 0129 07       		.byte	0x7
+ 663 012a 78       		.byte	0x78
+ 664 012b F8000000 		.4byte	0xf8
+ 665 012f 07       		.uleb128 0x7
+ 666 0130 C3030000 		.4byte	.LASF28
+ 667 0134 08       		.byte	0x8
+ 668 0135 F701     		.2byte	0x1f7
+ 669 0137 24010000 		.4byte	0x124
+ 670 013b 07       		.uleb128 0x7
+ 671 013c 32010000 		.4byte	.LASF29
+ 672 0140 08       		.byte	0x8
+ 673 0141 2C02     		.2byte	0x22c
+ 674 0143 0E010000 		.4byte	0x10e
+ 675 0147 03       		.uleb128 0x3
+ 676 0148 0E050000 		.4byte	.LASF30
+ 677 014c 09       		.byte	0x9
+ 678 014d 9C       		.byte	0x9c
+ 679 014e 37000000 		.4byte	0x37
+ 680 0152 08       		.uleb128 0x8
+ 681 0153 01       		.byte	0x1
+ 682 0154 25000000 		.4byte	0x25
+ 683 0158 09       		.byte	0x9
+ 684 0159 CF       		.byte	0xcf
+ 685 015a FB010000 		.4byte	0x1fb
+ 686 015e 09       		.uleb128 0x9
+ 687 015f 73030000 		.4byte	.LASF31
+ 688 0163 00       		.byte	0
+ 689 0164 0A       		.uleb128 0xa
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 22
+
+
+ 690 0165 BF050000 		.4byte	.LASF32
+ 691 0169 7F       		.sleb128 -1
+ 692 016a 0A       		.uleb128 0xa
+ 693 016b 65030000 		.4byte	.LASF33
+ 694 016f 7E       		.sleb128 -2
+ 695 0170 0A       		.uleb128 0xa
+ 696 0171 C6060000 		.4byte	.LASF34
+ 697 0175 7D       		.sleb128 -3
+ 698 0176 0A       		.uleb128 0xa
+ 699 0177 89080000 		.4byte	.LASF35
+ 700 017b 7C       		.sleb128 -4
+ 701 017c 0A       		.uleb128 0xa
+ 702 017d 61000000 		.4byte	.LASF36
+ 703 0181 7B       		.sleb128 -5
+ 704 0182 0A       		.uleb128 0xa
+ 705 0183 5B080000 		.4byte	.LASF37
+ 706 0187 7A       		.sleb128 -6
+ 707 0188 0A       		.uleb128 0xa
+ 708 0189 82050000 		.4byte	.LASF38
+ 709 018d 79       		.sleb128 -7
+ 710 018e 0A       		.uleb128 0xa
+ 711 018f ED030000 		.4byte	.LASF39
+ 712 0193 78       		.sleb128 -8
+ 713 0194 0A       		.uleb128 0xa
+ 714 0195 9E010000 		.4byte	.LASF40
+ 715 0199 77       		.sleb128 -9
+ 716 019a 0A       		.uleb128 0xa
+ 717 019b 28060000 		.4byte	.LASF41
+ 718 019f 76       		.sleb128 -10
+ 719 01a0 0A       		.uleb128 0xa
+ 720 01a1 D3000000 		.4byte	.LASF42
+ 721 01a5 75       		.sleb128 -11
+ 722 01a6 0A       		.uleb128 0xa
+ 723 01a7 F7010000 		.4byte	.LASF43
+ 724 01ab 74       		.sleb128 -12
+ 725 01ac 0A       		.uleb128 0xa
+ 726 01ad 41030000 		.4byte	.LASF44
+ 727 01b1 73       		.sleb128 -13
+ 728 01b2 0A       		.uleb128 0xa
+ 729 01b3 D1070000 		.4byte	.LASF45
+ 730 01b7 72       		.sleb128 -14
+ 731 01b8 0A       		.uleb128 0xa
+ 732 01b9 47060000 		.4byte	.LASF46
+ 733 01bd 71       		.sleb128 -15
+ 734 01be 0A       		.uleb128 0xa
+ 735 01bf 31050000 		.4byte	.LASF47
+ 736 01c3 70       		.sleb128 -16
+ 737 01c4 0A       		.uleb128 0xa
+ 738 01c5 94050000 		.4byte	.LASF48
+ 739 01c9 6F       		.sleb128 -17
+ 740 01ca 0A       		.uleb128 0xa
+ 741 01cb 23040000 		.4byte	.LASF49
+ 742 01cf 6E       		.sleb128 -18
+ 743 01d0 0A       		.uleb128 0xa
+ 744 01d1 C9040000 		.4byte	.LASF50
+ 745 01d5 6D       		.sleb128 -19
+ 746 01d6 0A       		.uleb128 0xa
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 23
+
+
+ 747 01d7 B6040000 		.4byte	.LASF51
+ 748 01db 6C       		.sleb128 -20
+ 749 01dc 0A       		.uleb128 0xa
+ 750 01dd A3000000 		.4byte	.LASF52
+ 751 01e1 6B       		.sleb128 -21
+ 752 01e2 0A       		.uleb128 0xa
+ 753 01e3 70050000 		.4byte	.LASF53
+ 754 01e7 6A       		.sleb128 -22
+ 755 01e8 0A       		.uleb128 0xa
+ 756 01e9 14000000 		.4byte	.LASF54
+ 757 01ed 69       		.sleb128 -23
+ 758 01ee 0A       		.uleb128 0xa
+ 759 01ef 0D030000 		.4byte	.LASF55
+ 760 01f3 68       		.sleb128 -24
+ 761 01f4 0A       		.uleb128 0xa
+ 762 01f5 27080000 		.4byte	.LASF56
+ 763 01f9 67       		.sleb128 -25
+ 764 01fa 00       		.byte	0
+ 765 01fb 03       		.uleb128 0x3
+ 766 01fc 5C000000 		.4byte	.LASF57
+ 767 0200 09       		.byte	0x9
+ 768 0201 EA       		.byte	0xea
+ 769 0202 52010000 		.4byte	0x152
+ 770 0206 03       		.uleb128 0x3
+ 771 0207 D3080000 		.4byte	.LASF58
+ 772 020b 0A       		.byte	0xa
+ 773 020c 19       		.byte	0x19
+ 774 020d 11020000 		.4byte	0x211
+ 775 0211 0B       		.uleb128 0xb
+ 776 0212 2F010000 		.4byte	0x12f
+ 777 0216 1C020000 		.4byte	0x21c
+ 778 021a 0C       		.uleb128 0xc
+ 779 021b 00       		.byte	0
+ 780 021c 03       		.uleb128 0x3
+ 781 021d 45000000 		.4byte	.LASF59
+ 782 0221 0A       		.byte	0xa
+ 783 0222 2D       		.byte	0x2d
+ 784 0223 B8000000 		.4byte	0xb8
+ 785 0227 08       		.uleb128 0x8
+ 786 0228 01       		.byte	0x1
+ 787 0229 37000000 		.4byte	0x37
+ 788 022d 0B       		.byte	0xb
+ 789 022e 1C       		.byte	0x1c
+ 790 022f 58020000 		.4byte	0x258
+ 791 0233 09       		.uleb128 0x9
+ 792 0234 1B040000 		.4byte	.LASF60
+ 793 0238 00       		.byte	0
+ 794 0239 09       		.uleb128 0x9
+ 795 023a C8020000 		.4byte	.LASF61
+ 796 023e 01       		.byte	0x1
+ 797 023f 09       		.uleb128 0x9
+ 798 0240 00000000 		.4byte	.LASF62
+ 799 0244 02       		.byte	0x2
+ 800 0245 09       		.uleb128 0x9
+ 801 0246 88090000 		.4byte	.LASF63
+ 802 024a 03       		.byte	0x3
+ 803 024b 09       		.uleb128 0x9
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 24
+
+
+ 804 024c 05020000 		.4byte	.LASF64
+ 805 0250 04       		.byte	0x4
+ 806 0251 09       		.uleb128 0x9
+ 807 0252 32000000 		.4byte	.LASF65
+ 808 0256 05       		.byte	0x5
+ 809 0257 00       		.byte	0
+ 810 0258 03       		.uleb128 0x3
+ 811 0259 BB020000 		.4byte	.LASF66
+ 812 025d 0B       		.byte	0xb
+ 813 025e 23       		.byte	0x23
+ 814 025f 27020000 		.4byte	0x227
+ 815 0263 0D       		.uleb128 0xd
+ 816 0264 10       		.byte	0x10
+ 817 0265 0C       		.byte	0xc
+ 818 0266 12       		.byte	0x12
+ 819 0267 9C020000 		.4byte	0x29c
+ 820 026b 0E       		.uleb128 0xe
+ 821 026c B8030000 		.4byte	.LASF67
+ 822 0270 0C       		.byte	0xc
+ 823 0271 13       		.byte	0x13
+ 824 0272 58020000 		.4byte	0x258
+ 825 0276 00       		.byte	0
+ 826 0277 0E       		.uleb128 0xe
+ 827 0278 7E090000 		.4byte	.LASF68
+ 828 027c 0C       		.byte	0xc
+ 829 027d 14       		.byte	0x14
+ 830 027e 89000000 		.4byte	0x89
+ 831 0282 04       		.byte	0x4
+ 832 0283 0E       		.uleb128 0xe
+ 833 0284 B3090000 		.4byte	.LASF69
+ 834 0288 0C       		.byte	0xc
+ 835 0289 15       		.byte	0x15
+ 836 028a A1020000 		.4byte	0x2a1
+ 837 028e 08       		.byte	0x8
+ 838 028f 0E       		.uleb128 0xe
+ 839 0290 91020000 		.4byte	.LASF70
+ 840 0294 0C       		.byte	0xc
+ 841 0295 16       		.byte	0x16
+ 842 0296 D8000000 		.4byte	0xd8
+ 843 029a 0C       		.byte	0xc
+ 844 029b 00       		.byte	0
+ 845 029c 0F       		.uleb128 0xf
+ 846 029d 47010000 		.4byte	0x147
+ 847 02a1 05       		.uleb128 0x5
+ 848 02a2 04       		.byte	0x4
+ 849 02a3 9C020000 		.4byte	0x29c
+ 850 02a7 03       		.uleb128 0x3
+ 851 02a8 71060000 		.4byte	.LASF71
+ 852 02ac 0C       		.byte	0xc
+ 853 02ad 17       		.byte	0x17
+ 854 02ae 63020000 		.4byte	0x263
+ 855 02b2 0D       		.uleb128 0xd
+ 856 02b3 0C       		.byte	0xc
+ 857 02b4 0C       		.byte	0xc
+ 858 02b5 1A       		.byte	0x1a
+ 859 02b6 DF020000 		.4byte	0x2df
+ 860 02ba 0E       		.uleb128 0xe
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 25
+
+
+ 861 02bb 4E020000 		.4byte	.LASF72
+ 862 02bf 0C       		.byte	0xc
+ 863 02c0 1B       		.byte	0x1b
+ 864 02c1 89000000 		.4byte	0x89
+ 865 02c5 00       		.byte	0
+ 866 02c6 0E       		.uleb128 0xe
+ 867 02c7 73090000 		.4byte	.LASF73
+ 868 02cb 0C       		.byte	0xc
+ 869 02cc 1C       		.byte	0x1c
+ 870 02cd DF020000 		.4byte	0x2df
+ 871 02d1 04       		.byte	0x4
+ 872 02d2 0E       		.uleb128 0xe
+ 873 02d3 51080000 		.4byte	.LASF74
+ 874 02d7 0C       		.byte	0xc
+ 875 02d8 1D       		.byte	0x1d
+ 876 02d9 EA020000 		.4byte	0x2ea
+ 877 02dd 08       		.byte	0x8
+ 878 02de 00       		.byte	0
+ 879 02df 05       		.uleb128 0x5
+ 880 02e0 04       		.byte	0x4
+ 881 02e1 E5020000 		.4byte	0x2e5
+ 882 02e5 10       		.uleb128 0x10
+ 883 02e6 A7020000 		.4byte	0x2a7
+ 884 02ea 10       		.uleb128 0x10
+ 885 02eb A2000000 		.4byte	0xa2
+ 886 02ef 03       		.uleb128 0x3
+ 887 02f0 96030000 		.4byte	.LASF75
+ 888 02f4 0C       		.byte	0xc
+ 889 02f5 1E       		.byte	0x1e
+ 890 02f6 B2020000 		.4byte	0x2b2
+ 891 02fa 08       		.uleb128 0x8
+ 892 02fb 01       		.byte	0x1
+ 893 02fc 37000000 		.4byte	0x37
+ 894 0300 0D       		.byte	0xd
+ 895 0301 59       		.byte	0x59
+ 896 0302 1F030000 		.4byte	0x31f
+ 897 0306 09       		.uleb128 0x9
+ 898 0307 5A040000 		.4byte	.LASF76
+ 899 030b 00       		.byte	0
+ 900 030c 09       		.uleb128 0x9
+ 901 030d F5070000 		.4byte	.LASF77
+ 902 0311 01       		.byte	0x1
+ 903 0312 09       		.uleb128 0x9
+ 904 0313 37020000 		.4byte	.LASF78
+ 905 0317 02       		.byte	0x2
+ 906 0318 09       		.uleb128 0x9
+ 907 0319 F4080000 		.4byte	.LASF79
+ 908 031d 03       		.byte	0x3
+ 909 031e 00       		.byte	0
+ 910 031f 03       		.uleb128 0x3
+ 911 0320 76080000 		.4byte	.LASF80
+ 912 0324 0D       		.byte	0xd
+ 913 0325 5E       		.byte	0x5e
+ 914 0326 FA020000 		.4byte	0x2fa
+ 915 032a 10       		.uleb128 0x10
+ 916 032b 3B010000 		.4byte	0x13b
+ 917 032f 10       		.uleb128 0x10
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 26
+
+
+ 918 0330 DF000000 		.4byte	0xdf
+ 919 0334 05       		.uleb128 0x5
+ 920 0335 04       		.byte	0x4
+ 921 0336 06020000 		.4byte	0x206
+ 922 033a 10       		.uleb128 0x10
+ 923 033b 34030000 		.4byte	0x334
+ 924 033f 10       		.uleb128 0x10
+ 925 0340 47010000 		.4byte	0x147
+ 926 0344 10       		.uleb128 0x10
+ 927 0345 1C020000 		.4byte	0x21c
+ 928 0349 0D       		.uleb128 0xd
+ 929 034a 02       		.byte	0x2
+ 930 034b 0E       		.byte	0xe
+ 931 034c 21       		.byte	0x21
+ 932 034d 6A030000 		.4byte	0x36a
+ 933 0351 0E       		.uleb128 0xe
+ 934 0352 2E030000 		.4byte	.LASF81
+ 935 0356 0E       		.byte	0xe
+ 936 0357 24       		.byte	0x24
+ 937 0358 47010000 		.4byte	0x147
+ 938 035c 00       		.byte	0
+ 939 035d 0E       		.uleb128 0xe
+ 940 035e E9080000 		.4byte	.LASF82
+ 941 0362 0E       		.byte	0xe
+ 942 0363 25       		.byte	0x25
+ 943 0364 47010000 		.4byte	0x147
+ 944 0368 01       		.byte	0x1
+ 945 0369 00       		.byte	0
+ 946 036a 03       		.uleb128 0x3
+ 947 036b CE050000 		.4byte	.LASF83
+ 948 036f 0E       		.byte	0xe
+ 949 0370 28       		.byte	0x28
+ 950 0371 49030000 		.4byte	0x349
+ 951 0375 03       		.uleb128 0x3
+ 952 0376 0E060000 		.4byte	.LASF84
+ 953 037a 02       		.byte	0x2
+ 954 037b 26       		.byte	0x26
+ 955 037c 80030000 		.4byte	0x380
+ 956 0380 05       		.uleb128 0x5
+ 957 0381 04       		.byte	0x4
+ 958 0382 86030000 		.4byte	0x386
+ 959 0386 11       		.uleb128 0x11
+ 960 0387 FB010000 		.4byte	0x1fb
+ 961 038b 95030000 		.4byte	0x395
+ 962 038f 12       		.uleb128 0x12
+ 963 0390 9B030000 		.4byte	0x39b
+ 964 0394 00       		.byte	0
+ 965 0395 05       		.uleb128 0x5
+ 966 0396 04       		.byte	0x4
+ 967 0397 6A030000 		.4byte	0x36a
+ 968 039b 10       		.uleb128 0x10
+ 969 039c 95030000 		.4byte	0x395
+ 970 03a0 03       		.uleb128 0x3
+ 971 03a1 55050000 		.4byte	.LASF85
+ 972 03a5 02       		.byte	0x2
+ 973 03a6 2C       		.byte	0x2c
+ 974 03a7 AB030000 		.4byte	0x3ab
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 27
+
+
+ 975 03ab 05       		.uleb128 0x5
+ 976 03ac 04       		.byte	0x4
+ 977 03ad B1030000 		.4byte	0x3b1
+ 978 03b1 11       		.uleb128 0x11
+ 979 03b2 FB010000 		.4byte	0x1fb
+ 980 03b6 C0030000 		.4byte	0x3c0
+ 981 03ba 12       		.uleb128 0x12
+ 982 03bb CB030000 		.4byte	0x3cb
+ 983 03bf 00       		.byte	0
+ 984 03c0 05       		.uleb128 0x5
+ 985 03c1 04       		.byte	0x4
+ 986 03c2 C6030000 		.4byte	0x3c6
+ 987 03c6 10       		.uleb128 0x10
+ 988 03c7 6A030000 		.4byte	0x36a
+ 989 03cb 10       		.uleb128 0x10
+ 990 03cc C0030000 		.4byte	0x3c0
+ 991 03d0 13       		.uleb128 0x13
+ 992 03d1 9B070000 		.4byte	.LASF97
+ 993 03d5 28       		.byte	0x28
+ 994 03d6 02       		.byte	0x2
+ 995 03d7 36       		.byte	0x36
+ 996 03d8 55040000 		.4byte	0x455
+ 997 03dc 0E       		.uleb128 0xe
+ 998 03dd B6050000 		.4byte	.LASF86
+ 999 03e1 02       		.byte	0x2
+ 1000 03e2 3B       		.byte	0x3b
+ 1001 03e3 55040000 		.4byte	0x455
+ 1002 03e7 00       		.byte	0
+ 1003 03e8 0E       		.uleb128 0xe
+ 1004 03e9 37030000 		.4byte	.LASF87
+ 1005 03ed 02       		.byte	0x2
+ 1006 03ee 40       		.byte	0x40
+ 1007 03ef 5A040000 		.4byte	0x45a
+ 1008 03f3 04       		.byte	0x4
+ 1009 03f4 0E       		.uleb128 0xe
+ 1010 03f5 40010000 		.4byte	.LASF88
+ 1011 03f9 02       		.byte	0x2
+ 1012 03fa 45       		.byte	0x45
+ 1013 03fb 2A030000 		.4byte	0x32a
+ 1014 03ff 08       		.byte	0x8
+ 1015 0400 0E       		.uleb128 0xe
+ 1016 0401 62070000 		.4byte	.LASF89
+ 1017 0405 02       		.byte	0x2
+ 1018 0406 4B       		.byte	0x4b
+ 1019 0407 2A030000 		.4byte	0x32a
+ 1020 040b 0C       		.byte	0xc
+ 1021 040c 0E       		.uleb128 0xe
+ 1022 040d 5B020000 		.4byte	.LASF90
+ 1023 0411 02       		.byte	0x2
+ 1024 0412 50       		.byte	0x50
+ 1025 0413 2F030000 		.4byte	0x32f
+ 1026 0417 10       		.byte	0x10
+ 1027 0418 0E       		.uleb128 0xe
+ 1028 0419 B8060000 		.4byte	.LASF91
+ 1029 041d 02       		.byte	0x2
+ 1030 041e 55       		.byte	0x55
+ 1031 041f 3A030000 		.4byte	0x33a
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 28
+
+
+ 1032 0423 14       		.byte	0x14
+ 1033 0424 0E       		.uleb128 0xe
+ 1034 0425 36060000 		.4byte	.LASF92
+ 1035 0429 02       		.byte	0x2
+ 1036 042a 5A       		.byte	0x5a
+ 1037 042b 2F030000 		.4byte	0x32f
+ 1038 042f 18       		.byte	0x18
+ 1039 0430 0E       		.uleb128 0xe
+ 1040 0431 B9090000 		.4byte	.LASF93
+ 1041 0435 02       		.byte	0x2
+ 1042 0436 5F       		.byte	0x5f
+ 1043 0437 3A030000 		.4byte	0x33a
+ 1044 043b 1C       		.byte	0x1c
+ 1045 043c 0E       		.uleb128 0xe
+ 1046 043d E5000000 		.4byte	.LASF94
+ 1047 0441 02       		.byte	0x2
+ 1048 0442 65       		.byte	0x65
+ 1049 0443 3F030000 		.4byte	0x33f
+ 1050 0447 20       		.byte	0x20
+ 1051 0448 0E       		.uleb128 0xe
+ 1052 0449 E4030000 		.4byte	.LASF95
+ 1053 044d 02       		.byte	0x2
+ 1054 044e 6A       		.byte	0x6a
+ 1055 044f 44030000 		.4byte	0x344
+ 1056 0453 24       		.byte	0x24
+ 1057 0454 00       		.byte	0
+ 1058 0455 10       		.uleb128 0x10
+ 1059 0456 75030000 		.4byte	0x375
+ 1060 045a 10       		.uleb128 0x10
+ 1061 045b A0030000 		.4byte	0x3a0
+ 1062 045f 03       		.uleb128 0x3
+ 1063 0460 B0070000 		.4byte	.LASF96
+ 1064 0464 02       		.byte	0x2
+ 1065 0465 6D       		.byte	0x6d
+ 1066 0466 6A040000 		.4byte	0x46a
+ 1067 046a 10       		.uleb128 0x10
+ 1068 046b D0030000 		.4byte	0x3d0
+ 1069 046f 13       		.uleb128 0x13
+ 1070 0470 15020000 		.4byte	.LASF98
+ 1071 0474 0C       		.byte	0xc
+ 1072 0475 02       		.byte	0x2
+ 1073 0476 79       		.byte	0x79
+ 1074 0477 AC040000 		.4byte	0x4ac
+ 1075 047b 0E       		.uleb128 0xe
+ 1076 047c DB020000 		.4byte	.LASF99
+ 1077 0480 02       		.byte	0x2
+ 1078 0481 7F       		.byte	0x7f
+ 1079 0482 6A030000 		.4byte	0x36a
+ 1080 0486 00       		.byte	0
+ 1081 0487 0E       		.uleb128 0xe
+ 1082 0488 0D090000 		.4byte	.LASF100
+ 1083 048c 02       		.byte	0x2
+ 1084 048d 84       		.byte	0x84
+ 1085 048e 1F030000 		.4byte	0x31f
+ 1086 0492 02       		.byte	0x2
+ 1087 0493 14       		.uleb128 0x14
+ 1088 0494 61676500 		.ascii	"age\000"
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 29
+
+
+ 1089 0498 02       		.byte	0x2
+ 1090 0499 89       		.byte	0x89
+ 1091 049a B8000000 		.4byte	0xb8
+ 1092 049e 04       		.byte	0x4
+ 1093 049f 0E       		.uleb128 0xe
+ 1094 04a0 83070000 		.4byte	.LASF101
+ 1095 04a4 02       		.byte	0x2
+ 1096 04a5 8E       		.byte	0x8e
+ 1097 04a6 B2040000 		.4byte	0x4b2
+ 1098 04aa 08       		.byte	0x8
+ 1099 04ab 00       		.byte	0
+ 1100 04ac 05       		.uleb128 0x5
+ 1101 04ad 04       		.byte	0x4
+ 1102 04ae 5F040000 		.4byte	0x45f
+ 1103 04b2 10       		.uleb128 0x10
+ 1104 04b3 AC040000 		.4byte	0x4ac
+ 1105 04b7 03       		.uleb128 0x3
+ 1106 04b8 26020000 		.4byte	.LASF102
+ 1107 04bc 02       		.byte	0x2
+ 1108 04bd 91       		.byte	0x91
+ 1109 04be 6F040000 		.4byte	0x46f
+ 1110 04c2 05       		.uleb128 0x5
+ 1111 04c3 04       		.byte	0x4
+ 1112 04c4 97000000 		.4byte	0x97
+ 1113 04c8 08       		.uleb128 0x8
+ 1114 04c9 01       		.byte	0x1
+ 1115 04ca 37000000 		.4byte	0x37
+ 1116 04ce 0F       		.byte	0xf
+ 1117 04cf 17       		.byte	0x17
+ 1118 04d0 E1040000 		.4byte	0x4e1
+ 1119 04d4 09       		.uleb128 0x9
+ 1120 04d5 A8050000 		.4byte	.LASF103
+ 1121 04d9 00       		.byte	0
+ 1122 04da 09       		.uleb128 0x9
+ 1123 04db 9D090000 		.4byte	.LASF104
+ 1124 04df 01       		.byte	0x1
+ 1125 04e0 00       		.byte	0
+ 1126 04e1 03       		.uleb128 0x3
+ 1127 04e2 B0020000 		.4byte	.LASF105
+ 1128 04e6 0F       		.byte	0xf
+ 1129 04e7 1A       		.byte	0x1a
+ 1130 04e8 C8040000 		.4byte	0x4c8
+ 1131 04ec 08       		.uleb128 0x8
+ 1132 04ed 01       		.byte	0x1
+ 1133 04ee 37000000 		.4byte	0x37
+ 1134 04f2 0F       		.byte	0xf
+ 1135 04f3 1D       		.byte	0x1d
+ 1136 04f4 0B050000 		.4byte	0x50b
+ 1137 04f8 09       		.uleb128 0x9
+ 1138 04f9 BE080000 		.4byte	.LASF106
+ 1139 04fd 00       		.byte	0
+ 1140 04fe 09       		.uleb128 0x9
+ 1141 04ff A0020000 		.4byte	.LASF107
+ 1142 0503 01       		.byte	0x1
+ 1143 0504 09       		.uleb128 0x9
+ 1144 0505 7E030000 		.4byte	.LASF108
+ 1145 0509 02       		.byte	0x2
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 30
+
+
+ 1146 050a 00       		.byte	0
+ 1147 050b 03       		.uleb128 0x3
+ 1148 050c 40080000 		.4byte	.LASF109
+ 1149 0510 0F       		.byte	0xf
+ 1150 0511 21       		.byte	0x21
+ 1151 0512 EC040000 		.4byte	0x4ec
+ 1152 0516 0D       		.uleb128 0xd
+ 1153 0517 0C       		.byte	0xc
+ 1154 0518 0F       		.byte	0xf
+ 1155 0519 24       		.byte	0x24
+ 1156 051a 4F050000 		.4byte	0x54f
+ 1157 051e 0E       		.uleb128 0xe
+ 1158 051f B4010000 		.4byte	.LASF110
+ 1159 0523 0F       		.byte	0xf
+ 1160 0524 25       		.byte	0x25
+ 1161 0525 0B050000 		.4byte	0x50b
+ 1162 0529 00       		.byte	0
+ 1163 052a 0E       		.uleb128 0xe
+ 1164 052b EE010000 		.4byte	.LASF111
+ 1165 052f 0F       		.byte	0xf
+ 1166 0530 26       		.byte	0x26
+ 1167 0531 C2040000 		.4byte	0x4c2
+ 1168 0535 04       		.byte	0x4
+ 1169 0536 0E       		.uleb128 0xe
+ 1170 0537 0B000000 		.4byte	.LASF112
+ 1171 053b 0F       		.byte	0xf
+ 1172 053c 27       		.byte	0x27
+ 1173 053d 97000000 		.4byte	0x97
+ 1174 0541 08       		.byte	0x8
+ 1175 0542 0E       		.uleb128 0xe
+ 1176 0543 70000000 		.4byte	.LASF113
+ 1177 0547 0F       		.byte	0xf
+ 1178 0548 28       		.byte	0x28
+ 1179 0549 E1040000 		.4byte	0x4e1
+ 1180 054d 09       		.byte	0x9
+ 1181 054e 00       		.byte	0
+ 1182 054f 03       		.uleb128 0x3
+ 1183 0550 F1040000 		.4byte	.LASF114
+ 1184 0554 0F       		.byte	0xf
+ 1185 0555 29       		.byte	0x29
+ 1186 0556 16050000 		.4byte	0x516
+ 1187 055a 15       		.uleb128 0x15
+ 1188 055b 33090000 		.4byte	.LASF115
+ 1189 055f 02       		.byte	0x2
+ 1190 0560 1201     		.2byte	0x112
+ 1191 0562 6A030000 		.4byte	0x36a
+ 1192 0566 03       		.byte	0x3
+ 1193 0567 78050000 		.4byte	0x578
+ 1194 056b 16       		.uleb128 0x16
+ 1195 056c 94070000 		.4byte	.LASF117
+ 1196 0570 02       		.byte	0x2
+ 1197 0571 1201     		.2byte	0x112
+ 1198 0573 83050000 		.4byte	0x583
+ 1199 0577 00       		.byte	0
+ 1200 0578 05       		.uleb128 0x5
+ 1201 0579 04       		.byte	0x4
+ 1202 057a 7E050000 		.4byte	0x57e
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 31
+
+
+ 1203 057e 10       		.uleb128 0x10
+ 1204 057f B7040000 		.4byte	0x4b7
+ 1205 0583 10       		.uleb128 0x10
+ 1206 0584 78050000 		.4byte	0x578
+ 1207 0588 15       		.uleb128 0x15
+ 1208 0589 6C070000 		.4byte	.LASF116
+ 1209 058d 02       		.byte	0x2
+ 1210 058e 3501     		.2byte	0x135
+ 1211 0590 FB010000 		.4byte	0x1fb
+ 1212 0594 03       		.byte	0x3
+ 1213 0595 E4050000 		.4byte	0x5e4
+ 1214 0599 16       		.uleb128 0x16
+ 1215 059a 94070000 		.4byte	.LASF117
+ 1216 059e 02       		.byte	0x2
+ 1217 059f 3501     		.2byte	0x135
+ 1218 05a1 EA050000 		.4byte	0x5ea
+ 1219 05a5 16       		.uleb128 0x16
+ 1220 05a6 DB020000 		.4byte	.LASF99
+ 1221 05aa 02       		.byte	0x2
+ 1222 05ab 3501     		.2byte	0x135
+ 1223 05ad C6030000 		.4byte	0x3c6
+ 1224 05b1 17       		.uleb128 0x17
+ 1225 05b2 72657400 		.ascii	"ret\000"
+ 1226 05b6 02       		.byte	0x2
+ 1227 05b7 3801     		.2byte	0x138
+ 1228 05b9 FB010000 		.4byte	0x1fb
+ 1229 05bd 18       		.uleb128 0x18
+ 1230 05be E1080000 		.4byte	.LASF118
+ 1231 05c2 02       		.byte	0x2
+ 1232 05c3 3901     		.2byte	0x139
+ 1233 05c5 DF000000 		.4byte	0xdf
+ 1234 05c9 18       		.uleb128 0x18
+ 1235 05ca 3A000000 		.4byte	.LASF119
+ 1236 05ce 02       		.byte	0x2
+ 1237 05cf 4301     		.2byte	0x143
+ 1238 05d1 34030000 		.4byte	0x334
+ 1239 05d5 19       		.uleb128 0x19
+ 1240 05d6 18       		.uleb128 0x18
+ 1241 05d7 6C080000 		.4byte	.LASF120
+ 1242 05db 02       		.byte	0x2
+ 1243 05dc 4801     		.2byte	0x148
+ 1244 05de 2F010000 		.4byte	0x12f
+ 1245 05e2 00       		.byte	0
+ 1246 05e3 00       		.byte	0
+ 1247 05e4 05       		.uleb128 0x5
+ 1248 05e5 04       		.byte	0x4
+ 1249 05e6 B7040000 		.4byte	0x4b7
+ 1250 05ea 10       		.uleb128 0x10
+ 1251 05eb E4050000 		.4byte	0x5e4
+ 1252 05ef 1A       		.uleb128 0x1a
+ 1253 05f0 01010000 		.4byte	.LASF121
+ 1254 05f4 01       		.byte	0x1
+ 1255 05f5 5C       		.byte	0x5c
+ 1256 05f6 00000000 		.4byte	.LFB134
+ 1257 05fa 24000000 		.4byte	.LFE134-.LFB134
+ 1258 05fe 01       		.uleb128 0x1
+ 1259 05ff 9C       		.byte	0x9c
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 32
+
+
+ 1260 0600 1A       		.uleb128 0x1a
+ 1261 0601 AC080000 		.4byte	.LASF122
+ 1262 0605 01       		.byte	0x1
+ 1263 0606 71       		.byte	0x71
+ 1264 0607 00000000 		.4byte	.LFB137
+ 1265 060b 02000000 		.4byte	.LFE137-.LFB137
+ 1266 060f 01       		.uleb128 0x1
+ 1267 0610 9C       		.byte	0x9c
+ 1268 0611 1B       		.uleb128 0x1b
+ 1269 0612 87010000 		.4byte	.LASF151
+ 1270 0616 01       		.byte	0x1
+ 1271 0617 78       		.byte	0x78
+ 1272 0618 00000000 		.4byte	.LFB139
+ 1273 061c 94000000 		.4byte	.LFE139-.LFB139
+ 1274 0620 01       		.uleb128 0x1
+ 1275 0621 9C       		.byte	0x9c
+ 1276 0622 BA060000 		.4byte	0x6ba
+ 1277 0626 1C       		.uleb128 0x1c
+ 1278 0627 1E030000 		.4byte	.LASF123
+ 1279 062b 01       		.byte	0x1
+ 1280 062c 7A       		.byte	0x7a
+ 1281 062d 47010000 		.4byte	0x147
+ 1282 0631 05       		.uleb128 0x5
+ 1283 0632 03       		.byte	0x3
+ 1284 0633 04000000 		.4byte	leavingEditMode.7667
+ 1285 0637 1C       		.uleb128 0x1c
+ 1286 0638 71080000 		.4byte	.LASF124
+ 1287 063c 01       		.byte	0x1
+ 1288 063d 7D       		.byte	0x7d
+ 1289 063e 6A030000 		.4byte	0x36a
+ 1290 0642 02       		.uleb128 0x2
+ 1291 0643 91       		.byte	0x91
+ 1292 0644 68       		.sleb128 -24
+ 1293 0645 1D       		.uleb128 0x1d
+ 1294 0646 5A050000 		.4byte	0x55a
+ 1295 064a 04000000 		.4byte	.LBB7
+ 1296 064e 0C000000 		.4byte	.LBE7-.LBB7
+ 1297 0652 01       		.byte	0x1
+ 1298 0653 7D       		.byte	0x7d
+ 1299 0654 5E060000 		.4byte	0x65e
+ 1300 0658 1E       		.uleb128 0x1e
+ 1301 0659 6B050000 		.4byte	0x56b
+ 1302 065d 00       		.byte	0
+ 1303 065e 1F       		.uleb128 0x1f
+ 1304 065f 88050000 		.4byte	0x588
+ 1305 0663 54000000 		.4byte	.LBB9
+ 1306 0667 32000000 		.4byte	.LBE9-.LBB9
+ 1307 066b 01       		.byte	0x1
+ 1308 066c 99       		.byte	0x99
+ 1309 066d 20       		.uleb128 0x20
+ 1310 066e A5050000 		.4byte	0x5a5
+ 1311 0672 02       		.uleb128 0x2
+ 1312 0673 91       		.byte	0x91
+ 1313 0674 64       		.sleb128 -28
+ 1314 0675 1E       		.uleb128 0x1e
+ 1315 0676 99050000 		.4byte	0x599
+ 1316 067a 21       		.uleb128 0x21
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 33
+
+
+ 1317 067b 54000000 		.4byte	.LBB10
+ 1318 067f 32000000 		.4byte	.LBE10-.LBB10
+ 1319 0683 22       		.uleb128 0x22
+ 1320 0684 B1050000 		.4byte	0x5b1
+ 1321 0688 00       		.byte	0
+ 1322 0689 23       		.uleb128 0x23
+ 1323 068a BD050000 		.4byte	0x5bd
+ 1324 068e 00000000 		.4byte	.LLST0
+ 1325 0692 23       		.uleb128 0x23
+ 1326 0693 C9050000 		.4byte	0x5c9
+ 1327 0697 36000000 		.4byte	.LLST1
+ 1328 069b 21       		.uleb128 0x21
+ 1329 069c 6C000000 		.4byte	.LBB11
+ 1330 06a0 0A000000 		.4byte	.LBE11-.LBB11
+ 1331 06a4 23       		.uleb128 0x23
+ 1332 06a5 D6050000 		.4byte	0x5d6
+ 1333 06a9 49000000 		.4byte	.LLST2
+ 1334 06ad 24       		.uleb128 0x24
+ 1335 06ae 76000000 		.4byte	.LVL6
+ 1336 06b2 B7080000 		.4byte	0x8b7
+ 1337 06b6 00       		.byte	0
+ 1338 06b7 00       		.byte	0
+ 1339 06b8 00       		.byte	0
+ 1340 06b9 00       		.byte	0
+ 1341 06ba 25       		.uleb128 0x25
+ 1342 06bb DC040000 		.4byte	.LASF152
+ 1343 06bf 01       		.byte	0x1
+ 1344 06c0 43       		.byte	0x43
+ 1345 06c1 00000000 		.4byte	.LFB133
+ 1346 06c5 7C000000 		.4byte	.LFE133-.LFB133
+ 1347 06c9 01       		.uleb128 0x1
+ 1348 06ca 9C       		.byte	0x9c
+ 1349 06cb 44070000 		.4byte	0x744
+ 1350 06cf 26       		.uleb128 0x26
+ 1351 06d0 9D060000 		.4byte	.LASF125
+ 1352 06d4 01       		.byte	0x1
+ 1353 06d5 43       		.byte	0x43
+ 1354 06d6 44070000 		.4byte	0x744
+ 1355 06da 62000000 		.4byte	.LLST3
+ 1356 06de 26       		.uleb128 0x26
+ 1357 06df B8030000 		.4byte	.LASF67
+ 1358 06e3 01       		.byte	0x1
+ 1359 06e4 43       		.byte	0x43
+ 1360 06e5 58020000 		.4byte	0x258
+ 1361 06e9 8E000000 		.4byte	.LLST4
+ 1362 06ed 21       		.uleb128 0x21
+ 1363 06ee 0C000000 		.4byte	.LBB12
+ 1364 06f2 5C000000 		.4byte	.LBE12-.LBB12
+ 1365 06f6 27       		.uleb128 0x27
+ 1366 06f7 6900     		.ascii	"i\000"
+ 1367 06f9 01       		.byte	0x1
+ 1368 06fa 46       		.byte	0x46
+ 1369 06fb 97000000 		.4byte	0x97
+ 1370 06ff AF000000 		.4byte	.LLST5
+ 1371 0703 21       		.uleb128 0x21
+ 1372 0704 22000000 		.4byte	.LBB13
+ 1373 0708 3E000000 		.4byte	.LBE13-.LBB13
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 34
+
+
+ 1374 070c 28       		.uleb128 0x28
+ 1375 070d B2060000 		.4byte	.LASF126
+ 1376 0711 01       		.byte	0x1
+ 1377 0712 48       		.byte	0x48
+ 1378 0713 DF020000 		.4byte	0x2df
+ 1379 0717 D9000000 		.4byte	.LLST6
+ 1380 071b 28       		.uleb128 0x28
+ 1381 071c BE030000 		.4byte	.LASF127
+ 1382 0720 01       		.byte	0x1
+ 1383 0721 49       		.byte	0x49
+ 1384 0722 A2000000 		.4byte	0xa2
+ 1385 0726 EC000000 		.4byte	.LLST7
+ 1386 072a 21       		.uleb128 0x21
+ 1387 072b 32000000 		.4byte	.LBB14
+ 1388 072f 2E000000 		.4byte	.LBE14-.LBB14
+ 1389 0733 27       		.uleb128 0x27
+ 1390 0734 6A00     		.ascii	"j\000"
+ 1391 0736 01       		.byte	0x1
+ 1392 0737 4B       		.byte	0x4b
+ 1393 0738 A2000000 		.4byte	0xa2
+ 1394 073c FF000000 		.4byte	.LLST8
+ 1395 0740 00       		.byte	0
+ 1396 0741 00       		.byte	0
+ 1397 0742 00       		.byte	0
+ 1398 0743 00       		.byte	0
+ 1399 0744 05       		.uleb128 0x5
+ 1400 0745 04       		.byte	0x4
+ 1401 0746 4F050000 		.4byte	0x54f
+ 1402 074a 1A       		.uleb128 0x1a
+ 1403 074b D8010000 		.4byte	.LASF128
+ 1404 074f 01       		.byte	0x1
+ 1405 0750 6A       		.byte	0x6a
+ 1406 0751 00000000 		.4byte	.LFB135
+ 1407 0755 02000000 		.4byte	.LFE135-.LFB135
+ 1408 0759 01       		.uleb128 0x1
+ 1409 075a 9C       		.byte	0x9c
+ 1410 075b 1A       		.uleb128 0x1a
+ 1411 075c 5B090000 		.4byte	.LASF129
+ 1412 0760 01       		.byte	0x1
+ 1413 0761 6D       		.byte	0x6d
+ 1414 0762 00000000 		.4byte	.LFB136
+ 1415 0766 02000000 		.4byte	.LFE136-.LFB136
+ 1416 076a 01       		.uleb128 0x1
+ 1417 076b 9C       		.byte	0x9c
+ 1418 076c 1A       		.uleb128 0x1a
+ 1419 076d 4B010000 		.4byte	.LASF130
+ 1420 0771 01       		.byte	0x1
+ 1421 0772 74       		.byte	0x74
+ 1422 0773 00000000 		.4byte	.LFB138
+ 1423 0777 02000000 		.4byte	.LFE138-.LFB138
+ 1424 077b 01       		.uleb128 0x1
+ 1425 077c 9C       		.byte	0x9c
+ 1426 077d 1C       		.uleb128 0x1c
+ 1427 077e C3010000 		.4byte	.LASF131
+ 1428 0782 01       		.byte	0x1
+ 1429 0783 0E       		.byte	0xe
+ 1430 0784 44070000 		.4byte	0x744
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 35
+
+
+ 1431 0788 05       		.uleb128 0x5
+ 1432 0789 03       		.byte	0x3
+ 1433 078a 00000000 		.4byte	currentWidgetContext
+ 1434 078e 29       		.uleb128 0x29
+ 1435 078f CC030000 		.4byte	.LASF132
+ 1436 0793 10       		.byte	0x10
+ 1437 0794 40       		.byte	0x40
+ 1438 0795 0E010000 		.4byte	0x10e
+ 1439 0799 29       		.uleb128 0x29
+ 1440 079a 18050000 		.4byte	.LASF133
+ 1441 079e 10       		.byte	0x10
+ 1442 079f 47       		.byte	0x47
+ 1443 07a0 19010000 		.4byte	0x119
+ 1444 07a4 29       		.uleb128 0x29
+ 1445 07a5 42050000 		.4byte	.LASF134
+ 1446 07a9 10       		.byte	0x10
+ 1447 07aa 4A       		.byte	0x4a
+ 1448 07ab 0E010000 		.4byte	0x10e
+ 1449 07af 29       		.uleb128 0x29
+ 1450 07b0 6D020000 		.4byte	.LASF135
+ 1451 07b4 11       		.byte	0x11
+ 1452 07b5 48       		.byte	0x48
+ 1453 07b6 24010000 		.4byte	0x124
+ 1454 07ba 29       		.uleb128 0x29
+ 1455 07bb 14090000 		.4byte	.LASF136
+ 1456 07bf 12       		.byte	0x12
+ 1457 07c0 44       		.byte	0x44
+ 1458 07c1 0E010000 		.4byte	0x10e
+ 1459 07c5 2A       		.uleb128 0x2a
+ 1460 07c6 F4000000 		.4byte	.LASF137
+ 1461 07ca 13       		.byte	0x13
+ 1462 07cb 1207     		.2byte	0x712
+ 1463 07cd D1070000 		.4byte	0x7d1
+ 1464 07d1 2B       		.uleb128 0x2b
+ 1465 07d2 AD000000 		.4byte	0xad
+ 1466 07d6 29       		.uleb128 0x29
+ 1467 07d7 EE020000 		.4byte	.LASF138
+ 1468 07db 14       		.byte	0x14
+ 1469 07dc 36       		.byte	0x36
+ 1470 07dd B7040000 		.4byte	0x4b7
+ 1471 07e1 29       		.uleb128 0x29
+ 1472 07e2 98020000 		.4byte	.LASF139
+ 1473 07e6 15       		.byte	0x15
+ 1474 07e7 19       		.byte	0x19
+ 1475 07e8 97000000 		.4byte	0x97
+ 1476 07ec 29       		.uleb128 0x29
+ 1477 07ed A9090000 		.4byte	.LASF140
+ 1478 07f1 15       		.byte	0x15
+ 1479 07f2 1A       		.byte	0x1a
+ 1480 07f3 97000000 		.4byte	0x97
+ 1481 07f7 2C       		.uleb128 0x2c
+ 1482 07f8 C5070000 		.4byte	.LASF141
+ 1483 07fc 01       		.byte	0x1
+ 1484 07fd 12       		.byte	0x12
+ 1485 07fe 4F050000 		.4byte	0x54f
+ 1486 0802 05       		.uleb128 0x5
+ 1487 0803 03       		.byte	0x3
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 36
+
+
+ 1488 0804 00000000 		.4byte	CLOCK_hours
+ 1489 0808 2C       		.uleb128 0x2c
+ 1490 0809 A4060000 		.4byte	.LASF142
+ 1491 080d 01       		.byte	0x1
+ 1492 080e 19       		.byte	0x19
+ 1493 080f 4F050000 		.4byte	0x54f
+ 1494 0813 05       		.uleb128 0x5
+ 1495 0814 03       		.byte	0x3
+ 1496 0815 00000000 		.4byte	CLOCK_minutes
+ 1497 0819 0B       		.uleb128 0xb
+ 1498 081a E5020000 		.4byte	0x2e5
+ 1499 081e 29080000 		.4byte	0x829
+ 1500 0822 2D       		.uleb128 0x2d
+ 1501 0823 F1000000 		.4byte	0xf1
+ 1502 0827 00       		.byte	0
+ 1503 0828 00       		.byte	0
+ 1504 0829 2C       		.uleb128 0x2c
+ 1505 082a 60010000 		.4byte	.LASF143
+ 1506 082e 01       		.byte	0x1
+ 1507 082f 25       		.byte	0x25
+ 1508 0830 3A080000 		.4byte	0x83a
+ 1509 0834 05       		.uleb128 0x5
+ 1510 0835 03       		.byte	0x3
+ 1511 0836 00000000 		.4byte	STATE_CLOCK_W_ISDISPLAYING_Transitions
+ 1512 083a 10       		.uleb128 0x10
+ 1513 083b 19080000 		.4byte	0x819
+ 1514 083f 0B       		.uleb128 0xb
+ 1515 0840 E5020000 		.4byte	0x2e5
+ 1516 0844 4F080000 		.4byte	0x84f
+ 1517 0848 2D       		.uleb128 0x2d
+ 1518 0849 F1000000 		.4byte	0xf1
+ 1519 084d 02       		.byte	0x2
+ 1520 084e 00       		.byte	0
+ 1521 084f 2C       		.uleb128 0x2c
+ 1522 0850 38040000 		.4byte	.LASF144
+ 1523 0854 01       		.byte	0x1
+ 1524 0855 2B       		.byte	0x2b
+ 1525 0856 60080000 		.4byte	0x860
+ 1526 085a 05       		.uleb128 0x5
+ 1527 085b 03       		.byte	0x3
+ 1528 085c 00000000 		.4byte	STATE_CLOCK_W_ISFOCUS_Transitions
+ 1529 0860 10       		.uleb128 0x10
+ 1530 0861 3F080000 		.4byte	0x83f
+ 1531 0865 2C       		.uleb128 0x2c
+ 1532 0866 E4050000 		.4byte	.LASF145
+ 1533 086a 01       		.byte	0x1
+ 1534 086b 33       		.byte	0x33
+ 1535 086c 76080000 		.4byte	0x876
+ 1536 0870 05       		.uleb128 0x5
+ 1537 0871 03       		.byte	0x3
+ 1538 0872 00000000 		.4byte	STATE_CLOCK_W_ISAUTOINCREMENT_Transitions
+ 1539 0876 10       		.uleb128 0x10
+ 1540 0877 3F080000 		.4byte	0x83f
+ 1541 087b 0B       		.uleb128 0xb
+ 1542 087c 8B080000 		.4byte	0x88b
+ 1543 0880 8B080000 		.4byte	0x88b
+ 1544 0884 2D       		.uleb128 0x2d
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 37
+
+
+ 1545 0885 F1000000 		.4byte	0xf1
+ 1546 0889 01       		.byte	0x1
+ 1547 088a 00       		.byte	0
+ 1548 088b 10       		.uleb128 0x10
+ 1549 088c EF020000 		.4byte	0x2ef
+ 1550 0890 2C       		.uleb128 0x2c
+ 1551 0891 02040000 		.4byte	.LASF146
+ 1552 0895 01       		.byte	0x1
+ 1553 0896 3C       		.byte	0x3c
+ 1554 0897 A1080000 		.4byte	0x8a1
+ 1555 089b 05       		.uleb128 0x5
+ 1556 089c 03       		.byte	0x3
+ 1557 089d 00000000 		.4byte	CLOCK_Widget_Transitions
+ 1558 08a1 10       		.uleb128 0x10
+ 1559 08a2 7B080000 		.4byte	0x87b
+ 1560 08a6 2C       		.uleb128 0x2c
+ 1561 08a7 B5000000 		.4byte	.LASF147
+ 1562 08ab 01       		.byte	0x1
+ 1563 08ac 41       		.byte	0x41
+ 1564 08ad EA020000 		.4byte	0x2ea
+ 1565 08b1 05       		.uleb128 0x5
+ 1566 08b2 03       		.byte	0x3
+ 1567 08b3 00000000 		.4byte	CLOCK_Widget_Transitions_Size
+ 1568 08b7 2E       		.uleb128 0x2e
+ 1569 08b8 94000000 		.4byte	.LASF153
+ 1570 08bc 94000000 		.4byte	.LASF153
+ 1571 08c0 16       		.byte	0x16
+ 1572 08c1 4A01     		.2byte	0x14a
+ 1573 08c3 00       		.byte	0
+ 1574              		.section	.debug_abbrev,"",%progbits
+ 1575              	.Ldebug_abbrev0:
+ 1576 0000 01       		.uleb128 0x1
+ 1577 0001 11       		.uleb128 0x11
+ 1578 0002 01       		.byte	0x1
+ 1579 0003 25       		.uleb128 0x25
+ 1580 0004 0E       		.uleb128 0xe
+ 1581 0005 13       		.uleb128 0x13
+ 1582 0006 0B       		.uleb128 0xb
+ 1583 0007 03       		.uleb128 0x3
+ 1584 0008 0E       		.uleb128 0xe
+ 1585 0009 1B       		.uleb128 0x1b
+ 1586 000a 0E       		.uleb128 0xe
+ 1587 000b 55       		.uleb128 0x55
+ 1588 000c 17       		.uleb128 0x17
+ 1589 000d 11       		.uleb128 0x11
+ 1590 000e 01       		.uleb128 0x1
+ 1591 000f 10       		.uleb128 0x10
+ 1592 0010 17       		.uleb128 0x17
+ 1593 0011 00       		.byte	0
+ 1594 0012 00       		.byte	0
+ 1595 0013 02       		.uleb128 0x2
+ 1596 0014 24       		.uleb128 0x24
+ 1597 0015 00       		.byte	0
+ 1598 0016 0B       		.uleb128 0xb
+ 1599 0017 0B       		.uleb128 0xb
+ 1600 0018 3E       		.uleb128 0x3e
+ 1601 0019 0B       		.uleb128 0xb
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 38
+
+
+ 1602 001a 03       		.uleb128 0x3
+ 1603 001b 0E       		.uleb128 0xe
+ 1604 001c 00       		.byte	0
+ 1605 001d 00       		.byte	0
+ 1606 001e 03       		.uleb128 0x3
+ 1607 001f 16       		.uleb128 0x16
+ 1608 0020 00       		.byte	0
+ 1609 0021 03       		.uleb128 0x3
+ 1610 0022 0E       		.uleb128 0xe
+ 1611 0023 3A       		.uleb128 0x3a
+ 1612 0024 0B       		.uleb128 0xb
+ 1613 0025 3B       		.uleb128 0x3b
+ 1614 0026 0B       		.uleb128 0xb
+ 1615 0027 49       		.uleb128 0x49
+ 1616 0028 13       		.uleb128 0x13
+ 1617 0029 00       		.byte	0
+ 1618 002a 00       		.byte	0
+ 1619 002b 04       		.uleb128 0x4
+ 1620 002c 24       		.uleb128 0x24
+ 1621 002d 00       		.byte	0
+ 1622 002e 0B       		.uleb128 0xb
+ 1623 002f 0B       		.uleb128 0xb
+ 1624 0030 3E       		.uleb128 0x3e
+ 1625 0031 0B       		.uleb128 0xb
+ 1626 0032 03       		.uleb128 0x3
+ 1627 0033 08       		.uleb128 0x8
+ 1628 0034 00       		.byte	0
+ 1629 0035 00       		.byte	0
+ 1630 0036 05       		.uleb128 0x5
+ 1631 0037 0F       		.uleb128 0xf
+ 1632 0038 00       		.byte	0
+ 1633 0039 0B       		.uleb128 0xb
+ 1634 003a 0B       		.uleb128 0xb
+ 1635 003b 49       		.uleb128 0x49
+ 1636 003c 13       		.uleb128 0x13
+ 1637 003d 00       		.byte	0
+ 1638 003e 00       		.byte	0
+ 1639 003f 06       		.uleb128 0x6
+ 1640 0040 15       		.uleb128 0x15
+ 1641 0041 00       		.byte	0
+ 1642 0042 27       		.uleb128 0x27
+ 1643 0043 19       		.uleb128 0x19
+ 1644 0044 00       		.byte	0
+ 1645 0045 00       		.byte	0
+ 1646 0046 07       		.uleb128 0x7
+ 1647 0047 16       		.uleb128 0x16
+ 1648 0048 00       		.byte	0
+ 1649 0049 03       		.uleb128 0x3
+ 1650 004a 0E       		.uleb128 0xe
+ 1651 004b 3A       		.uleb128 0x3a
+ 1652 004c 0B       		.uleb128 0xb
+ 1653 004d 3B       		.uleb128 0x3b
+ 1654 004e 05       		.uleb128 0x5
+ 1655 004f 49       		.uleb128 0x49
+ 1656 0050 13       		.uleb128 0x13
+ 1657 0051 00       		.byte	0
+ 1658 0052 00       		.byte	0
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 39
+
+
+ 1659 0053 08       		.uleb128 0x8
+ 1660 0054 04       		.uleb128 0x4
+ 1661 0055 01       		.byte	0x1
+ 1662 0056 0B       		.uleb128 0xb
+ 1663 0057 0B       		.uleb128 0xb
+ 1664 0058 49       		.uleb128 0x49
+ 1665 0059 13       		.uleb128 0x13
+ 1666 005a 3A       		.uleb128 0x3a
+ 1667 005b 0B       		.uleb128 0xb
+ 1668 005c 3B       		.uleb128 0x3b
+ 1669 005d 0B       		.uleb128 0xb
+ 1670 005e 01       		.uleb128 0x1
+ 1671 005f 13       		.uleb128 0x13
+ 1672 0060 00       		.byte	0
+ 1673 0061 00       		.byte	0
+ 1674 0062 09       		.uleb128 0x9
+ 1675 0063 28       		.uleb128 0x28
+ 1676 0064 00       		.byte	0
+ 1677 0065 03       		.uleb128 0x3
+ 1678 0066 0E       		.uleb128 0xe
+ 1679 0067 1C       		.uleb128 0x1c
+ 1680 0068 0B       		.uleb128 0xb
+ 1681 0069 00       		.byte	0
+ 1682 006a 00       		.byte	0
+ 1683 006b 0A       		.uleb128 0xa
+ 1684 006c 28       		.uleb128 0x28
+ 1685 006d 00       		.byte	0
+ 1686 006e 03       		.uleb128 0x3
+ 1687 006f 0E       		.uleb128 0xe
+ 1688 0070 1C       		.uleb128 0x1c
+ 1689 0071 0D       		.uleb128 0xd
+ 1690 0072 00       		.byte	0
+ 1691 0073 00       		.byte	0
+ 1692 0074 0B       		.uleb128 0xb
+ 1693 0075 01       		.uleb128 0x1
+ 1694 0076 01       		.byte	0x1
+ 1695 0077 49       		.uleb128 0x49
+ 1696 0078 13       		.uleb128 0x13
+ 1697 0079 01       		.uleb128 0x1
+ 1698 007a 13       		.uleb128 0x13
+ 1699 007b 00       		.byte	0
+ 1700 007c 00       		.byte	0
+ 1701 007d 0C       		.uleb128 0xc
+ 1702 007e 21       		.uleb128 0x21
+ 1703 007f 00       		.byte	0
+ 1704 0080 00       		.byte	0
+ 1705 0081 00       		.byte	0
+ 1706 0082 0D       		.uleb128 0xd
+ 1707 0083 13       		.uleb128 0x13
+ 1708 0084 01       		.byte	0x1
+ 1709 0085 0B       		.uleb128 0xb
+ 1710 0086 0B       		.uleb128 0xb
+ 1711 0087 3A       		.uleb128 0x3a
+ 1712 0088 0B       		.uleb128 0xb
+ 1713 0089 3B       		.uleb128 0x3b
+ 1714 008a 0B       		.uleb128 0xb
+ 1715 008b 01       		.uleb128 0x1
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 40
+
+
+ 1716 008c 13       		.uleb128 0x13
+ 1717 008d 00       		.byte	0
+ 1718 008e 00       		.byte	0
+ 1719 008f 0E       		.uleb128 0xe
+ 1720 0090 0D       		.uleb128 0xd
+ 1721 0091 00       		.byte	0
+ 1722 0092 03       		.uleb128 0x3
+ 1723 0093 0E       		.uleb128 0xe
+ 1724 0094 3A       		.uleb128 0x3a
+ 1725 0095 0B       		.uleb128 0xb
+ 1726 0096 3B       		.uleb128 0x3b
+ 1727 0097 0B       		.uleb128 0xb
+ 1728 0098 49       		.uleb128 0x49
+ 1729 0099 13       		.uleb128 0x13
+ 1730 009a 38       		.uleb128 0x38
+ 1731 009b 0B       		.uleb128 0xb
+ 1732 009c 00       		.byte	0
+ 1733 009d 00       		.byte	0
+ 1734 009e 0F       		.uleb128 0xf
+ 1735 009f 15       		.uleb128 0x15
+ 1736 00a0 00       		.byte	0
+ 1737 00a1 27       		.uleb128 0x27
+ 1738 00a2 19       		.uleb128 0x19
+ 1739 00a3 49       		.uleb128 0x49
+ 1740 00a4 13       		.uleb128 0x13
+ 1741 00a5 00       		.byte	0
+ 1742 00a6 00       		.byte	0
+ 1743 00a7 10       		.uleb128 0x10
+ 1744 00a8 26       		.uleb128 0x26
+ 1745 00a9 00       		.byte	0
+ 1746 00aa 49       		.uleb128 0x49
+ 1747 00ab 13       		.uleb128 0x13
+ 1748 00ac 00       		.byte	0
+ 1749 00ad 00       		.byte	0
+ 1750 00ae 11       		.uleb128 0x11
+ 1751 00af 15       		.uleb128 0x15
+ 1752 00b0 01       		.byte	0x1
+ 1753 00b1 27       		.uleb128 0x27
+ 1754 00b2 19       		.uleb128 0x19
+ 1755 00b3 49       		.uleb128 0x49
+ 1756 00b4 13       		.uleb128 0x13
+ 1757 00b5 01       		.uleb128 0x1
+ 1758 00b6 13       		.uleb128 0x13
+ 1759 00b7 00       		.byte	0
+ 1760 00b8 00       		.byte	0
+ 1761 00b9 12       		.uleb128 0x12
+ 1762 00ba 05       		.uleb128 0x5
+ 1763 00bb 00       		.byte	0
+ 1764 00bc 49       		.uleb128 0x49
+ 1765 00bd 13       		.uleb128 0x13
+ 1766 00be 00       		.byte	0
+ 1767 00bf 00       		.byte	0
+ 1768 00c0 13       		.uleb128 0x13
+ 1769 00c1 13       		.uleb128 0x13
+ 1770 00c2 01       		.byte	0x1
+ 1771 00c3 03       		.uleb128 0x3
+ 1772 00c4 0E       		.uleb128 0xe
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 41
+
+
+ 1773 00c5 0B       		.uleb128 0xb
+ 1774 00c6 0B       		.uleb128 0xb
+ 1775 00c7 3A       		.uleb128 0x3a
+ 1776 00c8 0B       		.uleb128 0xb
+ 1777 00c9 3B       		.uleb128 0x3b
+ 1778 00ca 0B       		.uleb128 0xb
+ 1779 00cb 01       		.uleb128 0x1
+ 1780 00cc 13       		.uleb128 0x13
+ 1781 00cd 00       		.byte	0
+ 1782 00ce 00       		.byte	0
+ 1783 00cf 14       		.uleb128 0x14
+ 1784 00d0 0D       		.uleb128 0xd
+ 1785 00d1 00       		.byte	0
+ 1786 00d2 03       		.uleb128 0x3
+ 1787 00d3 08       		.uleb128 0x8
+ 1788 00d4 3A       		.uleb128 0x3a
+ 1789 00d5 0B       		.uleb128 0xb
+ 1790 00d6 3B       		.uleb128 0x3b
+ 1791 00d7 0B       		.uleb128 0xb
+ 1792 00d8 49       		.uleb128 0x49
+ 1793 00d9 13       		.uleb128 0x13
+ 1794 00da 38       		.uleb128 0x38
+ 1795 00db 0B       		.uleb128 0xb
+ 1796 00dc 00       		.byte	0
+ 1797 00dd 00       		.byte	0
+ 1798 00de 15       		.uleb128 0x15
+ 1799 00df 2E       		.uleb128 0x2e
+ 1800 00e0 01       		.byte	0x1
+ 1801 00e1 3F       		.uleb128 0x3f
+ 1802 00e2 19       		.uleb128 0x19
+ 1803 00e3 03       		.uleb128 0x3
+ 1804 00e4 0E       		.uleb128 0xe
+ 1805 00e5 3A       		.uleb128 0x3a
+ 1806 00e6 0B       		.uleb128 0xb
+ 1807 00e7 3B       		.uleb128 0x3b
+ 1808 00e8 05       		.uleb128 0x5
+ 1809 00e9 27       		.uleb128 0x27
+ 1810 00ea 19       		.uleb128 0x19
+ 1811 00eb 49       		.uleb128 0x49
+ 1812 00ec 13       		.uleb128 0x13
+ 1813 00ed 20       		.uleb128 0x20
+ 1814 00ee 0B       		.uleb128 0xb
+ 1815 00ef 01       		.uleb128 0x1
+ 1816 00f0 13       		.uleb128 0x13
+ 1817 00f1 00       		.byte	0
+ 1818 00f2 00       		.byte	0
+ 1819 00f3 16       		.uleb128 0x16
+ 1820 00f4 05       		.uleb128 0x5
+ 1821 00f5 00       		.byte	0
+ 1822 00f6 03       		.uleb128 0x3
+ 1823 00f7 0E       		.uleb128 0xe
+ 1824 00f8 3A       		.uleb128 0x3a
+ 1825 00f9 0B       		.uleb128 0xb
+ 1826 00fa 3B       		.uleb128 0x3b
+ 1827 00fb 05       		.uleb128 0x5
+ 1828 00fc 49       		.uleb128 0x49
+ 1829 00fd 13       		.uleb128 0x13
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 42
+
+
+ 1830 00fe 00       		.byte	0
+ 1831 00ff 00       		.byte	0
+ 1832 0100 17       		.uleb128 0x17
+ 1833 0101 34       		.uleb128 0x34
+ 1834 0102 00       		.byte	0
+ 1835 0103 03       		.uleb128 0x3
+ 1836 0104 08       		.uleb128 0x8
+ 1837 0105 3A       		.uleb128 0x3a
+ 1838 0106 0B       		.uleb128 0xb
+ 1839 0107 3B       		.uleb128 0x3b
+ 1840 0108 05       		.uleb128 0x5
+ 1841 0109 49       		.uleb128 0x49
+ 1842 010a 13       		.uleb128 0x13
+ 1843 010b 00       		.byte	0
+ 1844 010c 00       		.byte	0
+ 1845 010d 18       		.uleb128 0x18
+ 1846 010e 34       		.uleb128 0x34
+ 1847 010f 00       		.byte	0
+ 1848 0110 03       		.uleb128 0x3
+ 1849 0111 0E       		.uleb128 0xe
+ 1850 0112 3A       		.uleb128 0x3a
+ 1851 0113 0B       		.uleb128 0xb
+ 1852 0114 3B       		.uleb128 0x3b
+ 1853 0115 05       		.uleb128 0x5
+ 1854 0116 49       		.uleb128 0x49
+ 1855 0117 13       		.uleb128 0x13
+ 1856 0118 00       		.byte	0
+ 1857 0119 00       		.byte	0
+ 1858 011a 19       		.uleb128 0x19
+ 1859 011b 0B       		.uleb128 0xb
+ 1860 011c 01       		.byte	0x1
+ 1861 011d 00       		.byte	0
+ 1862 011e 00       		.byte	0
+ 1863 011f 1A       		.uleb128 0x1a
+ 1864 0120 2E       		.uleb128 0x2e
+ 1865 0121 00       		.byte	0
+ 1866 0122 3F       		.uleb128 0x3f
+ 1867 0123 19       		.uleb128 0x19
+ 1868 0124 03       		.uleb128 0x3
+ 1869 0125 0E       		.uleb128 0xe
+ 1870 0126 3A       		.uleb128 0x3a
+ 1871 0127 0B       		.uleb128 0xb
+ 1872 0128 3B       		.uleb128 0x3b
+ 1873 0129 0B       		.uleb128 0xb
+ 1874 012a 11       		.uleb128 0x11
+ 1875 012b 01       		.uleb128 0x1
+ 1876 012c 12       		.uleb128 0x12
+ 1877 012d 06       		.uleb128 0x6
+ 1878 012e 40       		.uleb128 0x40
+ 1879 012f 18       		.uleb128 0x18
+ 1880 0130 9742     		.uleb128 0x2117
+ 1881 0132 19       		.uleb128 0x19
+ 1882 0133 00       		.byte	0
+ 1883 0134 00       		.byte	0
+ 1884 0135 1B       		.uleb128 0x1b
+ 1885 0136 2E       		.uleb128 0x2e
+ 1886 0137 01       		.byte	0x1
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 43
+
+
+ 1887 0138 3F       		.uleb128 0x3f
+ 1888 0139 19       		.uleb128 0x19
+ 1889 013a 03       		.uleb128 0x3
+ 1890 013b 0E       		.uleb128 0xe
+ 1891 013c 3A       		.uleb128 0x3a
+ 1892 013d 0B       		.uleb128 0xb
+ 1893 013e 3B       		.uleb128 0x3b
+ 1894 013f 0B       		.uleb128 0xb
+ 1895 0140 11       		.uleb128 0x11
+ 1896 0141 01       		.uleb128 0x1
+ 1897 0142 12       		.uleb128 0x12
+ 1898 0143 06       		.uleb128 0x6
+ 1899 0144 40       		.uleb128 0x40
+ 1900 0145 18       		.uleb128 0x18
+ 1901 0146 9742     		.uleb128 0x2117
+ 1902 0148 19       		.uleb128 0x19
+ 1903 0149 01       		.uleb128 0x1
+ 1904 014a 13       		.uleb128 0x13
+ 1905 014b 00       		.byte	0
+ 1906 014c 00       		.byte	0
+ 1907 014d 1C       		.uleb128 0x1c
+ 1908 014e 34       		.uleb128 0x34
+ 1909 014f 00       		.byte	0
+ 1910 0150 03       		.uleb128 0x3
+ 1911 0151 0E       		.uleb128 0xe
+ 1912 0152 3A       		.uleb128 0x3a
+ 1913 0153 0B       		.uleb128 0xb
+ 1914 0154 3B       		.uleb128 0x3b
+ 1915 0155 0B       		.uleb128 0xb
+ 1916 0156 49       		.uleb128 0x49
+ 1917 0157 13       		.uleb128 0x13
+ 1918 0158 02       		.uleb128 0x2
+ 1919 0159 18       		.uleb128 0x18
+ 1920 015a 00       		.byte	0
+ 1921 015b 00       		.byte	0
+ 1922 015c 1D       		.uleb128 0x1d
+ 1923 015d 1D       		.uleb128 0x1d
+ 1924 015e 01       		.byte	0x1
+ 1925 015f 31       		.uleb128 0x31
+ 1926 0160 13       		.uleb128 0x13
+ 1927 0161 11       		.uleb128 0x11
+ 1928 0162 01       		.uleb128 0x1
+ 1929 0163 12       		.uleb128 0x12
+ 1930 0164 06       		.uleb128 0x6
+ 1931 0165 58       		.uleb128 0x58
+ 1932 0166 0B       		.uleb128 0xb
+ 1933 0167 59       		.uleb128 0x59
+ 1934 0168 0B       		.uleb128 0xb
+ 1935 0169 01       		.uleb128 0x1
+ 1936 016a 13       		.uleb128 0x13
+ 1937 016b 00       		.byte	0
+ 1938 016c 00       		.byte	0
+ 1939 016d 1E       		.uleb128 0x1e
+ 1940 016e 05       		.uleb128 0x5
+ 1941 016f 00       		.byte	0
+ 1942 0170 31       		.uleb128 0x31
+ 1943 0171 13       		.uleb128 0x13
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 44
+
+
+ 1944 0172 00       		.byte	0
+ 1945 0173 00       		.byte	0
+ 1946 0174 1F       		.uleb128 0x1f
+ 1947 0175 1D       		.uleb128 0x1d
+ 1948 0176 01       		.byte	0x1
+ 1949 0177 31       		.uleb128 0x31
+ 1950 0178 13       		.uleb128 0x13
+ 1951 0179 11       		.uleb128 0x11
+ 1952 017a 01       		.uleb128 0x1
+ 1953 017b 12       		.uleb128 0x12
+ 1954 017c 06       		.uleb128 0x6
+ 1955 017d 58       		.uleb128 0x58
+ 1956 017e 0B       		.uleb128 0xb
+ 1957 017f 59       		.uleb128 0x59
+ 1958 0180 0B       		.uleb128 0xb
+ 1959 0181 00       		.byte	0
+ 1960 0182 00       		.byte	0
+ 1961 0183 20       		.uleb128 0x20
+ 1962 0184 05       		.uleb128 0x5
+ 1963 0185 00       		.byte	0
+ 1964 0186 31       		.uleb128 0x31
+ 1965 0187 13       		.uleb128 0x13
+ 1966 0188 02       		.uleb128 0x2
+ 1967 0189 18       		.uleb128 0x18
+ 1968 018a 00       		.byte	0
+ 1969 018b 00       		.byte	0
+ 1970 018c 21       		.uleb128 0x21
+ 1971 018d 0B       		.uleb128 0xb
+ 1972 018e 01       		.byte	0x1
+ 1973 018f 11       		.uleb128 0x11
+ 1974 0190 01       		.uleb128 0x1
+ 1975 0191 12       		.uleb128 0x12
+ 1976 0192 06       		.uleb128 0x6
+ 1977 0193 00       		.byte	0
+ 1978 0194 00       		.byte	0
+ 1979 0195 22       		.uleb128 0x22
+ 1980 0196 34       		.uleb128 0x34
+ 1981 0197 00       		.byte	0
+ 1982 0198 31       		.uleb128 0x31
+ 1983 0199 13       		.uleb128 0x13
+ 1984 019a 1C       		.uleb128 0x1c
+ 1985 019b 0B       		.uleb128 0xb
+ 1986 019c 00       		.byte	0
+ 1987 019d 00       		.byte	0
+ 1988 019e 23       		.uleb128 0x23
+ 1989 019f 34       		.uleb128 0x34
+ 1990 01a0 00       		.byte	0
+ 1991 01a1 31       		.uleb128 0x31
+ 1992 01a2 13       		.uleb128 0x13
+ 1993 01a3 02       		.uleb128 0x2
+ 1994 01a4 17       		.uleb128 0x17
+ 1995 01a5 00       		.byte	0
+ 1996 01a6 00       		.byte	0
+ 1997 01a7 24       		.uleb128 0x24
+ 1998 01a8 898201   		.uleb128 0x4109
+ 1999 01ab 00       		.byte	0
+ 2000 01ac 11       		.uleb128 0x11
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 45
+
+
+ 2001 01ad 01       		.uleb128 0x1
+ 2002 01ae 31       		.uleb128 0x31
+ 2003 01af 13       		.uleb128 0x13
+ 2004 01b0 00       		.byte	0
+ 2005 01b1 00       		.byte	0
+ 2006 01b2 25       		.uleb128 0x25
+ 2007 01b3 2E       		.uleb128 0x2e
+ 2008 01b4 01       		.byte	0x1
+ 2009 01b5 3F       		.uleb128 0x3f
+ 2010 01b6 19       		.uleb128 0x19
+ 2011 01b7 03       		.uleb128 0x3
+ 2012 01b8 0E       		.uleb128 0xe
+ 2013 01b9 3A       		.uleb128 0x3a
+ 2014 01ba 0B       		.uleb128 0xb
+ 2015 01bb 3B       		.uleb128 0x3b
+ 2016 01bc 0B       		.uleb128 0xb
+ 2017 01bd 27       		.uleb128 0x27
+ 2018 01be 19       		.uleb128 0x19
+ 2019 01bf 11       		.uleb128 0x11
+ 2020 01c0 01       		.uleb128 0x1
+ 2021 01c1 12       		.uleb128 0x12
+ 2022 01c2 06       		.uleb128 0x6
+ 2023 01c3 40       		.uleb128 0x40
+ 2024 01c4 18       		.uleb128 0x18
+ 2025 01c5 9642     		.uleb128 0x2116
+ 2026 01c7 19       		.uleb128 0x19
+ 2027 01c8 01       		.uleb128 0x1
+ 2028 01c9 13       		.uleb128 0x13
+ 2029 01ca 00       		.byte	0
+ 2030 01cb 00       		.byte	0
+ 2031 01cc 26       		.uleb128 0x26
+ 2032 01cd 05       		.uleb128 0x5
+ 2033 01ce 00       		.byte	0
+ 2034 01cf 03       		.uleb128 0x3
+ 2035 01d0 0E       		.uleb128 0xe
+ 2036 01d1 3A       		.uleb128 0x3a
+ 2037 01d2 0B       		.uleb128 0xb
+ 2038 01d3 3B       		.uleb128 0x3b
+ 2039 01d4 0B       		.uleb128 0xb
+ 2040 01d5 49       		.uleb128 0x49
+ 2041 01d6 13       		.uleb128 0x13
+ 2042 01d7 02       		.uleb128 0x2
+ 2043 01d8 17       		.uleb128 0x17
+ 2044 01d9 00       		.byte	0
+ 2045 01da 00       		.byte	0
+ 2046 01db 27       		.uleb128 0x27
+ 2047 01dc 34       		.uleb128 0x34
+ 2048 01dd 00       		.byte	0
+ 2049 01de 03       		.uleb128 0x3
+ 2050 01df 08       		.uleb128 0x8
+ 2051 01e0 3A       		.uleb128 0x3a
+ 2052 01e1 0B       		.uleb128 0xb
+ 2053 01e2 3B       		.uleb128 0x3b
+ 2054 01e3 0B       		.uleb128 0xb
+ 2055 01e4 49       		.uleb128 0x49
+ 2056 01e5 13       		.uleb128 0x13
+ 2057 01e6 02       		.uleb128 0x2
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 46
+
+
+ 2058 01e7 17       		.uleb128 0x17
+ 2059 01e8 00       		.byte	0
+ 2060 01e9 00       		.byte	0
+ 2061 01ea 28       		.uleb128 0x28
+ 2062 01eb 34       		.uleb128 0x34
+ 2063 01ec 00       		.byte	0
+ 2064 01ed 03       		.uleb128 0x3
+ 2065 01ee 0E       		.uleb128 0xe
+ 2066 01ef 3A       		.uleb128 0x3a
+ 2067 01f0 0B       		.uleb128 0xb
+ 2068 01f1 3B       		.uleb128 0x3b
+ 2069 01f2 0B       		.uleb128 0xb
+ 2070 01f3 49       		.uleb128 0x49
+ 2071 01f4 13       		.uleb128 0x13
+ 2072 01f5 02       		.uleb128 0x2
+ 2073 01f6 17       		.uleb128 0x17
+ 2074 01f7 00       		.byte	0
+ 2075 01f8 00       		.byte	0
+ 2076 01f9 29       		.uleb128 0x29
+ 2077 01fa 34       		.uleb128 0x34
+ 2078 01fb 00       		.byte	0
+ 2079 01fc 03       		.uleb128 0x3
+ 2080 01fd 0E       		.uleb128 0xe
+ 2081 01fe 3A       		.uleb128 0x3a
+ 2082 01ff 0B       		.uleb128 0xb
+ 2083 0200 3B       		.uleb128 0x3b
+ 2084 0201 0B       		.uleb128 0xb
+ 2085 0202 49       		.uleb128 0x49
+ 2086 0203 13       		.uleb128 0x13
+ 2087 0204 3F       		.uleb128 0x3f
+ 2088 0205 19       		.uleb128 0x19
+ 2089 0206 3C       		.uleb128 0x3c
+ 2090 0207 19       		.uleb128 0x19
+ 2091 0208 00       		.byte	0
+ 2092 0209 00       		.byte	0
+ 2093 020a 2A       		.uleb128 0x2a
+ 2094 020b 34       		.uleb128 0x34
+ 2095 020c 00       		.byte	0
+ 2096 020d 03       		.uleb128 0x3
+ 2097 020e 0E       		.uleb128 0xe
+ 2098 020f 3A       		.uleb128 0x3a
+ 2099 0210 0B       		.uleb128 0xb
+ 2100 0211 3B       		.uleb128 0x3b
+ 2101 0212 05       		.uleb128 0x5
+ 2102 0213 49       		.uleb128 0x49
+ 2103 0214 13       		.uleb128 0x13
+ 2104 0215 3F       		.uleb128 0x3f
+ 2105 0216 19       		.uleb128 0x19
+ 2106 0217 3C       		.uleb128 0x3c
+ 2107 0218 19       		.uleb128 0x19
+ 2108 0219 00       		.byte	0
+ 2109 021a 00       		.byte	0
+ 2110 021b 2B       		.uleb128 0x2b
+ 2111 021c 35       		.uleb128 0x35
+ 2112 021d 00       		.byte	0
+ 2113 021e 49       		.uleb128 0x49
+ 2114 021f 13       		.uleb128 0x13
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 47
+
+
+ 2115 0220 00       		.byte	0
+ 2116 0221 00       		.byte	0
+ 2117 0222 2C       		.uleb128 0x2c
+ 2118 0223 34       		.uleb128 0x34
+ 2119 0224 00       		.byte	0
+ 2120 0225 03       		.uleb128 0x3
+ 2121 0226 0E       		.uleb128 0xe
+ 2122 0227 3A       		.uleb128 0x3a
+ 2123 0228 0B       		.uleb128 0xb
+ 2124 0229 3B       		.uleb128 0x3b
+ 2125 022a 0B       		.uleb128 0xb
+ 2126 022b 49       		.uleb128 0x49
+ 2127 022c 13       		.uleb128 0x13
+ 2128 022d 3F       		.uleb128 0x3f
+ 2129 022e 19       		.uleb128 0x19
+ 2130 022f 02       		.uleb128 0x2
+ 2131 0230 18       		.uleb128 0x18
+ 2132 0231 00       		.byte	0
+ 2133 0232 00       		.byte	0
+ 2134 0233 2D       		.uleb128 0x2d
+ 2135 0234 21       		.uleb128 0x21
+ 2136 0235 00       		.byte	0
+ 2137 0236 49       		.uleb128 0x49
+ 2138 0237 13       		.uleb128 0x13
+ 2139 0238 2F       		.uleb128 0x2f
+ 2140 0239 0B       		.uleb128 0xb
+ 2141 023a 00       		.byte	0
+ 2142 023b 00       		.byte	0
+ 2143 023c 2E       		.uleb128 0x2e
+ 2144 023d 2E       		.uleb128 0x2e
+ 2145 023e 00       		.byte	0
+ 2146 023f 3F       		.uleb128 0x3f
+ 2147 0240 19       		.uleb128 0x19
+ 2148 0241 3C       		.uleb128 0x3c
+ 2149 0242 19       		.uleb128 0x19
+ 2150 0243 6E       		.uleb128 0x6e
+ 2151 0244 0E       		.uleb128 0xe
+ 2152 0245 03       		.uleb128 0x3
+ 2153 0246 0E       		.uleb128 0xe
+ 2154 0247 3A       		.uleb128 0x3a
+ 2155 0248 0B       		.uleb128 0xb
+ 2156 0249 3B       		.uleb128 0x3b
+ 2157 024a 05       		.uleb128 0x5
+ 2158 024b 00       		.byte	0
+ 2159 024c 00       		.byte	0
+ 2160 024d 00       		.byte	0
+ 2161              		.section	.debug_loc,"",%progbits
+ 2162              	.Ldebug_loc0:
+ 2163              	.LLST0:
+ 2164 0000 54000000 		.4byte	.LVL3
+ 2165 0004 6C000000 		.4byte	.LVL5
+ 2166 0008 0200     		.2byte	0x2
+ 2167 000a 30       		.byte	0x30
+ 2168 000b 9F       		.byte	0x9f
+ 2169 000c 6C000000 		.4byte	.LVL5
+ 2170 0010 7A000000 		.4byte	.LVL8
+ 2171 0014 0100     		.2byte	0x1
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 48
+
+
+ 2172 0016 54       		.byte	0x54
+ 2173 0017 7A000000 		.4byte	.LVL8
+ 2174 001b 7C000000 		.4byte	.LVL9
+ 2175 001f 0200     		.2byte	0x2
+ 2176 0021 30       		.byte	0x30
+ 2177 0022 9F       		.byte	0x9f
+ 2178 0023 7C000000 		.4byte	.LVL9
+ 2179 0027 86000000 		.4byte	.LVL10
+ 2180 002b 0100     		.2byte	0x1
+ 2181 002d 54       		.byte	0x54
+ 2182 002e 00000000 		.4byte	0
+ 2183 0032 00000000 		.4byte	0
+ 2184              	.LLST1:
+ 2185 0036 64000000 		.4byte	.LVL4
+ 2186 003a 8A000000 		.4byte	.LVL11
+ 2187 003e 0100     		.2byte	0x1
+ 2188 0040 55       		.byte	0x55
+ 2189 0041 00000000 		.4byte	0
+ 2190 0045 00000000 		.4byte	0
+ 2191              	.LLST2:
+ 2192 0049 6C000000 		.4byte	.LVL5
+ 2193 004d 75000000 		.4byte	.LVL6-1
+ 2194 0051 0700     		.2byte	0x7
+ 2195 0053 74       		.byte	0x74
+ 2196 0054 00       		.sleb128 0
+ 2197 0055 32       		.byte	0x32
+ 2198 0056 24       		.byte	0x24
+ 2199 0057 75       		.byte	0x75
+ 2200 0058 00       		.sleb128 0
+ 2201 0059 22       		.byte	0x22
+ 2202 005a 00000000 		.4byte	0
+ 2203 005e 00000000 		.4byte	0
+ 2204              	.LLST3:
+ 2205 0062 00000000 		.4byte	.LVL12
+ 2206 0066 10000000 		.4byte	.LVL14
+ 2207 006a 0100     		.2byte	0x1
+ 2208 006c 50       		.byte	0x50
+ 2209 006d 10000000 		.4byte	.LVL14
+ 2210 0071 72000000 		.4byte	.LVL26
+ 2211 0075 0100     		.2byte	0x1
+ 2212 0077 5A       		.byte	0x5a
+ 2213 0078 72000000 		.4byte	.LVL26
+ 2214 007c 7C000000 		.4byte	.LFE133
+ 2215 0080 0400     		.2byte	0x4
+ 2216 0082 F3       		.byte	0xf3
+ 2217 0083 01       		.uleb128 0x1
+ 2218 0084 50       		.byte	0x50
+ 2219 0085 9F       		.byte	0x9f
+ 2220 0086 00000000 		.4byte	0
+ 2221 008a 00000000 		.4byte	0
+ 2222              	.LLST4:
+ 2223 008e 00000000 		.4byte	.LVL12
+ 2224 0092 10000000 		.4byte	.LVL14
+ 2225 0096 0100     		.2byte	0x1
+ 2226 0098 51       		.byte	0x51
+ 2227 0099 10000000 		.4byte	.LVL14
+ 2228 009d 7C000000 		.4byte	.LFE133
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 49
+
+
+ 2229 00a1 0400     		.2byte	0x4
+ 2230 00a3 F3       		.byte	0xf3
+ 2231 00a4 01       		.uleb128 0x1
+ 2232 00a5 51       		.byte	0x51
+ 2233 00a6 9F       		.byte	0x9f
+ 2234 00a7 00000000 		.4byte	0
+ 2235 00ab 00000000 		.4byte	0
+ 2236              	.LLST5:
+ 2237 00af 0C000000 		.4byte	.LVL13
+ 2238 00b3 10000000 		.4byte	.LVL14
+ 2239 00b7 0200     		.2byte	0x2
+ 2240 00b9 30       		.byte	0x30
+ 2241 00ba 9F       		.byte	0x9f
+ 2242 00bb 10000000 		.4byte	.LVL14
+ 2243 00bf 62000000 		.4byte	.LVL24
+ 2244 00c3 0100     		.2byte	0x1
+ 2245 00c5 56       		.byte	0x56
+ 2246 00c6 64000000 		.4byte	.LVL25
+ 2247 00ca 72000000 		.4byte	.LVL26
+ 2248 00ce 0100     		.2byte	0x1
+ 2249 00d0 56       		.byte	0x56
+ 2250 00d1 00000000 		.4byte	0
+ 2251 00d5 00000000 		.4byte	0
+ 2252              	.LLST6:
+ 2253 00d9 2E000000 		.4byte	.LVL15
+ 2254 00dd 60000000 		.4byte	.LVL23
+ 2255 00e1 0100     		.2byte	0x1
+ 2256 00e3 55       		.byte	0x55
+ 2257 00e4 00000000 		.4byte	0
+ 2258 00e8 00000000 		.4byte	0
+ 2259              	.LLST7:
+ 2260 00ec 32000000 		.4byte	.LVL16
+ 2261 00f0 60000000 		.4byte	.LVL23
+ 2262 00f4 0100     		.2byte	0x1
+ 2263 00f6 59       		.byte	0x59
+ 2264 00f7 00000000 		.4byte	0
+ 2265 00fb 00000000 		.4byte	0
+ 2266              	.LLST8:
+ 2267 00ff 32000000 		.4byte	.LVL16
+ 2268 0103 36000000 		.4byte	.LVL17
+ 2269 0107 0200     		.2byte	0x2
+ 2270 0109 30       		.byte	0x30
+ 2271 010a 9F       		.byte	0x9f
+ 2272 010b 36000000 		.4byte	.LVL17
+ 2273 010f 5A000000 		.4byte	.LVL21
+ 2274 0113 0100     		.2byte	0x1
+ 2275 0115 54       		.byte	0x54
+ 2276 0116 5C000000 		.4byte	.LVL22
+ 2277 011a 60000000 		.4byte	.LVL23
+ 2278 011e 0100     		.2byte	0x1
+ 2279 0120 54       		.byte	0x54
+ 2280 0121 00000000 		.4byte	0
+ 2281 0125 00000000 		.4byte	0
+ 2282              		.section	.debug_aranges,"",%progbits
+ 2283 0000 4C000000 		.4byte	0x4c
+ 2284 0004 0200     		.2byte	0x2
+ 2285 0006 00000000 		.4byte	.Ldebug_info0
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 50
+
+
+ 2286 000a 04       		.byte	0x4
+ 2287 000b 00       		.byte	0
+ 2288 000c 0000     		.2byte	0
+ 2289 000e 0000     		.2byte	0
+ 2290 0010 00000000 		.4byte	.LFB134
+ 2291 0014 24000000 		.4byte	.LFE134-.LFB134
+ 2292 0018 00000000 		.4byte	.LFB137
+ 2293 001c 02000000 		.4byte	.LFE137-.LFB137
+ 2294 0020 00000000 		.4byte	.LFB139
+ 2295 0024 94000000 		.4byte	.LFE139-.LFB139
+ 2296 0028 00000000 		.4byte	.LFB133
+ 2297 002c 7C000000 		.4byte	.LFE133-.LFB133
+ 2298 0030 00000000 		.4byte	.LFB135
+ 2299 0034 02000000 		.4byte	.LFE135-.LFB135
+ 2300 0038 00000000 		.4byte	.LFB136
+ 2301 003c 02000000 		.4byte	.LFE136-.LFB136
+ 2302 0040 00000000 		.4byte	.LFB138
+ 2303 0044 02000000 		.4byte	.LFE138-.LFB138
+ 2304 0048 00000000 		.4byte	0
+ 2305 004c 00000000 		.4byte	0
+ 2306              		.section	.debug_ranges,"",%progbits
+ 2307              	.Ldebug_ranges0:
+ 2308 0000 00000000 		.4byte	.LFB134
+ 2309 0004 24000000 		.4byte	.LFE134
+ 2310 0008 00000000 		.4byte	.LFB137
+ 2311 000c 02000000 		.4byte	.LFE137
+ 2312 0010 00000000 		.4byte	.LFB139
+ 2313 0014 94000000 		.4byte	.LFE139
+ 2314 0018 00000000 		.4byte	.LFB133
+ 2315 001c 7C000000 		.4byte	.LFE133
+ 2316 0020 00000000 		.4byte	.LFB135
+ 2317 0024 02000000 		.4byte	.LFE135
+ 2318 0028 00000000 		.4byte	.LFB136
+ 2319 002c 02000000 		.4byte	.LFE136
+ 2320 0030 00000000 		.4byte	.LFB138
+ 2321 0034 02000000 		.4byte	.LFE138
+ 2322 0038 00000000 		.4byte	0
+ 2323 003c 00000000 		.4byte	0
+ 2324              		.section	.debug_line,"",%progbits
+ 2325              	.Ldebug_line0:
+ 2326 0000 67040000 		.section	.debug_str,"MS",%progbits,1
+ 2326      02008003 
+ 2326      00000201 
+ 2326      FB0E0D00 
+ 2326      01010101 
+ 2327              	.LASF62:
+ 2328 0000 45565F4B 		.ascii	"EV_KEYLEFT\000"
+ 2328      45594C45 
+ 2328      465400
+ 2329              	.LASF112:
+ 2330 000b 6D617856 		.ascii	"maxValue\000"
+ 2330      616C7565 
+ 2330      00
+ 2331              	.LASF54:
+ 2332 0014 52435F45 		.ascii	"RC_ERROR_INVALID_STATE\000"
+ 2332      52524F52 
+ 2332      5F494E56 
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 51
+
+
+ 2332      414C4944 
+ 2332      5F535441 
+ 2333              	.LASF20:
+ 2334 002b 73697A65 		.ascii	"size_t\000"
+ 2334      5F7400
+ 2335              	.LASF65:
+ 2336 0032 45565F31 		.ascii	"EV_1MIN\000"
+ 2336      4D494E00 
+ 2337              	.LASF119:
+ 2338 003a 70546173 		.ascii	"pTaskArray\000"
+ 2338      6B417272 
+ 2338      617900
+ 2339              	.LASF59:
+ 2340 0045 5265736F 		.ascii	"ResourceType\000"
+ 2340      75726365 
+ 2340      54797065 
+ 2340      00
+ 2341              	.LASF3:
+ 2342 0052 5F5F7569 		.ascii	"__uint8_t\000"
+ 2342      6E74385F 
+ 2342      7400
+ 2343              	.LASF57:
+ 2344 005c 52435F74 		.ascii	"RC_t\000"
+ 2344      00
+ 2345              	.LASF36:
+ 2346 0061 52435F45 		.ascii	"RC_ERROR_RANGE\000"
+ 2346      52524F52 
+ 2346      5F52414E 
+ 2346      474500
+ 2347              	.LASF113:
+ 2348 0070 74797065 		.ascii	"type\000"
+ 2348      00
+ 2349              	.LASF25:
+ 2350 0075 45455F55 		.ascii	"EE_UREG\000"
+ 2350      52454700 
+ 2351              	.LASF11:
+ 2352 007d 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2352      206C6F6E 
+ 2352      6720756E 
+ 2352      7369676E 
+ 2352      65642069 
+ 2353              	.LASF153:
+ 2354 0094 45455F6F 		.ascii	"EE_oo_SetEvent\000"
+ 2354      6F5F5365 
+ 2354      74457665 
+ 2354      6E7400
+ 2355              	.LASF52:
+ 2356 00a3 52435F45 		.ascii	"RC_ERROR_BAD_DATA\000"
+ 2356      52524F52 
+ 2356      5F424144 
+ 2356      5F444154 
+ 2356      4100
+ 2357              	.LASF147:
+ 2358 00b5 434C4F43 		.ascii	"CLOCK_Widget_Transitions_Size\000"
+ 2358      4B5F5769 
+ 2358      64676574 
+ 2358      5F547261 
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 52
+
+
+ 2358      6E736974 
+ 2359              	.LASF42:
+ 2360 00d3 52435F45 		.ascii	"RC_ERROR_TIME_OUT\000"
+ 2360      52524F52 
+ 2360      5F54494D 
+ 2360      455F4F55 
+ 2360      5400
+ 2361              	.LASF94:
+ 2362 00e5 7265736F 		.ascii	"resourceActive\000"
+ 2362      75726365 
+ 2362      41637469 
+ 2362      766500
+ 2363              	.LASF137:
+ 2364 00f4 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 2364      52784275 
+ 2364      66666572 
+ 2364      00
+ 2365              	.LASF121:
+ 2366 0101 434C4F43 		.ascii	"CLOCK__incrementWidget\000"
+ 2366      4B5F5F69 
+ 2366      6E637265 
+ 2366      6D656E74 
+ 2366      57696467 
+ 2367              	.LASF10:
+ 2368 0118 6C6F6E67 		.ascii	"long long int\000"
+ 2368      206C6F6E 
+ 2368      6720696E 
+ 2368      7400
+ 2369              	.LASF0:
+ 2370 0126 7369676E 		.ascii	"signed char\000"
+ 2370      65642063 
+ 2370      68617200 
+ 2371              	.LASF29:
+ 2372 0132 4576656E 		.ascii	"EventMaskType\000"
+ 2372      744D6173 
+ 2372      6B547970 
+ 2372      6500
+ 2373              	.LASF88:
+ 2374 0140 65764F6E 		.ascii	"evOnUpdate\000"
+ 2374      55706461 
+ 2374      746500
+ 2375              	.LASF130:
+ 2376 014b 434C4F43 		.ascii	"CLOCK__updateDisplay\000"
+ 2376      4B5F5F75 
+ 2376      70646174 
+ 2376      65446973 
+ 2376      706C6179 
+ 2377              	.LASF143:
+ 2378 0160 53544154 		.ascii	"STATE_CLOCK_W_ISDISPLAYING_Transitions\000"
+ 2378      455F434C 
+ 2378      4F434B5F 
+ 2378      575F4953 
+ 2378      44495350 
+ 2379              	.LASF151:
+ 2380 0187 434C4F43 		.ascii	"CLOCK__setDisplayFonts\000"
+ 2380      4B5F5F73 
+ 2380      65744469 
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 53
+
+
+ 2380      73706C61 
+ 2380      79466F6E 
+ 2381              	.LASF40:
+ 2382 019e 52435F45 		.ascii	"RC_ERROR_BUFFER_EMTPY\000"
+ 2382      52524F52 
+ 2382      5F425546 
+ 2382      4645525F 
+ 2382      454D5450 
+ 2383              	.LASF110:
+ 2384 01b4 73746174 		.ascii	"state\000"
+ 2384      6500
+ 2385              	.LASF7:
+ 2386 01ba 6C6F6E67 		.ascii	"long int\000"
+ 2386      20696E74 
+ 2386      00
+ 2387              	.LASF131:
+ 2388 01c3 63757272 		.ascii	"currentWidgetContext\000"
+ 2388      656E7457 
+ 2388      69646765 
+ 2388      74436F6E 
+ 2388      74657874 
+ 2389              	.LASF128:
+ 2390 01d8 434C4F43 		.ascii	"CLOCK__incrementHours\000"
+ 2390      4B5F5F69 
+ 2390      6E637265 
+ 2390      6D656E74 
+ 2390      486F7572 
+ 2391              	.LASF111:
+ 2392 01ee 76616C75 		.ascii	"valuePtr\000"
+ 2392      65507472 
+ 2392      00
+ 2393              	.LASF43:
+ 2394 01f7 52435F45 		.ascii	"RC_ERROR_OPEN\000"
+ 2394      52524F52 
+ 2394      5F4F5045 
+ 2394      4E00
+ 2395              	.LASF64:
+ 2396 0205 45565F32 		.ascii	"EV_250MS\000"
+ 2396      35304D53 
+ 2396      00
+ 2397              	.LASF18:
+ 2398 020e 646F7562 		.ascii	"double\000"
+ 2398      6C6500
+ 2399              	.LASF98:
+ 2400 0215 53435F44 		.ascii	"SC_DISPLAYDATA_s\000"
+ 2400      4953504C 
+ 2400      41594441 
+ 2400      54415F73 
+ 2400      00
+ 2401              	.LASF102:
+ 2402 0226 53435F44 		.ascii	"SC_DISPLAYDATA_t\000"
+ 2402      4953504C 
+ 2402      41594441 
+ 2402      54415F74 
+ 2402      00
+ 2403              	.LASF78:
+ 2404 0237 5254455F 		.ascii	"RTE_SIGNALSTATUS_VALID\000"
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 54
+
+
+ 2404      5349474E 
+ 2404      414C5354 
+ 2404      41545553 
+ 2404      5F56414C 
+ 2405              	.LASF72:
+ 2406 024e 63757272 		.ascii	"currentState\000"
+ 2406      656E7453 
+ 2406      74617465 
+ 2406      00
+ 2407              	.LASF90:
+ 2408 025b 6F6E5570 		.ascii	"onUpdateTaskCount\000"
+ 2408      64617465 
+ 2408      5461736B 
+ 2408      436F756E 
+ 2408      7400
+ 2409              	.LASF135:
+ 2410 026d 45455F73 		.ascii	"EE_std_endcycle_next_tid\000"
+ 2410      74645F65 
+ 2410      6E646379 
+ 2410      636C655F 
+ 2410      6E657874 
+ 2411              	.LASF8:
+ 2412 0286 5F5F7569 		.ascii	"__uint32_t\000"
+ 2412      6E743332 
+ 2412      5F7400
+ 2413              	.LASF70:
+ 2414 0291 61637469 		.ascii	"action\000"
+ 2414      6F6E00
+ 2415              	.LASF139:
+ 2416 0298 675F686F 		.ascii	"g_hours\000"
+ 2416      75727300 
+ 2417              	.LASF107:
+ 2418 02a0 434C4F43 		.ascii	"CLOCK_W_ISFOCUS\000"
+ 2418      4B5F575F 
+ 2418      4953464F 
+ 2418      43555300 
+ 2419              	.LASF105:
+ 2420 02b0 57696467 		.ascii	"WidgetType\000"
+ 2420      65745479 
+ 2420      706500
+ 2421              	.LASF66:
+ 2422 02bb 4556454E 		.ascii	"EVENT_enum_t\000"
+ 2422      545F656E 
+ 2422      756D5F74 
+ 2422      00
+ 2423              	.LASF61:
+ 2424 02c8 45565F4B 		.ascii	"EV_KEYRIGHT\000"
+ 2424      45595249 
+ 2424      47485400 
+ 2425              	.LASF27:
+ 2426 02d4 45455F54 		.ascii	"EE_TID\000"
+ 2426      494400
+ 2427              	.LASF99:
+ 2428 02db 76616C75 		.ascii	"value\000"
+ 2428      6500
+ 2429              	.LASF12:
+ 2430 02e1 756E7369 		.ascii	"unsigned int\000"
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 55
+
+
+ 2430      676E6564 
+ 2430      20696E74 
+ 2430      00
+ 2431              	.LASF138:
+ 2432 02ee 534F5F44 		.ascii	"SO_DISPLAYDATA_signal\000"
+ 2432      4953504C 
+ 2432      41594441 
+ 2432      54415F73 
+ 2432      69676E61 
+ 2433              	.LASF14:
+ 2434 0304 75696E74 		.ascii	"uint16_t\000"
+ 2434      31365F74 
+ 2434      00
+ 2435              	.LASF55:
+ 2436 030d 52435F45 		.ascii	"RC_ERROR_UNKNOWN\000"
+ 2436      52524F52 
+ 2436      5F554E4B 
+ 2436      4E4F574E 
+ 2436      00
+ 2437              	.LASF123:
+ 2438 031e 6C656176 		.ascii	"leavingEditMode\000"
+ 2438      696E6745 
+ 2438      6469744D 
+ 2438      6F646500 
+ 2439              	.LASF81:
+ 2440 032e 696E7648 		.ascii	"invHours\000"
+ 2440      6F757273 
+ 2440      00
+ 2441              	.LASF87:
+ 2442 0337 6F757444 		.ascii	"outDriver\000"
+ 2442      72697665 
+ 2442      7200
+ 2443              	.LASF44:
+ 2444 0341 52435F45 		.ascii	"RC_ERROR_CHECKSUM\000"
+ 2444      52524F52 
+ 2444      5F434845 
+ 2444      434B5355 
+ 2444      4D00
+ 2445              	.LASF9:
+ 2446 0353 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2446      20756E73 
+ 2446      69676E65 
+ 2446      6420696E 
+ 2446      7400
+ 2447              	.LASF33:
+ 2448 0365 52435F45 		.ascii	"RC_ERROR_NULL\000"
+ 2448      52524F52 
+ 2448      5F4E554C 
+ 2448      4C00
+ 2449              	.LASF31:
+ 2450 0373 52435F53 		.ascii	"RC_SUCCESS\000"
+ 2450      55434345 
+ 2450      535300
+ 2451              	.LASF108:
+ 2452 037e 434C4F43 		.ascii	"CLOCK_W_ISAUTOINCREMENT\000"
+ 2452      4B5F575F 
+ 2452      49534155 
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 56
+
+
+ 2452      544F494E 
+ 2452      4352454D 
+ 2453              	.LASF75:
+ 2454 0396 53544154 		.ascii	"STATE_stateOuterTransitionTable_t\000"
+ 2454      455F7374 
+ 2454      6174654F 
+ 2454      75746572 
+ 2454      5472616E 
+ 2455              	.LASF67:
+ 2456 03b8 6576656E 		.ascii	"event\000"
+ 2456      7400
+ 2457              	.LASF127:
+ 2458 03be 73697A65 		.ascii	"size\000"
+ 2458      00
+ 2459              	.LASF28:
+ 2460 03c3 5461736B 		.ascii	"TaskType\000"
+ 2460      54797065 
+ 2460      00
+ 2461              	.LASF132:
+ 2462 03cc 45455F6F 		.ascii	"EE_oo_IRQ_disable_count\000"
+ 2462      6F5F4952 
+ 2462      515F6469 
+ 2462      7361626C 
+ 2462      655F636F 
+ 2463              	.LASF95:
+ 2464 03e4 7265736F 		.ascii	"resource\000"
+ 2464      75726365 
+ 2464      00
+ 2465              	.LASF39:
+ 2466 03ed 52435F45 		.ascii	"RC_ERROR_BUFFER_FULL\000"
+ 2466      52524F52 
+ 2466      5F425546 
+ 2466      4645525F 
+ 2466      46554C4C 
+ 2467              	.LASF146:
+ 2468 0402 434C4F43 		.ascii	"CLOCK_Widget_Transitions\000"
+ 2468      4B5F5769 
+ 2468      64676574 
+ 2468      5F547261 
+ 2468      6E736974 
+ 2469              	.LASF60:
+ 2470 041b 45565F4E 		.ascii	"EV_NONE\000"
+ 2470      4F4E4500 
+ 2471              	.LASF49:
+ 2472 0423 52435F45 		.ascii	"RC_ERROR_WRITE_FAILS\000"
+ 2472      52524F52 
+ 2472      5F575249 
+ 2472      54455F46 
+ 2472      41494C53 
+ 2473              	.LASF144:
+ 2474 0438 53544154 		.ascii	"STATE_CLOCK_W_ISFOCUS_Transitions\000"
+ 2474      455F434C 
+ 2474      4F434B5F 
+ 2474      575F4953 
+ 2474      464F4355 
+ 2475              	.LASF76:
+ 2476 045a 5254455F 		.ascii	"RTE_SIGNALSTATUS_STARTUP\000"
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 57
+
+
+ 2476      5349474E 
+ 2476      414C5354 
+ 2476      41545553 
+ 2476      5F535441 
+ 2477              	.LASF150:
+ 2478 0473 433A5C55 		.ascii	"C:\\Users\\bolob\\Documents\\PSoC Creator\\Clock\\E"
+ 2478      73657273 
+ 2478      5C626F6C 
+ 2478      6F625C44 
+ 2478      6F63756D 
+ 2479 04a0 6C656374 		.ascii	"lectronic_Clock.cydsn\000"
+ 2479      726F6E69 
+ 2479      635F436C 
+ 2479      6F636B2E 
+ 2479      63796473 
+ 2480              	.LASF51:
+ 2481 04b6 52435F45 		.ascii	"RC_ERROR_BAD_PARAM\000"
+ 2481      52524F52 
+ 2481      5F424144 
+ 2481      5F504152 
+ 2481      414D00
+ 2482              	.LASF50:
+ 2483 04c9 52435F45 		.ascii	"RC_ERROR_NOT_MATCH\000"
+ 2483      52524F52 
+ 2483      5F4E4F54 
+ 2483      5F4D4154 
+ 2483      434800
+ 2484              	.LASF152:
+ 2485 04dc 57494447 		.ascii	"WIDGET__processEvent\000"
+ 2485      45545F5F 
+ 2485      70726F63 
+ 2485      65737345 
+ 2485      76656E74 
+ 2486              	.LASF114:
+ 2487 04f1 436C6F63 		.ascii	"ClockWidgetInstance\000"
+ 2487      6B576964 
+ 2487      67657449 
+ 2487      6E737461 
+ 2487      6E636500 
+ 2488              	.LASF22:
+ 2489 0505 73697A65 		.ascii	"sizetype\000"
+ 2489      74797065 
+ 2489      00
+ 2490              	.LASF30:
+ 2491 050e 626F6F6C 		.ascii	"boolean_t\000"
+ 2491      65616E5F 
+ 2491      7400
+ 2492              	.LASF133:
+ 2493 0518 45455F6F 		.ascii	"EE_oo_IRQ_suspend_status\000"
+ 2493      6F5F4952 
+ 2493      515F7375 
+ 2493      7370656E 
+ 2493      645F7374 
+ 2494              	.LASF47:
+ 2495 0531 52435F45 		.ascii	"RC_ERROR_INVALID\000"
+ 2495      52524F52 
+ 2495      5F494E56 
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 58
+
+
+ 2495      414C4944 
+ 2495      00
+ 2496              	.LASF134:
+ 2497 0542 45455F41 		.ascii	"EE_ApplicationMode\000"
+ 2497      70706C69 
+ 2497      63617469 
+ 2497      6F6E4D6F 
+ 2497      646500
+ 2498              	.LASF85:
+ 2499 0555 53435F44 		.ascii	"SC_DISPLAYDATA_driverOut_t\000"
+ 2499      4953504C 
+ 2499      41594441 
+ 2499      54415F64 
+ 2499      72697665 
+ 2500              	.LASF53:
+ 2501 0570 52435F45 		.ascii	"RC_ERROR_CANCELED\000"
+ 2501      52524F52 
+ 2501      5F43414E 
+ 2501      43454C45 
+ 2501      4400
+ 2502              	.LASF38:
+ 2503 0582 52435F45 		.ascii	"RC_ERROR_UNDERRUN\000"
+ 2503      52524F52 
+ 2503      5F554E44 
+ 2503      45525255 
+ 2503      4E00
+ 2504              	.LASF48:
+ 2505 0594 52435F45 		.ascii	"RC_ERROR_READ_FAILS\000"
+ 2505      52524F52 
+ 2505      5F524541 
+ 2505      445F4641 
+ 2505      494C5300 
+ 2506              	.LASF103:
+ 2507 05a8 57494447 		.ascii	"WIDGET_MINUTE\000"
+ 2507      45545F4D 
+ 2507      494E5554 
+ 2507      4500
+ 2508              	.LASF86:
+ 2509 05b6 696E4472 		.ascii	"inDriver\000"
+ 2509      69766572 
+ 2509      00
+ 2510              	.LASF32:
+ 2511 05bf 52435F45 		.ascii	"RC_ERROR\000"
+ 2511      52524F52 
+ 2511      00
+ 2512              	.LASF17:
+ 2513 05c8 666C6F61 		.ascii	"float\000"
+ 2513      7400
+ 2514              	.LASF83:
+ 2515 05ce 53435F44 		.ascii	"SC_DISPLAYDATA_data_t\000"
+ 2515      4953504C 
+ 2515      41594441 
+ 2515      54415F64 
+ 2515      6174615F 
+ 2516              	.LASF145:
+ 2517 05e4 53544154 		.ascii	"STATE_CLOCK_W_ISAUTOINCREMENT_Transitions\000"
+ 2517      455F434C 
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 59
+
+
+ 2517      4F434B5F 
+ 2517      575F4953 
+ 2517      4155544F 
+ 2518              	.LASF84:
+ 2519 060e 53435F44 		.ascii	"SC_DISPLAYDATA_driverIn_t\000"
+ 2519      4953504C 
+ 2519      41594441 
+ 2519      54415F64 
+ 2519      72697665 
+ 2520              	.LASF41:
+ 2521 0628 52435F45 		.ascii	"RC_ERROR_BUSY\000"
+ 2521      52524F52 
+ 2521      5F425553 
+ 2521      5900
+ 2522              	.LASF92:
+ 2523 0636 6F6E4572 		.ascii	"onErrorTaskCount\000"
+ 2523      726F7254 
+ 2523      61736B43 
+ 2523      6F756E74 
+ 2523      00
+ 2524              	.LASF46:
+ 2525 0647 52435F45 		.ascii	"RC_ERROR_WRITE_ONLY\000"
+ 2525      52524F52 
+ 2525      5F575249 
+ 2525      54455F4F 
+ 2525      4E4C5900 
+ 2526              	.LASF15:
+ 2527 065b 696E7433 		.ascii	"int32_t\000"
+ 2527      325F7400 
+ 2528              	.LASF1:
+ 2529 0663 756E7369 		.ascii	"unsigned char\000"
+ 2529      676E6564 
+ 2529      20636861 
+ 2529      7200
+ 2530              	.LASF71:
+ 2531 0671 53544154 		.ascii	"STATE_stateInnerTransitionTable_t\000"
+ 2531      455F7374 
+ 2531      61746549 
+ 2531      6E6E6572 
+ 2531      5472616E 
+ 2532              	.LASF2:
+ 2533 0693 73686F72 		.ascii	"short int\000"
+ 2533      7420696E 
+ 2533      7400
+ 2534              	.LASF125:
+ 2535 069d 77696467 		.ascii	"widget\000"
+ 2535      657400
+ 2536              	.LASF142:
+ 2537 06a4 434C4F43 		.ascii	"CLOCK_minutes\000"
+ 2537      4B5F6D69 
+ 2537      6E757465 
+ 2537      7300
+ 2538              	.LASF126:
+ 2539 06b2 7461626C 		.ascii	"table\000"
+ 2539      6500
+ 2540              	.LASF91:
+ 2541 06b8 6F6E5570 		.ascii	"onUpdateTasks\000"
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 60
+
+
+ 2541      64617465 
+ 2541      5461736B 
+ 2541      7300
+ 2542              	.LASF34:
+ 2543 06c6 52435F45 		.ascii	"RC_ERROR_ZERO\000"
+ 2543      52524F52 
+ 2543      5F5A4552 
+ 2543      4F00
+ 2544              	.LASF148:
+ 2545 06d4 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 2545      43313120 
+ 2545      352E342E 
+ 2545      31203230 
+ 2545      31363036 
+ 2546 0707 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 2546      20726576 
+ 2546      6973696F 
+ 2546      6E203233 
+ 2546      37373135 
+ 2547 073a 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 2547      66756E63 
+ 2547      74696F6E 
+ 2547      2D736563 
+ 2547      74696F6E 
+ 2548              	.LASF89:
+ 2549 0762 65764F6E 		.ascii	"evOnError\000"
+ 2549      4572726F 
+ 2549      7200
+ 2550              	.LASF116:
+ 2551 076c 5254455F 		.ascii	"RTE_SC_DISPLAYDATA_set\000"
+ 2551      53435F44 
+ 2551      4953504C 
+ 2551      41594441 
+ 2551      54415F73 
+ 2552              	.LASF101:
+ 2553 0783 70536967 		.ascii	"pSigCfg\000"
+ 2553      43666700 
+ 2554              	.LASF16:
+ 2555 078b 75696E74 		.ascii	"uint32_t\000"
+ 2555      33325F74 
+ 2555      00
+ 2556              	.LASF117:
+ 2557 0794 7369676E 		.ascii	"signal\000"
+ 2557      616C00
+ 2558              	.LASF97:
+ 2559 079b 53435F44 		.ascii	"SC_DISPLAYDATA_cfg_s\000"
+ 2559      4953504C 
+ 2559      41594441 
+ 2559      54415F63 
+ 2559      66675F73 
+ 2560              	.LASF96:
+ 2561 07b0 53435F44 		.ascii	"SC_DISPLAYDATA_cfg_t\000"
+ 2561      4953504C 
+ 2561      41594441 
+ 2561      54415F63 
+ 2561      66675F74 
+ 2562              	.LASF141:
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 61
+
+
+ 2563 07c5 434C4F43 		.ascii	"CLOCK_hours\000"
+ 2563      4B5F686F 
+ 2563      75727300 
+ 2564              	.LASF45:
+ 2565 07d1 52435F45 		.ascii	"RC_ERROR_READ_ONLY\000"
+ 2565      52524F52 
+ 2565      5F524541 
+ 2565      445F4F4E 
+ 2565      4C5900
+ 2566              	.LASF21:
+ 2567 07e4 6C6F6E67 		.ascii	"long double\000"
+ 2567      20646F75 
+ 2567      626C6500 
+ 2568              	.LASF19:
+ 2569 07f0 63686172 		.ascii	"char\000"
+ 2569      00
+ 2570              	.LASF77:
+ 2571 07f5 5254455F 		.ascii	"RTE_SIGNALSTATUS_INITIALIZED\000"
+ 2571      5349474E 
+ 2571      414C5354 
+ 2571      41545553 
+ 2571      5F494E49 
+ 2572              	.LASF4:
+ 2573 0812 5F5F7569 		.ascii	"__uint16_t\000"
+ 2573      6E743136 
+ 2573      5F7400
+ 2574              	.LASF6:
+ 2575 081d 5F5F696E 		.ascii	"__int32_t\000"
+ 2575      7433325F 
+ 2575      7400
+ 2576              	.LASF56:
+ 2577 0827 52435F45 		.ascii	"RC_ERROR_NOT_IMPLEMENTED\000"
+ 2577      52524F52 
+ 2577      5F4E4F54 
+ 2577      5F494D50 
+ 2577      4C454D45 
+ 2578              	.LASF109:
+ 2579 0840 436C6F63 		.ascii	"ClockWidgetState\000"
+ 2579      6B576964 
+ 2579      67657453 
+ 2579      74617465 
+ 2579      00
+ 2580              	.LASF74:
+ 2581 0851 7461626C 		.ascii	"tableSize\000"
+ 2581      6553697A 
+ 2581      6500
+ 2582              	.LASF37:
+ 2583 085b 52435F45 		.ascii	"RC_ERROR_OVERRUN\000"
+ 2583      52524F52 
+ 2583      5F4F5645 
+ 2583      5252554E 
+ 2583      00
+ 2584              	.LASF120:
+ 2585 086c 7461736B 		.ascii	"task\000"
+ 2585      00
+ 2586              	.LASF124:
+ 2587 0871 64617461 		.ascii	"data\000"
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 62
+
+
+ 2587      00
+ 2588              	.LASF80:
+ 2589 0876 5254455F 		.ascii	"RTE_signalStatus_t\000"
+ 2589      7369676E 
+ 2589      616C5374 
+ 2589      61747573 
+ 2589      5F7400
+ 2590              	.LASF35:
+ 2591 0889 52435F45 		.ascii	"RC_ERROR_MEMORY\000"
+ 2591      52524F52 
+ 2591      5F4D454D 
+ 2591      4F525900 
+ 2592              	.LASF5:
+ 2593 0899 73686F72 		.ascii	"short unsigned int\000"
+ 2593      7420756E 
+ 2593      7369676E 
+ 2593      65642069 
+ 2593      6E7400
+ 2594              	.LASF122:
+ 2595 08ac 434C4F43 		.ascii	"CLOCK__updateTime\000"
+ 2595      4B5F5F75 
+ 2595      70646174 
+ 2595      6554696D 
+ 2595      6500
+ 2596              	.LASF106:
+ 2597 08be 434C4F43 		.ascii	"CLOCK_W_ISDISPLAYING\000"
+ 2597      4B5F575F 
+ 2597      49534449 
+ 2597      53504C41 
+ 2597      59494E47 
+ 2598              	.LASF58:
+ 2599 08d3 5461736B 		.ascii	"TaskTypeArray\000"
+ 2599      54797065 
+ 2599      41727261 
+ 2599      7900
+ 2600              	.LASF118:
+ 2601 08e1 7461736B 		.ascii	"taskNum\000"
+ 2601      4E756D00 
+ 2602              	.LASF82:
+ 2603 08e9 696E764D 		.ascii	"invMinutes\000"
+ 2603      696E7574 
+ 2603      657300
+ 2604              	.LASF79:
+ 2605 08f4 5254455F 		.ascii	"RTE_SIGNALSTATUS_INVALID\000"
+ 2605      5349474E 
+ 2605      414C5354 
+ 2605      41545553 
+ 2605      5F494E56 
+ 2606              	.LASF100:
+ 2607 090d 73746174 		.ascii	"status\000"
+ 2607      757300
+ 2608              	.LASF136:
+ 2609 0914 45455F49 		.ascii	"EE_IRQ_nesting_level\000"
+ 2609      52515F6E 
+ 2609      65737469 
+ 2609      6E675F6C 
+ 2609      6576656C 
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 63
+
+
+ 2610              	.LASF24:
+ 2611 0929 45455F55 		.ascii	"EE_UINT32\000"
+ 2611      494E5433 
+ 2611      3200
+ 2612              	.LASF115:
+ 2613 0933 5254455F 		.ascii	"RTE_SC_DISPLAYDATA_get\000"
+ 2613      53435F44 
+ 2613      4953504C 
+ 2613      41594441 
+ 2613      54415F67 
+ 2614              	.LASF23:
+ 2615 094a 45455F49 		.ascii	"EE_INT32\000"
+ 2615      4E543332 
+ 2615      00
+ 2616              	.LASF13:
+ 2617 0953 75696E74 		.ascii	"uint8_t\000"
+ 2617      385F7400 
+ 2618              	.LASF129:
+ 2619 095b 434C4F43 		.ascii	"CLOCK__incrementMinutes\000"
+ 2619      4B5F5F69 
+ 2619      6E637265 
+ 2619      6D656E74 
+ 2619      4D696E75 
+ 2620              	.LASF73:
+ 2621 0973 7472616E 		.ascii	"transition\000"
+ 2621      73697469 
+ 2621      6F6E00
+ 2622              	.LASF68:
+ 2623 097e 6E657874 		.ascii	"nextState\000"
+ 2623      53746174 
+ 2623      6500
+ 2624              	.LASF63:
+ 2625 0988 45565F4B 		.ascii	"EV_KEYRIGHTLONGPRESS\000"
+ 2625      45595249 
+ 2625      4748544C 
+ 2625      4F4E4750 
+ 2625      52455353 
+ 2626              	.LASF104:
+ 2627 099d 57494447 		.ascii	"WIDGET_HOUR\000"
+ 2627      45545F48 
+ 2627      4F555200 
+ 2628              	.LASF140:
+ 2629 09a9 675F6D69 		.ascii	"g_minutes\000"
+ 2629      6E757465 
+ 2629      7300
+ 2630              	.LASF69:
+ 2631 09b3 67756172 		.ascii	"guard\000"
+ 2631      6400
+ 2632              	.LASF93:
+ 2633 09b9 6F6E4572 		.ascii	"onErrorTasks\000"
+ 2633      726F7254 
+ 2633      61736B73 
+ 2633      00
+ 2634              	.LASF149:
+ 2635 09c6 636C6F63 		.ascii	"clock_widget.c\000"
+ 2635      6B5F7769 
+ 2635      64676574 
+ARM GAS  C:\Users\bolob\AppData\Local\Temp\cc2W5SZg.s 			page 64
+
+
+ 2635      2E6300
+ 2636              	.LASF26:
+ 2637 09d5 45455F46 		.ascii	"EE_FREG\000"
+ 2637      52454700 
+ 2638              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
