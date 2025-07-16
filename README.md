@@ -1,6 +1,6 @@
 # PSoC 5 Digital Clock — Event-Driven Architecture with Active Objects
 
-This project implements a modular digital clock system on a **PSoC 5 microcontroller** using an **event-driven architecture** inspired by **RTE (Runtime Environment)** principles. It was developed as part of a **Master's course** on embedded systems architecture.
+This project implements a modular digital clock system on a **PSoC 5 microcontroller** using an **event-driven architecture** inspired by **AUTOSAR RTE (Runtime Environment)** principles. It was developed as part of a **Master's course** on embedded systems architecture.
 
 The system uses **hierarchical state machines** and **active objects** to separate input processing, control logic, and display output. It features:
 
@@ -66,9 +66,9 @@ This project was developed as part of a Master's-level embedded systems course. 
 
 ##  Technologies Used
 
-- C (bare-metal, no RTOS)
+- C (using **Erika Enterprise RTOS**)
 - PSoC Creator IDE
-- Custom signal/event handling via RTE-style components
+- Custom signal/event handling via AUTOSAR RTE-style components
 - State machines (manually coded, table-driven)
 - SPI-based TFT display interface
 
