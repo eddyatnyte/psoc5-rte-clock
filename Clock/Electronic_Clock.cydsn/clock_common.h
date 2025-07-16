@@ -1,14 +1,16 @@
 /* ========================================
  *
- * Copyright YOUR COMPANY, THE YEAR
+ * Copyright (c) 2025 Hochschule Darmstadt
  * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
  *
- * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
+ * Developed by Edaet Boloban
+ * M.Sc. Electrical Engineering (Major: Embedded and Microelectronics)
+ *
+ * This project is open source and published for educational purposes.
  *
  * ========================================
 */
+
 #ifndef CLOCK_COMMON_H
 #define CLOCK_COMMON_H
 
