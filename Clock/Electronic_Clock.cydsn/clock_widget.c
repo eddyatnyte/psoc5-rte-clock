@@ -31,16 +31,6 @@ ClockWidgetInstance CLOCK_minutes = {
     .type = WIDGET_MINUTE
 };
 
-/**
-* Wird dieser zustand benötigt?
-* Initialzustand: Focus dann Autoinc
-*/
-/** ==== CLOCK_W_ISDISPLAYING ===== */
-const STATE_stateInnerTransitionTable_t STATE_CLOCK_W_ISDISPLAYING_Transitions[] = {
-/*    Event                     ToState                Guard    Action                   */
-    { EV_KEYLEFT,               CLOCK_W_ISFOCUS,       0,       CLOCK__updateTime }
-};
-
 /** ==== CLOCK_W_ISFOCUS ===== */
 const STATE_stateInnerTransitionTable_t STATE_CLOCK_W_ISFOCUS_Transitions[] = {
 /*    Event                     ToState                Guard    Action                   */
@@ -102,21 +92,6 @@ void CLOCK__incrementWidget() {
     if (*currentWidgetContext->valuePtr >= currentWidgetContext->maxValue) {
         *currentWidgetContext->valuePtr = 0;
     }
-}
-
-// Probably not necessary....
-void CLOCK__incrementHours(){
-        // currently a dummy
-}
-void CLOCK__incrementMinutes(){
-        // currently a dummy
-}
-// is done in the display runnable, probably not needed
-void CLOCK__updateTime(){
-    // currently a dummy
-}
-void CLOCK__updateDisplay(){
-        // currently a dummy
 }
 
 void CLOCK__setDisplayFonts(){
