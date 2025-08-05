@@ -51,9 +51,15 @@ This clock runs on a **Cypress PSoC 5LP** (CY8CKIT-059) with the following compo
 
 ---
 
+## Context
+
+These lab projects were developed as part They form part of the International Master's in Electrical Engineering program.
+
+
 ## Educational Context
 
-This project was developed as part of a Master's-level embedded systems course. It was designed to demonstrate key concepts such as:
+This lab project was developed as part of the *Embedded Architectures and Applications* course (Prof. Dr. P. Fromm) at Hochschule Darmstadt (h_da), Germany. 
+It was designed to demonstrate key concepts such as:
 
 - The use of an **AUTOSAR RTE-inspired architecture** to structure signal and event communication between software components  
 - The design and implementation of a **complex state machine** using hierarchical states for both container and widget logic  
